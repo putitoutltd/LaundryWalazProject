@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOLoginViewController">
+            <connections>
+                <outlet property="emailAddressTextField" destination="JTW-4h-Hlc" id="Whi-nO-dct"/>
+                <outlet property="loginButton" destination="kcS-Kj-VSr" id="BGE-4V-S6H"/>
+                <outlet property="passwordTextField" destination="eof-LE-2FL" id="VEK-GC-De3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcS-Kj-VSr">
+                    <rect key="frame" x="80" y="281" width="160" height="34"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="9T5-2k-SxK"/>
+                    </constraints>
+                    <state key="normal" title="CONFIRM">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="NT6-4f-WT8"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eof-LE-2FL">
+                    <rect key="frame" x="22" y="188" width="276" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTW-4h-Hlc">
+                    <rect key="frame" x="22" y="127" width="276" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="JTW-4h-Hlc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="22" id="2Sv-1O-j4C"/>
+                <constraint firstItem="eof-LE-2FL" firstAttribute="top" secondItem="JTW-4h-Hlc" secondAttribute="bottom" constant="31" id="67u-6P-mCe"/>
+                <constraint firstItem="eof-LE-2FL" firstAttribute="centerX" secondItem="kcS-Kj-VSr" secondAttribute="centerX" id="ABV-ZB-y2R"/>
+                <constraint firstItem="JTW-4h-Hlc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="L5w-j3-wTt"/>
+                <constraint firstAttribute="bottom" secondItem="kcS-Kj-VSr" secondAttribute="bottom" constant="165" id="U9h-C0-iFe"/>
+                <constraint firstItem="JTW-4h-Hlc" firstAttribute="trailing" secondItem="eof-LE-2FL" secondAttribute="trailing" id="ebD-ig-N0C"/>
+                <constraint firstItem="JTW-4h-Hlc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="127" id="iwQ-hQ-2pZ"/>
+                <constraint firstItem="JTW-4h-Hlc" firstAttribute="leading" secondItem="eof-LE-2FL" secondAttribute="leading" id="wB1-HL-Wfu"/>
+                <constraint firstItem="kcS-Kj-VSr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="wND-84-9ZQ"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="422" y="241"/>
+        </view>
+    </objects>
+</document>

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeView.h"
 
 @interface PIOHowToUseViewController : UIViewController
 

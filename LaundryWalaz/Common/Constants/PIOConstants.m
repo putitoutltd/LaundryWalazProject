@@ -8,6 +8,5 @@
 
 #import "PIOConstants.h"
 
-@implementation PIOConstants
-
-@end
+NSString *const PIODashboardTitles[] = { @"Order", @"Pricing", @"Help", @"How it works",  @"Privacy", @"Ts&Cs", @"Log Out" };
+int PIODashboardTitlesCount =7;

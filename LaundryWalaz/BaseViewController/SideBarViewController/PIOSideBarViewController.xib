@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOSideBarViewController">
+            <connections>
+                <outlet property="dashboardTableView" destination="nrz-JK-QtF" id="abO-UY-3BL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="232" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMT-sD-Rai">
+                    <rect key="frame" x="0.0" y="0.0" width="232" height="480"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nrz-JK-QtF">
+                    <rect key="frame" x="0.0" y="67" width="232" height="413"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lmE-4J-caf"/>
+                        <outlet property="delegate" destination="-1" id="Mah-dI-VVt"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fMT-sD-Rai" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="1Jg-lb-Z1w"/>
+                <constraint firstItem="fMT-sD-Rai" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5Xo-3t-eoy"/>
+                <constraint firstItem="nrz-JK-QtF" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="-67" id="JRb-0a-F1d"/>
+                <constraint firstItem="fMT-sD-Rai" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="KD1-0U-0fi"/>
+                <constraint firstItem="fMT-sD-Rai" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o4E-bI-e1r"/>
+                <constraint firstItem="nrz-JK-QtF" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="rPX-9Y-PAT"/>
+                <constraint firstItem="nrz-JK-QtF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="vpD-V9-rSd"/>
+                <constraint firstItem="nrz-JK-QtF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yNc-K3-JSJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="286" y="104"/>
+        </view>
+    </objects>
+</document>

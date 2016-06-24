@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 - (void)showActivityViewWithMessage:(NSString *)message;
 - (void)hideActivityView;
 - (void)customizeNavigationBar:(UINavigationController *)navigationController;
-- (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message delegate:(id)alertDelegate withNotificationPosition:(unsigned int)position;
+- (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message withNotificationPosition:(unsigned int)position type:(TSMessageNotificationType)type;
 - (void)showInternetNotAvailableAletr;
 
 

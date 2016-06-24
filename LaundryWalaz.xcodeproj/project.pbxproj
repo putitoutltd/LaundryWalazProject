@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452304401D1D11570006EB01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4523043F1D1D11570006EB01 /* Default-568h@2x.png */; };
+		452304441D1D191E0006EB01 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304431D1D191E0006EB01 /* SwipeView.m */; };
+		452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304471D1D21800006EB01 /* PIOLoginViewController.m */; };
+		4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304481D1D21800006EB01 /* PIOLoginViewController.xib */; };
+		4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523044D1D1D4EB80006EB01 /* PIOBaseViewController.m */; };
+		452304501D1D4EB80006EB01 /* PIOBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4523044E1D1D4EB80006EB01 /* PIOBaseViewController.xib */; };
+		452304551D1D4FAE0006EB01 /* PIOSideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304531D1D4FAE0006EB01 /* PIOSideBarViewController.m */; };
+		452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304541D1D4FAE0006EB01 /* PIOSideBarViewController.xib */; };
+		452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452304571D1D50C30006EB01 /* NavigationBar.xcassets */; };
+		4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */; };
+		4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */; };
+		452304621D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */; };
+		452304631D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */; };
 		454A271C1D1BEF3600E30CDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271B1D1BEF3600E30CDF /* main.m */; };
 		454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271E1D1BEF3600E30CDF /* AppDelegate.m */; };
 		454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454A27261D1BEF3600E30CDF /* Assets.xcassets */; };
@@ -45,6 +58,25 @@
 
 /* Begin PBXFileReference section */
 		23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.debug.xcconfig"; sourceTree = "<group>"; };
+		4523043F1D1D11570006EB01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		452304421D1D191E0006EB01 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		452304431D1D191E0006EB01 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		452304461D1D21800006EB01 /* PIOLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOLoginViewController.h; path = LoginViewController/PIOLoginViewController.h; sourceTree = "<group>"; };
+		452304471D1D21800006EB01 /* PIOLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOLoginViewController.m; path = LoginViewController/PIOLoginViewController.m; sourceTree = "<group>"; };
+		452304481D1D21800006EB01 /* PIOLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOLoginViewController.xib; path = LoginViewController/PIOLoginViewController.xib; sourceTree = "<group>"; };
+		4523044C1D1D4EB80006EB01 /* PIOBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOBaseViewController.h; path = BaseViewController/PIOBaseViewController.h; sourceTree = "<group>"; };
+		4523044D1D1D4EB80006EB01 /* PIOBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOBaseViewController.m; path = BaseViewController/PIOBaseViewController.m; sourceTree = "<group>"; };
+		4523044E1D1D4EB80006EB01 /* PIOBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOBaseViewController.xib; path = BaseViewController/PIOBaseViewController.xib; sourceTree = "<group>"; };
+		452304521D1D4FAE0006EB01 /* PIOSideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOSideBarViewController.h; path = BaseViewController/SideBarViewController/PIOSideBarViewController.h; sourceTree = "<group>"; };
+		452304531D1D4FAE0006EB01 /* PIOSideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOSideBarViewController.m; path = BaseViewController/SideBarViewController/PIOSideBarViewController.m; sourceTree = "<group>"; };
+		452304541D1D4FAE0006EB01 /* PIOSideBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOSideBarViewController.xib; path = BaseViewController/SideBarViewController/PIOSideBarViewController.xib; sourceTree = "<group>"; };
+		452304571D1D50C30006EB01 /* NavigationBar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NavigationBar.xcassets; sourceTree = "<group>"; };
+		4523045A1D1D51AC0006EB01 /* PIOOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderViewController.h; path = OrderViewController/PIOOrderViewController.h; sourceTree = "<group>"; };
+		4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderViewController.m; path = OrderViewController/PIOOrderViewController.m; sourceTree = "<group>"; };
+		4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderViewController.xib; path = OrderViewController/PIOOrderViewController.xib; sourceTree = "<group>"; };
+		4523045F1D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOSideBarCustomTableViewCell.h; sourceTree = "<group>"; };
+		452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOSideBarCustomTableViewCell.m; sourceTree = "<group>"; };
+		452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOSideBarCustomTableViewCell.xib; sourceTree = "<group>"; };
 		454A27171D1BEF3600E30CDF /* LaundryWalaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaundryWalaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454A271B1D1BEF3600E30CDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		454A271D1D1BEF3600E30CDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,9 +157,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		452304411D1D191E0006EB01 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				452304421D1D191E0006EB01 /* SwipeView.h */,
+				452304431D1D191E0006EB01 /* SwipeView.m */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
+		452304451D1D20F80006EB01 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				452304461D1D21800006EB01 /* PIOLoginViewController.h */,
+				452304471D1D21800006EB01 /* PIOLoginViewController.m */,
+				452304481D1D21800006EB01 /* PIOLoginViewController.xib */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		4523044B1D1D4E820006EB01 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				452304511D1D4F900006EB01 /* SideBarViewController */,
+				4523044C1D1D4EB80006EB01 /* PIOBaseViewController.h */,
+				4523044D1D1D4EB80006EB01 /* PIOBaseViewController.m */,
+				4523044E1D1D4EB80006EB01 /* PIOBaseViewController.xib */,
+			);
+			name = BaseViewController;
+			sourceTree = "<group>";
+		};
+		452304511D1D4F900006EB01 /* SideBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4523045F1D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.h */,
+				452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */,
+				452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */,
+				452304521D1D4FAE0006EB01 /* PIOSideBarViewController.h */,
+				452304531D1D4FAE0006EB01 /* PIOSideBarViewController.m */,
+				452304541D1D4FAE0006EB01 /* PIOSideBarViewController.xib */,
+			);
+			name = SideBarViewController;
+			sourceTree = "<group>";
+		};
+		452304591D1D517F0006EB01 /* OrderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4523045A1D1D51AC0006EB01 /* PIOOrderViewController.h */,
+				4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */,
+				4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */,
+			);
+			name = OrderViewController;
+			sourceTree = "<group>";
+		};
 		454A270E1D1BEF3600E30CDF = {
 			isa = PBXGroup;
 			children = (
+				4523043F1D1D11570006EB01 /* Default-568h@2x.png */,
 				454A27191D1BEF3600E30CDF /* LaundryWalaz */,
 				454A27331D1BEF3600E30CDF /* LaundryWalazTests */,
 				454A273E1D1BEF3600E30CDF /* LaundryWalazUITests */,
@@ -150,9 +236,12 @@
 		454A27191D1BEF3600E30CDF /* LaundryWalaz */ = {
 			isa = PBXGroup;
 			children = (
-				454A274D1D1BF1AE00E30CDF /* AppDelegate */,
 				454A274E1D1BF25600E30CDF /* PIOAppController */,
+				454A274D1D1BF1AE00E30CDF /* AppDelegate */,
+				4523044B1D1D4E820006EB01 /* BaseViewController */,
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
+				452304451D1D20F80006EB01 /* LoginViewController */,
+				452304591D1D517F0006EB01 /* OrderViewController */,
 				454A27531D1C070300E30CDF /* Common */,
 				454A27261D1BEF3600E30CDF /* Assets.xcassets */,
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
@@ -165,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				454A271B1D1BEF3600E30CDF /* main.m */,
+				452304571D1D50C30006EB01 /* NavigationBar.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,6 +298,7 @@
 		454A27531D1C070300E30CDF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				452304411D1D191E0006EB01 /* SwipeView */,
 				454A277A1D1C098500E30CDF /* URLManager */,
 				454A27761D1C08AB00E30CDF /* APIResponse */,
 				454A27601D1C085200E30CDF /* Categories */,
@@ -392,8 +483,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452304501D1D4EB80006EB01 /* PIOBaseViewController.xib in Resources */,
+				452304631D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib in Resources */,
 				454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
+				452304401D1D11570006EB01 /* Default-568h@2x.png in Resources */,
+				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
+				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
+				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
+				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,14 +567,20 @@
 				454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */,
 				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
+				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
+				4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
+				452304551D1D4FAE0006EB01 /* PIOSideBarViewController.m in Sources */,
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
+				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
+				4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */,
 				454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */,
 				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,
 				454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */,
 				454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */,
+				452304621D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m in Sources */,
 				454A27721D1C085200E30CDF /* PIOChangePositionOfTextFields.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

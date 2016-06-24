@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PIOConstants : NSObject
+extern NSString *const PIODashboardTitles[];
+extern int PIODashboardTitlesCount;
 
-@end
