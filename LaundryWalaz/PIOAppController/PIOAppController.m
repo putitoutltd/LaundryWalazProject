@@ -22,7 +22,7 @@ static bool isFirstAccess = YES;
 static NSInteger PIORequestTimeOutIntervals = 20;
 static NSInteger PIODeleteSelectedPhoto = 999;
 
-@interface PIOAppController()  <MBProgressHUDDelegate, UIActionSheetDelegate>
+@interface PIOAppController()  <MBProgressHUDDelegate, UIActionSheetDelegate> 
 
 @property (nonatomic, strong) MBProgressHUD * HUD;
 @property (nonatomic, readwrite) UINavigationController *navigationController;
