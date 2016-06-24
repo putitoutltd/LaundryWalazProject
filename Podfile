@@ -1,0 +1,10 @@
+
+platform :ios, '7.0'
+target 'LaundryWalaz' do
+pod 'AFNetworking', '~> 3.0'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'IQKeyboardManager'
+pod 'CDRTranslucentSideBar'
+pod 'TSMessages'
+pod 'Flurry-iOS-SDK/FlurrySDK'
+end

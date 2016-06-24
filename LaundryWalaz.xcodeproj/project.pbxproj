@@ -1,0 +1,712 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		454A271C1D1BEF3600E30CDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271B1D1BEF3600E30CDF /* main.m */; };
+		454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271E1D1BEF3600E30CDF /* AppDelegate.m */; };
+		454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454A27261D1BEF3600E30CDF /* Assets.xcassets */; };
+		454A27351D1BEF3600E30CDF /* LaundryWalazTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27341D1BEF3600E30CDF /* LaundryWalazTests.m */; };
+		454A27401D1BEF3600E30CDF /* LaundryWalazUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A273F1D1BEF3600E30CDF /* LaundryWalazUITests.m */; };
+		454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27501D1BF25600E30CDF /* PIOAppController.m */; };
+		454A27571D1C070300E30CDF /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27561D1C070300E30CDF /* Reachability.m */; };
+		454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A275A1D1C07DD00E30CDF /* PIOConstants.m */; };
+		454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A275E1D1C080C00E30CDF /* PIOUserPref.m */; };
+		454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27621D1C085200E30CDF /* AFHTTPSessionManager+Additions.m */; };
+		454A27721D1C085200E30CDF /* PIOChangePositionOfTextFields.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27681D1C085200E30CDF /* PIOChangePositionOfTextFields.m */; };
+		454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A276A1D1C085200E30CDF /* PIORequestHandler.m */; };
+		454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27781D1C08AB00E30CDF /* PIOAPIResponse.m */; };
+		454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A277C1D1C098500E30CDF /* PIOURLManager.m */; };
+		454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */; };
+		454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */; };
+		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		454A27311D1BEF3600E30CDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 454A270F1D1BEF3600E30CDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 454A27161D1BEF3600E30CDF;
+			remoteInfo = LaundryWalaz;
+		};
+		454A273C1D1BEF3600E30CDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 454A270F1D1BEF3600E30CDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 454A27161D1BEF3600E30CDF;
+			remoteInfo = LaundryWalaz;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.debug.xcconfig"; sourceTree = "<group>"; };
+		454A27171D1BEF3600E30CDF /* LaundryWalaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaundryWalaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		454A271B1D1BEF3600E30CDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		454A271D1D1BEF3600E30CDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		454A271E1D1BEF3600E30CDF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		454A27261D1BEF3600E30CDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		454A272B1D1BEF3600E30CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		454A27301D1BEF3600E30CDF /* LaundryWalazTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaundryWalazTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		454A27341D1BEF3600E30CDF /* LaundryWalazTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaundryWalazTests.m; sourceTree = "<group>"; };
+		454A27361D1BEF3600E30CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		454A273B1D1BEF3600E30CDF /* LaundryWalazUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaundryWalazUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		454A273F1D1BEF3600E30CDF /* LaundryWalazUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaundryWalazUITests.m; sourceTree = "<group>"; };
+		454A27411D1BEF3600E30CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		454A274F1D1BF25600E30CDF /* PIOAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOAppController.h; sourceTree = "<group>"; };
+		454A27501D1BF25600E30CDF /* PIOAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOAppController.m; sourceTree = "<group>"; };
+		454A27551D1C070300E30CDF /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		454A27561D1C070300E30CDF /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		454A27591D1C07DD00E30CDF /* PIOConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOConstants.h; path = Constants/PIOConstants.h; sourceTree = "<group>"; };
+		454A275A1D1C07DD00E30CDF /* PIOConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOConstants.m; path = Constants/PIOConstants.m; sourceTree = "<group>"; };
+		454A275D1D1C080C00E30CDF /* PIOUserPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOUserPref.h; path = UserPref/PIOUserPref.h; sourceTree = "<group>"; };
+		454A275E1D1C080C00E30CDF /* PIOUserPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOUserPref.m; path = UserPref/PIOUserPref.m; sourceTree = "<group>"; };
+		454A27611D1C085200E30CDF /* AFHTTPSessionManager+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Additions.h"; sourceTree = "<group>"; };
+		454A27621D1C085200E30CDF /* AFHTTPSessionManager+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Additions.m"; sourceTree = "<group>"; };
+		454A27671D1C085200E30CDF /* PIOChangePositionOfTextFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOChangePositionOfTextFields.h; sourceTree = "<group>"; };
+		454A27681D1C085200E30CDF /* PIOChangePositionOfTextFields.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOChangePositionOfTextFields.m; sourceTree = "<group>"; };
+		454A27691D1C085200E30CDF /* PIORequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIORequestHandler.h; sourceTree = "<group>"; };
+		454A276A1D1C085200E30CDF /* PIORequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIORequestHandler.m; sourceTree = "<group>"; };
+		454A27771D1C08AB00E30CDF /* PIOAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOAPIResponse.h; sourceTree = "<group>"; };
+		454A27781D1C08AB00E30CDF /* PIOAPIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOAPIResponse.m; sourceTree = "<group>"; };
+		454A277B1D1C098500E30CDF /* PIOURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOURLManager.h; sourceTree = "<group>"; };
+		454A277C1D1C098500E30CDF /* PIOURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOURLManager.m; sourceTree = "<group>"; };
+		454A277F1D1C0CA900E30CDF /* PIOHowToUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOHowToUseViewController.h; sourceTree = "<group>"; };
+		454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOHowToUseViewController.m; sourceTree = "<group>"; };
+		454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOHowToUseViewController.xib; sourceTree = "<group>"; };
+		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		454A27141D1BEF3600E30CDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A272D1D1BEF3600E30CDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A27381D1BEF3600E30CDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D988E441654942FA31AD65C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3FFEF2C0F806143309F29CF5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */,
+				CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		454A270E1D1BEF3600E30CDF = {
+			isa = PBXGroup;
+			children = (
+				454A27191D1BEF3600E30CDF /* LaundryWalaz */,
+				454A27331D1BEF3600E30CDF /* LaundryWalazTests */,
+				454A273E1D1BEF3600E30CDF /* LaundryWalazUITests */,
+				454A27181D1BEF3600E30CDF /* Products */,
+				3FFEF2C0F806143309F29CF5 /* Pods */,
+				0D988E441654942FA31AD65C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		454A27181D1BEF3600E30CDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				454A27171D1BEF3600E30CDF /* LaundryWalaz.app */,
+				454A27301D1BEF3600E30CDF /* LaundryWalazTests.xctest */,
+				454A273B1D1BEF3600E30CDF /* LaundryWalazUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		454A27191D1BEF3600E30CDF /* LaundryWalaz */ = {
+			isa = PBXGroup;
+			children = (
+				454A274D1D1BF1AE00E30CDF /* AppDelegate */,
+				454A274E1D1BF25600E30CDF /* PIOAppController */,
+				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
+				454A27531D1C070300E30CDF /* Common */,
+				454A27261D1BEF3600E30CDF /* Assets.xcassets */,
+				454A272B1D1BEF3600E30CDF /* Info.plist */,
+				454A271A1D1BEF3600E30CDF /* Supporting Files */,
+			);
+			path = LaundryWalaz;
+			sourceTree = "<group>";
+		};
+		454A271A1D1BEF3600E30CDF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				454A271B1D1BEF3600E30CDF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		454A27331D1BEF3600E30CDF /* LaundryWalazTests */ = {
+			isa = PBXGroup;
+			children = (
+				454A27341D1BEF3600E30CDF /* LaundryWalazTests.m */,
+				454A27361D1BEF3600E30CDF /* Info.plist */,
+			);
+			path = LaundryWalazTests;
+			sourceTree = "<group>";
+		};
+		454A273E1D1BEF3600E30CDF /* LaundryWalazUITests */ = {
+			isa = PBXGroup;
+			children = (
+				454A273F1D1BEF3600E30CDF /* LaundryWalazUITests.m */,
+				454A27411D1BEF3600E30CDF /* Info.plist */,
+			);
+			path = LaundryWalazUITests;
+			sourceTree = "<group>";
+		};
+		454A274D1D1BF1AE00E30CDF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				454A271D1D1BEF3600E30CDF /* AppDelegate.h */,
+				454A271E1D1BEF3600E30CDF /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		454A274E1D1BF25600E30CDF /* PIOAppController */ = {
+			isa = PBXGroup;
+			children = (
+				454A274F1D1BF25600E30CDF /* PIOAppController.h */,
+				454A27501D1BF25600E30CDF /* PIOAppController.m */,
+			);
+			path = PIOAppController;
+			sourceTree = "<group>";
+		};
+		454A27531D1C070300E30CDF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				454A277A1D1C098500E30CDF /* URLManager */,
+				454A27761D1C08AB00E30CDF /* APIResponse */,
+				454A27601D1C085200E30CDF /* Categories */,
+				454A275C1D1C07F600E30CDF /* UserPref */,
+				454A27581D1C07BA00E30CDF /* Constants */,
+				454A27541D1C070300E30CDF /* Reachability */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		454A27541D1C070300E30CDF /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				454A27551D1C070300E30CDF /* Reachability.h */,
+				454A27561D1C070300E30CDF /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		454A27581D1C07BA00E30CDF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				454A27591D1C07DD00E30CDF /* PIOConstants.h */,
+				454A275A1D1C07DD00E30CDF /* PIOConstants.m */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		454A275C1D1C07F600E30CDF /* UserPref */ = {
+			isa = PBXGroup;
+			children = (
+				454A275D1D1C080C00E30CDF /* PIOUserPref.h */,
+				454A275E1D1C080C00E30CDF /* PIOUserPref.m */,
+			);
+			name = UserPref;
+			sourceTree = "<group>";
+		};
+		454A27601D1C085200E30CDF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				454A27611D1C085200E30CDF /* AFHTTPSessionManager+Additions.h */,
+				454A27621D1C085200E30CDF /* AFHTTPSessionManager+Additions.m */,
+				454A27671D1C085200E30CDF /* PIOChangePositionOfTextFields.h */,
+				454A27681D1C085200E30CDF /* PIOChangePositionOfTextFields.m */,
+				454A27691D1C085200E30CDF /* PIORequestHandler.h */,
+				454A276A1D1C085200E30CDF /* PIORequestHandler.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		454A27761D1C08AB00E30CDF /* APIResponse */ = {
+			isa = PBXGroup;
+			children = (
+				454A27771D1C08AB00E30CDF /* PIOAPIResponse.h */,
+				454A27781D1C08AB00E30CDF /* PIOAPIResponse.m */,
+			);
+			path = APIResponse;
+			sourceTree = "<group>";
+		};
+		454A277A1D1C098500E30CDF /* URLManager */ = {
+			isa = PBXGroup;
+			children = (
+				454A277B1D1C098500E30CDF /* PIOURLManager.h */,
+				454A277C1D1C098500E30CDF /* PIOURLManager.m */,
+			);
+			path = URLManager;
+			sourceTree = "<group>";
+		};
+		454A277E1D1C0C7700E30CDF /* HowToUseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				454A277F1D1C0CA900E30CDF /* PIOHowToUseViewController.h */,
+				454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */,
+				454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */,
+			);
+			path = HowToUseViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		454A27161D1BEF3600E30CDF /* LaundryWalaz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 454A27441D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalaz" */;
+			buildPhases = (
+				7A1288923D32FEEC13CC23CB /* Check Pods Manifest.lock */,
+				454A27131D1BEF3600E30CDF /* Sources */,
+				454A27141D1BEF3600E30CDF /* Frameworks */,
+				454A27151D1BEF3600E30CDF /* Resources */,
+				F1E1AF3AD30AB63620B62693 /* Embed Pods Frameworks */,
+				B9ADA0BCC892F2FE6DB5211B /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LaundryWalaz;
+			productName = LaundryWalaz;
+			productReference = 454A27171D1BEF3600E30CDF /* LaundryWalaz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		454A272F1D1BEF3600E30CDF /* LaundryWalazTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 454A27471D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalazTests" */;
+			buildPhases = (
+				454A272C1D1BEF3600E30CDF /* Sources */,
+				454A272D1D1BEF3600E30CDF /* Frameworks */,
+				454A272E1D1BEF3600E30CDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				454A27321D1BEF3600E30CDF /* PBXTargetDependency */,
+			);
+			name = LaundryWalazTests;
+			productName = LaundryWalazTests;
+			productReference = 454A27301D1BEF3600E30CDF /* LaundryWalazTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		454A273A1D1BEF3600E30CDF /* LaundryWalazUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 454A274A1D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalazUITests" */;
+			buildPhases = (
+				454A27371D1BEF3600E30CDF /* Sources */,
+				454A27381D1BEF3600E30CDF /* Frameworks */,
+				454A27391D1BEF3600E30CDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				454A273D1D1BEF3600E30CDF /* PBXTargetDependency */,
+			);
+			name = LaundryWalazUITests;
+			productName = LaundryWalazUITests;
+			productReference = 454A273B1D1BEF3600E30CDF /* LaundryWalazUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		454A270F1D1BEF3600E30CDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = pito;
+				TargetAttributes = {
+					454A27161D1BEF3600E30CDF = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					454A272F1D1BEF3600E30CDF = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 454A27161D1BEF3600E30CDF;
+					};
+					454A273A1D1BEF3600E30CDF = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 454A27161D1BEF3600E30CDF;
+					};
+				};
+			};
+			buildConfigurationList = 454A27121D1BEF3600E30CDF /* Build configuration list for PBXProject "LaundryWalaz" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 454A270E1D1BEF3600E30CDF;
+			productRefGroup = 454A27181D1BEF3600E30CDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				454A27161D1BEF3600E30CDF /* LaundryWalaz */,
+				454A272F1D1BEF3600E30CDF /* LaundryWalazTests */,
+				454A273A1D1BEF3600E30CDF /* LaundryWalazUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		454A27151D1BEF3600E30CDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */,
+				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A272E1D1BEF3600E30CDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A27391D1BEF3600E30CDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A1288923D32FEEC13CC23CB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9ADA0BCC892F2FE6DB5211B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1E1AF3AD30AB63620B62693 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		454A27131D1BEF3600E30CDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */,
+				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
+				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
+				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
+				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
+				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
+				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
+				454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */,
+				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,
+				454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */,
+				454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */,
+				454A27721D1C085200E30CDF /* PIOChangePositionOfTextFields.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A272C1D1BEF3600E30CDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454A27351D1BEF3600E30CDF /* LaundryWalazTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		454A27371D1BEF3600E30CDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454A27401D1BEF3600E30CDF /* LaundryWalazUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		454A27321D1BEF3600E30CDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 454A27161D1BEF3600E30CDF /* LaundryWalaz */;
+			targetProxy = 454A27311D1BEF3600E30CDF /* PBXContainerItemProxy */;
+		};
+		454A273D1D1BEF3600E30CDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 454A27161D1BEF3600E30CDF /* LaundryWalaz */;
+			targetProxy = 454A273C1D1BEF3600E30CDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		454A27421D1BEF3600E30CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		454A27431D1BEF3600E30CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		454A27451D1BEF3600E30CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LaundryWalaz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		454A27461D1BEF3600E30CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LaundryWalaz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		454A27481D1BEF3600E30CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LaundryWalazTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalazTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaundryWalaz.app/LaundryWalaz";
+			};
+			name = Debug;
+		};
+		454A27491D1BEF3600E30CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LaundryWalazTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalazTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LaundryWalaz.app/LaundryWalaz";
+			};
+			name = Release;
+		};
+		454A274B1D1BEF3600E30CDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LaundryWalazUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalazUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LaundryWalaz;
+			};
+			name = Debug;
+		};
+		454A274C1D1BEF3600E30CDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LaundryWalazUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalazUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LaundryWalaz;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		454A27121D1BEF3600E30CDF /* Build configuration list for PBXProject "LaundryWalaz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454A27421D1BEF3600E30CDF /* Debug */,
+				454A27431D1BEF3600E30CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		454A27441D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalaz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454A27451D1BEF3600E30CDF /* Debug */,
+				454A27461D1BEF3600E30CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		454A27471D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalazTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454A27481D1BEF3600E30CDF /* Debug */,
+				454A27491D1BEF3600E30CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		454A274A1D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalazUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454A274B1D1BEF3600E30CDF /* Debug */,
+				454A274C1D1BEF3600E30CDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 454A270F1D1BEF3600E30CDF /* Project object */;
+}
