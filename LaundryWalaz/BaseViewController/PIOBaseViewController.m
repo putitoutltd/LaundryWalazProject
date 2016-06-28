@@ -60,10 +60,11 @@
     self.sideBar.delegate = self;
     PIOSideBarViewController *sideBarViewController = [PIOSideBarViewController new];
     [[[PIOAppController sharedInstance] navigationController].visibleViewController addChildViewController:sideBarViewController];
-    self.sideBar.view.frame = CGRectMake(0, 0, 232, self.view.window.frame.size.height);
+    self.sideBar.view.frame = CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height);
     sideBarViewController.view.frame = self.sideBar.view.frame;
 //    self.sideBar.translucentStyle = UIBarStyleBlack;
     // Set ContentView in SideBar
+    self.sideBar.sideBarWidth = self.view.window.frame.size.width;
     [self.sideBar setContentViewInSideBar:sideBarViewController.view];
     
     [self.sideBar show];

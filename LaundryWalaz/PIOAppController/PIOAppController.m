@@ -196,6 +196,22 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     
 }
 
+- (NSString *)daySuffixForDate:(NSDate *)date
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger dayOfMonth = [calendar component:NSCalendarUnitDay fromDate:date];
+    switch (dayOfMonth) {
+        case 1:
+        case 21:
+        case 31: return @"st";
+        case 2:
+        case 22: return @"nd";
+        case 3:
+        case 23: return @"rd";
+        default: return @"th";
+    }
+}
+
 
 
 #pragma mark - Lifecycle methods

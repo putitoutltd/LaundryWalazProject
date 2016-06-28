@@ -163,5 +163,9 @@
         [visibleViewController removeFromParentViewController];
     }
 }
+- (IBAction)crossButtonPressed:(id)sender
+{
+    [self hideBarView];
+}
 
 @end

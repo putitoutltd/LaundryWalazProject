@@ -20,6 +20,10 @@
 		4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */; };
 		452304621D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */; };
 		452304631D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */; };
+		452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA37E1D228DF8003F1825 /* IQActionSheetPickerView.m */; };
+		452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA3801D228DF8003F1825 /* IQActionSheetViewController.m */; };
+		452EA3871D229759003F1825 /* PIOContactInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA3851D229759003F1825 /* PIOContactInfoViewController.m */; };
+		452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452EA3861D229759003F1825 /* PIOContactInfoViewController.xib */; };
 		454A271C1D1BEF3600E30CDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271B1D1BEF3600E30CDF /* main.m */; };
 		454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271E1D1BEF3600E30CDF /* AppDelegate.m */; };
 		454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454A27261D1BEF3600E30CDF /* Assets.xcassets */; };
@@ -77,6 +81,13 @@
 		4523045F1D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOSideBarCustomTableViewCell.h; sourceTree = "<group>"; };
 		452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOSideBarCustomTableViewCell.m; sourceTree = "<group>"; };
 		452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOSideBarCustomTableViewCell.xib; sourceTree = "<group>"; };
+		452EA37D1D228DF8003F1825 /* IQActionSheetPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetPickerView.h; sourceTree = "<group>"; };
+		452EA37E1D228DF8003F1825 /* IQActionSheetPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetPickerView.m; sourceTree = "<group>"; };
+		452EA37F1D228DF8003F1825 /* IQActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetViewController.h; sourceTree = "<group>"; };
+		452EA3801D228DF8003F1825 /* IQActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetViewController.m; sourceTree = "<group>"; };
+		452EA3841D229759003F1825 /* PIOContactInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOContactInfoViewController.h; path = ContactInfoViewController/PIOContactInfoViewController.h; sourceTree = "<group>"; };
+		452EA3851D229759003F1825 /* PIOContactInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOContactInfoViewController.m; path = ContactInfoViewController/PIOContactInfoViewController.m; sourceTree = "<group>"; };
+		452EA3861D229759003F1825 /* PIOContactInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOContactInfoViewController.xib; path = ContactInfoViewController/PIOContactInfoViewController.xib; sourceTree = "<group>"; };
 		454A27171D1BEF3600E30CDF /* LaundryWalaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaundryWalaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454A271B1D1BEF3600E30CDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		454A271D1D1BEF3600E30CDF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,6 +221,27 @@
 			name = OrderViewController;
 			sourceTree = "<group>";
 		};
+		452EA37C1D228DF8003F1825 /* IQActionSheetPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				452EA37D1D228DF8003F1825 /* IQActionSheetPickerView.h */,
+				452EA37E1D228DF8003F1825 /* IQActionSheetPickerView.m */,
+				452EA37F1D228DF8003F1825 /* IQActionSheetViewController.h */,
+				452EA3801D228DF8003F1825 /* IQActionSheetViewController.m */,
+			);
+			path = IQActionSheetPickerView;
+			sourceTree = "<group>";
+		};
+		452EA3831D22971F003F1825 /* ContactInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				452EA3841D229759003F1825 /* PIOContactInfoViewController.h */,
+				452EA3851D229759003F1825 /* PIOContactInfoViewController.m */,
+				452EA3861D229759003F1825 /* PIOContactInfoViewController.xib */,
+			);
+			name = ContactInfoViewController;
+			sourceTree = "<group>";
+		};
 		454A270E1D1BEF3600E30CDF = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +274,7 @@
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
 				452304451D1D20F80006EB01 /* LoginViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
+				452EA3831D22971F003F1825 /* ContactInfoViewController */,
 				454A27531D1C070300E30CDF /* Common */,
 				454A27261D1BEF3600E30CDF /* Assets.xcassets */,
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
@@ -298,6 +331,7 @@
 		454A27531D1C070300E30CDF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				452EA37C1D228DF8003F1825 /* IQActionSheetPickerView */,
 				452304411D1D191E0006EB01 /* SwipeView */,
 				454A277A1D1C098500E30CDF /* URLManager */,
 				454A27761D1C08AB00E30CDF /* APIResponse */,
@@ -491,6 +525,7 @@
 				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
 				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
+				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,10 +610,13 @@
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
 				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
+				452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */,
+				452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */,
 				4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */,
 				454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */,
 				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,
 				454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */,
+				452EA3871D229759003F1825 /* PIOContactInfoViewController.m in Sources */,
 				454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */,
 				452304621D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m in Sources */,
 				454A27721D1C085200E30CDF /* PIOChangePositionOfTextFields.m in Sources */,
