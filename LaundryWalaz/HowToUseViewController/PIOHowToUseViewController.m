@@ -8,7 +8,7 @@
 
 #import "PIOHowToUseViewController.h"
 #import "PIOLoginViewController.h"
-#import "PIOOrderViewController.h"
+#import "PIOMapViewController.h"
 
 @interface PIOHowToUseViewController ()
 
@@ -56,8 +56,8 @@
 
 - (IBAction)startNowButtonPressed:(id)sender
 {
-    PIOOrderViewController *orderViewController = [PIOOrderViewController new];
-    [self.navigationController pushViewController: orderViewController animated: YES];
+    PIOMapViewController *mapViewController = [PIOMapViewController new];
+    [self.navigationController pushViewController: mapViewController animated: YES];
 }
 
 #pragma mark - Private Methods

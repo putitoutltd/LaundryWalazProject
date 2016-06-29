@@ -8,18 +8,26 @@
 
 #import "PIOSideBarViewController.h"
 #import "PIOSideBarCustomTableViewCell.h"
-#import "PIOOrderViewController.h"
+#import "PIOHowToUseViewController.h"
+#import "PIOMapViewController.h"
 #import "PIOAppController.h"
 #import "CDRTranslucentSideBar.h"
 #import "PIOConstants.h"
 
-@interface PIOSideBarViewController ()
+const NSInteger PIOLogOutButtonIndex = 0;
 
+@interface PIOSideBarViewController ()
+{
+    UIViewController *visibleController;
+    NSArray *controllers;
+}
 @property (nonatomic, weak) IBOutlet UITableView *dashboardTableView;
 
 @end
 
 @implementation PIOSideBarViewController
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,7 +50,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,6 +103,16 @@
     
     switch (indexPath.row) {
             case PIODashboardRowTypeLogout: {
+              
+                UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                              initWithTitle:@"Are you sure you want to log out?"
+                                              delegate:self
+                                              cancelButtonTitle:@"Cancel"
+                                              destructiveButtonTitle:@"Log Out"
+                                              otherButtonTitles: nil];
+                [actionSheet showInView:[PIOAppController sharedInstance].navigationController.view];
+                visibleController = visibleViewController;
+                controllers = viewControllers;
                 
                 break;
             }
@@ -105,31 +123,20 @@
             }
             
             
-            case PIODashboardRowTypeHelp: {
-                
-                break;
-            }
-            
-            case PIODashboardRowTypeTsAndCs: {
-                break;
-            }
-            case PIODashboardRowTypePrivacy: {
-                
-                break;
-            }
+           
             case PIODashboardRowTypeOrder: {
                 
-                if (![visibleViewController isKindOfClass:[PIOOrderViewController class]] ) {
+                if (![visibleViewController isKindOfClass:[PIOMapViewController class]] ) {
                     
-                    PIOOrderViewController *orderViewController;
+                    PIOMapViewController *orderViewController;
                     for (UIViewController *viewController in viewControllers) {
-                        if ([viewController isKindOfClass:[PIOOrderViewController class]]) {
-                            orderViewController = (PIOOrderViewController *)viewController;
+                        if ([viewController isKindOfClass:[PIOMapViewController class]]) {
+                            orderViewController = (PIOMapViewController *)viewController;
                             break;
                         }
                     }
                     if (orderViewController == nil) {
-                        orderViewController = [PIOOrderViewController new];
+                        orderViewController = [PIOMapViewController new];
                         [[[PIOAppController sharedInstance] navigationController] pushViewController: orderViewController animated:NO];
                     } else {
                         
@@ -152,6 +159,47 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 42;
+}
+
+
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == PIOLogOutButtonIndex) {
+        [self callLogoutAPI];
+    }
+}
+
+- (void)callLogoutAPI
+{
+    [self flushDataOnLogout: visibleController withViewControllerArray:controllers];
+
+}
+
+- (void)flushDataOnLogout:(UIViewController *)visibleViewController withViewControllerArray:(NSArray *)viewControllers
+{
+    
+    if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {
+        PIOHowToUseViewController *loginViewController;
+        for (UIViewController *viewController in viewControllers) {
+            if ([viewController isKindOfClass:[PIOHowToUseViewController class]]) {
+                loginViewController = (PIOHowToUseViewController *)viewController;
+                break;
+            }
+        }
+        
+        if (loginViewController == nil) {
+            loginViewController = [PIOHowToUseViewController new];
+            [[PIOAppController sharedInstance].navigationController pushViewController:loginViewController animated:NO];
+        }else{
+            
+            [[PIOAppController sharedInstance].navigationController popToViewController:loginViewController animated:NO];
+        }
+        
+    }
+   
+    
 }
 
 - (void)hideBarView

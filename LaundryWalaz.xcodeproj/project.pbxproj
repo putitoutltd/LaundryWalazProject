@@ -40,6 +40,11 @@
 		454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A277C1D1C098500E30CDF /* PIOURLManager.m */; };
 		454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */; };
 		454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */; };
+		456034271D23D56400437050 /* PIOMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 456034251D23D56400437050 /* PIOMapViewController.m */; };
+		456034281D23D56400437050 /* PIOMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456034261D23D56400437050 /* PIOMapViewController.xib */; };
+		4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342B1D23DA2E00437050 /* CoreLocation.framework */; };
+		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
+		456034301D23E53600437050 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560342F1D23E53600437050 /* test.png */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +126,12 @@
 		454A277F1D1C0CA900E30CDF /* PIOHowToUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOHowToUseViewController.h; sourceTree = "<group>"; };
 		454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOHowToUseViewController.m; sourceTree = "<group>"; };
 		454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOHowToUseViewController.xib; sourceTree = "<group>"; };
+		456034241D23D56400437050 /* PIOMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOMapViewController.h; path = MapViewController/PIOMapViewController.h; sourceTree = "<group>"; };
+		456034251D23D56400437050 /* PIOMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOMapViewController.m; path = MapViewController/PIOMapViewController.m; sourceTree = "<group>"; };
+		456034261D23D56400437050 /* PIOMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOMapViewController.xib; path = MapViewController/PIOMapViewController.xib; sourceTree = "<group>"; };
+		4560342B1D23DA2E00437050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4560342D1D23DA3600437050 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4560342F1D23E53600437050 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */,
+				4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */,
 				AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +167,8 @@
 		0D988E441654942FA31AD65C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4560342D1D23DA3600437050 /* MapKit.framework */,
+				4560342B1D23DA2E00437050 /* CoreLocation.framework */,
 				7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */,
 			);
 			name = Frameworks;
@@ -273,6 +288,7 @@
 				4523044B1D1D4E820006EB01 /* BaseViewController */,
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
 				452304451D1D20F80006EB01 /* LoginViewController */,
+				456034231D23D53C00437050 /* MapViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
 				454A27531D1C070300E30CDF /* Common */,
@@ -406,9 +422,20 @@
 			children = (
 				454A277F1D1C0CA900E30CDF /* PIOHowToUseViewController.h */,
 				454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */,
+				4560342F1D23E53600437050 /* test.png */,
 				454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */,
 			);
 			path = HowToUseViewController;
+			sourceTree = "<group>";
+		};
+		456034231D23D53C00437050 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				456034241D23D56400437050 /* PIOMapViewController.h */,
+				456034251D23D56400437050 /* PIOMapViewController.m */,
+				456034261D23D56400437050 /* PIOMapViewController.xib */,
+			);
+			name = MapViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,10 +550,12 @@
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
 				452304401D1D11570006EB01 /* Default-568h@2x.png in Resources */,
 				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
+				456034281D23D56400437050 /* PIOMapViewController.xib in Resources */,
 				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
 				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
+				456034301D23E53600437050 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +634,7 @@
 				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
 				4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */,
+				456034271D23D56400437050 /* PIOMapViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
 				452304551D1D4FAE0006EB01 /* PIOSideBarViewController.m in Sources */,
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
@@ -745,6 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LaundryWalaz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -757,6 +788,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LaundryWalaz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,15 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PIOSideBarViewController : UIViewController
+@interface PIOSideBarViewController : UIViewController <UIActionSheetDelegate>
 
 typedef NS_ENUM(NSUInteger, PIODashboardRowType) {
     PIODashboardRowTypeOrder,
     PIODashboardRowTypePricing,
-    PIODashboardRowTypeHelp,
     PIODashboardRowTypeHowItWorks,
-    PIODashboardRowTypePrivacy,
-    PIODashboardRowTypeTsAndCs,
     PIODashboardRowTypeLogout,
 };
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOMapViewController">
+            <connections>
+                <outlet property="addressTextField" destination="7h1-6m-XJo" id="Iuy-68-Hbn"/>
+                <outlet property="mapView" destination="lLM-LG-Maq" id="Usi-1i-umK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lLM-LG-Maq">
+                    <rect key="frame" x="0.0" y="65" width="320" height="415"/>
+                </mapView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-6m-XJo">
+                    <rect key="frame" x="9" y="85" width="301" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qX-fL-fy1">
+                    <rect key="frame" x="79" y="426" width="162" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Confirm Address">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="confirmAddressButtonPressed:" destination="-1" eventType="touchUpInside" id="LPw-7c-qWV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7h1-6m-XJo" secondAttribute="trailing" constant="10" id="3Mx-dH-c8K"/>
+                <constraint firstItem="7h1-6m-XJo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="Eg4-5v-fFy"/>
+                <constraint firstItem="3qX-fL-fy1" firstAttribute="centerX" secondItem="7h1-6m-XJo" secondAttribute="centerX" id="QUd-7f-vAo"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="leading" constant="-9" id="dIF-YR-Ka3"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="k8M-ji-vz4"/>
+                <constraint firstItem="3qX-fL-fy1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="79" id="ks6-cD-che"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="-65" id="mb0-cX-Aic"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qr7-LG-xaM"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="ugt-7j-YRx"/>
+                <constraint firstAttribute="bottom" secondItem="3qX-fL-fy1" secondAttribute="bottom" constant="24" id="z0Q-3c-PVe"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="227" y="138"/>
+        </view>
+    </objects>
+</document>
