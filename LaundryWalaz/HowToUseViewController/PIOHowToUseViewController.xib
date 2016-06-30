@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOHowToUseViewController">
             <connections>
+                <outlet property="pickupButton" destination="EON-LE-Xv4" id="J42-7e-jOi"/>
                 <outlet property="swipeView" destination="abw-Yq-1nR" id="PLj-u3-Zyj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,51 +17,39 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvz-X7-Uaw">
-                    <rect key="frame" x="0.0" y="437" width="160" height="43"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="43" id="V4q-Lb-WtQ"/>
-                        <constraint firstAttribute="width" constant="160" id="cpF-fK-K5x"/>
-                    </constraints>
-                    <state key="normal" title="Login"/>
-                    <connections>
-                        <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="myc-aO-h7C"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EON-LE-Xv4">
-                    <rect key="frame" x="160" y="437" width="160" height="43"/>
-                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Start now"/>
-                    <connections>
-                        <action selector="startNowButtonPressed:" destination="-1" eventType="touchUpInside" id="z6f-40-gi2"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abw-Yq-1nR" customClass="SwipeView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
-                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="dWd-Vc-TEz"/>
                         <outlet property="delegate" destination="-1" id="oQR-DN-agX"/>
                     </connections>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EON-LE-Xv4">
+                    <rect key="frame" x="76" y="429" width="168" height="29"/>
+                    <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" title="Pick-Up" backgroundImage="pick-up.png"/>
+                    <connections>
+                        <action selector="startNowButtonPressed:" destination="-1" eventType="touchUpInside" id="z6f-40-gi2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Dvz-X7-Uaw" secondAttribute="bottom" id="0HP-DX-cB3"/>
-                <constraint firstItem="Dvz-X7-Uaw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="31e-7K-4ss"/>
-                <constraint firstItem="abw-Yq-1nR" firstAttribute="leading" secondItem="Dvz-X7-Uaw" secondAttribute="leading" id="67y-bI-M7O"/>
                 <constraint firstItem="abw-Yq-1nR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Py-o3-hX9"/>
-                <constraint firstItem="EON-LE-Xv4" firstAttribute="baseline" secondItem="Dvz-X7-Uaw" secondAttribute="firstBaseline" id="Aam-tg-bFz"/>
-                <constraint firstAttribute="trailing" secondItem="EON-LE-Xv4" secondAttribute="trailing" id="Kho-sO-Lob"/>
-                <constraint firstItem="Dvz-X7-Uaw" firstAttribute="top" secondItem="abw-Yq-1nR" secondAttribute="bottom" id="RH9-oH-1cb"/>
-                <constraint firstAttribute="bottom" secondItem="EON-LE-Xv4" secondAttribute="bottom" id="XvV-KV-8Xh"/>
-                <constraint firstItem="abw-Yq-1nR" firstAttribute="trailing" secondItem="EON-LE-Xv4" secondAttribute="trailing" id="bNm-HR-2vJ"/>
-                <constraint firstItem="EON-LE-Xv4" firstAttribute="leading" secondItem="Dvz-X7-Uaw" secondAttribute="trailing" id="x1e-aV-6Fq"/>
-                <constraint firstItem="Dvz-X7-Uaw" firstAttribute="baseline" secondItem="EON-LE-Xv4" secondAttribute="firstBaseline" id="zJb-oC-JLQ"/>
+                <constraint firstAttribute="trailing" secondItem="abw-Yq-1nR" secondAttribute="trailing" id="CZV-26-Bxl"/>
+                <constraint firstAttribute="bottom" secondItem="abw-Yq-1nR" secondAttribute="bottom" id="H2T-8S-ncd"/>
+                <constraint firstAttribute="bottom" secondItem="EON-LE-Xv4" secondAttribute="bottom" constant="22" id="No4-dr-n8z"/>
+                <constraint firstItem="EON-LE-Xv4" firstAttribute="centerX" secondItem="abw-Yq-1nR" secondAttribute="centerX" id="s6P-hu-8ih"/>
+                <constraint firstItem="abw-Yq-1nR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uo1-IY-nRA"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="417" y="152"/>
+            <point key="canvasLocation" x="506" y="86"/>
         </view>
     </objects>
+    <resources>
+        <image name="pick-up.png" width="168" height="29"/>
+    </resources>
 </document>

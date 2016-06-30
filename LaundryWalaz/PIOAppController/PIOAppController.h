@@ -11,6 +11,7 @@
 #import "Reachability.h"
 #import "AFHTTPSessionManager+Additions.h"
 #import "TSMessage.h"
+#import "UIFont+Additions.h"
 
 @class PIOProgressBarViewController;
 

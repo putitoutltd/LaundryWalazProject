@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		452304401D1D11570006EB01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4523043F1D1D11570006EB01 /* Default-568h@2x.png */; };
 		452304441D1D191E0006EB01 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304431D1D191E0006EB01 /* SwipeView.m */; };
 		452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304471D1D21800006EB01 /* PIOLoginViewController.m */; };
 		4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304481D1D21800006EB01 /* PIOLoginViewController.xib */; };
@@ -20,6 +19,35 @@
 		4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */; };
 		452304621D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */; };
 		452304631D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */; };
+		452726C91D251022008A90B5 /* HowToUseScreen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452726C81D251022008A90B5 /* HowToUseScreen.xcassets */; };
+		452726CF1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */; };
+		452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726D91D2515EC008A90B5 /* first-slide@2x.png */; };
+		452726DE1D2515EC008A90B5 /* pick-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726DA1D2515EC008A90B5 /* pick-up@2x.png */; };
+		452726DF1D2515EC008A90B5 /* second-slide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726DB1D2515EC008A90B5 /* second-slide@2x.png */; };
+		452726E01D2515EC008A90B5 /* third-slide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726DC1D2515EC008A90B5 /* third-slide@2x.png */; };
+		452726E61D251B1C008A90B5 /* first-slide-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726E21D251B1C008A90B5 /* first-slide-667h@2x.png */; };
+		452726E71D251B1C008A90B5 /* pick-up-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726E31D251B1C008A90B5 /* pick-up-667h@2x.png */; };
+		452726E81D251B1C008A90B5 /* second-slide-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726E41D251B1C008A90B5 /* second-slide-667h@2x.png */; };
+		452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726E51D251B1C008A90B5 /* third-slide-667h@2x.png */; };
+		452726EF1D252169008A90B5 /* first-slide-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726EB1D252169008A90B5 /* first-slide-568h@2x.png */; };
+		452726F01D252169008A90B5 /* pick-up-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726EC1D252169008A90B5 /* pick-up-568h@2x.png */; };
+		452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726ED1D252169008A90B5 /* second-slide-568h@2x.png */; };
+		452726F21D252169008A90B5 /* third-slide-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726EE1D252169008A90B5 /* third-slide-568h@2x.png */; };
+		452726F81D2522CA008A90B5 /* first-slide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726F41D2522CA008A90B5 /* first-slide@3x.png */; };
+		452726F91D2522CA008A90B5 /* pick-up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726F51D2522CA008A90B5 /* pick-up@3x.png */; };
+		452726FA1D2522CA008A90B5 /* second-slide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726F61D2522CA008A90B5 /* second-slide@3x.png */; };
+		452726FB1D2522CA008A90B5 /* third-slide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726F71D2522CA008A90B5 /* third-slide@3x.png */; };
+		452727071D252ECE008A90B5 /* MyriadPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452726FD1D252ECE008A90B5 /* MyriadPro-Bold.otf */; };
+		452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452726FE1D252ECE008A90B5 /* MyriadPro-BoldCond.otf */; };
+		452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452726FF1D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf */; };
+		4527270A1D252ECE008A90B5 /* MyriadPro-BoldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727001D252ECE008A90B5 /* MyriadPro-BoldIt.otf */; };
+		4527270B1D252ECE008A90B5 /* MyriadPro-Cond.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727011D252ECE008A90B5 /* MyriadPro-Cond.otf */; };
+		4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727021D252ECE008A90B5 /* MyriadPro-CondIt.otf */; };
+		4527270D1D252ECE008A90B5 /* MyriadPro-It.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727031D252ECE008A90B5 /* MyriadPro-It.otf */; };
+		4527270E1D252ECE008A90B5 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727041D252ECE008A90B5 /* MyriadPro-Regular.otf */; };
+		4527270F1D252ECE008A90B5 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727051D252ECE008A90B5 /* MyriadPro-Semibold.otf */; };
+		452727101D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 452727061D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf */; };
+		452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 452727121D252FB2008A90B5 /* UIFont+Additions.m */; };
 		452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA37E1D228DF8003F1825 /* IQActionSheetPickerView.m */; };
 		452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA3801D228DF8003F1825 /* IQActionSheetViewController.m */; };
 		452EA3871D229759003F1825 /* PIOContactInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452EA3851D229759003F1825 /* PIOContactInfoViewController.m */; };
@@ -45,6 +73,8 @@
 		4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342B1D23DA2E00437050 /* CoreLocation.framework */; };
 		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
 		456034301D23E53600437050 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560342F1D23E53600437050 /* test.png */; };
+		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
+		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +97,6 @@
 
 /* Begin PBXFileReference section */
 		23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.debug.xcconfig"; sourceTree = "<group>"; };
-		4523043F1D1D11570006EB01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		452304421D1D191E0006EB01 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		452304431D1D191E0006EB01 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		452304461D1D21800006EB01 /* PIOLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOLoginViewController.h; path = LoginViewController/PIOLoginViewController.h; sourceTree = "<group>"; };
@@ -86,6 +115,37 @@
 		4523045F1D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOSideBarCustomTableViewCell.h; sourceTree = "<group>"; };
 		452304601D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOSideBarCustomTableViewCell.m; sourceTree = "<group>"; };
 		452304611D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOSideBarCustomTableViewCell.xib; sourceTree = "<group>"; };
+		452726C81D251022008A90B5 /* HowToUseScreen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HowToUseScreen.xcassets; sourceTree = "<group>"; };
+		452726CD1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DeviceSpecificMedia.h"; sourceTree = "<group>"; };
+		452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DeviceSpecificMedia.m"; sourceTree = "<group>"; };
+		452726D91D2515EC008A90B5 /* first-slide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first-slide@2x.png"; sourceTree = "<group>"; };
+		452726DA1D2515EC008A90B5 /* pick-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick-up@2x.png"; sourceTree = "<group>"; };
+		452726DB1D2515EC008A90B5 /* second-slide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-slide@2x.png"; sourceTree = "<group>"; };
+		452726DC1D2515EC008A90B5 /* third-slide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third-slide@2x.png"; sourceTree = "<group>"; };
+		452726E21D251B1C008A90B5 /* first-slide-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first-slide-667h@2x.png"; sourceTree = "<group>"; };
+		452726E31D251B1C008A90B5 /* pick-up-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick-up-667h@2x.png"; sourceTree = "<group>"; };
+		452726E41D251B1C008A90B5 /* second-slide-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-slide-667h@2x.png"; sourceTree = "<group>"; };
+		452726E51D251B1C008A90B5 /* third-slide-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third-slide-667h@2x.png"; sourceTree = "<group>"; };
+		452726EB1D252169008A90B5 /* first-slide-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first-slide-568h@2x.png"; sourceTree = "<group>"; };
+		452726EC1D252169008A90B5 /* pick-up-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick-up-568h@2x.png"; sourceTree = "<group>"; };
+		452726ED1D252169008A90B5 /* second-slide-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-slide-568h@2x.png"; sourceTree = "<group>"; };
+		452726EE1D252169008A90B5 /* third-slide-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third-slide-568h@2x.png"; sourceTree = "<group>"; };
+		452726F41D2522CA008A90B5 /* first-slide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first-slide@3x.png"; sourceTree = "<group>"; };
+		452726F51D2522CA008A90B5 /* pick-up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pick-up@3x.png"; sourceTree = "<group>"; };
+		452726F61D2522CA008A90B5 /* second-slide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second-slide@3x.png"; sourceTree = "<group>"; };
+		452726F71D2522CA008A90B5 /* third-slide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "third-slide@3x.png"; sourceTree = "<group>"; };
+		452726FD1D252ECE008A90B5 /* MyriadPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Bold.otf"; sourceTree = "<group>"; };
+		452726FE1D252ECE008A90B5 /* MyriadPro-BoldCond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldCond.otf"; sourceTree = "<group>"; };
+		452726FF1D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldCondIt.otf"; sourceTree = "<group>"; };
+		452727001D252ECE008A90B5 /* MyriadPro-BoldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-BoldIt.otf"; sourceTree = "<group>"; };
+		452727011D252ECE008A90B5 /* MyriadPro-Cond.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Cond.otf"; sourceTree = "<group>"; };
+		452727021D252ECE008A90B5 /* MyriadPro-CondIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-CondIt.otf"; sourceTree = "<group>"; };
+		452727031D252ECE008A90B5 /* MyriadPro-It.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-It.otf"; sourceTree = "<group>"; };
+		452727041D252ECE008A90B5 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		452727051D252ECE008A90B5 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
+		452727061D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-SemiboldIt.otf"; sourceTree = "<group>"; };
+		452727111D252FB2008A90B5 /* UIFont+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Additions.h"; sourceTree = "<group>"; };
+		452727121D252FB2008A90B5 /* UIFont+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Additions.m"; sourceTree = "<group>"; };
 		452EA37D1D228DF8003F1825 /* IQActionSheetPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetPickerView.h; sourceTree = "<group>"; };
 		452EA37E1D228DF8003F1825 /* IQActionSheetPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQActionSheetPickerView.m; sourceTree = "<group>"; };
 		452EA37F1D228DF8003F1825 /* IQActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQActionSheetViewController.h; sourceTree = "<group>"; };
@@ -132,6 +192,9 @@
 		4560342B1D23DA2E00437050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4560342D1D23DA3600437050 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4560342F1D23E53600437050 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListViewController.h; sourceTree = "<group>"; };
+		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
+		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +299,78 @@
 			name = OrderViewController;
 			sourceTree = "<group>";
 		};
+		452726D11D25158E008A90B5 /* HowToUseScreen */ = {
+			isa = PBXGroup;
+			children = (
+				452726D81D2515EC008A90B5 /* StartScreen4s */,
+				452726EA1D252169008A90B5 /* StartScreen5s */,
+				452726E11D251B1C008A90B5 /* StartScreen6 */,
+				452726F31D2522CA008A90B5 /* StartScreen6Plus */,
+			);
+			path = HowToUseScreen;
+			sourceTree = "<group>";
+		};
+		452726D81D2515EC008A90B5 /* StartScreen4s */ = {
+			isa = PBXGroup;
+			children = (
+				452726D91D2515EC008A90B5 /* first-slide@2x.png */,
+				452726DA1D2515EC008A90B5 /* pick-up@2x.png */,
+				452726DB1D2515EC008A90B5 /* second-slide@2x.png */,
+				452726DC1D2515EC008A90B5 /* third-slide@2x.png */,
+			);
+			path = StartScreen4s;
+			sourceTree = "<group>";
+		};
+		452726E11D251B1C008A90B5 /* StartScreen6 */ = {
+			isa = PBXGroup;
+			children = (
+				452726E21D251B1C008A90B5 /* first-slide-667h@2x.png */,
+				452726E31D251B1C008A90B5 /* pick-up-667h@2x.png */,
+				452726E41D251B1C008A90B5 /* second-slide-667h@2x.png */,
+				452726E51D251B1C008A90B5 /* third-slide-667h@2x.png */,
+			);
+			path = StartScreen6;
+			sourceTree = "<group>";
+		};
+		452726EA1D252169008A90B5 /* StartScreen5s */ = {
+			isa = PBXGroup;
+			children = (
+				452726EB1D252169008A90B5 /* first-slide-568h@2x.png */,
+				452726EC1D252169008A90B5 /* pick-up-568h@2x.png */,
+				452726ED1D252169008A90B5 /* second-slide-568h@2x.png */,
+				452726EE1D252169008A90B5 /* third-slide-568h@2x.png */,
+			);
+			path = StartScreen5s;
+			sourceTree = "<group>";
+		};
+		452726F31D2522CA008A90B5 /* StartScreen6Plus */ = {
+			isa = PBXGroup;
+			children = (
+				452726F41D2522CA008A90B5 /* first-slide@3x.png */,
+				452726F51D2522CA008A90B5 /* pick-up@3x.png */,
+				452726F61D2522CA008A90B5 /* second-slide@3x.png */,
+				452726F71D2522CA008A90B5 /* third-slide@3x.png */,
+			);
+			path = StartScreen6Plus;
+			sourceTree = "<group>";
+		};
+		452726FC1D252ECE008A90B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				452726FD1D252ECE008A90B5 /* MyriadPro-Bold.otf */,
+				452726FE1D252ECE008A90B5 /* MyriadPro-BoldCond.otf */,
+				452726FF1D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf */,
+				452727001D252ECE008A90B5 /* MyriadPro-BoldIt.otf */,
+				452727011D252ECE008A90B5 /* MyriadPro-Cond.otf */,
+				452727021D252ECE008A90B5 /* MyriadPro-CondIt.otf */,
+				452727031D252ECE008A90B5 /* MyriadPro-It.otf */,
+				452727041D252ECE008A90B5 /* MyriadPro-Regular.otf */,
+				452727051D252ECE008A90B5 /* MyriadPro-Semibold.otf */,
+				452727061D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		452EA37C1D228DF8003F1825 /* IQActionSheetPickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +395,6 @@
 		454A270E1D1BEF3600E30CDF = {
 			isa = PBXGroup;
 			children = (
-				4523043F1D1D11570006EB01 /* Default-568h@2x.png */,
 				454A27191D1BEF3600E30CDF /* LaundryWalaz */,
 				454A27331D1BEF3600E30CDF /* LaundryWalazTests */,
 				454A273E1D1BEF3600E30CDF /* LaundryWalazUITests */,
@@ -291,9 +425,9 @@
 				456034231D23D53C00437050 /* MapViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
+				457F48871D24F79D00600AB5 /* PriceListViewController */,
 				454A27531D1C070300E30CDF /* Common */,
 				454A27261D1BEF3600E30CDF /* Assets.xcassets */,
-				454A272B1D1BEF3600E30CDF /* Info.plist */,
 				454A271A1D1BEF3600E30CDF /* Supporting Files */,
 			);
 			path = LaundryWalaz;
@@ -302,8 +436,12 @@
 		454A271A1D1BEF3600E30CDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				454A272B1D1BEF3600E30CDF /* Info.plist */,
+				452726FC1D252ECE008A90B5 /* Fonts */,
+				452726D11D25158E008A90B5 /* HowToUseScreen */,
 				454A271B1D1BEF3600E30CDF /* main.m */,
 				452304571D1D50C30006EB01 /* NavigationBar.xcassets */,
+				452726C81D251022008A90B5 /* HowToUseScreen.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -389,12 +527,16 @@
 		454A27601D1C085200E30CDF /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				452727111D252FB2008A90B5 /* UIFont+Additions.h */,
+				452727121D252FB2008A90B5 /* UIFont+Additions.m */,
 				454A27611D1C085200E30CDF /* AFHTTPSessionManager+Additions.h */,
 				454A27621D1C085200E30CDF /* AFHTTPSessionManager+Additions.m */,
 				454A27671D1C085200E30CDF /* PIOChangePositionOfTextFields.h */,
 				454A27681D1C085200E30CDF /* PIOChangePositionOfTextFields.m */,
 				454A27691D1C085200E30CDF /* PIORequestHandler.h */,
 				454A276A1D1C085200E30CDF /* PIORequestHandler.m */,
+				452726CD1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.h */,
+				452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -436,6 +578,16 @@
 				456034261D23D56400437050 /* PIOMapViewController.xib */,
 			);
 			name = MapViewController;
+			sourceTree = "<group>";
+		};
+		457F48871D24F79D00600AB5 /* PriceListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */,
+				457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */,
+				457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */,
+			);
+			name = PriceListViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,17 +697,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				452304501D1D4EB80006EB01 /* PIOBaseViewController.xib in Resources */,
+				452726DE1D2515EC008A90B5 /* pick-up@2x.png in Resources */,
+				452727101D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf in Resources */,
+				452727071D252ECE008A90B5 /* MyriadPro-Bold.otf in Resources */,
 				452304631D1D5DC90006EB01 /* PIOSideBarCustomTableViewCell.xib in Resources */,
+				452726E01D2515EC008A90B5 /* third-slide@2x.png in Resources */,
 				454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
-				452304401D1D11570006EB01 /* Default-568h@2x.png in Resources */,
+				452726EF1D252169008A90B5 /* first-slide-568h@2x.png in Resources */,
 				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
+				452726F81D2522CA008A90B5 /* first-slide@3x.png in Resources */,
+				452726F01D252169008A90B5 /* pick-up-568h@2x.png in Resources */,
 				456034281D23D56400437050 /* PIOMapViewController.xib in Resources */,
+				4527270D1D252ECE008A90B5 /* MyriadPro-It.otf in Resources */,
+				452726F21D252169008A90B5 /* third-slide-568h@2x.png in Resources */,
+				4527270F1D252ECE008A90B5 /* MyriadPro-Semibold.otf in Resources */,
 				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
+				452726E71D251B1C008A90B5 /* pick-up-667h@2x.png in Resources */,
+				452726FB1D2522CA008A90B5 /* third-slide@3x.png in Resources */,
+				452726E81D251B1C008A90B5 /* second-slide-667h@2x.png in Resources */,
+				452726C91D251022008A90B5 /* HowToUseScreen.xcassets in Resources */,
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
+				452726DF1D2515EC008A90B5 /* second-slide@2x.png in Resources */,
 				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
+				4527270B1D252ECE008A90B5 /* MyriadPro-Cond.otf in Resources */,
+				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
+				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
+				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
+				452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */,
+				452726E61D251B1C008A90B5 /* first-slide-667h@2x.png in Resources */,
+				452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */,
+				452726FA1D2522CA008A90B5 /* second-slide@3x.png in Resources */,
+				452726F91D2522CA008A90B5 /* pick-up@3x.png in Resources */,
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
+				4527270E1D252ECE008A90B5 /* MyriadPro-Regular.otf in Resources */,
 				456034301D23E53600437050 /* test.png in Resources */,
+				4527270A1D252ECE008A90B5 /* MyriadPro-BoldIt.otf in Resources */,
+				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
+				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +809,9 @@
 			files = (
 				454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */,
 				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
+				452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
+				457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */,
 				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
 				4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */,
@@ -645,6 +826,7 @@
 				4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */,
 				454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */,
 				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,
+				452726CF1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m in Sources */,
 				454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */,
 				452EA3871D229759003F1825 /* PIOContactInfoViewController.m in Sources */,
 				454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */,
@@ -774,11 +956,13 @@
 			baseConfigurationReference = 23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LaundryWalaz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -787,11 +971,13 @@
 			baseConfigurationReference = CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = LaundryWalaz/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.putitout.LaundryWalaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

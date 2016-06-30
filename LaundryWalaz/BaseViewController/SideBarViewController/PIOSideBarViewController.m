@@ -8,6 +8,7 @@
 
 #import "PIOSideBarViewController.h"
 #import "PIOSideBarCustomTableViewCell.h"
+#import "PIOPriceListViewController.h"
 #import "PIOHowToUseViewController.h"
 #import "PIOMapViewController.h"
 #import "PIOAppController.h"
@@ -146,10 +147,28 @@ const NSInteger PIOLogOutButtonIndex = 0;
                 
                 break;
             }
-            case PIODashboardRowTypePricing: {
+        case PIODashboardRowTypePricing: {
+            
+            if (![visibleViewController isKindOfClass:[PIOPriceListViewController class]] ) {
                 
-                break;
+                PIOPriceListViewController *priceListViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOPriceListViewController class]]) {
+                        priceListViewController = (PIOPriceListViewController *)viewController;
+                        break;
+                    }
+                }
+                if (priceListViewController == nil) {
+                    priceListViewController = [PIOPriceListViewController new];
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: priceListViewController animated:NO];
+                } else {
+                    
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: priceListViewController animated:NO];
+                }
             }
+            
+            break;
+        }
         default:
             break;
             
