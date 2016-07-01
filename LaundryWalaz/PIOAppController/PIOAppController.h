@@ -65,6 +65,7 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 - (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message withNotificationPosition:(unsigned int)position type:(TSMessageNotificationType)type;
 - (void)showInternetNotAvailableAletr;
 - (NSString *)daySuffixForDate:(NSDate *)date;
+- (void)titleFroNavigationBar:(NSString *)title onViewController:(UIViewController *)viewController;
 
 
 #pragma mark - Log Flurry Events

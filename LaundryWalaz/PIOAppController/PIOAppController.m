@@ -279,11 +279,11 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 - (void)titleFroNavigationBar:(NSString *)title onViewController:(UIViewController *)viewController
 {
     UILabel * topTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 21)];
-    [topTitleLabel setFont: [UIFont systemFontOfSize:17]];
+    [topTitleLabel setFont: [UIFont PIOMyriadProLightWithSize:26.6]];
     topTitleLabel.text = title;
     [topTitleLabel sizeToFit];
     [topTitleLabel setBackgroundColor:[UIColor clearColor]];
-    [topTitleLabel setTextColor:[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0]];
+    [topTitleLabel setTextColor:[UIColor colorWithRed:54.0/255.0 green:57.0/255.0 blue:112.0/255.0 alpha:1.0]];
     viewController.navigationItem.titleView =topTitleLabel;
 }
 

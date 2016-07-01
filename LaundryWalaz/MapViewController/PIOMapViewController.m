@@ -9,6 +9,7 @@
 #import "PIOMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "PIOOrderViewController.h"
+#import "PIOAppController.h"
 
 #define METERS_MILE 1609.344
 #define METERS_FEET 3.28084
@@ -47,6 +48,9 @@
     
     [[self locationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
     [[self locationManager] startUpdatingLocation];
+    
+    // Set Screen Title
+    [[PIOAppController sharedInstance] titleFroNavigationBar: @"Where?" onViewController:self];
     
 }
 
@@ -141,7 +145,7 @@
         pin.annotation = annotation;
     }
     
-    [pin setImage:[UIImage imageNamed:@"test.png"]];
+    [pin setImage:[UIImage imageNamed:@"order-location"]];
     pin.canShowCallout = YES;
     pin.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     return pin;

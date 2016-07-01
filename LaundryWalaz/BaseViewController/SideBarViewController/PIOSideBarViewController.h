@@ -12,6 +12,7 @@
 
 typedef NS_ENUM(NSUInteger, PIODashboardRowType) {
     PIODashboardRowTypeOrder,
+    PIODashboardRowTypeMyOrder,
     PIODashboardRowTypePricing,
     PIODashboardRowTypeHowItWorks,
     PIODashboardRowTypeLogout,

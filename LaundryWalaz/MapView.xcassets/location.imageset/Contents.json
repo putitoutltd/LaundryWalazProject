@@ -6,18 +6,18 @@
     },
     {
       "idiom" : "iphone",
-      "filename" : "menu-btn-1.png",
+      "filename" : "location-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "menu-btn.png",
+      "filename" : "location.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
-      "filename" : "menu-btn-2.png",
+      "filename" : "location-2.png",
       "scale" : "3x"
     }
   ],

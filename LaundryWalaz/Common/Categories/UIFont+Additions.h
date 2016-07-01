@@ -12,5 +12,5 @@
 
 + (UIFont *)PIOSystemWithSize:(CGFloat)size;
 + (UIFont *)PIOMyriadProRegularWithSize:(CGFloat)size;
-
++ (UIFont *)PIOMyriadProLightWithSize:(CGFloat)size;
 @end

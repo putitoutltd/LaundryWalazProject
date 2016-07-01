@@ -20,5 +20,10 @@
     return [UIFont fontWithName:@"MyriadPro-Regular" size:size];
 }
 
++ (UIFont *)PIOMyriadProLightWithSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"MyriadPro-Light" size:size];
+}
+
 
 @end

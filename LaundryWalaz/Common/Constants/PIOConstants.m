@@ -8,5 +8,5 @@
 
 #import "PIOConstants.h"
 
-NSString *const PIODashboardTitles[] = { @"Order", @"Pricing", @"How it works", @"Log Out" };
-int PIODashboardTitlesCount =4;
+NSString *const PIODashboardTitles[] = { @"Pick-Up", @"My Order", @"Price List", @"How it works", @"Log Out" };
+int PIODashboardTitlesCount =5;

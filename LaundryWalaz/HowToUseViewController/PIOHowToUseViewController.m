@@ -68,7 +68,8 @@
     [self.items addObject: @"second-slide"];
     [self.items addObject: @"third-slide"];
     
-    [self.pickupButton.titleLabel setFont: [UIFont PIOMyriadProRegularWithSize: 16.0f]];
+    [self.pickupButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    [self.pickupButton setBackgroundImage: [UIImage imageForDeviceWithName: @"pick-up"] forState: UIControlStateNormal];
 }
 
 #pragma mark - Public Methods

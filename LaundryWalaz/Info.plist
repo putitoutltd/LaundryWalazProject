@@ -50,6 +50,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>MyriadPro-Regular.otf</string>
+		<string>ufonts.com_myriadpro-light-opentype.otf</string>
 	</array>
 </dict>
 </plist>
