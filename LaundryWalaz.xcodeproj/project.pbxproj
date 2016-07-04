@@ -97,6 +97,7 @@
 		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
 		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
+		45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +239,7 @@
 		457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListViewController.h; sourceTree = "<group>"; };
 		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
 		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
+		45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "07-When (1).jpg"; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,6 +334,7 @@
 		452304591D1D517F0006EB01 /* OrderViewController */ = {
 			isa = PBXGroup;
 			children = (
+				45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */,
 				4523045A1D1D51AC0006EB01 /* PIOOrderViewController.h */,
 				4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */,
 				4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */,
@@ -844,6 +847,7 @@
 				4530EA371D2683ED00EAADBF /* logo@3x.png in Resources */,
 				4530EA0F1D26839400EAADBF /* instagram@2x.png in Resources */,
 				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
+				45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
 				4530EA2A1D2683D800EAADBF /* logo-667h@2x.png in Resources */,

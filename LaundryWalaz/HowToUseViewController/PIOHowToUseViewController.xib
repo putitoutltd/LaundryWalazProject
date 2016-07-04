@@ -28,10 +28,6 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EON-LE-Xv4">
                     <rect key="frame" x="76" y="429" width="168" height="29"/>
                     <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="168" id="BWd-nw-xLx"/>
-                        <constraint firstAttribute="height" constant="29" id="lX2-6a-cIQ"/>
-                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Pick-Up" backgroundImage="pick-up.png"/>
                     <connections>

@@ -9,13 +9,14 @@
 #import "PIOOrderViewController.h"
 #import "IQActionSheetPickerView.h"
 #import "PIOContactInfoViewController.h"
+#import "PIOAppController.h"
 
 @interface PIOOrderViewController () <IQActionSheetPickerViewDelegate>
 
 @property (nonatomic, assign, getter=isFromPickUp) BOOL fromPickUp;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (weak, nonatomic) IBOutlet UIButton *regularDeliveryButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *expressDeliveryButton;
+@property (weak, nonatomic) IBOutlet UIButton *expressDeliveryButton;
 @property (weak, nonatomic) IBOutlet UILabel *whenTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pickUpTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *todayPickUpTitleLabel;
@@ -121,6 +122,7 @@
     
     [self.todayDeliveryDateLabel setText: todayDateString];
     [self.tomorrowDeliveryDateLabel setText: tomorrowDateString];
+    [self multiLineTextForButton];
     
     
 }
@@ -153,6 +155,39 @@
     final = [final stringByAppendingString:yearString];
     NSLog(@"final string:---> %@",final);
     return final;
+}
+
+- (void)multiLineTextForButton
+{
+    // We want 2 lines for our buttons' title label
+    [[self.regularDeliveryButton titleLabel] setNumberOfLines:2];
+    
+    // Setup the string
+    NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:@"REGULAR\nnext day delivery"];
+    
+    // Set the font to bold from the beginning of the string to the ","
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:20.0f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
+    
+    // Normal font for the rest of the text
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(7, 18)];
+    
+    // Set the attributed string as the buttons' title text
+    [self.regularDeliveryButton setAttributedTitle:titleText forState:UIControlStateNormal];
+    
+    // We want 2 lines for our buttons' title label
+    [[self.expressDeliveryButton titleLabel] setNumberOfLines:3];
+    
+    // Setup the string
+   titleText = [[NSMutableAttributedString alloc] initWithString:@"EXPRESS\n6 hour delivery"];
+    
+    // Set the font to bold from the beginning of the string to the ","
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:20.0f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
+    
+    // Normal font for the rest of the text
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(7, 16)];
+    
+    // Set the attributed string as the buttons' title text
+    [self.expressDeliveryButton setAttributedTitle:titleText forState:UIControlStateNormal];
 }
 
 @end
