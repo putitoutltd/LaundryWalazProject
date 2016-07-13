@@ -23,12 +23,15 @@ const NSInteger PIOLogOutButtonIndex = 0;
     NSArray *controllers;
 }
 
+@property (weak, nonatomic) IBOutlet UIButton *TermsButton;
+@property (weak, nonatomic) IBOutlet UIButton *faqButton;
 @property (weak, nonatomic) IBOutlet UIImageView *menuBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIButton *pickUpButton;
 @property (weak, nonatomic) IBOutlet UIButton *myOrderButton;
 @property (weak, nonatomic) IBOutlet UIButton *priceListButton;
 @property (weak, nonatomic) IBOutlet UIButton *howItWorksButton;
 @property (weak, nonatomic) IBOutlet UIButton *logOutButton;
+@property (weak, nonatomic) IBOutlet UIButton *feedbackButton;
 
 @end
 
@@ -49,6 +52,9 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [self.priceListButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.howItWorksButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.logOutButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
+    [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,6 +140,18 @@ const NSInteger PIOLogOutButtonIndex = 0;
                     [[[PIOAppController sharedInstance] navigationController] popToViewController: priceListViewController animated:NO];
                 }
             }
+            
+            break;
+        }
+        case PIODashboardRowTypeFAQs: {
+            
+            
+            
+            break;
+        }
+        case PIODashboardRowTypeTerms: {
+            
+            
             
             break;
         }

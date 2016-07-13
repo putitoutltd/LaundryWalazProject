@@ -7,8 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOMapViewController">
             <connections>
-                <outlet property="addressTextField" destination="7h1-6m-XJo" id="Iuy-68-Hbn"/>
+                <outlet property="addressTextField" destination="sXQ-zz-a95" id="wwd-ka-RjA"/>
                 <outlet property="mapView" destination="lLM-LG-Maq" id="Usi-1i-umK"/>
+                <outlet property="tableView" destination="ykC-xV-pIS" id="wbK-5D-zIw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lLM-LG-Maq">
-                    <rect key="frame" x="0.0" y="9" width="320" height="471"/>
-                </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qX-fL-fy1">
                     <rect key="frame" x="62" y="421" width="197" height="40"/>
                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -31,23 +29,43 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-6m-XJo">
-                    <rect key="frame" x="9" y="62" width="301" height="30"/>
+                    <rect key="frame" x="9" y="36" width="301" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="Wrq-Nd-lbv">
-                    <rect key="frame" x="285" y="66" width="16" height="22"/>
+                    <rect key="frame" x="285" y="40" width="16" height="22"/>
                 </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="sXQ-zz-a95">
+                    <rect key="frame" x="9" y="82" width="301" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="ShF-9b-DxM">
+                    <rect key="frame" x="285" y="90" width="16" height="22"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ykC-xV-pIS">
+                    <rect key="frame" x="12" y="65" width="296" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lLM-LG-Maq">
+                    <rect key="frame" x="0.0" y="9" width="320" height="471"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="ShF-9b-DxM" firstAttribute="centerY" secondItem="sXQ-zz-a95" secondAttribute="centerY" constant="4" id="1DQ-Ys-GBZ"/>
                 <constraint firstAttribute="trailing" secondItem="7h1-6m-XJo" secondAttribute="trailing" constant="10" id="3Mx-dH-c8K"/>
                 <constraint firstItem="Wrq-Nd-lbv" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="trailing" constant="-25" id="9Hf-hn-FEZ"/>
                 <constraint firstItem="Wrq-Nd-lbv" firstAttribute="centerY" secondItem="7h1-6m-XJo" secondAttribute="centerY" id="9c3-hW-GK4"/>
+                <constraint firstItem="ShF-9b-DxM" firstAttribute="leading" secondItem="sXQ-zz-a95" secondAttribute="trailing" constant="-25" id="BOB-uF-aWM"/>
                 <constraint firstItem="lLM-LG-Maq" firstAttribute="centerX" secondItem="7h1-6m-XJo" secondAttribute="centerX" id="DCX-9B-U8Q"/>
-                <constraint firstItem="7h1-6m-XJo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="62" id="Eg4-5v-fFy"/>
-                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="-83" id="F9U-kS-C2q"/>
+                <constraint firstItem="7h1-6m-XJo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="Eg4-5v-fFy"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="-57" id="F9U-kS-C2q"/>
+                <constraint firstItem="ShF-9b-DxM" firstAttribute="leading" secondItem="Wrq-Nd-lbv" secondAttribute="leading" id="NSM-Tt-cgV"/>
                 <constraint firstItem="3qX-fL-fy1" firstAttribute="centerX" secondItem="7h1-6m-XJo" secondAttribute="centerX" constant="1" id="QUd-7f-vAo"/>
+                <constraint firstItem="sXQ-zz-a95" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="leading" id="VTy-cw-qk7"/>
+                <constraint firstItem="sXQ-zz-a95" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="16" id="ZMW-CA-Acd"/>
                 <constraint firstItem="3qX-fL-fy1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="62" id="ks6-cD-che"/>
                 <constraint firstItem="lLM-LG-Maq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="-9" id="mb0-cX-Aic"/>
                 <constraint firstItem="7h1-6m-XJo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oga-lE-y74"/>
@@ -59,7 +77,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="227" y="138"/>
+            <point key="canvasLocation" x="-33" y="99"/>
         </view>
     </objects>
     <resources>

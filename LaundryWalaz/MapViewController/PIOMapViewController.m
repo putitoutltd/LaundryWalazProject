@@ -19,6 +19,7 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

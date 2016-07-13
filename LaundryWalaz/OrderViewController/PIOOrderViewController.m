@@ -12,7 +12,20 @@
 #import "PIOAppController.h"
 
 @interface PIOOrderViewController () <IQActionSheetPickerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *deliveryDateContainerView;
 
+@property (weak, nonatomic) IBOutlet UIView *pickupDateContainerView;
+@property (weak, nonatomic) IBOutlet UIButton *otherDayDeliveryButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowDeliveryButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *todayDeliveryButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *otherDayPickupButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowPickupButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *todayPickupButton;
 @property (nonatomic, assign, getter=isFromPickUp) BOOL fromPickUp;
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (weak, nonatomic) IBOutlet UIButton *regularDeliveryButton;
@@ -64,6 +77,77 @@
 
 #pragma mark - IBAction
 
+- (IBAction)regularButtonPressed:(id)sender
+{
+    [self blockScreenContentForFalseOrder: YES];
+    [self.regularDeliveryButton setSelected: YES];
+    [self.expressDeliveryButton setSelected: NO];
+}
+
+- (IBAction)expressButtonPressed:(id)sender
+{
+    [self.regularDeliveryButton setSelected: NO];
+    [self.expressDeliveryButton setSelected: YES];
+    if (![self currentTime]) {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected:NO];
+        [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected:NO];
+        [self setButtonStateIfSelected: self.otherDayPickupButton isSelected:NO];
+        [self blockScreenContentForFalseOrder: NO];
+        return;
+        
+    }
+    
+}
+- (void)blockScreenContentForFalseOrder:(BOOL)block
+{
+    [self.pickupDateContainerView setUserInteractionEnabled: block];
+    [self.deliveryDateContainerView setUserInteractionEnabled: block];
+    [self.continueButton setEnabled: block];
+    
+}
+- (IBAction)pickupAndDeliveryButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    switch (button.tag) {
+        case 0: {
+            button = self.todayPickupButton;
+            break;
+        }
+        case 1: {
+            button = self.tomorrowPickupButton;
+            break;
+        }
+        case 2: {
+            button = self.otherDayPickupButton;
+            break;
+        }
+        case 3: {
+            button = self.todayDeliveryButton;
+            break;
+        }
+        case 4: {
+            button = self.tomorrowDeliveryButton;
+            break;
+        }
+        case 5: {
+            button = self.otherDayDeliveryButton;
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    if (![self currentTime]) {
+        [self setButtonStateIfSelected: button isSelected:YES];
+        
+    }
+    else {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES];
+    }
+}
+
+
 - (IBAction)otherPickUpDateButtonPressed:(id)sender
 {
     self.fromPickUp = YES;
@@ -112,6 +196,9 @@
 
 - (void)setUpInitialVauesForView
 {
+    [self applyFonts];
+    
+    // Today and Tomorrow date
     NSDate *today = [NSDate new];
     NSString *todayDateString = [self dateToDateString: today];
     NSDate *tomorrow = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: today];
@@ -123,8 +210,46 @@
     [self.todayDeliveryDateLabel setText: todayDateString];
     [self.tomorrowDeliveryDateLabel setText: tomorrowDateString];
     [self multiLineTextForButton];
+    BOOL isExpressDeliveryAvailable = [self currentTime];
+    [self.expressDeliveryButton setSelected: isExpressDeliveryAvailable];
+    if (isExpressDeliveryAvailable) {
+        [self.expressDeliveryButton setSelected: NO];
+    }
     
     
+}
+
+- (void)applyFonts
+{
+    // When Label
+    [self.whenTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 28.12f]];
+    // PickUp Label
+    [self.pickUpTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47f]];
+    // Today Box labels (Pickup)
+    [self.todayPickUpTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.todayDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    // Tomorrow Box labels (Pickup)
+    [self.tomorrowPickUpTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.tomorrowDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    // Other Date Box labels (Pickup)
+    [self.otherDayPickUpTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.openCalendarTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    
+    // PickUp Label
+    [self.deliverTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47f]];
+    
+    // Today Box labels (Delivery)
+    [self.todayDeliveryTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.todayDeliveryDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    // Tomorrow Box labels (Delivery)
+    [self.tomorrowDeliveryTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.tomorrowDeliveryDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    // Other Date Box labels (Delivery)
+    [self.otherDayDeliveryTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.35f]];
+    [self.openCalendarDeliveryTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 7.86]];
+    
+    // Continue Button
+    [self.continueButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
 }
 
 - (NSString *)dateToDateString:(NSDate *)date
@@ -166,7 +291,7 @@
     NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:@"REGULAR\nnext day delivery"];
     
     // Set the font to bold from the beginning of the string to the ","
-    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:20.0f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:17.96f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
     
     // Normal font for the rest of the text
     [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(7, 18)];
@@ -181,13 +306,52 @@
    titleText = [[NSMutableAttributedString alloc] initWithString:@"EXPRESS\n6 hour delivery"];
     
     // Set the font to bold from the beginning of the string to the ","
-    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:20.0f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:17.96f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
     
     // Normal font for the rest of the text
     [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(7, 16)];
     
     // Set the attributed string as the buttons' title text
     [self.expressDeliveryButton setAttributedTitle:titleText forState:UIControlStateNormal];
+}
+
+-(BOOL)currentTime
+{
+    BOOL isExpressDeliveryAvailable = YES;
+    //Get current time
+    NSDate* now = [NSDate date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *dateComponents = [gregorian components:(NSCalendarUnitHour  | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:now];
+    NSInteger hour = [dateComponents hour];
+    NSString *am_OR_pm=@"AM";
+    
+    if (hour>12)
+    {
+        hour=hour%12;
+        
+        am_OR_pm = @"PM";
+        isExpressDeliveryAvailable = NO;
+    }
+    
+    NSInteger minute = [dateComponents minute];
+    NSInteger second = [dateComponents second];
+    
+    NSLog(@"Current Time  %@",[NSString stringWithFormat:@"%02ld:%02ld:%02ld %@", (long)hour, (long)minute, (long)second,am_OR_pm]);
+    return  isExpressDeliveryAvailable;
+}
+
+- (void)setButtonStateIfSelected:(UIButton *)button isSelected:(BOOL)isSelected
+{
+    [button setSelected: isSelected];
+    
+    if (isSelected) {
+        [button setBackgroundColor: [UIColor clearColor]];
+    }
+    else {
+        [button setBackgroundColor: [UIColor whiteColor]];
+        [button setAlpha:0.62f];
+    }
+    
 }
 
 @end
