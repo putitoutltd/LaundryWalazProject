@@ -5,6 +5,7 @@
 //  Created by pito on 6/29/16.
 //  Copyright © 2016 pito. All rights reserved.
 //
+#import  "QuartzCore/QuartzCore.h"
 
 #import "PIOMapViewController.h"
 #import <MapKit/MapKit.h>
@@ -19,6 +20,9 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
+@property (weak, nonatomic) IBOutlet UIButton *dropdownButton;
+@property (nonatomic, strong) NSMutableArray *locations;
+@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
@@ -36,6 +40,9 @@
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBar.hidden = NO;
     
+    // Add Locations for dropdown list
+    self.locations = [NSMutableArray arrayWithObjects: @"Cantt", @"Cavalary ground", @"DHA Phase 5&6", @"Gulberg I-V", nil];
+    
     self.mapView.delegate = self;
     [[self mapView] setShowsUserLocation:YES];
     self.locationManager = [[CLLocationManager alloc] init];
@@ -52,12 +59,28 @@
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Where?" onViewController:self];
+    [self hideTableview];
+    
+    // Set Tableview Border
+    self.tableView.layer.borderWidth = .8;
+    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    [self.addressTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
+    [self.locationTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    
+}
+
+- (void)hideTableview
+{
+    self.tableView.hidden = YES;
+    [self.dropdownButton setSelected: NO];
+    self.tableView.frame =  CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,0);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +89,33 @@
 }
 
 #pragma mark - IBActions
+- (IBAction)dropdownButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    CGRect frame = CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,0);
+    NSInteger animation = UIViewAnimationOptionCurveEaseIn;
+    
+    if (!button.isSelected) {
+        [self hideTableview];
+        frame =  CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,120);
+        animation = UIViewAnimationOptionCurveEaseOut;
+        [button setSelected: YES];
+        self.tableView.hidden = NO;
+        
+    }
+    else
+    {
+        [self hideTableview];
+        
+    }
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:animation animations:^{
+        self.tableView.frame  = frame;
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+}
 
 - (IBAction)confirmAddressButtonPressed:(id)sender
 {
@@ -107,9 +157,9 @@
     
     
     // Reverse Geocoding
-    NSLog(@"Resolving the Address");
+//    NSLog(@"Resolving the Address");
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+//        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
         if (error == nil && [placemarks count] > 0) {
             placemark = [placemarks lastObject];
             self.addressTextField.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@",
@@ -152,5 +202,52 @@
     return pin;
     //    }
 }
+
+#pragma mark - Table View Delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"LocationCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    [cell.detailTextLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
+    [cell.detailTextLabel setText: [self.locations objectAtIndex: indexPath.row]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.tableView.frame  = CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,0);
+    } completion:^(BOOL finished) {
+        [self.locationTextField setText: [self.locations objectAtIndex: indexPath.row]];
+        [self hideTableview];
+        
+        
+        
+    }];
+    
+}
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30.0f;
+}
+
+
 
 @end

@@ -98,6 +98,16 @@
 		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
 		45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */; };
+		45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */; };
+		45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */; };
+		45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */; };
+		45CA86031D37A0AF001F3014 /* register-icon-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FF1D37A0AF001F3014 /* register-icon-667h@2x.png */; };
+		45CA86041D37A0AF001F3014 /* register-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86001D37A0AF001F3014 /* register-icon@2x.png */; };
+		45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86011D37A0AF001F3014 /* register-icon@3x.png */; };
+		45CA86091D37B41F001F3014 /* menu-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86081D37B41F001F3014 /* menu-btn.png */; };
+		45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */; };
+		45CA860F1D37B70A001F3014 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860E1D37B70A001F3014 /* FileManager.m */; };
+		45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86101D37CD1C001F3014 /* Login.xcassets */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +250,19 @@
 		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
 		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
 		45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "07-When (1).jpg"; sourceTree = "<group>"; };
+		45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIORegisterViewController.h; path = RegisterViewController/PIORegisterViewController.h; sourceTree = "<group>"; };
+		45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIORegisterViewController.m; path = RegisterViewController/PIORegisterViewController.m; sourceTree = "<group>"; };
+		45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIORegisterViewController.xib; path = RegisterViewController/PIORegisterViewController.xib; sourceTree = "<group>"; };
+		45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon-568h@2x.png"; sourceTree = "<group>"; };
+		45CA85FF1D37A0AF001F3014 /* register-icon-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon-667h@2x.png"; sourceTree = "<group>"; };
+		45CA86001D37A0AF001F3014 /* register-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon@2x.png"; sourceTree = "<group>"; };
+		45CA86011D37A0AF001F3014 /* register-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon@3x.png"; sourceTree = "<group>"; };
+		45CA86081D37B41F001F3014 /* menu-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn.png"; sourceTree = "<group>"; };
+		45CA860A1D37B65D001F3014 /* PIOPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPhotoPicker.h; sourceTree = "<group>"; };
+		45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPhotoPicker.m; sourceTree = "<group>"; };
+		45CA860D1D37B70A001F3014 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		45CA860E1D37B70A001F3014 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		45CA86101D37CD1C001F3014 /* Login.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Login.xcassets; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -476,6 +499,7 @@
 		4530EA201D2683D800EAADBF /* Menu6 */ = {
 			isa = PBXGroup;
 			children = (
+				45CA86081D37B41F001F3014 /* menu-btn.png */,
 				4530EA211D2683D800EAADBF /* close-menu-667h@2x.png */,
 				4530EA221D2683D800EAADBF /* facebook-667h@2x.png */,
 				4530EA231D2683D800EAADBF /* instagram-667h@2x.png */,
@@ -528,6 +552,7 @@
 				454A274D1D1BF1AE00E30CDF /* AppDelegate */,
 				4523044B1D1D4E820006EB01 /* BaseViewController */,
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
+				45CA85F51D379C65001F3014 /* RegisterViewController */,
 				452304451D1D20F80006EB01 /* LoginViewController */,
 				456034231D23D53C00437050 /* MapViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
@@ -544,12 +569,14 @@
 			isa = PBXGroup;
 			children = (
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
+				45CA85FD1D37A0AF001F3014 /* Register */,
 				452726FC1D252ECE008A90B5 /* Fonts */,
 				452726D11D25158E008A90B5 /* HowToUseScreen */,
 				4530EA051D26838500EAADBF /* Menu */,
 				454A271B1D1BEF3600E30CDF /* main.m */,
 				452304571D1D50C30006EB01 /* NavigationBar.xcassets */,
 				452726C81D251022008A90B5 /* MapView.xcassets */,
+				45CA86101D37CD1C001F3014 /* Login.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -593,6 +620,10 @@
 		454A27531D1C070300E30CDF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				45CA860D1D37B70A001F3014 /* FileManager.h */,
+				45CA860E1D37B70A001F3014 /* FileManager.m */,
+				45CA860A1D37B65D001F3014 /* PIOPhotoPicker.h */,
+				45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */,
 				452EA37C1D228DF8003F1825 /* IQActionSheetPickerView */,
 				452304411D1D191E0006EB01 /* SwipeView */,
 				454A277A1D1C098500E30CDF /* URLManager */,
@@ -695,6 +726,27 @@
 				457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */,
 			);
 			name = PriceListViewController;
+			sourceTree = "<group>";
+		};
+		45CA85F51D379C65001F3014 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */,
+				45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */,
+				45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */,
+			);
+			name = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		45CA85FD1D37A0AF001F3014 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */,
+				45CA85FF1D37A0AF001F3014 /* register-icon-667h@2x.png */,
+				45CA86001D37A0AF001F3014 /* register-icon@2x.png */,
+				45CA86011D37A0AF001F3014 /* register-icon@3x.png */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -829,10 +881,12 @@
 				4527270F1D252ECE008A90B5 /* MyriadPro-Semibold.otf in Resources */,
 				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
 				452726E71D251B1C008A90B5 /* pick-up-667h@2x.png in Resources */,
+				45CA86031D37A0AF001F3014 /* register-icon-667h@2x.png in Resources */,
 				4530EA121D26839400EAADBF /* twitter@2x.png in Resources */,
 				452726FB1D2522CA008A90B5 /* third-slide@3x.png in Resources */,
 				452726E81D251B1C008A90B5 /* second-slide-667h@2x.png in Resources */,
 				4530EA1A1D2683A100EAADBF /* close-menu-568h@2x.png in Resources */,
+				45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */,
 				452726C91D251022008A90B5 /* MapView.xcassets in Resources */,
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
 				453BE7E01D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf in Resources */,
@@ -848,6 +902,7 @@
 				4530EA0F1D26839400EAADBF /* instagram@2x.png in Resources */,
 				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
 				45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */,
+				45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
 				4530EA2A1D2683D800EAADBF /* logo-667h@2x.png in Resources */,
@@ -857,15 +912,19 @@
 				4530EA381D2683ED00EAADBF /* menu-bg@3x.png in Resources */,
 				452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */,
 				452726FA1D2522CA008A90B5 /* second-slide@3x.png in Resources */,
+				45CA86091D37B41F001F3014 /* menu-btn.png in Resources */,
+				45CA86041D37A0AF001F3014 /* register-icon@2x.png in Resources */,
 				452726F91D2522CA008A90B5 /* pick-up@3x.png in Resources */,
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
 				4530EA291D2683D800EAADBF /* instagram-667h@2x.png in Resources */,
 				4530EA1B1D2683A100EAADBF /* facebook-568h@2x.png in Resources */,
+				45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */,
 				4527270E1D252ECE008A90B5 /* MyriadPro-Regular.otf in Resources */,
 				4527270A1D252ECE008A90B5 /* MyriadPro-BoldIt.otf in Resources */,
 				4530EA1D1D2683A100EAADBF /* logo-568h@2x.png in Resources */,
 				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
 				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
+				45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,10 +1000,12 @@
 				454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */,
 				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
 				452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */,
+				45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
 				457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */,
 				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
+				45CA860F1D37B70A001F3014 /* FileManager.m in Sources */,
 				4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */,
 				456034271D23D56400437050 /* PIOMapViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
@@ -954,6 +1015,7 @@
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
 				452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */,
 				452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */,
+				45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */,
 				4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */,
 				454A27791D1C08AB00E30CDF /* PIOAPIResponse.m in Sources */,
 				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,

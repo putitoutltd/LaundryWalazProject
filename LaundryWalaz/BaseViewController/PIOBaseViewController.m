@@ -10,6 +10,7 @@
 #import "CDRTranslucentSideBar.h"
 #import "PIOSideBarViewController.h"
 #import "PIOAppController.h"
+#import "UIImage+DeviceSpecificMedia.h"
 
 @interface PIOBaseViewController () <CDRTranslucentSideBarDelegate>
 @property (nonatomic, strong) CDRTranslucentSideBar *sideBar;
@@ -46,11 +47,11 @@
     UIImage *backgroundImageForDefaultBarMetrics = [UIImage imageNamed:@"pio-navigation-bar-background"];
     
    
-    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height-5;
+    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height;
     CGRect frame = CGRectMake(0.0f, 0.0f, backgroundImageForDefaultBarMetrics.size.width, navBarHeight);
     [self.navigationController.navigationBar setFrame:frame];
     
-    UIBarButtonItem *menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"pio-navigation-menu-button"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+    UIBarButtonItem *menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"menu-btn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(sideBarButtonPressed:)];

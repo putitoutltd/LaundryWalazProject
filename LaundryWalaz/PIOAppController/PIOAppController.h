@@ -15,6 +15,11 @@
 
 @class PIOProgressBarViewController;
 
+typedef NS_ENUM(NSInteger, PIOPictureSourceType){
+    PIOPictureSourceTypeCamera,
+    PIOPictureSourceTypeLibrary
+};
+
 typedef NS_ENUM(NSInteger, PIODeviceName){
     PIODeviceNameiPhone4,
     PIODeviceNameiPhone5,
@@ -54,6 +59,7 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 
 #pragma mark - Public Methods
 - (BOOL)isValidEmailAddress:(NSString *)checkString;
+- (BOOL)isValidPhoneNumber:(NSString *)checkString;
 - (BOOL)connectedToNetwork;
 - (BOOL)validateAPIResponse:(NSDictionary *)dictionary;
 
@@ -66,7 +72,7 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 - (void)showInternetNotAvailableAletr;
 - (NSString *)daySuffixForDate:(NSDate *)date;
 - (void)titleFroNavigationBar:(NSString *)title onViewController:(UIViewController *)viewController;
-
+- (UIImageView *)roundedRectImageView:(UIImageView*)imageView;
 
 #pragma mark - Log Flurry Events
 

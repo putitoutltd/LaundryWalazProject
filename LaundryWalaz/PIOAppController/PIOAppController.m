@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 
 #import "PIOHowToUseViewController.h"
-
+#import "PIOLoginViewController.h"
 #import "Flurry.h"
 
 static PIOAppController *sharedInstance = nil;
@@ -132,7 +132,7 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 
 - (UIViewController *)initialViewController
 {
-    PIOHowToUseViewController * howToUseViewController = [PIOHowToUseViewController new];
+    PIOLoginViewController * howToUseViewController = [PIOLoginViewController new];
     return howToUseViewController;
     
 }
@@ -145,6 +145,15 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:checkString];
+}
+
+- (BOOL)isValidPhoneNumber:(NSString *)checkString
+{
+    NSString *mobileNumberPattern = @"[789][0-9]{9}";
+    NSPredicate *mobileNumberPred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", mobileNumberPattern];
+    
+    BOOL matched = [mobileNumberPred evaluateWithObject:checkString];
+    return  matched;
 }
 
 - (void)showActivityViewWithMessage:(NSString *)message
@@ -212,6 +221,12 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     }
 }
 
+- (UIImageView *)roundedRectImageView:(UIImageView*)imageView
+{
+    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
+    imageView.clipsToBounds = YES;
+    return imageView;
+}
 
 
 #pragma mark - Lifecycle methods
