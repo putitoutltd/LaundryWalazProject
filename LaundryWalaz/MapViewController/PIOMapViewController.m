@@ -20,6 +20,7 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
+@property (weak, nonatomic) IBOutlet UIButton *confirmAddressButton;
 @property (weak, nonatomic) IBOutlet UIButton *dropdownButton;
 @property (nonatomic, strong) NSMutableArray *locations;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
@@ -67,6 +68,7 @@
     
     [self.addressTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
     [self.locationTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
+    [self.confirmAddressButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.75]];
     
 }
 

@@ -8,6 +8,8 @@
 
 #import "PIOLoginViewController.h"
 #import "PIOAppController.h"
+#import "UIImage+DeviceSpecificMedia.h"
+#import "PIOContactInfoViewController.h"
 
 @interface PIOLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
@@ -27,6 +29,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.loginButton  setBackgroundImage: [UIImage imageForDeviceWithName:@"login-btn"] forState:UIControlStateNormal];
+    //[self.loginButton setImage: [UIImage imageForDeviceWithName:@"login-btn"]];
     self.navigationController.navigationBar.hidden = NO;
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Login" onViewController:self];
@@ -65,15 +69,25 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Enter Email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
     }
-    if (![[PIOAppController sharedInstance] isValidEmailAddress: self.emailAddressTextField.text]) {
+     else if (![[PIOAppController sharedInstance] isValidEmailAddress: self.emailAddressTextField.text]) {
         
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter a valid email address."withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
     }
-    if (self.passwordTextField.text.length == 0 ) {
+    else if (self.passwordTextField.text.length == 0 ) {
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Enter Password." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
     }
+    else {
+        NSArray *viewControllers = [[PIOAppController sharedInstance] navigationController].viewControllers;
+        for (UIViewController *viewController in viewControllers) {
+            if ([viewController isKindOfClass:[PIOContactInfoViewController class]]) {
+                [self.navigationController popViewControllerAnimated: YES];
+                break;
+            }
+        }
+    }
+
     
     
 }

@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOLoginViewController">
             <connections>
+                <outlet property="emailAddressTextField" destination="CRH-Cq-bjP" id="5Sa-GW-2MC"/>
                 <outlet property="forgotPasswordButton" destination="AwG-vk-ZGP" id="AcE-PA-zRg"/>
+                <outlet property="loginButton" destination="cWK-NF-Hgu" id="Sim-AS-dEi"/>
+                <outlet property="passwordTextField" destination="Qw4-RN-zKI" id="u1b-6w-FWq"/>
                 <outlet property="rememberMeButton" destination="CfF-et-ffb" id="xeO-eK-2rJ"/>
                 <outlet property="rememberMeTitleLabel" destination="qsK-Ie-OSe" id="f1K-w3-NdB"/>
                 <outlet property="view" destination="Ikl-sO-Y7a" id="lY7-rf-gMu"/>
@@ -46,7 +49,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cWK-NF-Hgu">
                     <rect key="frame" x="77" y="391" width="166" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="Login" backgroundImage="login-btn"/>
                     <connections>
@@ -83,7 +86,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="70" y="162"/>
+            <point key="canvasLocation" x="-36" y="136"/>
         </view>
     </objects>
     <resources>

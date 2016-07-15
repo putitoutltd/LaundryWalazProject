@@ -152,7 +152,7 @@
                         <constraint firstAttribute="height" constant="25" id="CPj-rw-bDx"/>
                         <constraint firstAttribute="width" constant="26" id="S7M-mw-xiM"/>
                     </constraints>
-                    <state key="normal" backgroundImage="twitter.png"/>
+                    <state key="normal" backgroundImage="instagram.png"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-im-qTk">
                     <rect key="frame" x="267" y="439" width="25" height="25"/>
@@ -160,7 +160,7 @@
                         <constraint firstAttribute="height" constant="25" id="Yjf-LD-arO"/>
                         <constraint firstAttribute="width" constant="25" id="tXQ-mz-2xd"/>
                     </constraints>
-                    <state key="normal" backgroundImage="instagram.png"/>
+                    <state key="normal" backgroundImage="twitter.png"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-fy-8qk">
                     <rect key="frame" x="8" y="436" width="49" height="30"/>
@@ -225,10 +225,10 @@
     </objects>
     <resources>
         <image name="close-menu.png" width="33" height="33"/>
-        <image name="facebook.png" width="26" height="25"/>
-        <image name="instagram.png" width="25" height="25"/>
+        <image name="facebook.png" width="24" height="23"/>
+        <image name="instagram.png" width="24" height="23"/>
         <image name="logo.png" width="92" height="97"/>
         <image name="menu-bg.png" width="320" height="480"/>
-        <image name="twitter.png" width="26" height="25"/>
+        <image name="twitter.png" width="24" height="23"/>
     </resources>
 </document>

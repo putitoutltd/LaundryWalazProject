@@ -108,6 +108,13 @@
 		45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */; };
 		45CA860F1D37B70A001F3014 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860E1D37B70A001F3014 /* FileManager.m */; };
 		45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86101D37CD1C001F3014 /* Login.xcassets */; };
+		45CEAB991D38C1A200524329 /* PIOForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CEAB971D38C1A200524329 /* PIOForgotPasswordViewController.m */; };
+		45CEAB9A1D38C1A200524329 /* PIOForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB981D38C1A200524329 /* PIOForgotPasswordViewController.xib */; };
+		45CEAB9F1D38CE9400524329 /* login-btn-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9B1D38CE9400524329 /* login-btn-568h@2x.png */; };
+		45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */; };
+		45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9D1D38CE9400524329 /* login-btn@2x.png */; };
+		45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9E1D38CE9400524329 /* login-btn@3x.png */; };
+		45CEABA41D38E72300524329 /* 08.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEABA31D38E72300524329 /* 08.png */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +270,14 @@
 		45CA860D1D37B70A001F3014 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		45CA860E1D37B70A001F3014 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		45CA86101D37CD1C001F3014 /* Login.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Login.xcassets; sourceTree = "<group>"; };
+		45CEAB961D38C1A200524329 /* PIOForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOForgotPasswordViewController.h; path = ForgotPasswordViewController/PIOForgotPasswordViewController.h; sourceTree = "<group>"; };
+		45CEAB971D38C1A200524329 /* PIOForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOForgotPasswordViewController.m; path = ForgotPasswordViewController/PIOForgotPasswordViewController.m; sourceTree = "<group>"; };
+		45CEAB981D38C1A200524329 /* PIOForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOForgotPasswordViewController.xib; path = ForgotPasswordViewController/PIOForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		45CEAB9B1D38CE9400524329 /* login-btn-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-568h@2x.png"; sourceTree = "<group>"; };
+		45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-667h@2x.png"; sourceTree = "<group>"; };
+		45CEAB9D1D38CE9400524329 /* login-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@2x.png"; sourceTree = "<group>"; };
+		45CEAB9E1D38CE9400524329 /* login-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@3x.png"; sourceTree = "<group>"; };
+		45CEABA31D38E72300524329 /* 08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08.png; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,6 +467,7 @@
 		452EA3831D22971F003F1825 /* ContactInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				45CEABA31D38E72300524329 /* 08.png */,
 				452EA3841D229759003F1825 /* PIOContactInfoViewController.h */,
 				452EA3851D229759003F1825 /* PIOContactInfoViewController.m */,
 				452EA3861D229759003F1825 /* PIOContactInfoViewController.xib */,
@@ -486,6 +502,10 @@
 		4530EA131D2683A100EAADBF /* Menu5s */ = {
 			isa = PBXGroup;
 			children = (
+				45CEAB9B1D38CE9400524329 /* login-btn-568h@2x.png */,
+				45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */,
+				45CEAB9D1D38CE9400524329 /* login-btn@2x.png */,
+				45CEAB9E1D38CE9400524329 /* login-btn@3x.png */,
 				4530EA141D2683A100EAADBF /* close-menu-568h@2x.png */,
 				4530EA151D2683A100EAADBF /* facebook-568h@2x.png */,
 				4530EA161D2683A100EAADBF /* instagram-568h@2x.png */,
@@ -554,6 +574,7 @@
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
 				45CA85F51D379C65001F3014 /* RegisterViewController */,
 				452304451D1D20F80006EB01 /* LoginViewController */,
+				45CEAB951D38C14000524329 /* ForgotPasswordViewController */,
 				456034231D23D53C00437050 /* MapViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
@@ -749,6 +770,16 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		45CEAB951D38C14000524329 /* ForgotPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45CEAB961D38C1A200524329 /* PIOForgotPasswordViewController.h */,
+				45CEAB971D38C1A200524329 /* PIOForgotPasswordViewController.m */,
+				45CEAB981D38C1A200524329 /* PIOForgotPasswordViewController.xib */,
+			);
+			name = ForgotPasswordViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -875,6 +906,7 @@
 				456034281D23D56400437050 /* PIOMapViewController.xib in Resources */,
 				4527270D1D252ECE008A90B5 /* MyriadPro-It.otf in Resources */,
 				4530EA1C1D2683A100EAADBF /* instagram-568h@2x.png in Resources */,
+				45CEAB9F1D38CE9400524329 /* login-btn-568h@2x.png in Resources */,
 				4530EA391D2683ED00EAADBF /* twitter@3x.png in Resources */,
 				452726F21D252169008A90B5 /* third-slide-568h@2x.png in Resources */,
 				4530EA281D2683D800EAADBF /* facebook-667h@2x.png in Resources */,
@@ -910,6 +942,7 @@
 				452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */,
 				452726E61D251B1C008A90B5 /* first-slide-667h@2x.png in Resources */,
 				4530EA381D2683ED00EAADBF /* menu-bg@3x.png in Resources */,
+				45CEAB9A1D38C1A200524329 /* PIOForgotPasswordViewController.xib in Resources */,
 				452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */,
 				452726FA1D2522CA008A90B5 /* second-slide@3x.png in Resources */,
 				45CA86091D37B41F001F3014 /* menu-btn.png in Resources */,
@@ -918,13 +951,17 @@
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
 				4530EA291D2683D800EAADBF /* instagram-667h@2x.png in Resources */,
 				4530EA1B1D2683A100EAADBF /* facebook-568h@2x.png in Resources */,
+				45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */,
 				45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */,
 				4527270E1D252ECE008A90B5 /* MyriadPro-Regular.otf in Resources */,
 				4527270A1D252ECE008A90B5 /* MyriadPro-BoldIt.otf in Resources */,
 				4530EA1D1D2683A100EAADBF /* logo-568h@2x.png in Resources */,
+				45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */,
 				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
 				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
+				45CEABA41D38E72300524329 /* 08.png in Resources */,
 				45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */,
+				45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1051,7 @@
 				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
 				452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */,
+				45CEAB991D38C1A200524329 /* PIOForgotPasswordViewController.m in Sources */,
 				452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */,
 				45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */,
 				4523044F1D1D4EB80006EB01 /* PIOBaseViewController.m in Sources */,

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOMapViewController">
             <connections>
                 <outlet property="addressTextField" destination="sXQ-zz-a95" id="wwd-ka-RjA"/>
+                <outlet property="confirmAddressButton" destination="3qX-fL-fy1" id="hxx-4L-ZWM"/>
                 <outlet property="dropdownButton" destination="4ly-HZ-mhy" id="bar-pp-d2x"/>
                 <outlet property="locationTextField" destination="7h1-6m-XJo" id="aWI-GL-fmB"/>
                 <outlet property="mapView" destination="lLM-LG-Maq" id="Usi-1i-umK"/>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lLM-LG-Maq">
-                    <rect key="frame" x="0.0" y="9" width="320" height="471"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qX-fL-fy1">
                     <rect key="frame" x="62" y="421" width="197" height="40"/>
@@ -38,8 +39,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="Wrq-Nd-lbv">
-                    <rect key="frame" x="285" y="40" width="16" height="22"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="laundry-location" translatesAutoresizingMaskIntoConstraints="NO" id="Wrq-Nd-lbv">
+                    <rect key="frame" x="280" y="46" width="22" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="aI3-rn-5gs"/>
+                    </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ly-HZ-mhy">
                     <rect key="frame" x="9" y="36" width="301" height="30"/>
@@ -54,7 +58,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="ShF-9b-DxM">
-                    <rect key="frame" x="285" y="90" width="16" height="22"/>
+                    <rect key="frame" x="285" y="87" width="16" height="22"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ykC-xV-pIS">
                     <rect key="frame" x="12" y="66" width="296" height="128"/>
@@ -68,33 +72,34 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ShF-9b-DxM" firstAttribute="centerY" secondItem="sXQ-zz-a95" secondAttribute="centerY" constant="4" id="1DQ-Ys-GBZ"/>
+                <constraint firstItem="ShF-9b-DxM" firstAttribute="centerY" secondItem="sXQ-zz-a95" secondAttribute="centerY" constant="1" id="1DQ-Ys-GBZ"/>
                 <constraint firstAttribute="trailing" secondItem="7h1-6m-XJo" secondAttribute="trailing" constant="10" id="3Mx-dH-c8K"/>
                 <constraint firstItem="4ly-HZ-mhy" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="leading" id="3fw-fP-LBI"/>
-                <constraint firstItem="Wrq-Nd-lbv" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="trailing" constant="-25" id="9Hf-hn-FEZ"/>
-                <constraint firstItem="Wrq-Nd-lbv" firstAttribute="centerY" secondItem="7h1-6m-XJo" secondAttribute="centerY" id="9c3-hW-GK4"/>
+                <constraint firstItem="ykC-xV-pIS" firstAttribute="top" secondItem="Wrq-Nd-lbv" secondAttribute="bottom" constant="6" id="8yR-rz-XXJ"/>
                 <constraint firstItem="ShF-9b-DxM" firstAttribute="leading" secondItem="sXQ-zz-a95" secondAttribute="trailing" constant="-25" id="BOB-uF-aWM"/>
                 <constraint firstItem="lLM-LG-Maq" firstAttribute="centerX" secondItem="7h1-6m-XJo" secondAttribute="centerX" id="DCX-9B-U8Q"/>
                 <constraint firstItem="7h1-6m-XJo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="Eg4-5v-fFy"/>
-                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="-57" id="F9U-kS-C2q"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="-66" id="F9U-kS-C2q"/>
                 <constraint firstItem="4ly-HZ-mhy" firstAttribute="centerX" secondItem="ykC-xV-pIS" secondAttribute="centerX" id="G3J-7D-5ka"/>
                 <constraint firstItem="4ly-HZ-mhy" firstAttribute="width" secondItem="7h1-6m-XJo" secondAttribute="width" id="Hpa-lA-VWY"/>
-                <constraint firstItem="ShF-9b-DxM" firstAttribute="leading" secondItem="Wrq-Nd-lbv" secondAttribute="leading" id="NSM-Tt-cgV"/>
                 <constraint firstItem="3qX-fL-fy1" firstAttribute="centerX" secondItem="7h1-6m-XJo" secondAttribute="centerX" constant="1" id="QUd-7f-vAo"/>
+                <constraint firstItem="Wrq-Nd-lbv" firstAttribute="leading" secondItem="ShF-9b-DxM" secondAttribute="leading" constant="-5" id="URQ-EJ-Yi4"/>
                 <constraint firstItem="sXQ-zz-a95" firstAttribute="leading" secondItem="7h1-6m-XJo" secondAttribute="leading" id="VTy-cw-qk7"/>
                 <constraint firstItem="sXQ-zz-a95" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="bottom" constant="16" id="ZMW-CA-Acd"/>
+                <constraint firstAttribute="trailing" secondItem="Wrq-Nd-lbv" secondAttribute="trailing" constant="18" id="Zor-jQ-huF"/>
+                <constraint firstItem="Wrq-Nd-lbv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="46" id="f3c-EL-Dwv"/>
                 <constraint firstItem="ykC-xV-pIS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="hDF-Jh-hd6"/>
                 <constraint firstItem="4ly-HZ-mhy" firstAttribute="top" secondItem="7h1-6m-XJo" secondAttribute="top" id="j9V-C5-yVA"/>
                 <constraint firstItem="3qX-fL-fy1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="62" id="ks6-cD-che"/>
-                <constraint firstItem="lLM-LG-Maq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="-9" id="mb0-cX-Aic"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="mb0-cX-Aic"/>
                 <constraint firstItem="4ly-HZ-mhy" firstAttribute="bottom" secondItem="7h1-6m-XJo" secondAttribute="bottom" id="nYG-44-vNe"/>
                 <constraint firstItem="ykC-xV-pIS" firstAttribute="top" secondItem="4ly-HZ-mhy" secondAttribute="bottom" id="oNy-Oe-Maw"/>
                 <constraint firstItem="7h1-6m-XJo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oga-lE-y74"/>
                 <constraint firstItem="lLM-LG-Maq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qr7-LG-xaM"/>
                 <constraint firstItem="lLM-LG-Maq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="u5Z-xn-WZ2"/>
-                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="9" id="ugt-7j-YRx"/>
+                <constraint firstItem="lLM-LG-Maq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ugt-7j-YRx"/>
                 <constraint firstAttribute="bottom" secondItem="3qX-fL-fy1" secondAttribute="bottom" constant="19" id="z0Q-3c-PVe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -104,6 +109,7 @@
         </view>
     </objects>
     <resources>
+        <image name="laundry-location" width="25" height="15"/>
         <image name="location" width="16" height="22"/>
         <image name="save-btn" width="197" height="40"/>
     </resources>

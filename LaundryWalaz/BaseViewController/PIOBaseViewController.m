@@ -47,7 +47,7 @@
     UIImage *backgroundImageForDefaultBarMetrics = [UIImage imageNamed:@"pio-navigation-bar-background"];
     
    
-    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height;
+    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height-5;
     CGRect frame = CGRectMake(0.0f, 0.0f, backgroundImageForDefaultBarMetrics.size.width, navBarHeight);
     [self.navigationController.navigationBar setFrame:frame];
     
