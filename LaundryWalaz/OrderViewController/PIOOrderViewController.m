@@ -12,6 +12,15 @@
 #import "PIOAppController.h"
 
 @interface PIOOrderViewController () <IQActionSheetPickerViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *morningSlotPickupButton;
+@property (weak, nonatomic) IBOutlet UIButton *afternoonSlotPickupButton;
+@property (weak, nonatomic) IBOutlet UIButton *eveningSlotPickupButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *morningSlotDeliverOnButton;
+@property (weak, nonatomic) IBOutlet UIButton *afternoonSlotDeliverOnButton;
+@property (weak, nonatomic) IBOutlet UIButton *eveningSlotDeliverOnButton;
+
 @property (weak, nonatomic) IBOutlet UIView *deliveryDateContainerView;
 
 @property (weak, nonatomic) IBOutlet UIView *pickupDateContainerView;
@@ -27,6 +36,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *todayPickupButton;
 @property (nonatomic, assign, getter=isFromPickUp) BOOL fromPickUp;
+
 @property (nonatomic, strong) NSDate *selectedDate;
 @property (weak, nonatomic) IBOutlet UIButton *regularDeliveryButton;
 @property (weak, nonatomic) IBOutlet UIButton *expressDeliveryButton;
@@ -76,22 +86,54 @@
 }
 
 #pragma mark - IBAction
+- (IBAction)timeSlotButtonPressed:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    [self setButtonStateIfSelected: button isSelected: YES withColor: [UIColor lightGrayColor]];
+    
+    switch (button.tag) {
+        case PIOTimeSlotMorning: {
+            [self setButtonStateIfSelected: self.afternoonSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            [self setButtonStateIfSelected: self.eveningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            break;
+        }
+        case PIOTimeSlotAfternoon: {
+            [self setButtonStateIfSelected: self.morningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            [self setButtonStateIfSelected: self.eveningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            break;
+        }
+        case PIOTimeSlotEvening: {
+            [self setButtonStateIfSelected: self.morningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            [self setButtonStateIfSelected: self.afternoonSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 - (IBAction)regularButtonPressed:(id)sender
 {
     [self blockScreenContentForFalseOrder: YES];
     [self.regularDeliveryButton setSelected: YES];
     [self.expressDeliveryButton setSelected: NO];
+   
+    // Disable Today Deliver On button If Pickup today selected.
+    if (self.todayDeliveryButton.isSelected) {
+        [self setButtonStateIfSelected: self.todayDeliveryButton isSelected:NO withColor: [UIColor whiteColor]];
+    }
+    self.todayDeliveryButton.enabled = NO;
 }
 
 - (IBAction)expressButtonPressed:(id)sender
 {
     [self.regularDeliveryButton setSelected: NO];
     [self.expressDeliveryButton setSelected: YES];
-    if (![self currentTime]) {
-        [self setButtonStateIfSelected: self.todayPickupButton isSelected:NO];
-        [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected:NO];
-        [self setButtonStateIfSelected: self.otherDayPickupButton isSelected:NO];
+    if (![self currentTimeForPickUpSlot: PIOTimeSlotMorning]) {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected:NO withColor: [UIColor whiteColor]];
+        [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected:NO withColor: [UIColor whiteColor]];
+        [self setButtonStateIfSelected: self.otherDayPickupButton isSelected:NO withColor: [UIColor whiteColor]];
         [self blockScreenContentForFalseOrder: NO];
         return;
         
@@ -109,27 +151,71 @@
 {
     UIButton *button = (UIButton *)sender;
     switch (button.tag) {
-        case 0: {
+        case PIOOrderDayTodayPickUp: {
             button = self.todayPickupButton;
+            // Disable Morning slot if not available for Pickup
+            BOOL isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotMorning];
+            if (!isPickupAvailable) {
+                self.morningSlotPickupButton.enabled = NO;
+            }
+            
+            // Disable Afternoon slot if not available for Pickup
+            isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotAfternoon];
+            if (!isPickupAvailable) {
+                self.afternoonSlotPickupButton.enabled = NO;
+            }
+            
+            // Disable Afternoon slot if not available for Pickup
+            isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotEvening];
+            if (!isPickupAvailable) {
+                self.eveningSlotPickupButton.enabled = NO;
+            }
+            
+            [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            
+            self.selectedDate = [self stringToDate: self.todayDateLabel.text];
+            
             break;
         }
-        case 1: {
+        case PIOOrderDayTomorrowPickUp: {
             button = self.tomorrowPickupButton;
+            
+            self.morningSlotPickupButton.enabled = YES;
+            self.afternoonSlotPickupButton.enabled = YES;
+            self.eveningSlotPickupButton.enabled = YES;
+            
+            [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            
+            self.selectedDate = [self stringToDate: self.tomorrowDateLabel.text];
+            
             break;
         }
-        case 2: {
+        case PIOOrderDayOtherDayPickUp: {
+            
+            // Date will be selected using calender
+            
             button = self.otherDayPickupButton;
+            
+            self.morningSlotPickupButton.enabled = YES;
+            self.afternoonSlotPickupButton.enabled = YES;
+            self.eveningSlotPickupButton.enabled = YES;
+            
+            [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            
             break;
         }
-        case 3: {
+        case PIOOrderDayTodayDeliverOn: {
             button = self.todayDeliveryButton;
             break;
         }
-        case 4: {
+        case PIOOrderDayTomorrowDeliverOn: {
             button = self.tomorrowDeliveryButton;
             break;
         }
-        case 5: {
+        case PIOOrderDayOtherDayDeliverOn: {
             button = self.otherDayDeliveryButton;
             break;
         }
@@ -138,12 +224,12 @@
             break;
     }
     
-    if (![self currentTime]) {
-        [self setButtonStateIfSelected: button isSelected:YES];
+    if (![self currentTimeForPickUpSlot: PIOTimeSlotMorning]) {
+        [self setButtonStateIfSelected: button isSelected:YES withColor: [UIColor clearColor]];
         
     }
     else {
-        [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES];
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES withColor: [UIColor clearColor]];
     }
 }
 
@@ -185,6 +271,25 @@
 
 #pragma mark - Private Methods
 
+- (void)applyBorderToTimeSlots
+{
+    
+    [self setbordersForTimeSlots: self.morningSlotPickupButton borderWidth:0.4 borderColor:[UIColor lightGrayColor]];
+    [self setbordersForTimeSlots: self.afternoonSlotPickupButton borderWidth:0.4 borderColor:[UIColor lightGrayColor]];
+    [self setbordersForTimeSlots: self.eveningSlotPickupButton borderWidth:0.8 borderColor:[UIColor lightGrayColor]];
+    
+    [self setbordersForTimeSlots: self.morningSlotDeliverOnButton borderWidth:0.8 borderColor:[UIColor lightGrayColor]];
+    [self setbordersForTimeSlots: self.afternoonSlotDeliverOnButton borderWidth:0.8 borderColor:[UIColor lightGrayColor]];
+    [self setbordersForTimeSlots: self.eveningSlotDeliverOnButton borderWidth:0.8 borderColor:[UIColor lightGrayColor]];
+   }
+
+- (void)setbordersForTimeSlots:(UIButton *)button borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
+{
+    
+    button.layer.borderWidth = .8f;
+    button.layer.borderColor = borderColor.CGColor;
+}
+
 - (void)showDatePickerWithMinDate:(NSDate *)minDate
 {
     IQActionSheetPickerView *picker = [[IQActionSheetPickerView alloc] initWithTitle:@"Date Picker" delegate:self];
@@ -214,12 +319,15 @@
     [self.todayDeliveryDateLabel setText: todayDateString];
     [self.tomorrowDeliveryDateLabel setText: tomorrowDateString];
     [self multiLineTextForButton];
-    BOOL isExpressDeliveryAvailable = [self currentTime];
+    BOOL isExpressDeliveryAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotMorning];
     [self.expressDeliveryButton setSelected: isExpressDeliveryAvailable];
     if (isExpressDeliveryAvailable) {
         [self.expressDeliveryButton setSelected: NO];
     }
     
+    [self regularButtonPressed: nil];
+    [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+    [self applyBorderToTimeSlots];
     
 }
 
@@ -254,6 +362,19 @@
     
     // Continue Button
     [self.continueButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
+}
+
+- (NSDate *)stringToDate:(NSString *)dateString
+{
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"th" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"st" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"nd" withString:@""];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"rd" withString:@""];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd MMM yyyy"];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    return  date;
 }
 
 - (NSString *)dateToDateString:(NSDate *)date
@@ -319,7 +440,7 @@
     [self.expressDeliveryButton setAttributedTitle:titleText forState:UIControlStateNormal];
 }
 
--(BOOL)currentTime
+-(BOOL)currentTimeForPickUpSlot:(NSInteger)timeSlot
 {
     BOOL isExpressDeliveryAvailable = YES;
     //Get current time
@@ -329,14 +450,17 @@
     NSInteger hour = [dateComponents hour];
     NSString *am_OR_pm=@"AM";
     
-    if (hour>12)
+    if (hour>12 && timeSlot == PIOTimeSlotMorning)
     {
         hour=hour%12;
         
         am_OR_pm = @"PM";
         isExpressDeliveryAvailable = NO;
     }
-    
+    else if ((hour >17 && timeSlot == PIOTimeSlotAfternoon) || (hour >21 && timeSlot == PIOTimeSlotEvening ))
+    {
+     isExpressDeliveryAvailable = NO;
+    }
     NSInteger minute = [dateComponents minute];
     NSInteger second = [dateComponents second];
     
@@ -344,15 +468,15 @@
     return  isExpressDeliveryAvailable;
 }
 
-- (void)setButtonStateIfSelected:(UIButton *)button isSelected:(BOOL)isSelected
+- (void)setButtonStateIfSelected:(UIButton *)button isSelected:(BOOL)isSelected withColor:(UIColor *)color
 {
     [button setSelected: isSelected];
     
     if (isSelected) {
-        [button setBackgroundColor: [UIColor clearColor]];
+        [button setBackgroundColor: color];
     }
     else {
-        [button setBackgroundColor: [UIColor whiteColor]];
+        [button setBackgroundColor: color];
         [button setAlpha:0.62f];
     }
     

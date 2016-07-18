@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 
 #import "PIOHowToUseViewController.h"
-#import "PIOForgotPasswordViewController.h"
+#import "PIOOrderViewController.h"
 #import "Flurry.h"
 
 static PIOAppController *sharedInstance = nil;
@@ -132,7 +132,7 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 
 - (UIViewController *)initialViewController
 {
-    PIOHowToUseViewController * howToUseViewController = [PIOHowToUseViewController new];
+    PIOOrderViewController * howToUseViewController = [PIOOrderViewController new];
     return howToUseViewController;
     
 }

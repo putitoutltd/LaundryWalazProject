@@ -17,6 +17,9 @@
 		452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452304571D1D50C30006EB01 /* NavigationBar.xcassets */; };
 		4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */; };
 		4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */; };
+		452339371D3CAD230062A4F2 /* PIOFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452339351D3CAD230062A4F2 /* PIOFeedbackViewController.m */; };
+		452339381D3CAD230062A4F2 /* PIOFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 452339361D3CAD230062A4F2 /* PIOFeedbackViewController.xib */; };
+		4523393C1D3CB43B0062A4F2 /* Feedback.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4523393B1D3CB43B0062A4F2 /* Feedback.xcassets */; };
 		452726C91D251022008A90B5 /* MapView.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452726C81D251022008A90B5 /* MapView.xcassets */; };
 		452726CF1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */; };
 		452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 452726D91D2515EC008A90B5 /* first-slide@2x.png */; };
@@ -97,7 +100,6 @@
 		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
 		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
-		45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */; };
 		45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */; };
 		45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */; };
 		45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */; };
@@ -114,7 +116,6 @@
 		45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */; };
 		45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9D1D38CE9400524329 /* login-btn@2x.png */; };
 		45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9E1D38CE9400524329 /* login-btn@3x.png */; };
-		45CEABA41D38E72300524329 /* 08.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEABA31D38E72300524329 /* 08.png */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,10 @@
 		4523045A1D1D51AC0006EB01 /* PIOOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderViewController.h; path = OrderViewController/PIOOrderViewController.h; sourceTree = "<group>"; };
 		4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderViewController.m; path = OrderViewController/PIOOrderViewController.m; sourceTree = "<group>"; };
 		4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderViewController.xib; path = OrderViewController/PIOOrderViewController.xib; sourceTree = "<group>"; };
+		452339341D3CAD230062A4F2 /* PIOFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOFeedbackViewController.h; path = FeedbackViewController/PIOFeedbackViewController.h; sourceTree = "<group>"; };
+		452339351D3CAD230062A4F2 /* PIOFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOFeedbackViewController.m; path = FeedbackViewController/PIOFeedbackViewController.m; sourceTree = "<group>"; };
+		452339361D3CAD230062A4F2 /* PIOFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOFeedbackViewController.xib; path = FeedbackViewController/PIOFeedbackViewController.xib; sourceTree = "<group>"; };
+		4523393B1D3CB43B0062A4F2 /* Feedback.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Feedback.xcassets; sourceTree = "<group>"; };
 		452726C81D251022008A90B5 /* MapView.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MapView.xcassets; sourceTree = "<group>"; };
 		452726CD1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DeviceSpecificMedia.h"; sourceTree = "<group>"; };
 		452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DeviceSpecificMedia.m"; sourceTree = "<group>"; };
@@ -256,7 +261,6 @@
 		457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListViewController.h; sourceTree = "<group>"; };
 		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
 		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
-		45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "07-When (1).jpg"; sourceTree = "<group>"; };
 		45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIORegisterViewController.h; path = RegisterViewController/PIORegisterViewController.h; sourceTree = "<group>"; };
 		45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIORegisterViewController.m; path = RegisterViewController/PIORegisterViewController.m; sourceTree = "<group>"; };
 		45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIORegisterViewController.xib; path = RegisterViewController/PIORegisterViewController.xib; sourceTree = "<group>"; };
@@ -277,7 +281,6 @@
 		45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-667h@2x.png"; sourceTree = "<group>"; };
 		45CEAB9D1D38CE9400524329 /* login-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@2x.png"; sourceTree = "<group>"; };
 		45CEAB9E1D38CE9400524329 /* login-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@3x.png"; sourceTree = "<group>"; };
-		45CEABA31D38E72300524329 /* 08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08.png; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,7 +354,6 @@
 		4523044B1D1D4E820006EB01 /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				452304511D1D4F900006EB01 /* SideBarViewController */,
 				4523044C1D1D4EB80006EB01 /* PIOBaseViewController.h */,
 				4523044D1D1D4EB80006EB01 /* PIOBaseViewController.m */,
 				4523044E1D1D4EB80006EB01 /* PIOBaseViewController.xib */,
@@ -372,12 +374,21 @@
 		452304591D1D517F0006EB01 /* OrderViewController */ = {
 			isa = PBXGroup;
 			children = (
-				45BD667A1D2A346D0025CF13 /* 07-When (1).jpg */,
 				4523045A1D1D51AC0006EB01 /* PIOOrderViewController.h */,
 				4523045B1D1D51AC0006EB01 /* PIOOrderViewController.m */,
 				4523045C1D1D51AC0006EB01 /* PIOOrderViewController.xib */,
 			);
 			name = OrderViewController;
+			sourceTree = "<group>";
+		};
+		452339331D3CACE00062A4F2 /* FeedbackViewController */ = {
+			isa = PBXGroup;
+			children = (
+				452339341D3CAD230062A4F2 /* PIOFeedbackViewController.h */,
+				452339351D3CAD230062A4F2 /* PIOFeedbackViewController.m */,
+				452339361D3CAD230062A4F2 /* PIOFeedbackViewController.xib */,
+			);
+			name = FeedbackViewController;
 			sourceTree = "<group>";
 		};
 		452726D11D25158E008A90B5 /* HowToUseScreen */ = {
@@ -467,7 +478,6 @@
 		452EA3831D22971F003F1825 /* ContactInfoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				45CEABA31D38E72300524329 /* 08.png */,
 				452EA3841D229759003F1825 /* PIOContactInfoViewController.h */,
 				452EA3851D229759003F1825 /* PIOContactInfoViewController.m */,
 				452EA3861D229759003F1825 /* PIOContactInfoViewController.xib */,
@@ -571,6 +581,7 @@
 				454A274E1D1BF25600E30CDF /* PIOAppController */,
 				454A274D1D1BF1AE00E30CDF /* AppDelegate */,
 				4523044B1D1D4E820006EB01 /* BaseViewController */,
+				452304511D1D4F900006EB01 /* SideBarViewController */,
 				454A277E1D1C0C7700E30CDF /* HowToUseViewController */,
 				45CA85F51D379C65001F3014 /* RegisterViewController */,
 				452304451D1D20F80006EB01 /* LoginViewController */,
@@ -579,6 +590,7 @@
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
 				457F48871D24F79D00600AB5 /* PriceListViewController */,
+				452339331D3CACE00062A4F2 /* FeedbackViewController */,
 				454A27531D1C070300E30CDF /* Common */,
 				454A27261D1BEF3600E30CDF /* Assets.xcassets */,
 				454A271A1D1BEF3600E30CDF /* Supporting Files */,
@@ -598,6 +610,7 @@
 				452304571D1D50C30006EB01 /* NavigationBar.xcassets */,
 				452726C81D251022008A90B5 /* MapView.xcassets */,
 				45CA86101D37CD1C001F3014 /* Login.xcassets */,
+				4523393B1D3CB43B0062A4F2 /* Feedback.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -923,8 +936,10 @@
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
 				453BE7E01D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf in Resources */,
 				4530EA1E1D2683A100EAADBF /* menu-bg-568h@2x.png in Resources */,
+				452339381D3CAD230062A4F2 /* PIOFeedbackViewController.xib in Resources */,
 				4530EA101D26839400EAADBF /* logo@2x.png in Resources */,
 				452726DF1D2515EC008A90B5 /* second-slide@2x.png in Resources */,
+				4523393C1D3CB43B0062A4F2 /* Feedback.xcassets in Resources */,
 				4530EA1F1D2683A100EAADBF /* twitter-568h@2x.png in Resources */,
 				4530EA2C1D2683D800EAADBF /* twitter-667h@2x.png in Resources */,
 				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
@@ -933,7 +948,6 @@
 				4530EA371D2683ED00EAADBF /* logo@3x.png in Resources */,
 				4530EA0F1D26839400EAADBF /* instagram@2x.png in Resources */,
 				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
-				45BD667B1D2A346D0025CF13 /* 07-When (1).jpg in Resources */,
 				45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
@@ -959,7 +973,6 @@
 				45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */,
 				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
 				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
-				45CEABA41D38E72300524329 /* 08.png in Resources */,
 				45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */,
 				45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */,
 			);
@@ -1047,6 +1060,7 @@
 				456034271D23D56400437050 /* PIOMapViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
 				452304551D1D4FAE0006EB01 /* PIOSideBarViewController.m in Sources */,
+				452339371D3CAD230062A4F2 /* PIOFeedbackViewController.m in Sources */,
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
 				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,

@@ -13,6 +13,7 @@
 #import "PIOAppController.h"
 
 @interface PIOHowToUseViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @property (nonatomic, weak) IBOutlet SwipeView *swipeView;
 @property (weak, nonatomic) IBOutlet UIButton *pickupButton;
@@ -69,6 +70,7 @@
     [self.items addObject: @"third-slide"];
     
     [self.pickupButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    [self.loginButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.pickupButton setBackgroundImage: [UIImage imageForDeviceWithName: @"pick-up"] forState: UIControlStateNormal];
 }
 

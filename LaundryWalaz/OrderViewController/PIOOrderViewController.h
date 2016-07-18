@@ -9,6 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "PIOBaseViewController.h"
 
+typedef NS_ENUM(NSInteger, PIOTimeSlot) {
+    PIOTimeSlotMorning,
+    PIOTimeSlotAfternoon,
+    PIOTimeSlotEvening,
+};
+
+
+typedef NS_ENUM(NSInteger, PIOOrderDay) {
+    PIOOrderDayTodayPickUp,
+    PIOOrderDayTomorrowPickUp,
+    PIOOrderDayOtherDayPickUp,
+    PIOOrderDayTodayDeliverOn,
+    PIOOrderDayTomorrowDeliverOn,
+    PIOOrderDayOtherDayDeliverOn,
+};
+
+
+
 @interface PIOOrderViewController : PIOBaseViewController
 
 @end

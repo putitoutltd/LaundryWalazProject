@@ -13,6 +13,7 @@
 #import "PIOMapViewController.h"
 #import "PIOAppController.h"
 #import "CDRTranslucentSideBar.h"
+#import "PIOFeedbackViewController.h"
 #import "PIOConstants.h"
 
 const NSInteger PIOLogOutButtonIndex = 0;
@@ -42,7 +43,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
     self.view.frame = self.view.window.frame;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PIOHideSideBarView" object:nil];
     
@@ -77,50 +78,45 @@ const NSInteger PIOLogOutButtonIndex = 0;
     visibleViewController = [viewControllers objectAtIndex:[viewControllers count]-1];
     
     switch (button.tag) {
-            case PIODashboardRowTypeLogout: {
-              
-                UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                              initWithTitle:@"Are you sure you want to log out?"
-                                              delegate:self
-                                              cancelButtonTitle:@"Cancel"
-                                              destructiveButtonTitle:@"Log Out"
-                                              otherButtonTitles: nil];
-                [actionSheet showInView:[PIOAppController sharedInstance].navigationController.view];
-                visibleController = visibleViewController;
-                controllers = viewControllers;
+        case PIODashboardRowTypeLogout: {
+            
+            UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                          initWithTitle:@"Are you sure you want to log out?"
+                                          delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:@"Log Out"
+                                          otherButtonTitles: nil];
+            [actionSheet showInView:[PIOAppController sharedInstance].navigationController.view];
+            visibleController = visibleViewController;
+            controllers = viewControllers;
+            
+            break;
+        }
+        case PIODashboardRowTypeHowItWorks: {
+            break;
+        }
+        case PIODashboardRowTypeOrder: {
+            
+            if (![visibleViewController isKindOfClass:[PIOMapViewController class]] ) {
                 
-                break;
-            }
-            
-            
-            case PIODashboardRowTypeHowItWorks: {
-                break;
-            }
-            
-            
-           
-            case PIODashboardRowTypeOrder: {
-                
-                if (![visibleViewController isKindOfClass:[PIOMapViewController class]] ) {
-                    
-                    PIOMapViewController *orderViewController;
-                    for (UIViewController *viewController in viewControllers) {
-                        if ([viewController isKindOfClass:[PIOMapViewController class]]) {
-                            orderViewController = (PIOMapViewController *)viewController;
-                            break;
-                        }
-                    }
-                    if (orderViewController == nil) {
-                        orderViewController = [PIOMapViewController new];
-                        [[[PIOAppController sharedInstance] navigationController] pushViewController: orderViewController animated:NO];
-                    } else {
-                        
-                        [[[PIOAppController sharedInstance] navigationController] popToViewController: orderViewController animated:NO];
+                PIOMapViewController *orderViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOMapViewController class]]) {
+                        orderViewController = (PIOMapViewController *)viewController;
+                        break;
                     }
                 }
-                
-                break;
+                if (orderViewController == nil) {
+                    orderViewController = [PIOMapViewController new];
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: orderViewController animated:NO];
+                } else {
+                    
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: orderViewController animated:NO];
+                }
             }
+            
+            break;
+        }
         case PIODashboardRowTypePricing: {
             
             if (![visibleViewController isKindOfClass:[PIOPriceListViewController class]] ) {
@@ -144,15 +140,30 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
         }
         case PIODashboardRowTypeFAQs: {
-            
-            
-            
             break;
         }
         case PIODashboardRowTypeTerms: {
+            break;
+        }
+        case PIODashboardRowTypeFeedback: {
             
-            
-            
+            if (![visibleViewController isKindOfClass:[PIOFeedbackViewController class]] ) {
+                
+                PIOFeedbackViewController *feedbackViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOFeedbackViewController class]]) {
+                        feedbackViewController = (PIOFeedbackViewController *)viewController;
+                        break;
+                    }
+                }
+                if (feedbackViewController == nil) {
+                    feedbackViewController = [PIOFeedbackViewController new];
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: feedbackViewController animated:NO];
+                } else {
+                    
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: feedbackViewController animated:NO];
+                }
+            }
             break;
         }
         default:
@@ -175,7 +186,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 - (void)callLogoutAPI
 {
     [self flushDataOnLogout: visibleController withViewControllerArray:controllers];
-
+    
 }
 
 - (void)flushDataOnLogout:(UIViewController *)visibleViewController withViewControllerArray:(NSArray *)viewControllers
@@ -199,7 +210,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
         }
         
     }
-   
+    
     
 }
 

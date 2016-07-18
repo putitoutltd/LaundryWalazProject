@@ -29,8 +29,8 @@
 {
     [super viewWillAppear: animated];
     [self applyImageBackgroundToTheNavigationBar];
-    [self configureNavigationBar];
-   
+//    [self configureNavigationBar];
+   [self performSelector: @selector(configureNavigationBar) withObject: nil afterDelay: 0.1];
    
      self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:226.0/255.0 green: 243.0/255.0 blue:255.0/255.0 alpha: 1.0];
 }
@@ -39,6 +39,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma mark - Private Methods
 

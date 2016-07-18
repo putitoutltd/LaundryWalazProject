@@ -14,10 +14,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOOrderViewController">
             <connections>
+                <outlet property="afternoonSlotPickupButton" destination="IsD-Vf-ez3" id="Jln-ab-X0y"/>
                 <outlet property="continueButton" destination="BEu-sM-snj" id="LjI-Hk-Rcd"/>
                 <outlet property="deliverTitleLabel" destination="HPX-P9-z5d" id="VIn-po-MrK"/>
                 <outlet property="deliveryDateContainerView" destination="koY-nj-w56" id="g7e-cf-vaz"/>
+                <outlet property="eveningSlotPickupButton" destination="9ZZ-O2-cxr" id="rec-jB-8Ss"/>
                 <outlet property="expressDeliveryButton" destination="jZy-5k-8wS" id="pgq-3v-GpW"/>
+                <outlet property="morningSlotPickupButton" destination="G9d-f1-7yl" id="EXW-ly-rox"/>
                 <outlet property="openCalendarDeliveryTitleLabel" destination="hmG-ET-eCs" id="evA-6W-Hvr"/>
                 <outlet property="openCalendarTitleLabel" destination="or0-6i-CPp" id="ajP-XK-0ZC"/>
                 <outlet property="otherDayDeliveryButton" destination="MIr-nH-FS5" id="EM8-Sg-MjL"/>
@@ -200,12 +203,49 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.62254849140000001" colorSpace="calibratedRGB"/>
                                     <connections>
+                                        <action selector="otherDeliveryDateButtonPressed:" destination="-1" eventType="touchUpInside" id="krY-lH-Koo"/>
                                         <action selector="pickupAndDeliveryButtonPressed:" destination="-1" eventType="touchUpInside" id="CIu-xx-ILr"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G9d-f1-7yl">
+                            <rect key="frame" x="12" y="51" width="98" height="28"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Morning">
+                                <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="timeSlotButtonPressed:" destination="-1" eventType="touchUpInside" id="1mw-pB-Wf9"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IsD-Vf-ez3">
+                            <rect key="frame" x="111" y="51" width="98" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Afternoon">
+                                <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="timeSlotButtonPressed:" destination="-1" eventType="touchUpInside" id="ly0-SV-PHa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9ZZ-O2-cxr">
+                            <rect key="frame" x="212" y="51" width="98" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="Evening">
+                                <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="timeSlotButtonPressed:" destination="-1" eventType="touchUpInside" id="dB9-Rf-8ug"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -308,6 +348,13 @@
                             </subviews>
                             <color key="backgroundColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From 5:00 PM to 9:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DjL-fm-HR3">
+                            <rect key="frame" x="10" y="51" width="298" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

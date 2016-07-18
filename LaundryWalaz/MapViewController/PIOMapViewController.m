@@ -78,12 +78,6 @@
     
 }
 
-- (void)hideTableview
-{
-    self.tableView.hidden = YES;
-    [self.dropdownButton setSelected: NO];
-    self.tableView.frame =  CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,0);
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -118,6 +112,14 @@
         
     }];
 }
+
+- (void)hideTableview
+{
+    self.tableView.hidden = YES;
+    [self.dropdownButton setSelected: NO];
+    self.tableView.frame =  CGRectMake(self.locationTextField.frame.origin.x, self.locationTextField.frame.size.height+self.locationTextField.frame.origin.y, self.locationTextField.frame.size.width,0);
+}
+
 
 - (IBAction)confirmAddressButtonPressed:(id)sender
 {
