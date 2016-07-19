@@ -17,6 +17,7 @@
                 <outlet property="afternoonSlotPickupButton" destination="IsD-Vf-ez3" id="Jln-ab-X0y"/>
                 <outlet property="continueButton" destination="BEu-sM-snj" id="LjI-Hk-Rcd"/>
                 <outlet property="deliverTitleLabel" destination="HPX-P9-z5d" id="VIn-po-MrK"/>
+                <outlet property="deliveronDateTitleLabel" destination="DjL-fm-HR3" id="skl-dH-Xh8"/>
                 <outlet property="deliveryDateContainerView" destination="koY-nj-w56" id="g7e-cf-vaz"/>
                 <outlet property="eveningSlotPickupButton" destination="9ZZ-O2-cxr" id="rec-jB-8Ss"/>
                 <outlet property="expressDeliveryButton" destination="jZy-5k-8wS" id="pgq-3v-GpW"/>
@@ -100,7 +101,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHEN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ndc-sh-9qE">
-                    <rect key="frame" x="117" y="96" width="85" height="40"/>
+                    <rect key="frame" x="117" y="90" width="85" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="33"/>
@@ -108,7 +109,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick-Up on: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pU7-ny-BPC">
-                    <rect key="frame" x="123" y="155" width="73" height="21"/>
+                    <rect key="frame" x="123" y="149" width="73" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="16"/>
@@ -116,7 +117,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="U6a-hu-kxd">
-                    <rect key="frame" x="0.0" y="183" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="177" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="1Fz-7f-Ox4">
@@ -203,7 +204,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.62254849140000001" colorSpace="calibratedRGB"/>
                                     <connections>
-                                        <action selector="otherDeliveryDateButtonPressed:" destination="-1" eventType="touchUpInside" id="krY-lH-Koo"/>
+                                        <action selector="otherPickUpDateButtonPressed:" destination="-1" eventType="touchUpInside" id="evP-ds-6aX"/>
                                         <action selector="pickupAndDeliveryButtonPressed:" destination="-1" eventType="touchUpInside" id="CIu-xx-ILr"/>
                                     </connections>
                                 </button>
@@ -250,7 +251,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliver on: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HPX-P9-z5d">
-                    <rect key="frame" x="125" y="278" width="71" height="21"/>
+                    <rect key="frame" x="125" y="272" width="71" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="MyriadPro-Light" family="Myriad Pro" pointSize="16"/>
@@ -258,7 +259,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="koY-nj-w56">
-                    <rect key="frame" x="0.0" y="313" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="307" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="WxR-4G-3wV">
@@ -320,7 +321,7 @@
                             <color key="backgroundColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
                         <view contentMode="scaleToFill" id="xft-Of-xGA">
-                            <rect key="frame" x="210" y="3" width="98" height="46"/>
+                            <rect key="frame" x="210" y="4" width="98" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTHER DAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5XP-K8-9rp">
@@ -335,6 +336,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.62254849140000001" colorSpace="calibratedRGB"/>
                                     <connections>
+                                        <action selector="otherDeliveryDateButtonPressed:" destination="-1" eventType="touchUpInside" id="7hW-rI-kI0"/>
                                         <action selector="pickupAndDeliveryButtonPressed:" destination="-1" eventType="touchUpInside" id="JAa-Wu-gp2"/>
                                     </connections>
                                 </button>
@@ -348,7 +350,7 @@
                             </subviews>
                             <color key="backgroundColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From 5:00 PM to 9:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DjL-fm-HR3">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliver on: 5:00 PM to 9:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DjL-fm-HR3">
                             <rect key="frame" x="10" y="51" width="298" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -361,7 +363,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BEu-sM-snj">
                     <rect key="frame" x="61" y="433" width="197" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Continue" backgroundImage="save-btn">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -374,7 +376,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="130" y="-302"/>
+            <point key="canvasLocation" x="-5" y="-333"/>
         </view>
         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.59999999999999998" contentMode="scaleToFill" image="07-When (1).jpg" id="X9O-IA-wej">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>

@@ -7,17 +7,22 @@
 //
 
 #import "PIOLoginViewController.h"
-#import "PIOAppController.h"
 #import "UIImage+DeviceSpecificMedia.h"
 #import "PIOContactInfoViewController.h"
+#import "PIOForgotPasswordViewController.h"
+#import "PIORegisterViewController.h"
+#import "PIOAppController.h"
+
 
 @interface PIOLoginViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UIButton *rememberMeButton;
-@property (weak, nonatomic) IBOutlet UILabel *rememberMeTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+
+@property (nonatomic, weak) IBOutlet UIButton *registerButton;
+@property (nonatomic, weak) IBOutlet UITextField *emailAddressTextField;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (nonatomic, weak) IBOutlet UIButton *rememberMeButton;
+@property (nonatomic, weak) IBOutlet UILabel *rememberMeTitleLabel;
+@property (nonatomic, weak) IBOutlet UIButton *forgotPasswordButton;
 
 @end
 
@@ -29,6 +34,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    // hide Menu button from right side of the navigation bar.
+    self.menuButtonNeedToHide = YES;
+    
     [self.loginButton  setBackgroundImage: [UIImage imageForDeviceWithName:@"login-btn"] forState:UIControlStateNormal];
     //[self.loginButton setImage: [UIImage imageForDeviceWithName:@"login-btn"]];
     self.navigationController.navigationBar.hidden = NO;
@@ -49,8 +58,17 @@
 
 #pragma mark - IBActions
 
+- (IBAction)registerButtonPressed:(id)sender
+{
+    PIORegisterViewController *registerViewController = [PIORegisterViewController new];
+    [self.navigationController pushViewController: registerViewController animated: YES];
+}
+
 - (IBAction)forgotPasswordButtonPressed:(id)sender
 {
+    PIOForgotPasswordViewController *forgotPasswordViewController = [PIOForgotPasswordViewController new];
+    [self.navigationController pushViewController: forgotPasswordViewController animated: YES];
+    
 }
 
 - (IBAction)rememberMeButtonPressed:(id)sender
@@ -69,7 +87,7 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Enter Email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
     }
-     else if (![[PIOAppController sharedInstance] isValidEmailAddress: self.emailAddressTextField.text]) {
+    else if (![[PIOAppController sharedInstance] isValidEmailAddress: self.emailAddressTextField.text]) {
         
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter a valid email address."withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
@@ -87,9 +105,6 @@
             }
         }
     }
-
-    
-    
 }
 
 #pragma mark - Private Methods
@@ -101,6 +116,7 @@
     [self.rememberMeTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.loginButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 14.75f]];
     [self.forgotPasswordButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
+    [self.registerButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     
 }
 

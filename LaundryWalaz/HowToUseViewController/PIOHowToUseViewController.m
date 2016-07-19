@@ -13,10 +13,10 @@
 #import "PIOAppController.h"
 
 @interface PIOHowToUseViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
 
 @property (nonatomic, weak) IBOutlet SwipeView *swipeView;
-@property (weak, nonatomic) IBOutlet UIButton *pickupButton;
+@property (nonatomic, weak) IBOutlet UIButton *pickupButton;
 @property (nonatomic, strong) NSMutableArray *items;
 
 @end

@@ -100,6 +100,9 @@
 		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
 		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
+		45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */; };
+		45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */; };
+		45A302881D3E38BF009539F2 /* 17 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 45A302871D3E38BF009539F2 /* 17 (1).png */; };
 		45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */; };
 		45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */; };
 		45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */; };
@@ -261,6 +264,10 @@
 		457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListViewController.h; sourceTree = "<group>"; };
 		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
 		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
+		45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderSummaryViewController.h; path = OrderSummaryViewController/PIOOrderSummaryViewController.h; sourceTree = "<group>"; };
+		45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderSummaryViewController.m; path = OrderSummaryViewController/PIOOrderSummaryViewController.m; sourceTree = "<group>"; };
+		45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderSummaryViewController.xib; path = OrderSummaryViewController/PIOOrderSummaryViewController.xib; sourceTree = "<group>"; };
+		45A302871D3E38BF009539F2 /* 17 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17 (1).png"; sourceTree = "<group>"; };
 		45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIORegisterViewController.h; path = RegisterViewController/PIORegisterViewController.h; sourceTree = "<group>"; };
 		45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIORegisterViewController.m; path = RegisterViewController/PIORegisterViewController.m; sourceTree = "<group>"; };
 		45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIORegisterViewController.xib; path = RegisterViewController/PIORegisterViewController.xib; sourceTree = "<group>"; };
@@ -589,6 +596,7 @@
 				456034231D23D53C00437050 /* MapViewController */,
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
+				45A302811D3E19C7009539F2 /* OrderSummaryViewController */,
 				457F48871D24F79D00600AB5 /* PriceListViewController */,
 				452339331D3CACE00062A4F2 /* FeedbackViewController */,
 				454A27531D1C070300E30CDF /* Common */,
@@ -762,6 +770,17 @@
 			name = PriceListViewController;
 			sourceTree = "<group>";
 		};
+		45A302811D3E19C7009539F2 /* OrderSummaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45A302871D3E38BF009539F2 /* 17 (1).png */,
+				45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */,
+				45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */,
+				45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */,
+			);
+			name = OrderSummaryViewController;
+			sourceTree = "<group>";
+		};
 		45CA85F51D379C65001F3014 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -909,6 +928,7 @@
 				4530EA0D1D26839400EAADBF /* close-menu@2x.png in Resources */,
 				4530EA271D2683D800EAADBF /* close-menu-667h@2x.png in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
+				45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */,
 				452726EF1D252169008A90B5 /* first-slide-568h@2x.png in Resources */,
 				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
 				4530EA361D2683ED00EAADBF /* instagram@3x.png in Resources */,
@@ -945,6 +965,7 @@
 				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
 				4530EA0E1D26839400EAADBF /* facebook@2x.png in Resources */,
 				4527270B1D252ECE008A90B5 /* MyriadPro-Cond.otf in Resources */,
+				45A302881D3E38BF009539F2 /* 17 (1).png in Resources */,
 				4530EA371D2683ED00EAADBF /* logo@3x.png in Resources */,
 				4530EA0F1D26839400EAADBF /* instagram@2x.png in Resources */,
 				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
@@ -1060,6 +1081,7 @@
 				456034271D23D56400437050 /* PIOMapViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
 				452304551D1D4FAE0006EB01 /* PIOSideBarViewController.m in Sources */,
+				45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */,
 				452339371D3CAD230062A4F2 /* PIOFeedbackViewController.m in Sources */,
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
 				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,

@@ -8,19 +8,20 @@
 
 #import "PIOContactInfoViewController.h"
 #import "PIOLoginViewController.h"
+#import "PIOOrderSummaryViewController.h"
 #import "PIOAppController.h"
 
 @interface PIOContactInfoViewController () <UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *topTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UILabel *infoTitleLabel;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
-@property (weak, nonatomic) IBOutlet UILabel *futureOrderTitleLabel;
-@property (weak, nonatomic) IBOutlet UITextView *specialInstrructionsTextView;
-@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (nonatomic, weak) IBOutlet UILabel *topTitleLabel;
+@property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (nonatomic, weak) IBOutlet UILabel *infoTitleLabel;
+@property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *lastNameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *emailTextField;
+@property (nonatomic, weak) IBOutlet UITextField *phoneTextField;
+@property (nonatomic, weak) IBOutlet UILabel *futureOrderTitleLabel;
+@property (nonatomic, weak) IBOutlet UITextView *specialInstrructionsTextView;
+@property (nonatomic, weak) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -78,6 +79,8 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Please enter a valid email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
+        PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
+        [self.navigationController pushViewController: orderSummaryViewController animated: YES];
     }
 }
 

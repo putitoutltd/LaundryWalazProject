@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface PIOBaseViewController : UIViewController
-
+@property (nonatomic, strong) UIBarButtonItem *backBarButtonItem;
+@property (nonatomic, assign, getter= isMenuButtonNeedToHide) BOOL menuButtonNeedToHide;
 @end

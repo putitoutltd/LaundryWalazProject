@@ -11,9 +11,9 @@
 
 @interface PIOForgotPasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *emailAddressTextField;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (nonatomic, weak) IBOutlet UITextField *emailAddressTextField;
+@property (nonatomic, weak) IBOutlet UILabel *detailLabel;
+@property (nonatomic, weak) IBOutlet UIButton *sendButton;
 
 @end
 
@@ -26,6 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self applyFonts];
+    
+    // hide Menu button from right side of the navigation bar.
+    self.menuButtonNeedToHide = YES;
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Forgot Login details" onViewController:self];

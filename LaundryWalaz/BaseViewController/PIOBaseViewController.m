@@ -57,7 +57,18 @@
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(sideBarButtonPressed:)];
-    self.navigationItem.leftBarButtonItems = @[menuBarButtonItem];
+    if (!self.isMenuButtonNeedToHide) {
+        self.navigationItem.rightBarButtonItems = @[menuBarButtonItem];
+
+    }
+    
+    self.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"pio-uinavigation-button-back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(backBarButtonItemPressed:)];
+    //self.navigationItem.rightBarButtonItems = @[menuBarButtonItem];
+    self.navigationItem.leftBarButtonItem = self.backBarButtonItem;
+
   
 }
 
@@ -99,11 +110,17 @@
 
 #pragma mark - IBActions
 
+- (void)backBarButtonItemPressed:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (void)sideBarButtonPressed:(id)sender
 {
     
    
-    self.sideBar = [[CDRTranslucentSideBar alloc] initWithDirectionFromRight: NO];
+    self.sideBar = [[CDRTranslucentSideBar alloc] initWithDirectionFromRight: YES];
     self.sideBar.delegate = self;
     PIOSideBarViewController *sideBarViewController = [PIOSideBarViewController new];
     [[[PIOAppController sharedInstance] navigationController].visibleViewController addChildViewController:sideBarViewController];

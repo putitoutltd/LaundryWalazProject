@@ -14,15 +14,15 @@
 @interface PIORegisterViewController () <PIOPhotoPickerDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
-@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *lastNameTextField;
+@property (nonatomic, weak) IBOutlet UITextField *phoneTextField;
+@property (nonatomic, weak) IBOutlet UITextField *emailTextField;
+@property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, weak) IBOutlet UIButton *registerButton;
 
 @property (nonatomic, weak) IBOutlet UIImageView *profileImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *profileCoverImageView;
+@property (nonatomic, weak) IBOutlet UIImageView *profileCoverImageView;
 @property (nonatomic, strong) PIOPhotoPicker *photoPicker;
 @property (nonatomic, strong) NSString *imagePath;
 @end
@@ -36,6 +36,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self applyFonts];
+    
+    // hide Menu button from right side of the navigation bar.
+     self.menuButtonNeedToHide = YES;
     
     // profile image cover according to screen
     [self.profileCoverImageView setImage: [UIImage imageForDeviceWithName:@"register-icon"]];

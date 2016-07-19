@@ -10,12 +10,12 @@
 #import "PIOAppController.h"
 
 @interface PIOFeedbackViewController () <UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UIButton *dropdownButton;
+@property (nonatomic, weak) IBOutlet UIButton *dropdownButton;
 @property (nonatomic, strong) NSMutableArray *feedbackOpntions;
-@property (weak, nonatomic) IBOutlet UITextField *feedbackAboutTextField;
-@property (weak, nonatomic) IBOutlet UITextView *feedbackDetailTextView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (nonatomic, weak) IBOutlet UITextField *feedbackAboutTextField;
+@property (nonatomic, weak) IBOutlet UITextView *feedbackDetailTextView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *sendButton;
 
 @end
 

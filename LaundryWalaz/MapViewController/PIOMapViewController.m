@@ -20,15 +20,15 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
-@property (weak, nonatomic) IBOutlet UIButton *confirmAddressButton;
-@property (weak, nonatomic) IBOutlet UIButton *dropdownButton;
+@property (nonatomic, weak) IBOutlet UIButton *confirmAddressButton;
+@property (nonatomic, weak) IBOutlet UIButton *dropdownButton;
 @property (nonatomic, strong) NSMutableArray *locations;
-@property (weak, nonatomic) IBOutlet UITextField *locationTextField;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITextField *locationTextField;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (nonatomic, weak) IBOutlet UITextField *addressTextField;
 
 @end
 
@@ -123,8 +123,18 @@
 
 - (IBAction)confirmAddressButtonPressed:(id)sender
 {
-    PIOOrderViewController *orderViewController = [PIOOrderViewController new];
-    [self.navigationController pushViewController: orderViewController animated: YES];
+    if (self.locationTextField.text.length == 0) {
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please select Location from given list." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+    }
+    else if (self.addressTextField.text.length == 0) {
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter correct address for order pickup." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+    }
+    else {
+        PIOOrderViewController *orderViewController = [PIOOrderViewController new];
+        [self.navigationController pushViewController: orderViewController animated: YES];
+    }
+    
+    
 }
 
 #pragma mark - CLLocationManagerDelegate

@@ -34,7 +34,7 @@
                         <action selector="confirmAddressButtonPressed:" destination="-1" eventType="touchUpInside" id="LPw-7c-qWV"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-6m-XJo">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Location" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-6m-XJo">
                     <rect key="frame" x="9" y="36" width="301" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>

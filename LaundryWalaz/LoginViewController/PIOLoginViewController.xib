@@ -11,6 +11,7 @@
                 <outlet property="forgotPasswordButton" destination="AwG-vk-ZGP" id="AcE-PA-zRg"/>
                 <outlet property="loginButton" destination="cWK-NF-Hgu" id="Sim-AS-dEi"/>
                 <outlet property="passwordTextField" destination="Qw4-RN-zKI" id="u1b-6w-FWq"/>
+                <outlet property="registerButton" destination="Dcl-am-5jN" id="dwu-sr-M3e"/>
                 <outlet property="rememberMeButton" destination="CfF-et-ffb" id="xeO-eK-2rJ"/>
                 <outlet property="rememberMeTitleLabel" destination="qsK-Ie-OSe" id="f1K-w3-NdB"/>
                 <outlet property="view" destination="Ikl-sO-Y7a" id="lY7-rf-gMu"/>
@@ -22,33 +23,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="login-key" id="I1O-t0-mNR">
-                    <rect key="frame" x="78" y="58" width="164" height="164"/>
+                    <rect key="frame" x="78" y="43" width="164" height="164"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" id="CRH-Cq-bjP">
-                    <rect key="frame" x="19" y="255" width="282" height="24"/>
+                    <rect key="frame" x="19" y="228" width="282" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                 </textField>
                 <view contentMode="scaleToFill" id="c5G-I2-moJ">
-                    <rect key="frame" x="19" y="280" width="282" height="1"/>
+                    <rect key="frame" x="19" y="253" width="282" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="0.68970905169999996" colorSpace="calibratedWhite"/>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="Qw4-RN-zKI">
-                    <rect key="frame" x="19" y="293" width="282" height="24"/>
+                    <rect key="frame" x="19" y="266" width="282" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <view contentMode="scaleToFill" id="Eth-l5-3vu">
-                    <rect key="frame" x="19" y="316" width="282" height="1"/>
+                    <rect key="frame" x="19" y="289" width="282" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="0.68970905169999996" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cWK-NF-Hgu">
-                    <rect key="frame" x="77" y="391" width="166" height="36"/>
+                    <rect key="frame" x="77" y="364" width="166" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="Login" backgroundImage="login-btn"/>
@@ -57,7 +58,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CfF-et-ffb">
-                    <rect key="frame" x="95" y="342" width="18" height="18"/>
+                    <rect key="frame" x="95" y="315" width="18" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="check-box-inactive"/>
                     <state key="selected" image="check-box-active"/>
@@ -66,14 +67,14 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qsK-Ie-OSe">
-                    <rect key="frame" x="126" y="340" width="98" height="21"/>
+                    <rect key="frame" x="126" y="313" width="98" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AwG-vk-ZGP">
-                    <rect key="frame" x="109" y="436" width="102" height="21"/>
+                    <rect key="frame" x="109" y="447" width="102" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Forgot Password">
@@ -81,6 +82,17 @@
                     </state>
                     <connections>
                         <action selector="forgotPasswordButtonPressed:" destination="-1" eventType="touchUpInside" id="d1s-sx-AMd"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dcl-am-5jN">
+                    <rect key="frame" x="109" y="417" width="102" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="Register">
+                        <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="registerButtonPressed:" destination="-1" eventType="touchUpInside" id="FHD-Y9-hMW"/>
                     </connections>
                 </button>
             </subviews>

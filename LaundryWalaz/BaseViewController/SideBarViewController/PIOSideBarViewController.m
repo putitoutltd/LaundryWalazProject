@@ -24,15 +24,15 @@ const NSInteger PIOLogOutButtonIndex = 0;
     NSArray *controllers;
 }
 
-@property (weak, nonatomic) IBOutlet UIButton *TermsButton;
-@property (weak, nonatomic) IBOutlet UIButton *faqButton;
-@property (weak, nonatomic) IBOutlet UIImageView *menuBackgroundImageView;
-@property (weak, nonatomic) IBOutlet UIButton *pickUpButton;
-@property (weak, nonatomic) IBOutlet UIButton *myOrderButton;
-@property (weak, nonatomic) IBOutlet UIButton *priceListButton;
-@property (weak, nonatomic) IBOutlet UIButton *howItWorksButton;
-@property (weak, nonatomic) IBOutlet UIButton *logOutButton;
-@property (weak, nonatomic) IBOutlet UIButton *feedbackButton;
+@property (nonatomic, weak) IBOutlet UIButton *TermsButton;
+@property (nonatomic, weak) IBOutlet UIButton *faqButton;
+@property (nonatomic, weak) IBOutlet UIImageView *menuBackgroundImageView;
+@property (nonatomic, weak) IBOutlet UIButton *pickUpButton;
+@property (nonatomic, weak) IBOutlet UIButton *myOrderButton;
+@property (nonatomic, weak) IBOutlet UIButton *priceListButton;
+@property (nonatomic, weak) IBOutlet UIButton *howItWorksButton;
+@property (nonatomic, weak) IBOutlet UIButton *logOutButton;
+@property (nonatomic, weak) IBOutlet UIButton *feedbackButton;
 
 @end
 

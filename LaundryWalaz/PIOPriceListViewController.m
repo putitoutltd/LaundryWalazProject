@@ -9,7 +9,7 @@
 #import "PIOPriceListViewController.h"
 
 @interface PIOPriceListViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
 
