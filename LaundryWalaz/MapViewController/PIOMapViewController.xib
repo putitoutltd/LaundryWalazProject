@@ -105,7 +105,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-33" y="99"/>
+            <point key="canvasLocation" x="-133" y="-5"/>
         </view>
     </objects>
     <resources>

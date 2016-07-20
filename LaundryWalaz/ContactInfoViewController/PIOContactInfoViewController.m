@@ -10,8 +10,12 @@
 #import "PIOLoginViewController.h"
 #import "PIOOrderSummaryViewController.h"
 #import "PIOAppController.h"
+#import "PIOUserPref.h"
 
 @interface PIOContactInfoViewController () <UITextViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *saveForFutureButton;
+@property (nonatomic, assign, getter= isInfoSavedForFuture) BOOL infoSavedForFuture;
 @property (nonatomic, weak) IBOutlet UILabel *topTitleLabel;
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, weak) IBOutlet UILabel *infoTitleLabel;
@@ -39,6 +43,12 @@
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Contact" onViewController:self];
      self.specialInstrructionsTextView.layer.borderWidth = 1.0;
     self.specialInstrructionsTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [self fillScreenContentIfSavedForFuture];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,9 +70,13 @@
     UIButton *button = (UIButton *)sender;
     if (button.isSelected) {
         [button setSelected: NO];
+        [PIOUserPref setInforSavedForFuture: NO];
+        [self saveInfoForFuture: NO];
     }
     else {
         [button setSelected: YES];
+        [PIOUserPref setInforSavedForFuture: YES];
+        [self saveInfoForFuture: YES];
     }
 
 }
@@ -79,12 +93,46 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Please enter a valid email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
+        if ([PIOUserPref isInforSavedForFuture]) {
+            [self saveInfoForFuture: YES];
+        }
         PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
         [self.navigationController pushViewController: orderSummaryViewController animated: YES];
     }
 }
 
 #pragma mark - Private Methods
+
+- (void)fillScreenContentIfSavedForFuture
+{
+    if ([PIOUserPref isInforSavedForFuture]) {
+        [self.saveForFutureButton setSelected: YES];
+        [self.firstNameTextField setText:[PIOUserPref requestFirstName]];
+        [self.lastNameTextField setText:[PIOUserPref requestLastName]];
+        [self.emailTextField setText:[PIOUserPref requestEmailAddress]];
+        [self.phoneTextField setText:[PIOUserPref requestPhoneNumber]];
+    }
+    
+}
+
+- (void)saveInfoForFuture:(BOOL)isSaved
+{
+    
+    if (isSaved) {
+        [PIOUserPref setFirstName: self.firstNameTextField.text];
+        [PIOUserPref setLastName: self.lastNameTextField.text];
+        [PIOUserPref setEmailAddress: self.emailTextField.text];
+        [PIOUserPref setPhoneNumber: self.phoneTextField.text];
+    }
+    else {
+        [PIOUserPref setFirstName: @""];
+        [PIOUserPref setLastName: @""];
+        [PIOUserPref setEmailAddress: @""];
+        [PIOUserPref setPhoneNumber: @""];
+    }
+    
+}
+
 
 - (void)applyFonts
 {

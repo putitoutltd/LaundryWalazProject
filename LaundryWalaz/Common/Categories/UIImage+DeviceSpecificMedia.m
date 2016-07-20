@@ -53,7 +53,7 @@ thisDeviceClass currentDeviceClass() {
             return @"-667h@2x"; //or some other arbitrary string..
             break;
         case thisDeviceClass_iPhone6plus:
-            return @"-736h@3x";
+            return @"@3x";
             break;
             
         case thisDeviceClass_iPad:

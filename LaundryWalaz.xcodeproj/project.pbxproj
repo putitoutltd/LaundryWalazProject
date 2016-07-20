@@ -102,7 +102,6 @@
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
 		45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */; };
 		45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */; };
-		45A302881D3E38BF009539F2 /* 17 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 45A302871D3E38BF009539F2 /* 17 (1).png */; };
 		45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */; };
 		45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */; };
 		45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */; };
@@ -113,6 +112,29 @@
 		45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */; };
 		45CA860F1D37B70A001F3014 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860E1D37B70A001F3014 /* FileManager.m */; };
 		45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86101D37CD1C001F3014 /* Login.xcassets */; };
+		45CE0EEF1D3F522C007BDAED /* OrderSummary.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EEE1D3F522C007BDAED /* OrderSummary.xcassets */; };
+		45CE0EF31D3F8367007BDAED /* Pricing.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EF21D3F8367007BDAED /* Pricing.xcassets */; };
+		45CE0EF91D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CE0EF71D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m */; };
+		45CE0EFA1D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EF81D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.xib */; };
+		45CE0EFF1D3FA0AD007BDAED /* PIOOrderStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CE0EFD1D3FA0AD007BDAED /* PIOOrderStatusViewController.m */; };
+		45CE0F001D3FA0AD007BDAED /* PIOOrderStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EFE1D3FA0AD007BDAED /* PIOOrderStatusViewController.xib */; };
+		45CE0F021D3FA1A9007BDAED /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F011D3FA1A9007BDAED /* 12.png */; };
+		45CE0F181D3FA54A007BDAED /* status-01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F051D3FA54A007BDAED /* status-01@2x.png */; };
+		45CE0F191D3FA54A007BDAED /* status-02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F061D3FA54A007BDAED /* status-02@2x.png */; };
+		45CE0F1A1D3FA54A007BDAED /* status-03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F071D3FA54A007BDAED /* status-03@2x.png */; };
+		45CE0F1B1D3FA54A007BDAED /* status-04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F081D3FA54A007BDAED /* status-04@2x.png */; };
+		45CE0F1C1D3FA54A007BDAED /* status-01-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F0A1D3FA54A007BDAED /* status-01-568h@2x.png */; };
+		45CE0F1D1D3FA54A007BDAED /* status-02-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F0B1D3FA54A007BDAED /* status-02-568h@2x.png */; };
+		45CE0F1E1D3FA54A007BDAED /* status-03-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F0C1D3FA54A007BDAED /* status-03-568h@2x.png */; };
+		45CE0F1F1D3FA54A007BDAED /* status-04-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F0D1D3FA54A007BDAED /* status-04-568h@2x.png */; };
+		45CE0F201D3FA54A007BDAED /* status-01@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F0F1D3FA54A007BDAED /* status-01@3x.png */; };
+		45CE0F211D3FA54A007BDAED /* status-02@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F101D3FA54A007BDAED /* status-02@3x.png */; };
+		45CE0F221D3FA54A007BDAED /* status-03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F111D3FA54A007BDAED /* status-03@3x.png */; };
+		45CE0F231D3FA54A007BDAED /* status-04@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F121D3FA54A007BDAED /* status-04@3x.png */; };
+		45CE0F241D3FA54A007BDAED /* status-01-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F141D3FA54A007BDAED /* status-01-667h@2x.png */; };
+		45CE0F251D3FA54A007BDAED /* status-02-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F151D3FA54A007BDAED /* status-02-667h@2x.png */; };
+		45CE0F261D3FA54A007BDAED /* status-03-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F161D3FA54A007BDAED /* status-03-667h@2x.png */; };
+		45CE0F271D3FA54A007BDAED /* status-04-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0F171D3FA54A007BDAED /* status-04-667h@2x.png */; };
 		45CEAB991D38C1A200524329 /* PIOForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CEAB971D38C1A200524329 /* PIOForgotPasswordViewController.m */; };
 		45CEAB9A1D38C1A200524329 /* PIOForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB981D38C1A200524329 /* PIOForgotPasswordViewController.xib */; };
 		45CEAB9F1D38CE9400524329 /* login-btn-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9B1D38CE9400524329 /* login-btn-568h@2x.png */; };
@@ -267,7 +289,6 @@
 		45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderSummaryViewController.h; path = OrderSummaryViewController/PIOOrderSummaryViewController.h; sourceTree = "<group>"; };
 		45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderSummaryViewController.m; path = OrderSummaryViewController/PIOOrderSummaryViewController.m; sourceTree = "<group>"; };
 		45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderSummaryViewController.xib; path = OrderSummaryViewController/PIOOrderSummaryViewController.xib; sourceTree = "<group>"; };
-		45A302871D3E38BF009539F2 /* 17 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "17 (1).png"; sourceTree = "<group>"; };
 		45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIORegisterViewController.h; path = RegisterViewController/PIORegisterViewController.h; sourceTree = "<group>"; };
 		45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIORegisterViewController.m; path = RegisterViewController/PIORegisterViewController.m; sourceTree = "<group>"; };
 		45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIORegisterViewController.xib; path = RegisterViewController/PIORegisterViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +302,31 @@
 		45CA860D1D37B70A001F3014 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		45CA860E1D37B70A001F3014 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		45CA86101D37CD1C001F3014 /* Login.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Login.xcassets; sourceTree = "<group>"; };
+		45CE0EEE1D3F522C007BDAED /* OrderSummary.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OrderSummary.xcassets; sourceTree = "<group>"; };
+		45CE0EF21D3F8367007BDAED /* Pricing.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pricing.xcassets; sourceTree = "<group>"; };
+		45CE0EF61D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListCustomTableViewCell.h; sourceTree = "<group>"; };
+		45CE0EF71D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListCustomTableViewCell.m; sourceTree = "<group>"; };
+		45CE0EF81D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListCustomTableViewCell.xib; sourceTree = "<group>"; };
+		45CE0EFC1D3FA0AD007BDAED /* PIOOrderStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderStatusViewController.h; path = OrderStatusViewController/PIOOrderStatusViewController.h; sourceTree = "<group>"; };
+		45CE0EFD1D3FA0AD007BDAED /* PIOOrderStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderStatusViewController.m; path = OrderStatusViewController/PIOOrderStatusViewController.m; sourceTree = "<group>"; };
+		45CE0EFE1D3FA0AD007BDAED /* PIOOrderStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderStatusViewController.xib; path = OrderStatusViewController/PIOOrderStatusViewController.xib; sourceTree = "<group>"; };
+		45CE0F011D3FA1A9007BDAED /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		45CE0F051D3FA54A007BDAED /* status-01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-01@2x.png"; sourceTree = "<group>"; };
+		45CE0F061D3FA54A007BDAED /* status-02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-02@2x.png"; sourceTree = "<group>"; };
+		45CE0F071D3FA54A007BDAED /* status-03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-03@2x.png"; sourceTree = "<group>"; };
+		45CE0F081D3FA54A007BDAED /* status-04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-04@2x.png"; sourceTree = "<group>"; };
+		45CE0F0A1D3FA54A007BDAED /* status-01-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-01-568h@2x.png"; sourceTree = "<group>"; };
+		45CE0F0B1D3FA54A007BDAED /* status-02-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-02-568h@2x.png"; sourceTree = "<group>"; };
+		45CE0F0C1D3FA54A007BDAED /* status-03-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-03-568h@2x.png"; sourceTree = "<group>"; };
+		45CE0F0D1D3FA54A007BDAED /* status-04-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-04-568h@2x.png"; sourceTree = "<group>"; };
+		45CE0F0F1D3FA54A007BDAED /* status-01@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-01@3x.png"; sourceTree = "<group>"; };
+		45CE0F101D3FA54A007BDAED /* status-02@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-02@3x.png"; sourceTree = "<group>"; };
+		45CE0F111D3FA54A007BDAED /* status-03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-03@3x.png"; sourceTree = "<group>"; };
+		45CE0F121D3FA54A007BDAED /* status-04@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-04@3x.png"; sourceTree = "<group>"; };
+		45CE0F141D3FA54A007BDAED /* status-01-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-01-667h@2x.png"; sourceTree = "<group>"; };
+		45CE0F151D3FA54A007BDAED /* status-02-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-02-667h@2x.png"; sourceTree = "<group>"; };
+		45CE0F161D3FA54A007BDAED /* status-03-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-03-667h@2x.png"; sourceTree = "<group>"; };
+		45CE0F171D3FA54A007BDAED /* status-04-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-04-667h@2x.png"; sourceTree = "<group>"; };
 		45CEAB961D38C1A200524329 /* PIOForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOForgotPasswordViewController.h; path = ForgotPasswordViewController/PIOForgotPasswordViewController.h; sourceTree = "<group>"; };
 		45CEAB971D38C1A200524329 /* PIOForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOForgotPasswordViewController.m; path = ForgotPasswordViewController/PIOForgotPasswordViewController.m; sourceTree = "<group>"; };
 		45CEAB981D38C1A200524329 /* PIOForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOForgotPasswordViewController.xib; path = ForgotPasswordViewController/PIOForgotPasswordViewController.xib; sourceTree = "<group>"; };
@@ -597,6 +643,7 @@
 				452304591D1D517F0006EB01 /* OrderViewController */,
 				452EA3831D22971F003F1825 /* ContactInfoViewController */,
 				45A302811D3E19C7009539F2 /* OrderSummaryViewController */,
+				45CE0EFB1D3FA070007BDAED /* OrderStatusViewController */,
 				457F48871D24F79D00600AB5 /* PriceListViewController */,
 				452339331D3CACE00062A4F2 /* FeedbackViewController */,
 				454A27531D1C070300E30CDF /* Common */,
@@ -610,6 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
+				45CE0F031D3FA54A007BDAED /* OrderStatus */,
 				45CA85FD1D37A0AF001F3014 /* Register */,
 				452726FC1D252ECE008A90B5 /* Fonts */,
 				452726D11D25158E008A90B5 /* HowToUseScreen */,
@@ -619,6 +667,8 @@
 				452726C81D251022008A90B5 /* MapView.xcassets */,
 				45CA86101D37CD1C001F3014 /* Login.xcassets */,
 				4523393B1D3CB43B0062A4F2 /* Feedback.xcassets */,
+				45CE0EEE1D3F522C007BDAED /* OrderSummary.xcassets */,
+				45CE0EF21D3F8367007BDAED /* Pricing.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -763,9 +813,13 @@
 		457F48871D24F79D00600AB5 /* PriceListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				45CE0F011D3FA1A9007BDAED /* 12.png */,
 				457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */,
 				457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */,
 				457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */,
+				45CE0EF61D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.h */,
+				45CE0EF71D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m */,
+				45CE0EF81D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.xib */,
 			);
 			name = PriceListViewController;
 			sourceTree = "<group>";
@@ -773,7 +827,6 @@
 		45A302811D3E19C7009539F2 /* OrderSummaryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				45A302871D3E38BF009539F2 /* 17 (1).png */,
 				45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */,
 				45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */,
 				45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */,
@@ -800,6 +853,71 @@
 				45CA86011D37A0AF001F3014 /* register-icon@3x.png */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		45CE0EFB1D3FA070007BDAED /* OrderStatusViewController */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0EFC1D3FA0AD007BDAED /* PIOOrderStatusViewController.h */,
+				45CE0EFD1D3FA0AD007BDAED /* PIOOrderStatusViewController.m */,
+				45CE0EFE1D3FA0AD007BDAED /* PIOOrderStatusViewController.xib */,
+			);
+			name = OrderStatusViewController;
+			sourceTree = "<group>";
+		};
+		45CE0F031D3FA54A007BDAED /* OrderStatus */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0F041D3FA54A007BDAED /* OrderStatus4s */,
+				45CE0F091D3FA54A007BDAED /* OrderStatus5s */,
+				45CE0F0E1D3FA54A007BDAED /* OrderStatus6plus */,
+				45CE0F131D3FA54A007BDAED /* OrderStatus6s */,
+			);
+			path = OrderStatus;
+			sourceTree = "<group>";
+		};
+		45CE0F041D3FA54A007BDAED /* OrderStatus4s */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0F051D3FA54A007BDAED /* status-01@2x.png */,
+				45CE0F061D3FA54A007BDAED /* status-02@2x.png */,
+				45CE0F071D3FA54A007BDAED /* status-03@2x.png */,
+				45CE0F081D3FA54A007BDAED /* status-04@2x.png */,
+			);
+			path = OrderStatus4s;
+			sourceTree = "<group>";
+		};
+		45CE0F091D3FA54A007BDAED /* OrderStatus5s */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0F0A1D3FA54A007BDAED /* status-01-568h@2x.png */,
+				45CE0F0B1D3FA54A007BDAED /* status-02-568h@2x.png */,
+				45CE0F0C1D3FA54A007BDAED /* status-03-568h@2x.png */,
+				45CE0F0D1D3FA54A007BDAED /* status-04-568h@2x.png */,
+			);
+			path = OrderStatus5s;
+			sourceTree = "<group>";
+		};
+		45CE0F0E1D3FA54A007BDAED /* OrderStatus6plus */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0F0F1D3FA54A007BDAED /* status-01@3x.png */,
+				45CE0F101D3FA54A007BDAED /* status-02@3x.png */,
+				45CE0F111D3FA54A007BDAED /* status-03@3x.png */,
+				45CE0F121D3FA54A007BDAED /* status-04@3x.png */,
+			);
+			path = OrderStatus6plus;
+			sourceTree = "<group>";
+		};
+		45CE0F131D3FA54A007BDAED /* OrderStatus6s */ = {
+			isa = PBXGroup;
+			children = (
+				45CE0F141D3FA54A007BDAED /* status-01-667h@2x.png */,
+				45CE0F151D3FA54A007BDAED /* status-02-667h@2x.png */,
+				45CE0F161D3FA54A007BDAED /* status-03-667h@2x.png */,
+				45CE0F171D3FA54A007BDAED /* status-04-667h@2x.png */,
+			);
+			path = OrderStatus6s;
 			sourceTree = "<group>";
 		};
 		45CEAB951D38C14000524329 /* ForgotPasswordViewController */ = {
@@ -918,57 +1036,73 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CE0F021D3FA1A9007BDAED /* 12.png in Resources */,
 				452304501D1D4EB80006EB01 /* PIOBaseViewController.xib in Resources */,
 				452726DE1D2515EC008A90B5 /* pick-up@2x.png in Resources */,
 				452727101D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf in Resources */,
 				4530EA341D2683ED00EAADBF /* close-menu@3x.png in Resources */,
 				452727071D252ECE008A90B5 /* MyriadPro-Bold.otf in Resources */,
+				45CE0EF31D3F8367007BDAED /* Pricing.xcassets in Resources */,
 				452726E01D2515EC008A90B5 /* third-slide@2x.png in Resources */,
 				454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */,
 				4530EA0D1D26839400EAADBF /* close-menu@2x.png in Resources */,
 				4530EA271D2683D800EAADBF /* close-menu-667h@2x.png in Resources */,
+				45CE0F261D3FA54A007BDAED /* status-03-667h@2x.png in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
 				45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */,
 				452726EF1D252169008A90B5 /* first-slide-568h@2x.png in Resources */,
 				452304561D1D4FAE0006EB01 /* PIOSideBarViewController.xib in Resources */,
 				4530EA361D2683ED00EAADBF /* instagram@3x.png in Resources */,
 				4530EA2B1D2683D800EAADBF /* menu-bg-667h@2x.png in Resources */,
+				45CE0F1F1D3FA54A007BDAED /* status-04-568h@2x.png in Resources */,
 				4530EA111D26839400EAADBF /* menu-bg@2x.png in Resources */,
 				452726F81D2522CA008A90B5 /* first-slide@3x.png in Resources */,
 				452726F01D252169008A90B5 /* pick-up-568h@2x.png in Resources */,
+				45CE0F191D3FA54A007BDAED /* status-02@2x.png in Resources */,
 				456034281D23D56400437050 /* PIOMapViewController.xib in Resources */,
 				4527270D1D252ECE008A90B5 /* MyriadPro-It.otf in Resources */,
 				4530EA1C1D2683A100EAADBF /* instagram-568h@2x.png in Resources */,
+				45CE0F211D3FA54A007BDAED /* status-02@3x.png in Resources */,
 				45CEAB9F1D38CE9400524329 /* login-btn-568h@2x.png in Resources */,
 				4530EA391D2683ED00EAADBF /* twitter@3x.png in Resources */,
 				452726F21D252169008A90B5 /* third-slide-568h@2x.png in Resources */,
 				4530EA281D2683D800EAADBF /* facebook-667h@2x.png in Resources */,
 				4527270F1D252ECE008A90B5 /* MyriadPro-Semibold.otf in Resources */,
+				45CE0F1E1D3FA54A007BDAED /* status-03-568h@2x.png in Resources */,
 				452304581D1D50C30006EB01 /* NavigationBar.xcassets in Resources */,
 				452726E71D251B1C008A90B5 /* pick-up-667h@2x.png in Resources */,
 				45CA86031D37A0AF001F3014 /* register-icon-667h@2x.png in Resources */,
+				45CE0F201D3FA54A007BDAED /* status-01@3x.png in Resources */,
 				4530EA121D26839400EAADBF /* twitter@2x.png in Resources */,
 				452726FB1D2522CA008A90B5 /* third-slide@3x.png in Resources */,
 				452726E81D251B1C008A90B5 /* second-slide-667h@2x.png in Resources */,
 				4530EA1A1D2683A100EAADBF /* close-menu-568h@2x.png in Resources */,
 				45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */,
+				45CE0F241D3FA54A007BDAED /* status-01-667h@2x.png in Resources */,
 				452726C91D251022008A90B5 /* MapView.xcassets in Resources */,
 				4523045E1D1D51AC0006EB01 /* PIOOrderViewController.xib in Resources */,
 				453BE7E01D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf in Resources */,
 				4530EA1E1D2683A100EAADBF /* menu-bg-568h@2x.png in Resources */,
 				452339381D3CAD230062A4F2 /* PIOFeedbackViewController.xib in Resources */,
 				4530EA101D26839400EAADBF /* logo@2x.png in Resources */,
+				45CE0F271D3FA54A007BDAED /* status-04-667h@2x.png in Resources */,
 				452726DF1D2515EC008A90B5 /* second-slide@2x.png in Resources */,
+				45CE0F1C1D3FA54A007BDAED /* status-01-568h@2x.png in Resources */,
+				45CE0F221D3FA54A007BDAED /* status-03@3x.png in Resources */,
+				45CE0F1D1D3FA54A007BDAED /* status-02-568h@2x.png in Resources */,
 				4523393C1D3CB43B0062A4F2 /* Feedback.xcassets in Resources */,
 				4530EA1F1D2683A100EAADBF /* twitter-568h@2x.png in Resources */,
 				4530EA2C1D2683D800EAADBF /* twitter-667h@2x.png in Resources */,
 				452EA3881D229759003F1825 /* PIOContactInfoViewController.xib in Resources */,
+				45CE0EEF1D3F522C007BDAED /* OrderSummary.xcassets in Resources */,
 				4530EA0E1D26839400EAADBF /* facebook@2x.png in Resources */,
 				4527270B1D252ECE008A90B5 /* MyriadPro-Cond.otf in Resources */,
-				45A302881D3E38BF009539F2 /* 17 (1).png in Resources */,
 				4530EA371D2683ED00EAADBF /* logo@3x.png in Resources */,
 				4530EA0F1D26839400EAADBF /* instagram@2x.png in Resources */,
+				45CE0F251D3FA54A007BDAED /* status-02-667h@2x.png in Resources */,
+				45CE0EFA1D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.xib in Resources */,
 				4527270C1D252ECE008A90B5 /* MyriadPro-CondIt.otf in Resources */,
+				45CE0F181D3FA54A007BDAED /* status-01@2x.png in Resources */,
 				45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
@@ -989,10 +1123,14 @@
 				45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */,
 				45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */,
 				4527270E1D252ECE008A90B5 /* MyriadPro-Regular.otf in Resources */,
+				45CE0F1B1D3FA54A007BDAED /* status-04@2x.png in Resources */,
 				4527270A1D252ECE008A90B5 /* MyriadPro-BoldIt.otf in Resources */,
+				45CE0F231D3FA54A007BDAED /* status-04@3x.png in Resources */,
 				4530EA1D1D2683A100EAADBF /* logo-568h@2x.png in Resources */,
+				45CE0F001D3FA0AD007BDAED /* PIOOrderStatusViewController.xib in Resources */,
 				45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */,
 				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
+				45CE0F1A1D3FA54A007BDAED /* status-03@2x.png in Resources */,
 				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
 				45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */,
 				45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */,
@@ -1068,9 +1206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CE0EFF1D3FA0AD007BDAED /* PIOOrderStatusViewController.m in Sources */,
 				454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */,
 				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
 				452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */,
+				45CE0EF91D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m in Sources */,
 				45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
 				457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */,

@@ -15,6 +15,7 @@
                 <outlet property="loginButton" destination="QYe-F5-Gl2" id="83z-Gy-2w2"/>
                 <outlet property="phoneTextField" destination="DX2-BM-xk4" id="XPv-0n-nB4"/>
                 <outlet property="saveButton" destination="tW6-P7-ynL" id="Hq5-aA-Hhh"/>
+                <outlet property="saveForFutureButton" destination="ydL-yT-Abl" id="82N-Ks-lrh"/>
                 <outlet property="specialInstrructionsTextView" destination="sQG-Iw-7jE" id="RuD-hq-KPC"/>
                 <outlet property="topTitleLabel" destination="Rud-Qo-L33" id="Rcz-yP-cIu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -97,7 +98,7 @@
                     <rect key="frame" x="48" y="219" width="282" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <view contentMode="scaleToFill" id="NeE-71-Coe">
                     <rect key="frame" x="19" y="242" width="281" height="1"/>
@@ -148,7 +149,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="459" y="265"/>
+            <point key="canvasLocation" x="328" y="247"/>
         </view>
     </objects>
     <resources>

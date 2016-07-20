@@ -7,11 +7,12 @@
 //
 
 #import "PIOOrderSummaryViewController.h"
+#import "PIOOrderStatusViewController.h"
+#import "PIOMapViewController.h"
 #import "PIOAppController.h"
 
 @interface PIOOrderSummaryViewController ()
 
-@property (nonatomic, weak) IBOutlet UILabel *orderConfirmationTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *orderPlacedTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *orderIDTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *orderIDLabel;
@@ -58,11 +59,23 @@
 
 #pragma mark - IBActions
 
+- (IBAction)cancelOrderButtonPressed:(id)sender
+{
+    UIAlertView *alert =[[UIAlertView alloc]initWithTitle: @"" message: @"" delegate: self cancelButtonTitle: nil otherButtonTitles:@"YES", @"NO", nil];
+    [alert show];
+    
+}
+
+- (IBAction)orderStatusButtonPressed:(id)sender
+{
+    PIOOrderStatusViewController *orderStatusViewController = [PIOOrderStatusViewController new];
+    [self.navigationController pushViewController: orderStatusViewController animated: YES];
+}
+
 #pragma mark - Private Methods
 
 - (void)applyFonts
 {
-    [self.orderConfirmationTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.7f]];
     [self.orderPlacedTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.orderIDTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 6.75f]];
     [self.orderIDLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
@@ -71,9 +84,36 @@
     [self.deliveryDateTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 6.75f]];
     [self.deliverDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
     [self.AddressTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 6.75f]];
-    [self.orderConfirmationTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
+    [self.addressLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
     [self.cancelButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
     [self.orderStatusButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
+    
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        
+        if (![self.navigationController.visibleViewController isKindOfClass:[PIOMapViewController class]] ) {
+            
+            PIOMapViewController *orderViewController;
+            for (UIViewController *viewController in self.navigationController.viewControllers) {
+                if ([viewController isKindOfClass:[PIOMapViewController class]]) {
+                    orderViewController = (PIOMapViewController *)viewController;
+                    break;
+                }
+            }
+            if (orderViewController == nil) {
+                orderViewController = [PIOMapViewController new];
+                [[[PIOAppController sharedInstance] navigationController] pushViewController: orderViewController animated:NO];
+            } else {
+                
+                [[[PIOAppController sharedInstance] navigationController] popToViewController: orderViewController animated:NO];
+            }
+        }
+    }
     
 }
 

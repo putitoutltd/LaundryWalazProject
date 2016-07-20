@@ -10,4 +10,19 @@
 
 @interface PIOUserPref : NSObject
 
++ (void)setInforSavedForFuture:(BOOL)infoSavedForFuture;
++ (BOOL)isInforSavedForFuture;
+
++ (void)setFirstName:(NSString *)firstName;
++ (NSString *)requestFirstName;
+
++ (void)setLastName:(NSString *)lastName;
++ (NSString *)requestLastName;
+
++ (void)setEmailAddress:(NSString *)emailAddress;
++ (NSString *)requestEmailAddress;
+
++ (void)setPhoneNumber:(NSString *)phoneNumer;
++ (NSString *)requestPhoneNumber;
+
 @end

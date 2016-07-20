@@ -39,6 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    self.menuButtonNeedToHide = NO;
     self.navigationController.navigationBar.hidden = NO;
     
     // Add Locations for dropdown list
@@ -75,6 +77,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    
     
 }
 
