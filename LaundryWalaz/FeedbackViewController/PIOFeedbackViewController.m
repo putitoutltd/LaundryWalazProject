@@ -26,6 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Hide Back button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem=nil;
+    self.backButtonHide = YES;
+    
     // Do any additional setup after loading the view from its nib.
     
     // Add feedback options for dropdown list
@@ -42,22 +48,14 @@
     self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     [self hideTableview];
-}
+    
+ }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-//    [self performSelector: @selector(abc) withObject: nil afterDelay: 1.0];
+
     
-}
-- (void)abc
-{
-    UIImage *backgroundImageForDefaultBarMetrics = [UIImage imageNamed:@"pio-navigation-bar-background"];
-    
-    
-    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height-5;
-    CGRect frame = CGRectMake(0.0f, 0.0f, backgroundImageForDefaultBarMetrics.size.width, navBarHeight);
-    [self.navigationController.navigationBar setFrame:frame];
 }
 
 - (void)didReceiveMemoryWarning

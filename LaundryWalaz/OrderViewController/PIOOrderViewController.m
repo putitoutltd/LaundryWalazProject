@@ -12,13 +12,16 @@
 #import "PIOAppController.h"
 
 @interface PIOOrderViewController () <IQActionSheetPickerViewDelegate>
+{
+    UIButton *dropdownButton;
+    NSMutableArray *slots;
+}
+@property (weak, nonatomic) IBOutlet UIButton *todayTimePickerButton;
+@property (weak, nonatomic) IBOutlet UIButton *tomorrowTimePickerButton;
+@property (weak, nonatomic) IBOutlet UIButton *otherdayTimePickerButton;
 @property (nonatomic, weak) IBOutlet UILabel *deliveronDateTitleLabel;
 
-// Time slots Morning, Afternoon, Evening.
-@property (nonatomic, weak) IBOutlet UIButton *morningSlotPickupButton;
-@property (nonatomic, weak) IBOutlet UIButton *afternoonSlotPickupButton;
-@property (nonatomic, weak) IBOutlet UIButton *eveningSlotPickupButton;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) IBOutlet UIView *deliveryDateContainerView;
 @property (nonatomic, weak) IBOutlet UIView *pickupDateContainerView;
@@ -67,6 +70,10 @@
     self.navigationController.navigationBar.hidden = NO;
     self.menuButtonNeedToHide = NO;
     
+    // Set Tableview Border
+    self.tableView.layer.borderWidth = .8;
+    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
     [self setUpInitialVauesForView];
 }
 
@@ -74,7 +81,90 @@
 {
     [super viewWillAppear: animated];
     
+    [self hideTableview];
     
+    
+}
+
+- (NSMutableArray *)generateTimeSlotsForOrderWiOption:(BOOL)isToday withDate:(NSDate *)date
+{
+    NSMutableArray * timeSlots = [[NSMutableArray alloc] init];
+    
+    //  use gregorian calendar for calendrical calculations
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    //  get current date
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [df setTimeZone:[NSTimeZone systemTimeZone]];
+    [df setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
+    
+    
+    
+    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    units |= NSHourCalendarUnit | NSMinuteCalendarUnit;
+    NSDateComponents *currentComponents = [gregorian components:units fromDate:date];
+    if (! isToday) {
+        [currentComponents setHour:11];
+        currentComponents.minute = 0;
+    }
+    
+    NSDate* newDate = [gregorian dateFromComponents:currentComponents];
+    
+    //  format and display the time
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    timeFormatter.dateFormat = @"hh:mm aa";
+    NSString *currentTimeString = [timeFormatter stringFromDate:newDate];
+    NSLog(@"Current hour = %@",currentTimeString);
+    if (!isToday) {
+        [timeSlots addObject: currentTimeString];
+    }
+    
+    NSInteger hour = [currentComponents hour];
+    
+    hour=hour%12;
+    NSInteger count = 0;
+    if ((8-hour>0)) {
+        count = 8-hour;
+    }
+    else if (hour == 11)
+    {
+        count = 10;
+    }
+    for (int i = 1; i<=count; i++) {
+        //  add two hours
+        NSDateComponents *incrementalComponents = [[NSDateComponents alloc] init];
+        if (i ==1 && isToday) {
+            incrementalComponents.hour = 2;
+        }
+        else {
+            NSInteger increment = i+1;
+            if (!isToday) {
+                increment = i;
+            }
+            incrementalComponents.hour = increment ;
+        }
+        
+        NSDate *twoHoursLater = [gregorian dateByAddingComponents:incrementalComponents toDate:newDate options:0];
+        
+        //  format and display new time
+        NSString *twoHoursLaterStr = [timeFormatter stringFromDate:twoHoursLater];
+        NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
+        NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
+        if ([[array objectAtIndex:0] integerValue] == 8) {
+            NSLog(@"Two hours later = 8:00 PM");
+             [timeSlots addObject: @"08:00 PM"];
+            break;
+        }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
+            break;
+        }
+         [timeSlots addObject: twoHoursLaterStr];
+        NSLog(@"Two hours later = %@",twoHoursLaterStr);
+    }
+
+    
+    return  timeSlots;
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,32 +174,6 @@
 }
 
 #pragma mark - IBAction
-- (IBAction)timeSlotButtonPressed:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    
-    [self setButtonStateIfSelected: button isSelected: YES withColor: [UIColor lightGrayColor]];
-    
-    switch (button.tag) {
-        case PIOTimeSlotMorning: {
-            [self setButtonStateIfSelected: self.afternoonSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            [self setButtonStateIfSelected: self.eveningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            break;
-        }
-        case PIOTimeSlotAfternoon: {
-            [self setButtonStateIfSelected: self.morningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            [self setButtonStateIfSelected: self.eveningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            break;
-        }
-        case PIOTimeSlotEvening: {
-            [self setButtonStateIfSelected: self.morningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            [self setButtonStateIfSelected: self.afternoonSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-            break;
-        }
-        default:
-            break;
-    }
-}
 
 - (IBAction)regularButtonPressed:(id)sender
 {
@@ -127,8 +191,6 @@
         [self setButtonStateIfSelected: self.todayDeliveryButton isSelected:NO withColor: [UIColor whiteColor]];
     }
     self.todayDeliveryButton.enabled = NO;
-    self.afternoonSlotPickupButton.enabled = YES;
-    self.eveningSlotPickupButton.enabled = YES;
 }
 
 - (IBAction)expressButtonPressed:(id)sender
@@ -149,9 +211,7 @@
     
     [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES withColor: [UIColor clearColor]];
     [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
-    [self timeSlotButtonPressed: self.morningSlotPickupButton];
-    self.afternoonSlotPickupButton.enabled = NO;
-    self.eveningSlotPickupButton.enabled = NO;
+    
     [self.deliveryDateContainerView setUserInteractionEnabled: NO];
     [self.pickupDateContainerView setUserInteractionEnabled: NO];
     
@@ -167,28 +227,14 @@
 - (IBAction)pickupAndDeliveryButtonPressed:(id)sender
 {
     UIButton *button = (UIButton *)sender;
+    [self hideTableview];
     switch (button.tag) {
         case PIOOrderDayTodayPickUp: {
             button = self.todayPickupButton;
             
+            self.todayTimePickerButton.hidden = NO;
             self.tomorrowDeliveryButton.enabled = YES;
             // Disable Morning slot if not available for Pickup
-            BOOL isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotMorning];
-            if (!isPickupAvailable) {
-                self.morningSlotPickupButton.enabled = NO;
-            }
-            
-            // Disable Afternoon slot if not available for Pickup
-            isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotAfternoon];
-            if (!isPickupAvailable) {
-                self.afternoonSlotPickupButton.enabled = NO;
-            }
-            
-            // Disable Afternoon slot if not available for Pickup
-            isPickupAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotEvening];
-            if (!isPickupAvailable) {
-                self.eveningSlotPickupButton.enabled = NO;
-            }
             
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -200,9 +246,7 @@
         case PIOOrderDayTomorrowPickUp: {
             button = self.tomorrowPickupButton;
             
-            self.morningSlotPickupButton.enabled = YES;
-            self.afternoonSlotPickupButton.enabled = YES;
-            self.eveningSlotPickupButton.enabled = YES;
+            self.tomorrowTimePickerButton.hidden = NO;
             self.tomorrowDeliveryButton.enabled = NO;
             
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -219,9 +263,7 @@
             
             button = self.otherDayPickupButton;
             
-            self.morningSlotPickupButton.enabled = YES;
-            self.afternoonSlotPickupButton.enabled = YES;
-            self.eveningSlotPickupButton.enabled = YES;
+            self.otherdayTimePickerButton.hidden = NO;
             
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -276,7 +318,11 @@
 {
     self.fromPickUp = YES;
     self.pickupSelectedDate = nil;
-    [self showDatePickerWithMinDate: [NSDate new]];
+    NSDate *date = [NSDate new];
+    if ((UIButton *)sender == self.otherDayPickupButton) {
+        date = [NSDate dateWithTimeInterval:(24*60*60)*2 sinceDate: [NSDate new]];
+    }
+    [self showDatePickerWithMinDate: date];
 }
 
 - (IBAction)otherDeliveryDateButtonPressed:(id)sender
@@ -291,6 +337,62 @@
     PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
     [self.navigationController pushViewController: contactInfoViewController animated: YES];
 }
+
+- (IBAction)dropdownButtonPressed:(id)sender
+{
+    
+    UIButton *button = (UIButton *)sender;
+    
+    NSDate *date = [NSDate new];
+    BOOL isToday = YES;
+    
+    if (button == self.tomorrowTimePickerButton) {
+        
+        date = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: [NSDate new]];
+        isToday = NO;
+    }
+    else if (button == self.otherdayTimePickerButton) {
+        date = [NSDate dateWithTimeInterval:(24*60*60)*2 sinceDate: [NSDate new]];
+        isToday = NO;
+    }
+    
+    
+    slots = [self generateTimeSlotsForOrderWiOption: isToday withDate: date];
+    
+    
+    [self.tableView reloadData];
+    
+    
+    dropdownButton = button;
+    self.tableView.frame = CGRectMake(button.frame.origin.x, self.pickupDateContainerView.frame.size.height+self.pickupDateContainerView.frame.origin.y, button.frame.size.width,0);
+    
+    CGRect frame = CGRectMake(button.frame.origin.x, self.pickupDateContainerView.frame.size.height+self.pickupDateContainerView.frame.origin.y, button.frame.size.width,0);
+    NSInteger animation = UIViewAnimationOptionCurveEaseIn;
+    
+    if (!button.isSelected) {
+        [self hideTableview];
+        CGFloat H = self.view.frame.size.height-self.tableView.frame.origin.y;
+        frame =  CGRectMake(button.frame.origin.x, self.pickupDateContainerView.frame.size.height+self.pickupDateContainerView.frame.origin.y, button.frame.size.width, 150);
+        animation = UIViewAnimationOptionCurveEaseOut;
+        [button setSelected: YES];
+        self.tableView.hidden = NO;
+        
+    }
+    else
+    {
+        [self hideTableview];
+        
+    }
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:animation animations:^{
+        self.tableView.frame  = frame;
+    } completion:^(BOOL finished) {
+        
+        
+    }];
+}
+
+
 
 #pragma mark - IQActionSheetPickerViewDelegate
 
@@ -312,6 +414,17 @@
 
 #pragma mark - Private Methods
 
+- (void)hideTableview
+{
+    self.tableView.hidden = YES;
+    [dropdownButton setSelected: NO];
+    self.todayTimePickerButton.hidden = YES;
+    self.tomorrowTimePickerButton.hidden = YES;
+    self.otherdayTimePickerButton.hidden = YES;
+    
+}
+
+
 - (void)resetAllButtonsStates
 {
     [self setButtonStateIfSelected: self.todayPickupButton isSelected:NO withColor: [UIColor whiteColor]];
@@ -322,17 +435,6 @@
     [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected:NO withColor: [UIColor whiteColor]];
     [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected:NO withColor: [UIColor whiteColor]];
     
-    [self setButtonStateIfSelected: self.afternoonSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-    [self setButtonStateIfSelected: self.eveningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-    [self setButtonStateIfSelected: self.morningSlotPickupButton isSelected: NO withColor: [UIColor clearColor]];
-}
-
-- (void)applyBorderToTimeSlots
-{
-    
-    [self setbordersForTimeSlots: self.morningSlotPickupButton borderWidth:0.4 borderColor:[UIColor lightGrayColor]];
-    [self setbordersForTimeSlots: self.afternoonSlotPickupButton borderWidth:0.4 borderColor:[UIColor lightGrayColor]];
-    [self setbordersForTimeSlots: self.eveningSlotPickupButton borderWidth:0.8 borderColor:[UIColor lightGrayColor]];
 }
 
 - (void)setbordersForTimeSlots:(UIButton *)button borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
@@ -379,7 +481,6 @@
     
     [self regularButtonPressed: nil];
     [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
-    [self applyBorderToTimeSlots];
     
 }
 
@@ -535,5 +636,52 @@
     }
     
 }
+
+#pragma mark - Table View Delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return slots.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"LocationCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    [cell.detailTextLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
+    [cell.detailTextLabel setText: [slots objectAtIndex: indexPath.row]];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.tableView.frame  = CGRectMake(dropdownButton.frame.origin.x, self.pickupDateContainerView.frame.size.height+self.pickupDateContainerView.frame.origin.y, dropdownButton.frame.size.width,0);
+    } completion:^(BOOL finished) {
+        [dropdownButton setTitle: [slots objectAtIndex: indexPath.row] forState:UIControlStateNormal];
+        [dropdownButton.titleLabel setText: [slots objectAtIndex: indexPath.row]];
+        [self hideTableview];
+        
+        
+        
+    }];
+    
+}
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 30.0f;
+}
+
 
 @end

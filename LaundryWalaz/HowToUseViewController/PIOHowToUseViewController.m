@@ -14,6 +14,7 @@
 
 @interface PIOHowToUseViewController ()
 @property (nonatomic, weak) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *crossButton;
 
 @property (nonatomic, weak) IBOutlet SwipeView *swipeView;
 @property (nonatomic, weak) IBOutlet UIButton *pickupButton;
@@ -37,6 +38,24 @@
 {
     [super viewWillAppear: animated];
     self.navigationController.navigationBar.hidden = YES;
+    if ([self isFromMenu]) {
+        self.loginButton.hidden = YES;
+        self.pickupButton.hidden = YES;
+        self.crossButton.hidden = NO;
+        
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewWillDisappear: animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +65,11 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction)crossButtonPressed:(id)sender
+{
+    [self.navigationController popViewControllerAnimated: NO];
+}
 
 - (IBAction)loginButtonPressed:(id)sender
 {
@@ -63,6 +87,7 @@
 
 - (void)initializeView
 {
+    self.crossButton.hidden = YES;
     self.swipeView.pagingEnabled = YES;
     self.items = [NSMutableArray array];
     [self.items addObject: @"first-slide"];

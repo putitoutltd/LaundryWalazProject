@@ -14,6 +14,7 @@
 #import "PIOAppController.h"
 #import "CDRTranslucentSideBar.h"
 #import "PIOFeedbackViewController.h"
+#import "PIOOrderStatusViewController.h"
 #import "PIOConstants.h"
 
 const NSInteger PIOLogOutButtonIndex = 0;
@@ -93,7 +94,11 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
         }
         case PIODashboardRowTypeHowItWorks: {
+            PIOHowToUseViewController *howToUseViewController = [PIOHowToUseViewController new];
+            howToUseViewController.fromMenu = YES;
+            [self.navigationController pushViewController: howToUseViewController animated: YES];
             break;
+            
         }
         case PIODashboardRowTypeOrder: {
             
@@ -164,6 +169,28 @@ const NSInteger PIOLogOutButtonIndex = 0;
                     [[[PIOAppController sharedInstance] navigationController] popToViewController: feedbackViewController animated:NO];
                 }
             }
+            break;
+        }
+        case PIODashboardRowTypeMyOrder: {
+            
+            if (![visibleViewController isKindOfClass:[PIOOrderStatusViewController class]] ) {
+                
+                PIOOrderStatusViewController *orderStatusViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOOrderStatusViewController class]]) {
+                        orderStatusViewController = (PIOOrderStatusViewController *)viewController;
+                        break;
+                    }
+                }
+                if (orderStatusViewController == nil) {
+                    orderStatusViewController = [PIOOrderStatusViewController new];
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: orderStatusViewController animated:NO];
+                } else {
+                    
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: orderStatusViewController animated:NO];
+                }
+            }
+            
             break;
         }
         default:

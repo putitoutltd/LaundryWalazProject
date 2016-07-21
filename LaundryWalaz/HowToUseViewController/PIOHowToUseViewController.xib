@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOHowToUseViewController">
             <connections>
+                <outlet property="crossButton" destination="f2f-4B-s26" id="Hgo-a1-EfF"/>
                 <outlet property="loginButton" destination="Dgc-3S-UDL" id="FD5-sX-Rns"/>
                 <outlet property="pickupButton" destination="EON-LE-Xv4" id="J42-7e-jOi"/>
                 <outlet property="swipeView" destination="abw-Yq-1nR" id="PLj-u3-Zyj"/>
@@ -18,23 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abw-Yq-1nR" customClass="SwipeView">
+                <view contentMode="scaleToFill" id="abw-Yq-1nR" customClass="SwipeView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgc-3S-UDL">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dgc-3S-UDL">
                             <rect key="frame" x="0.0" y="451" width="160" height="29"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="160" id="lx9-bg-hTE"/>
-                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Login" backgroundImage="pick-up.png"/>
                             <connections>
                                 <action selector="loginButtonPressed:" destination="-1" eventType="touchUpInside" id="biz-Bn-c1j"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EON-LE-Xv4">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EON-LE-Xv4">
                             <rect key="frame" x="160" y="451" width="160" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Pick-Up" backgroundImage="pick-up.png"/>
@@ -42,16 +43,16 @@
                                 <action selector="startNowButtonPressed:" destination="-1" eventType="touchUpInside" id="z6f-40-gi2"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f2f-4B-s26">
+                            <rect key="frame" x="279" y="8" width="33" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="close-menu.png"/>
+                            <connections>
+                                <action selector="crossButtonPressed:" destination="-1" eventType="touchUpInside" id="8AG-QG-RJF"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="Dgc-3S-UDL" firstAttribute="baseline" secondItem="EON-LE-Xv4" secondAttribute="baseline" id="BJt-Ls-p5a"/>
-                        <constraint firstAttribute="bottom" secondItem="Dgc-3S-UDL" secondAttribute="bottom" id="Px1-zd-9Oo"/>
-                        <constraint firstItem="EON-LE-Xv4" firstAttribute="leading" secondItem="Dgc-3S-UDL" secondAttribute="trailing" id="feY-FH-NJd"/>
-                        <constraint firstItem="Dgc-3S-UDL" firstAttribute="height" secondItem="EON-LE-Xv4" secondAttribute="height" id="gq7-2R-zJ0"/>
-                        <constraint firstItem="Dgc-3S-UDL" firstAttribute="leading" secondItem="abw-Yq-1nR" secondAttribute="leading" id="uQs-2d-lTr"/>
-                        <constraint firstAttribute="trailing" secondItem="EON-LE-Xv4" secondAttribute="trailing" id="zjb-dH-DiO"/>
-                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="dWd-Vc-TEz"/>
                         <outlet property="delegate" destination="-1" id="oQR-DN-agX"/>
@@ -59,18 +60,13 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="abw-Yq-1nR" secondAttribute="bottom" id="3QR-ag-ZbC"/>
-                <constraint firstItem="abw-Yq-1nR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="acW-0O-z4f"/>
-                <constraint firstAttribute="trailing" secondItem="abw-Yq-1nR" secondAttribute="trailing" id="qOW-9X-2Mt"/>
-                <constraint firstItem="abw-Yq-1nR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qhT-Ak-bQc"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="673" y="13"/>
         </view>
     </objects>
     <resources>
+        <image name="close-menu.png" width="33" height="33"/>
         <image name="pick-up.png" width="168" height="29"/>
     </resources>
 </document>

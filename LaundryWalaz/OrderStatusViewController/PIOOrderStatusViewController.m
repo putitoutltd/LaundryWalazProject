@@ -27,14 +27,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    // Hide Back button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem=nil;
+    self.backButtonHide = YES;
+    
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Order Status" onViewController:self];
     self.backgroundImageView.image = [UIImage imageForDeviceWithName: @"status-01"];
     //[self.backgroundImageView setContentMode: UIViewContentModeScaleAspectFit];
    //
     self.backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.pickupTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 31.06f]];
-    [self.timeLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
+    [self.pickupTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
+    [self.timeLabel setFont: [UIFont PIOMyriadProLightWithSize: 31.06f]];
     [self.dayLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.04f]];
 
 }

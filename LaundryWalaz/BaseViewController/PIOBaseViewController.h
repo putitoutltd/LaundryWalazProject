@@ -11,4 +11,6 @@
 @interface PIOBaseViewController : UIViewController
 @property (nonatomic, strong) UIBarButtonItem *backBarButtonItem;
 @property (nonatomic, assign, getter= isMenuButtonNeedToHide) BOOL menuButtonNeedToHide;
+@property (nonatomic, assign, getter= isBackButtonHide) BOOL backButtonHide;
+
 @end

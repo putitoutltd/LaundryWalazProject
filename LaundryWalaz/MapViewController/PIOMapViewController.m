@@ -40,6 +40,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    // Hide Back button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem=nil;
+    self.backButtonHide = YES;
+    
     self.menuButtonNeedToHide = NO;
     self.navigationController.navigationBar.hidden = NO;
     

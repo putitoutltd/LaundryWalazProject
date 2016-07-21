@@ -23,6 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if (self.isBackButtonHide) {
+        [self hideBackButton];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,6 +47,14 @@
 
 
 #pragma mark - Private Methods
+
+- (void)hideBackButton
+{
+    // Hide Back button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem=nil;
+    self.navigationItem.leftBarButtonItems=nil;
+}
 
 - (void)configureNavigationBar
 {
@@ -69,6 +80,10 @@
                                                              action:@selector(backBarButtonItemPressed:)];
     //self.navigationItem.rightBarButtonItems = @[menuBarButtonItem];
     self.navigationItem.leftBarButtonItem = self.backBarButtonItem;
+   
+    if (self.isBackButtonHide) {
+        [self hideBackButton];
+    }
 
   
 }

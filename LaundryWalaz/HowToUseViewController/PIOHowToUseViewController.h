@@ -11,4 +11,6 @@
 
 @interface PIOHowToUseViewController : UIViewController
 
+@property (nonatomic, assign, getter= isFromMenu) BOOL fromMenu;
+
 @end
