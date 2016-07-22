@@ -11,6 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "PIOOrderViewController.h"
 #import "PIOAppController.h"
+#import "PIOMyAnnotation.h"
 
 #define METERS_MILE 1609.344
 #define METERS_FEET 3.28084
@@ -19,6 +20,8 @@
 {
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    NSMutableArray *latitudes;
+    NSMutableArray *longitudes;
 }
 @property (nonatomic, weak) IBOutlet UIButton *confirmAddressButton;
 @property (nonatomic, weak) IBOutlet UIButton *dropdownButton;
@@ -83,9 +86,79 @@
 {
     [super viewWillAppear: animated];
     
+   latitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: 31.500898], [NSNumber numberWithDouble: 31.505354], nil];
     
+    longitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: 74.366417], [NSNumber numberWithDouble: 74.349949], nil];
+    NSMutableArray *places = [NSMutableArray arrayWithObjects: @"Cavalry Ground Park", @"Gulberg III", nil];
+    
+    NSMutableArray *annotations = [[NSMutableArray alloc]init];
+    for ( int i=0; i<[latitudes count]; i++)
+    {
+        CLLocationCoordinate2D coord;
+        
+        coord.latitude=[[NSString stringWithFormat:@"%@",[latitudes objectAtIndex:i]] floatValue];
+        coord.longitude=[[NSString stringWithFormat:@"%@",
+                          [longitudes objectAtIndex:i]] floatValue];
+//        MKCoordinateRegion region1;
+//        region1.center=coord;
+//        region1.span.longitudeDelta=20 ;
+//        region1.span.latitudeDelta=20;
+//        [self.mapView setRegion:region1 animated:YES];
+        
+        NSString *titleStr =[places objectAtIndex:i] ;
+        // NSLog(@"title is:%@",titleStr);
+        
+        PIOMyAnnotation*  annotObj =[[PIOMyAnnotation alloc]initWithCoordinate:coord title:titleStr];
+        [self.mapView addAnnotation:annotObj];
+        
+    }
+    
+    
+    [self zoomMapViewToFitAnnotations: self.mapView animated: YES];
 }
 
+
+#define MINIMUM_ZOOM_ARC 0.014 //approximately 1 miles (1 degree of arc ~= 69 miles)
+#define ANNOTATION_REGION_PAD_FACTOR 1.15
+#define MAX_DEGREES_ARC 360
+//size the mapView region to fit its annotations
+- (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated
+{
+    NSArray *annotations = mapView.annotations;
+    NSInteger count = [mapView.annotations count];
+    if ( count == 0) { return; } //bail if no annotations
+    
+    //convert NSArray of id <MKAnnotation> into an MKCoordinateRegion that can be used to set the map size
+    //can't use NSArray with MKMapPoint because MKMapPoint is not an id
+    MKMapPoint points[count]; //C array of MKMapPoint struct
+    for( int i=0; i<count; i++ ) //load points C array by converting coordinates to points
+    {
+        CLLocationCoordinate2D coordinate = [(id <MKAnnotation>)[annotations objectAtIndex:i] coordinate];
+        points[i] = MKMapPointForCoordinate(coordinate);
+    }
+    //create MKMapRect from array of MKMapPoint
+    MKMapRect mapRect = [[MKPolygon polygonWithPoints:points count:count] boundingMapRect];
+    //convert MKCoordinateRegion from MKMapRect
+    MKCoordinateRegion region = MKCoordinateRegionForMapRect(mapRect);
+    
+    //add padding so pins aren't scrunched on the edges
+    region.span.latitudeDelta  *= ANNOTATION_REGION_PAD_FACTOR;
+    region.span.longitudeDelta *= ANNOTATION_REGION_PAD_FACTOR;
+    //but padding can't be bigger than the world
+    if( region.span.latitudeDelta > MAX_DEGREES_ARC ) { region.span.latitudeDelta  = MAX_DEGREES_ARC; }
+    if( region.span.longitudeDelta > MAX_DEGREES_ARC ){ region.span.longitudeDelta = MAX_DEGREES_ARC; }
+    
+    //and don't zoom in stupid-close on small samples
+    if( region.span.latitudeDelta  < MINIMUM_ZOOM_ARC ) { region.span.latitudeDelta  = MINIMUM_ZOOM_ARC; }
+    if( region.span.longitudeDelta < MINIMUM_ZOOM_ARC ) { region.span.longitudeDelta = MINIMUM_ZOOM_ARC; }
+    //and if there is a sample of 1 we want the max zoom-in instead of max zoom-out
+    if( count == 1 )
+    {
+        region.span.latitudeDelta = MINIMUM_ZOOM_ARC;
+        region.span.longitudeDelta = MINIMUM_ZOOM_ARC;
+    }
+    [mapView setRegion:region animated:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -256,6 +329,29 @@
         [self.locationTextField setText: [self.locations objectAtIndex: indexPath.row]];
         [self hideTableview];
         
+//        CLLocationCoordinate2D coord;
+//        
+//        coord.latitude=[[NSString stringWithFormat:@"%@",[latitudes objectAtIndex:indexPath.row]] floatValue];
+//        coord.longitude=[[NSString stringWithFormat:@"%@",
+//                          [longitudes objectAtIndex:indexPath.row]] floatValue];
+//        PIOMyAnnotation *ann = [[PIOMyAnnotation alloc]initWithCoordinate:coord title:@""];
+//        CLLocation *oldLocation = [[CLLocation alloc]initWithLatitude: ann.coordinate.latitude longitude:ann.coordinate.longitude] ;
+//        
+//        
+//               int distance = [self.mapView.userLocation.location distanceFromLocation:oldLocation];
+//        if(distance >50 && distance <100)
+//        {
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Distance"
+//                                                            message:[NSString stringWithFormat:@"%i meters",distance]
+//                                                           delegate:nil
+//                                                  cancelButtonTitle:@"OK"
+//                                                  otherButtonTitles:nil];
+//            [alert show];
+//            
+//        }
+//    
+     
         
         
     }];

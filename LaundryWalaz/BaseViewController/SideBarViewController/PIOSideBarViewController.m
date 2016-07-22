@@ -15,6 +15,7 @@
 #import "CDRTranslucentSideBar.h"
 #import "PIOFeedbackViewController.h"
 #import "PIOOrderStatusViewController.h"
+#import "PIOWebViewController.h"
 #import "PIOConstants.h"
 
 const NSInteger PIOLogOutButtonIndex = 0;
@@ -145,9 +146,57 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
         }
         case PIODashboardRowTypeFAQs: {
+            if (![visibleViewController isKindOfClass:[PIOWebViewController class]] ) {
+                
+                PIOWebViewController *webViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOWebViewController class]]) {
+                        webViewController = (PIOWebViewController *)viewController;
+                        break;
+                    }
+                }
+                
+                if (webViewController == nil) {
+                    webViewController = [PIOWebViewController new];
+                    webViewController.fromFAQs = YES;
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: webViewController animated:NO];
+                } else {
+                    webViewController.fromFAQs = YES;
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: webViewController animated:NO];
+                }
+            }
+            else {
+                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: @"faqs" forKey: @"page"];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshPage" object: dict];
+            }
+            
+            
             break;
         }
         case PIODashboardRowTypeTerms: {
+            if (![visibleViewController isKindOfClass:[PIOWebViewController class]] ) {
+                
+                PIOWebViewController *webViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOWebViewController class]]) {
+                        webViewController = (PIOWebViewController *)viewController;
+                        break;
+                    }
+                }
+                
+                if (webViewController == nil) {
+                    webViewController = [PIOWebViewController new];
+                    webViewController.fromFAQs = NO;
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: webViewController animated:NO];
+                } else {
+                    webViewController.fromFAQs = NO;
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: webViewController animated:NO];
+                }
+            }
+            else {
+                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: @"terms" forKey: @"page"];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshPage" object: dict];
+            }
             break;
         }
         case PIODashboardRowTypeFeedback: {

@@ -16,6 +16,8 @@
     UIButton *dropdownButton;
     NSMutableArray *slots;
 }
+@property (weak, nonatomic) IBOutlet UILabel *deliverMessageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pickupMessageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *todayTimePickerButton;
 @property (weak, nonatomic) IBOutlet UIButton *tomorrowTimePickerButton;
 @property (weak, nonatomic) IBOutlet UIButton *otherdayTimePickerButton;
@@ -34,6 +36,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *tomorrowPickupButton;
 @property (nonatomic, weak) IBOutlet UIButton *todayPickupButton;
 
+@property (nonatomic, assign, getter=isFromExpressDelivery) BOOL fromExpressDelivery;
 @property (nonatomic, assign, getter=isFromPickUp) BOOL fromPickUp;
 @property (nonatomic, strong) NSDate *pickupSelectedDate;
 @property (nonatomic, strong) NSDate *deliverOnSelectedDate;
@@ -86,86 +89,7 @@
     
 }
 
-- (NSMutableArray *)generateTimeSlotsForOrderWiOption:(BOOL)isToday withDate:(NSDate *)date
-{
-    NSMutableArray * timeSlots = [[NSMutableArray alloc] init];
-    
-    //  use gregorian calendar for calendrical calculations
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    
-    //  get current date
-    
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-    [df setTimeZone:[NSTimeZone systemTimeZone]];
-    [df setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
-    
-    
-    
-    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
-    units |= NSHourCalendarUnit | NSMinuteCalendarUnit;
-    NSDateComponents *currentComponents = [gregorian components:units fromDate:date];
-    if (! isToday) {
-        [currentComponents setHour:11];
-        currentComponents.minute = 0;
-    }
-    
-    NSDate* newDate = [gregorian dateFromComponents:currentComponents];
-    
-    //  format and display the time
-    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
-    timeFormatter.dateFormat = @"hh:mm aa";
-    NSString *currentTimeString = [timeFormatter stringFromDate:newDate];
-    NSLog(@"Current hour = %@",currentTimeString);
-    if (!isToday) {
-        [timeSlots addObject: currentTimeString];
-    }
-    
-    NSInteger hour = [currentComponents hour];
-    
-    hour=hour%12;
-    NSInteger count = 0;
-    if ((8-hour>0)) {
-        count = 8-hour;
-    }
-    else if (hour == 11)
-    {
-        count = 10;
-    }
-    for (int i = 1; i<=count; i++) {
-        //  add two hours
-        NSDateComponents *incrementalComponents = [[NSDateComponents alloc] init];
-        if (i ==1 && isToday) {
-            incrementalComponents.hour = 2;
-        }
-        else {
-            NSInteger increment = i+1;
-            if (!isToday) {
-                increment = i;
-            }
-            incrementalComponents.hour = increment ;
-        }
-        
-        NSDate *twoHoursLater = [gregorian dateByAddingComponents:incrementalComponents toDate:newDate options:0];
-        
-        //  format and display new time
-        NSString *twoHoursLaterStr = [timeFormatter stringFromDate:twoHoursLater];
-        NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
-        NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
-        if ([[array objectAtIndex:0] integerValue] == 8) {
-            NSLog(@"Two hours later = 8:00 PM");
-             [timeSlots addObject: @"08:00 PM"];
-            break;
-        }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
-            break;
-        }
-         [timeSlots addObject: twoHoursLaterStr];
-        NSLog(@"Two hours later = %@",twoHoursLaterStr);
-    }
 
-    
-    return  timeSlots;
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -181,6 +105,8 @@
     if (self.regularDeliveryButton.isSelected) {
         return;
     }
+    self.fromExpressDelivery = NO;
+    self.pickupMessageLabel.hidden = YES;
     [self resetAllButtonsStates];
     [self blockScreenContentForFalseOrder: YES];
     [self.regularDeliveryButton setSelected: YES];
@@ -191,29 +117,47 @@
         [self setButtonStateIfSelected: self.todayDeliveryButton isSelected:NO withColor: [UIColor whiteColor]];
     }
     self.todayDeliveryButton.enabled = NO;
+    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:18];
+    if (isTimeGreaterThan9AM) {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+        self.todayPickupButton.enabled = NO;
+        [self hideAllDropdownButtons];
+    }
+    else {
+        [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+    }
 }
 
 - (IBAction)expressButtonPressed:(id)sender
 {
-    
+    self.fromExpressDelivery = YES;
+    self.pickupMessageLabel.hidden = NO;
     if (self.expressDeliveryButton.isSelected) {
         return;
     }
     
     [self resetAllButtonsStates];
+    [self hideAllDropdownButtons];
+    
+    
+    
+    
     [self.regularDeliveryButton setSelected: NO];
     [self.expressDeliveryButton setSelected: YES];
-    if (![self currentTimeForPickUpSlot: PIOTimeSlotMorning]) {
-        [self blockScreenContentForFalseOrder: NO];
-        return;
-        
-    }
+    
     
     [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES withColor: [UIColor clearColor]];
     [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
     
     [self.deliveryDateContainerView setUserInteractionEnabled: NO];
-    [self.pickupDateContainerView setUserInteractionEnabled: NO];
+   // [self.pickupDateContainerView setUserInteractionEnabled: NO];
+    
+    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:9];
+    if (isTimeGreaterThan9AM) {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+        self.todayPickupButton.enabled = NO;
+        [self hideAllDropdownButtons];
+    }
     
 }
 
@@ -221,7 +165,7 @@
 {
     [self.pickupDateContainerView setUserInteractionEnabled: block];
     [self.deliveryDateContainerView setUserInteractionEnabled: block];
-    [self.continueButton setEnabled: block];
+    
     
 }
 - (IBAction)pickupAndDeliveryButtonPressed:(id)sender
@@ -230,9 +174,13 @@
     [self hideTableview];
     switch (button.tag) {
         case PIOOrderDayTodayPickUp: {
+            
+            [self.todayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.todayPickupButton;
             
-            self.todayTimePickerButton.hidden = NO;
+            self.todayTimePickerButton.hidden = self.isFromExpressDelivery;
+            self.tomorrowTimePickerButton.hidden = YES;
+            self.otherdayTimePickerButton.hidden = YES;
             self.tomorrowDeliveryButton.enabled = YES;
             // Disable Morning slot if not available for Pickup
             
@@ -244,9 +192,13 @@
             break;
         }
         case PIOOrderDayTomorrowPickUp: {
+             [self.tomorrowTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.tomorrowPickupButton;
             
-            self.tomorrowTimePickerButton.hidden = NO;
+            self.tomorrowTimePickerButton.hidden = self.isFromExpressDelivery;
+            self.todayTimePickerButton.hidden = YES;
+            self.otherdayTimePickerButton.hidden = YES;
+            
             self.tomorrowDeliveryButton.enabled = NO;
             
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -261,10 +213,12 @@
             
             // Date will be selected using calender
             
+             [self.otherdayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.otherDayPickupButton;
             
-            self.otherdayTimePickerButton.hidden = NO;
-            
+            self.otherdayTimePickerButton.hidden = self.isFromExpressDelivery;
+            self.tomorrowTimePickerButton.hidden = YES;
+            self.todayTimePickerButton.hidden = YES;
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -304,13 +258,13 @@
             break;
     }
     
-    if (![self currentTimeForPickUpSlot: PIOTimeSlotMorning]) {
+//    if (![self currentTimeForPickUpSlot: PIOTimeSlotMorning]) {
+//        [self setButtonStateIfSelected: button isSelected:YES withColor: [UIColor clearColor]];
+//        
+//    }
+//    else {
         [self setButtonStateIfSelected: button isSelected:YES withColor: [UIColor clearColor]];
-        
-    }
-    else {
-        [self setButtonStateIfSelected: button isSelected:YES withColor: [UIColor clearColor]];
-    }
+//    }
 }
 
 
@@ -400,11 +354,11 @@
 {
     if (self.isFromPickUp) {
         self.pickupSelectedDate = date;
-        [self.otherDateLabel setText: [self dateToDateString: date]];
+        [self.openCalendarTitleLabel setText: [self dateToDateString: date]];
     }
     else {
         self.deliverOnSelectedDate = date;
-        [self.otherDeliveryDateLabel setText: [self dateToDateString: date]];
+        [self.openCalendarDeliveryTitleLabel setText: [self dateToDateString: date]];
     }
     
     
@@ -414,13 +368,126 @@
 
 #pragma mark - Private Methods
 
+- (BOOL)compareTimeIf6PMWithTimeToCompare:(NSInteger)time
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit ) fromDate:[NSDate date]];
+    
+    NSDate *todayCurrentTime = [calendar dateFromComponents:components];
+    
+    [components setHour:time];
+    NSDate *todayAt6PM = [calendar dateFromComponents:components];
+    
+    NSComparisonResult result = [todayCurrentTime compare:todayAt6PM];
+ 
+    if(result == NSOrderedDescending)
+    {
+        NSLog(@"date1 is later than date2");
+        
+        return YES;
+        
+    }
+    else if(result == NSOrderedAscending)
+    {
+        NSLog(@"date2 is later than date1");
+        return  NO;
+    }
+    else
+    {
+        
+        NSLog(@"date1 is equal to date2");
+        return  NO;
+    }
+    
+    
+}
+
+- (NSMutableArray *)generateTimeSlotsForOrderWiOption:(BOOL)isToday withDate:(NSDate *)date
+{
+    NSMutableArray * timeSlots = [[NSMutableArray alloc] init];
+    
+    //  use gregorian calendar for calendrical calculations
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    //  get current date
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [df setTimeZone:[NSTimeZone systemTimeZone]];
+    [df setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
+    
+    
+    
+    NSCalendarUnit units = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    units |= NSHourCalendarUnit | NSMinuteCalendarUnit;
+    NSDateComponents *currentComponents = [gregorian components:units fromDate:date];
+    if (! isToday) {
+        [currentComponents setHour:11];
+        currentComponents.minute = 0;
+    }
+    
+    NSDate* newDate = [gregorian dateFromComponents:currentComponents];
+    
+    //  format and display the time
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    timeFormatter.dateFormat = @"hh:mm aa";
+    NSString *currentTimeString = [timeFormatter stringFromDate:newDate];
+    NSLog(@"Current hour = %@",currentTimeString);
+    if (!isToday) {
+        [timeSlots addObject: currentTimeString];
+    }
+    
+    NSInteger hour = [currentComponents hour];
+    
+    hour=hour%12;
+    NSInteger count = 0;
+    if ((8-hour>0)) {
+        count = 8-hour;
+    }
+    else if (hour <= 11)
+    {
+        count = 10;
+        currentComponents.minute = 0;
+    }
+    for (int i = 1; i<=count; i++) {
+        //  add two hours
+        NSDateComponents *incrementalComponents = [[NSDateComponents alloc] init];
+        if (i ==1 && isToday) {
+            incrementalComponents.hour = 2;
+        }
+        else {
+            NSInteger increment = i+1;
+            if (!isToday) {
+                increment = i;
+            }
+            incrementalComponents.hour = increment ;
+        }
+        
+        NSDate *twoHoursLater = [gregorian dateByAddingComponents:incrementalComponents toDate:newDate options:0];
+        
+        //  format and display new time
+        NSString *twoHoursLaterStr = [timeFormatter stringFromDate:twoHoursLater];
+        NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
+        NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
+        if ([[array objectAtIndex:0] integerValue] == 8) {
+            NSLog(@"Two hours later = 8:00 PM");
+            [timeSlots addObject: @"08:00 PM"];
+            break;
+        }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
+            break;
+        }
+        [timeSlots addObject: twoHoursLaterStr];
+        NSLog(@"Two hours later = %@",twoHoursLaterStr);
+    }
+    
+    
+    return  timeSlots;
+}
+
 - (void)hideTableview
 {
     self.tableView.hidden = YES;
     [dropdownButton setSelected: NO];
-    self.todayTimePickerButton.hidden = YES;
-    self.tomorrowTimePickerButton.hidden = YES;
-    self.otherdayTimePickerButton.hidden = YES;
     
 }
 
@@ -456,6 +523,8 @@
 - (void)setUpInitialVauesForView
 {
     
+    self.pickupMessageLabel.hidden = YES;
+    
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"When?" onViewController:self];
     
@@ -473,15 +542,32 @@
     [self.todayDeliveryDateLabel setText: todayDateString];
     [self.tomorrowDeliveryDateLabel setText: tomorrowDateString];
     [self multiLineTextForButton];
-    BOOL isExpressDeliveryAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotMorning];
-    [self.expressDeliveryButton setSelected: isExpressDeliveryAvailable];
-    if (isExpressDeliveryAvailable) {
-        [self.expressDeliveryButton setSelected: NO];
-    }
+//    BOOL isExpressDeliveryAvailable = [self currentTimeForPickUpSlot: PIOTimeSlotMorning];
+//    [self.expressDeliveryButton setSelected: isExpressDeliveryAvailable];
+//    if (isExpressDeliveryAvailable) {
+//        [self.expressDeliveryButton setSelected: NO];
+//    }
     
     [self regularButtonPressed: nil];
-    [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+    BOOL isTimeGreaterThan6PM = [self compareTimeIf6PMWithTimeToCompare:18];
+    if (isTimeGreaterThan6PM) {
+        [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+        self.todayPickupButton.enabled = NO;
+        [self hideAllDropdownButtons];
+        
+    }
+    else {
+        [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+    }
     
+    
+}
+
+- (void)hideAllDropdownButtons
+{
+    self.todayTimePickerButton.hidden = YES;
+    self.tomorrowTimePickerButton.hidden = YES;
+    self.otherdayTimePickerButton.hidden = YES;
 }
 
 - (void)applyFonts
@@ -517,6 +603,9 @@
     
     // Continue Button
     [self.continueButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
+    
+    [self.pickupMessageLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47f]];
+    [self.deliverMessageLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47f]];
 }
 
 - (NSDate *)stringToDate:(NSString *)dateString
