@@ -1,0 +1,104 @@
+.operating-areas-holder{
+    background:url(../images/laundry-walaz.png) center 0px no-repeat;
+    background-size:1600px 845px;
+    position:relative;
+    padding:25px 0 50px;
+    max-width:1600px;
+    margin:0 auto;
+    @include mobile{
+        background:none;
+       padding:60px 0 0px;
+       height:auto;
+    }
+}
+.areas-in{
+    -webkit-box-shadow: 3px 4px 32px rgba(0,0,0,.62);
+    -moz-box-shadow: 3px 4px 32px rgba(0,0,0,.62);
+    box-shadow: 3px 4px 32px rgba(0,0,0,.62);
+    max-width:450px;
+    margin:0 auto;
+    background:#fffaf5;
+    padding:13px;
+    position:relative;
+    float:right;
+    @include mobile{
+        margin:0px 0px;
+        float:none;
+        padding:5px;
+    }
+    &:after{
+        position: absolute;
+        top:36px;
+        left:-36px;
+        content: "";
+        background:url(../images/location-after.png) 0px 0px no-repeat;
+        width:36px;
+        height:65px;
+        @include mobile{
+            display:none;
+        }
+    }
+}
+.location-form{
+    border:3px solid #3d679c;
+    padding:33px;
+    @include mobile{
+        padding:10px;
+    }
+    h2{
+        font-size:45px;
+        font-weight:300;
+        font-family:$roboto;
+        padding:0 0 10px;
+        @include mobile{
+            font-size:30px;
+        }
+    }
+    p{
+        color:#888888;
+        font-family:$roboto;
+        font-size:20px;
+        font-weight:300;
+        @include mobile{
+            font-size:20px; 
+        }
+    }
+}
+.laundry-email{
+    background:url(../images/laundry-email.png) 0px 10px no-repeat;
+    border-bottom:1px solid #a1a1a1;
+    background-color:none;
+    padding:0 0 0 35px;
+    line-height:30px;
+    margin-bottom:35px;
+    font-size:20px;
+    font-family:$roboto;
+    font-weight:300;
+    &:focus{
+      border-bottom:1px solid #a1a1a1;  
+    }
+    &:hover{
+        border-bottom:1px solid #a1a1a1;  
+    }
+}
+.laundry-location{
+    background:url(../images/laundry-location.png) 0px 0px no-repeat;
+    border-bottom:1px solid #a1a1a1;
+    background-color:none;
+    padding:0 0 0 35px;
+    line-height:30px;
+    margin-bottom:35px;
+    font-size:20px;
+    font-family:$roboto;
+    font-weight:300;
+    &:focus{
+      border-bottom:1px solid #a1a1a1;  
+    }
+    &:hover{
+        border-bottom:1px solid #a1a1a1;  
+    }
+}
+
+
+
+

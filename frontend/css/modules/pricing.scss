@@ -1,0 +1,122 @@
+.pricing-holder{
+    background:url(../images/rates-background.png) 10% 50% repeat-y;
+    @include cover-background();
+    min-height:800px;
+    padding:0px 0px;
+    @include mobile{
+        background:none;
+        min-height:auto;
+        padding:20px 0 30px;
+    }
+}
+.laundry-safe-inn{
+    & h2{
+        text-align: center;
+        font-size:30px;
+        font-family:$roboto;
+        color:#888;
+        padding:20px 0 20px;
+        font-weight:300;
+        @include mobile{
+            font-size:20px;
+        }   
+    }
+    & span.hanger{
+        display:block;
+        text-align:center;
+        & img{
+            max-width:650px;
+            width:100%;
+        }
+    }
+}
+.laundry-scroll-holder{
+    max-width:790px;
+    margin:25px auto 0px;
+    padding:0 0 0 70px;
+    @include mobile{
+        margin:20px 0 0;
+        padding:0 0 0 0px;
+    }
+}
+.laundry-scroll-inner{
+  height:292px;
+    overflow:scroll;
+    @include mobile{
+        height:inherit;
+    }
+    
+    /* Let's get this party started */
+    &::-webkit-scrollbar {
+        width:6px;
+        right:5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: rgba(133,133,133,0.4);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        -webkit-border-radius:4px;
+        border-radius:4px;
+        background: rgba(133,133,133,1);
+        min-height:70px;
+        margin-right:5px;
+
+    }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(133,133,133,1); 
+    }
+    overflow-x:hidden;
+    @include mobile{
+      overflow-x:visible;
+      overflow-y:hidden;
+    }
+}
+.scoll-heading{
+    margin-bottom:10px;
+    padding-bottom:10px;
+    @include mobile{
+        width:990px;
+    }
+    span{
+        display:block;
+        border-bottom:1px solid #52bbe6;
+        color:#999999;
+        font-family:$roboto;
+        font-size:18px;
+        font-weight:400;
+    }
+    div{
+        padding-left:0px;
+        padding-right:0px;
+    }
+}
+.scroll-data{
+    padding-bottom:7px;
+    @include mobile{
+        width:990px;
+    }
+   div{
+        padding-left:0px;
+        padding-right:0px;
+        @include mobile{
+            display:table-cell;
+        }
+    }
+    span{
+        display:block;
+        color:#999999;
+        font-family:$roboto;
+        font-size:16px;
+        font-weight:300;
+    }
+    h3{
+        font-weight:300;
+        color:$grey;
+        font-size:17px;
+        padding:20px 0px;
+    }
+}

@@ -1,0 +1,144 @@
+.slider-holder{
+    background:url(../images/slider-bg.png) 0px 0px no-repeat;
+    background-size:100% 100%;
+    height:820px;
+    padding:60px 0px 60px;
+    @include mobile{
+        background:none;
+        height:1200px;
+        padding:0px 0px 0px;
+    }
+    h2{
+        text-align: center;
+        font-size:30px;
+        font-family:$roboto;
+        color:#888888;
+        padding:20px 0 20px;
+        font-weight:300;
+        @include mobile{
+            font-size:20px;
+        }   
+    }
+}
+.slider-image{
+    img{
+        max-width:100%;
+    }
+}
+.slide-content{
+    max-width:544px; 
+    position:relative;
+    padding:100px 0 0;
+    @include mobile{
+        padding:20px 0px;
+    }
+    & h2{
+        color:#363970;
+        padding:0 0 0px;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:30px;
+        margin:0px;
+        line-height:normal;
+        text-align:left;
+    }
+    & p{
+        color:#888888;
+        padding:0 0 40px;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:20px;
+        margin:0px;
+        line-height:normal;
+        z-index:700;
+        position:relative;
+    }
+}
+.right-side{
+    float:right;
+    padding:40px 0 0;
+    
+    @include mobile{
+        float:none;  
+    }
+}
+.reliable{
+    padding:100px 0 0;
+    @include mobile{
+        padding:0px;
+    }
+}
+#firstSlide{
+    width:100%;
+}
+#secondSlide{
+    width:100%;
+}
+.carousel-inner{
+    max-width:1002px;
+    margin:0 auto;
+}
+.watch{
+    padding:30px 0 0;
+    @include mobile{
+        padding:10px 0 0;   
+    }
+    @include tablet{
+        padding:10px 0 0;   
+    }
+    img{
+        margin:0 0 0 60px;
+        @include mobile{
+            margin:0 0 0 0px;
+            max-width:200px;
+        }
+        @include tablet{
+            margin:0 0 0 0px;
+            max-width:200px;
+        }
+    }
+}
+.apple{
+    padding:0px 0 0;
+    img{
+        margin:-50px 0 0 0px;
+        @include mobile{
+            margin:0px 0 0 0px;
+        }
+        @include tablet{
+            margin:0px 0 0 0px;
+        }
+    }
+}
+.reliable-image{
+    img{
+        margin:0px 0 0;
+        z-index:200;
+    }
+}
+.left-slide{
+    background:none;
+    left:0;
+    img{
+        width:40px;
+        top:50%;
+        position:absolute;
+        left:0px;
+    }
+}
+.right-slide{
+    background:none;
+    right:0;
+    img{
+        width:40px;
+        top:50%;
+        position:absolute;
+        right:0px;
+    }
+}
+.carousel-control{
+    opacity:1 !important;
+}
+.carousel-inner{
+    height:1200px;
+}

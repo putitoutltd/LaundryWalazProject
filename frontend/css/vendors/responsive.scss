@@ -1,0 +1,64 @@
+$tablet-width: 768px;
+$desktop-width: 992px;
+$mobile:767px;
+$iPhone:360px;
+$customheader:1047px;
+ 
+
+$holder-small:768px;
+$holder-large: 1140px;
+
+$tablet-landscape:1024px;
+
+$header-breaker-one:768px;
+$header-breaker-two:1100px;
+
+$navi:1202px;
+
+@mixin hideOnDev {
+  @media only screen and(min-width: #{$iPhone}) and (max-width: #{$tablet-landscape - 1px}) {
+    @content;
+  }
+}
+
+@mixin headerBreaker {
+  @media only screen and(min-width: #{$header-breaker-one}) and (max-width: #{$header-breaker-two - 1px}) {
+    @content;
+  }
+}
+ 
+
+@mixin holder {
+  @media only screen and(min-width: #{$holder-small}) and (max-width: #{$holder-large - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin navigation {
+  @media only screen and (max-width: #{$navi}) {
+    @content;
+  }
+}
+
+
+@mixin cover-background() {
+    -webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+
+
+

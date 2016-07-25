@@ -1,0 +1,57 @@
+
+  <?php  if(isset($params['error'])){ 
+      echo '<p class="text-danger">'.$params['error'].'</p>'; return;
+      
+  }
+  $serviceList = $params['services'];
+  $order = $params['order'];
+  $orderItems = $params['orderItems'];
+  $orderItemsArranged = array();
+  foreach ($orderItems as $item){
+      $orderItemsArranged[$item['id']] = $item;
+  }
+//echo '<pre>'; print_r($params['orderItems']); echo '</pre>';
+//die();
+?>
+<style>
+.cat_title{
+    color: silver;
+}
+</style>
+<h3><u>Choose Order Items</u></h3>
+<hr>
+<form class="form-inline" method="POST" role="form" action="<?php echo Utility::base_url(); ?>/orders/items/additem">
+    <?php foreach ($serviceList as $category => $items): ?>
+    <h5><u class="cat_title"><?php echo $category; ?></u></h5>
+    <div class="row">
+    
+    <?php foreach ($items as $item): ?>
+    <?php 
+        $checked = ' ';
+        $quantity = 1;
+        if((isset($orderItemsArranged[$item['id']]))){
+            $checked = ' checked ';
+            $quantity = $orderItemsArranged[$item['id']]['quantity'];
+        }
+        
+    ?>
+    <div class="col-md-3">
+        <div class="checkbox">
+            <label><input type="checkbox" <?= $checked; ?> name="items[]" value="<?= $item['id']; ?>"> <?= $item['name']; ?></label>
+            <input type="number"  min="1"  class="form-control" name="quantity_<?= $item['id']; ?>" placeholder="1" value="<?= $quantity; ?>">
+        </div>
+    </div>        
+    
+    
+    <?php endforeach; ?>
+    </div>
+    <hr>
+    <?php endforeach; ?>
+    
+    
+    <input type="hidden" value="<?=$order['id'];?>" name="oid" />  
+  <button type="submit" class="btn btn-default">Submit</button>
+  
+</form>
+<a href="<?php echo Utility::base_url(); ?>/orders/edit?oid=<?=$order['id'];?>" class="btn btn-default pull-right">Back to Order</a>
+    

@@ -1,0 +1,12 @@
+
+.ssh
+.cache
+apidoc.json
+composer.lock
+public/logs/*.log
+public/videos/
+app/models/Config.php
+app/models/*.track
+/nbproject
+public/images/*
+vendor

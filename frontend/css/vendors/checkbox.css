@@ -1,0 +1,28 @@
+.icheckbox_square-green {
+	display: inline-block;
+ *display: inline;
+	vertical-align: middle;
+	margin:-3px 3px 0 0;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+	background: url(../../images/checkbox.png) no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.icheckbox_square-green {
+	background-position: 0 0;
+}
+.icheckbox_square-green.hover {
+	background-position: -24px 0;
+}
+.icheckbox_square-green.checked {
+	background-position: -48px 0;
+}
+.icheckbox_square-green.disabled {
+	background-position: -72px 0;
+	cursor: default;
+}
+.icheckbox_square-green.checked.disabled {
+	background-position: -96px 0;
+}

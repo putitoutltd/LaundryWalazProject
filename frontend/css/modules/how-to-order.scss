@@ -1,0 +1,100 @@
+.how-to-order-holder{
+    background:url(../images/laundry-freshness.png) 0px bottom no-repeat;
+    @include cover-background();
+    min-height:1245px;
+    padding:60px 0 0;
+    @include mobile{
+        background:url(../images/laundry-freshness.png) 100% 100% no-repeat;
+        @include cover-background();
+    }
+}
+.order-visual{
+    & h2{
+        color:#363970;
+        padding:0 0 20px;
+        text-align: center;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:45px;
+        @include mobile{
+            font-size:32px;
+        }
+    }
+    & p{
+        color:#888888;
+        padding:0 0 40px;
+        text-align: center;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:25px;
+        @include mobile{
+            font-size:20px;
+            padding:0 0 0px;
+        }
+    }
+}
+.step-boxes{
+    max-width:950px;
+    margin:0 auto;
+    padding:70px 0 0;
+    @include mobile{
+        padding:20px 0 0;
+    }
+}
+.step{
+    border:10px solid $waterBlue;
+    width:268px;
+    height:268px;
+    border-radius:50%;
+    padding:10px;
+    display:none;
+    @include mobile{
+        margin:0 auto 30px;
+        display:block;
+    }
+    @include tablet{
+       width:220px;
+        height:220px; 
+    }
+}
+.schedlue-inn{
+    background:$white;
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    text-align: center;
+    color:#9d9d9d;
+    font-size:28px;
+    font-family:$roboto;
+    font-weight:300;
+    @include tablet{
+     width:180px;
+    height:180px; 
+     font-size:20px;
+    }
+    span{
+        font-size:55px;
+        display:block;
+        text-align: center;
+        font-weight:300;
+        padding:20px 0 0;
+        @include tablet{
+            font-size:20px;
+        }
+        & img{
+           max-width:80px;
+        }
+    }
+    & p{
+        font-size:28px;
+        &.collect{
+            padding-top:8px;
+        }
+        &.delivery{
+            padding-top:18px;
+            font-size:28px;
+        }
+    }
+}
+
+
