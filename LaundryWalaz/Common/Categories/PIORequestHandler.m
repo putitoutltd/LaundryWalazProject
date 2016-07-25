@@ -11,11 +11,6 @@
 #import "PIOAPIResponse.h"
 #import "PIOConstants.h"
 
-NSString *const PIOResponseStatus = @"status";
-NSString *const PIOResponseMessage = @"message";
-NSString *const PIOResponseStatusFailure = @"failure";
-NSString *const PIOResponseStatusSuccess = @"success";
-
 @implementation PIORequestHandler
 
 // POST request method.

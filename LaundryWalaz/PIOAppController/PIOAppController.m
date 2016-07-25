@@ -9,9 +9,7 @@
 #import "MBProgressHUD.h"
 
 #import "PIOAppController.h"
-#import "PIOConstants.h"
-#import "PIOUserPref.h"
-#import "AppDelegate.h"
+
 
 #import "PIOHowToUseViewController.h"
 

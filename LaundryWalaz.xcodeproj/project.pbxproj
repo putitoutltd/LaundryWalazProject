@@ -107,6 +107,7 @@
 		45892A8A1D42524A0013BDBE /* PIOMyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45892A891D42524A0013BDBE /* PIOMyAnnotation.m */; };
 		45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */; };
 		45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */; };
+		45AA90CD1D46374800979518 /* PIOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AA90CC1D46374800979518 /* PIOUser.m */; };
 		45CA85F91D379CBF001F3014 /* PIORegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */; };
 		45CA85FA1D379CBF001F3014 /* PIORegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */; };
 		45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA85FE1D37A0AF001F3014 /* register-icon-568h@2x.png */; };
@@ -114,8 +115,6 @@
 		45CA86041D37A0AF001F3014 /* register-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86001D37A0AF001F3014 /* register-icon@2x.png */; };
 		45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86011D37A0AF001F3014 /* register-icon@3x.png */; };
 		45CA86091D37B41F001F3014 /* menu-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86081D37B41F001F3014 /* menu-btn.png */; };
-		45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */; };
-		45CA860F1D37B70A001F3014 /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA860E1D37B70A001F3014 /* FileManager.m */; };
 		45CA86111D37CD1C001F3014 /* Login.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CA86101D37CD1C001F3014 /* Login.xcassets */; };
 		45CE0EEF1D3F522C007BDAED /* OrderSummary.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EEE1D3F522C007BDAED /* OrderSummary.xcassets */; };
 		45CE0EF31D3F8367007BDAED /* Pricing.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EF21D3F8367007BDAED /* Pricing.xcassets */; };
@@ -300,6 +299,8 @@
 		45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderSummaryViewController.h; path = OrderSummaryViewController/PIOOrderSummaryViewController.h; sourceTree = "<group>"; };
 		45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderSummaryViewController.m; path = OrderSummaryViewController/PIOOrderSummaryViewController.m; sourceTree = "<group>"; };
 		45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderSummaryViewController.xib; path = OrderSummaryViewController/PIOOrderSummaryViewController.xib; sourceTree = "<group>"; };
+		45AA90CB1D46374800979518 /* PIOUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOUser.h; path = Models/PIOUser.h; sourceTree = "<group>"; };
+		45AA90CC1D46374800979518 /* PIOUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOUser.m; path = Models/PIOUser.m; sourceTree = "<group>"; };
 		45CA85F61D379CBF001F3014 /* PIORegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIORegisterViewController.h; path = RegisterViewController/PIORegisterViewController.h; sourceTree = "<group>"; };
 		45CA85F71D379CBF001F3014 /* PIORegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIORegisterViewController.m; path = RegisterViewController/PIORegisterViewController.m; sourceTree = "<group>"; };
 		45CA85F81D379CBF001F3014 /* PIORegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIORegisterViewController.xib; path = RegisterViewController/PIORegisterViewController.xib; sourceTree = "<group>"; };
@@ -308,10 +309,6 @@
 		45CA86001D37A0AF001F3014 /* register-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon@2x.png"; sourceTree = "<group>"; };
 		45CA86011D37A0AF001F3014 /* register-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register-icon@3x.png"; sourceTree = "<group>"; };
 		45CA86081D37B41F001F3014 /* menu-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-btn.png"; sourceTree = "<group>"; };
-		45CA860A1D37B65D001F3014 /* PIOPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPhotoPicker.h; sourceTree = "<group>"; };
-		45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPhotoPicker.m; sourceTree = "<group>"; };
-		45CA860D1D37B70A001F3014 /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
-		45CA860E1D37B70A001F3014 /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		45CA86101D37CD1C001F3014 /* Login.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Login.xcassets; sourceTree = "<group>"; };
 		45CE0EEE1D3F522C007BDAED /* OrderSummary.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = OrderSummary.xcassets; sourceTree = "<group>"; };
 		45CE0EF21D3F8367007BDAED /* Pricing.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pricing.xcassets; sourceTree = "<group>"; };
@@ -725,10 +722,7 @@
 		454A27531D1C070300E30CDF /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				45CA860D1D37B70A001F3014 /* FileManager.h */,
-				45CA860E1D37B70A001F3014 /* FileManager.m */,
-				45CA860A1D37B65D001F3014 /* PIOPhotoPicker.h */,
-				45CA860B1D37B65D001F3014 /* PIOPhotoPicker.m */,
+				45AA90CA1D46372000979518 /* Models */,
 				452EA37C1D228DF8003F1825 /* IQActionSheetPickerView */,
 				452304411D1D191E0006EB01 /* SwipeView */,
 				454A277A1D1C098500E30CDF /* URLManager */,
@@ -778,9 +772,9 @@
 				454A27671D1C085200E30CDF /* PIOChangePositionOfTextFields.h */,
 				454A27681D1C085200E30CDF /* PIOChangePositionOfTextFields.m */,
 				454A27691D1C085200E30CDF /* PIORequestHandler.h */,
+				454A276A1D1C085200E30CDF /* PIORequestHandler.m */,
 				45892A881D42524A0013BDBE /* PIOMyAnnotation.h */,
 				45892A891D42524A0013BDBE /* PIOMyAnnotation.m */,
-				454A276A1D1C085200E30CDF /* PIORequestHandler.m */,
 				452726CD1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.h */,
 				452726CE1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m */,
 			);
@@ -856,6 +850,15 @@
 				45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */,
 			);
 			name = OrderSummaryViewController;
+			sourceTree = "<group>";
+		};
+		45AA90CA1D46372000979518 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				45AA90CB1D46374800979518 /* PIOUser.h */,
+				45AA90CC1D46374800979518 /* PIOUser.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		45CA85F51D379C65001F3014 /* RegisterViewController */ = {
@@ -1237,12 +1240,10 @@
 				454A27511D1BF25600E30CDF /* PIOAppController.m in Sources */,
 				452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */,
 				45CE0EF91D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m in Sources */,
-				45CA860C1D37B65D001F3014 /* PIOPhotoPicker.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
 				457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */,
 				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,
-				45CA860F1D37B70A001F3014 /* FileManager.m in Sources */,
 				4523045D1D1D51AC0006EB01 /* PIOOrderViewController.m in Sources */,
 				456034271D23D56400437050 /* PIOMapViewController.m in Sources */,
 				454A27731D1C085200E30CDF /* PIORequestHandler.m in Sources */,
@@ -1253,6 +1254,7 @@
 				454A27571D1C070300E30CDF /* Reachability.m in Sources */,
 				452304441D1D191E0006EB01 /* SwipeView.m in Sources */,
 				454A271C1D1BEF3600E30CDF /* main.m in Sources */,
+				45AA90CD1D46374800979518 /* PIOUser.m in Sources */,
 				452EA3811D228DF8003F1825 /* IQActionSheetPickerView.m in Sources */,
 				45CEAB991D38C1A200524329 /* PIOForgotPasswordViewController.m in Sources */,
 				452EA3821D228DF8003F1825 /* IQActionSheetViewController.m in Sources */,

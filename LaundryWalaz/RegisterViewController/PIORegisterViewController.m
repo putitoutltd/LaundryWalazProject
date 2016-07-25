@@ -9,9 +9,9 @@
 #import "PIORegisterViewController.h"
 #import "UIImage+DeviceSpecificMedia.h"
 #import "PIOAppController.h"
-#import "PIOPhotoPicker.h"
+#import "PIOUser.h"
 
-@interface PIORegisterViewController () <PIOPhotoPickerDelegate>
+@interface PIORegisterViewController ()
 
 
 @property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
@@ -21,9 +21,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
 @property (nonatomic, weak) IBOutlet UIButton *registerButton;
 
-@property (nonatomic, weak) IBOutlet UIImageView *profileImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *profileCoverImageView;
-@property (nonatomic, strong) PIOPhotoPicker *photoPicker;
 @property (nonatomic, strong) NSString *imagePath;
 @end
 
@@ -45,9 +43,6 @@
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Register" onViewController:self];
-    
-    self.photoPicker = [[PIOPhotoPicker alloc] init];
-    self.photoPicker.delegate = self;
     
 }
 
@@ -76,15 +71,16 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Please enter a valid email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
+        if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+            
+            [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: self.firstNameTextField.text lastName:self.lastNameTextField.text email: self.emailTextField.text password: self.passwordTextField.text phone: self.phoneTextField.text address: nil locationID: nil];
+            
+            [PIOUser userRegistration: user callback:^(NSError *error, BOOL status, id responseObject) {
+                
+            }];
+        }
     }
-}
-
-- (IBAction)pickProfileImageButtonPressed:(id)sender
-{
-    [self.view endEditing:YES];
-    self.photoPicker.fromViewController = self;
-    self.photoPicker.profilePhoto = YES;
-    [self.photoPicker  selectPhotoFromViewController];
 }
 
 #pragma mark - Private Methods
@@ -98,31 +94,6 @@
     [self.passwordTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.registerButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 14.75f]];
     
-}
-
-#pragma mark - Image Picker Delegate -
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    [self.photoPicker.imagePickerController dismissViewControllerAnimated:YES completion:^{
-        UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
-//        self.imageURL = [info valueForKey:UIImagePickerControllerReferenceURL];
-        
-//        NSData *data  = [[PIOAppController sharedInstance] reduceImageSize: image];
-//        image = [UIImage imageWithData:data];
-        
-        self.profileImageView.image = image;
-        self.profileImageView =  [[PIOAppController sharedInstance] roundedRectImageView: self.profileImageView];
-        if(image) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self.photoPicker saveImageToCameraRoll:image responseBlock:^(NSString *path, UIImage *image) {
-                    self.imagePath = path;
-                    
-                }];
-            });
-            
-        }
-    }];
 }
 
 @end

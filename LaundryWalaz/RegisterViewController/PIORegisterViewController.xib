@@ -13,7 +13,6 @@
                 <outlet property="passwordTextField" destination="Dwi-TO-jPG" id="lUg-HZ-clX"/>
                 <outlet property="phoneTextField" destination="hO1-bz-xgj" id="8tU-PO-e0j"/>
                 <outlet property="profileCoverImageView" destination="3Kb-le-KNc" id="BDk-gK-Hcc"/>
-                <outlet property="profileImageView" destination="DKp-YQ-HqH" id="DiT-Bl-7tQ"/>
                 <outlet property="registerButton" destination="Jyo-xI-V8D" id="fmT-cF-yBu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,21 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="68502493-0777-4CE1-B5AC-1F56E929113C" id="3Kb-le-KNc">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="8BD5C790-CE4C-4E0E-BD10-CD9DA52B970D" id="3Kb-le-KNc">
                     <rect key="frame" x="78" y="62" width="164" height="164"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="DKp-YQ-HqH">
-                    <rect key="frame" x="87" y="71" width="146" height="145"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fqm-Lv-gCi">
-                    <rect key="frame" x="78" y="62" width="164" height="164"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <connections>
-                        <action selector="pickProfileImageButtonPressed:" destination="-1" eventType="touchUpInside" id="2Hp-wa-zLa"/>
-                    </connections>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" id="kEO-g4-dVx">
                     <rect key="frame" x="18" y="255" width="138" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -109,7 +97,7 @@
         </view>
     </objects>
     <resources>
-        <image name="68502493-0777-4CE1-B5AC-1F56E929113C" width="164" height="164">
+        <image name="8BD5C790-CE4C-4E0E-BD10-CD9DA52B970D" width="164" height="164">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

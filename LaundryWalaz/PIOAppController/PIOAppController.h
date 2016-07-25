@@ -12,6 +12,9 @@
 #import "AFHTTPSessionManager+Additions.h"
 #import "TSMessage.h"
 #import "UIFont+Additions.h"
+#import "PIOConstants.h"
+#import "PIOUserPref.h"
+#import "AppDelegate.h"
 
 @class PIOProgressBarViewController;
 

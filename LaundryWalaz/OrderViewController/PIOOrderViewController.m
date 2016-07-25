@@ -325,7 +325,6 @@
     
     if (!button.isSelected) {
         [self hideTableview];
-        CGFloat H = self.view.frame.size.height-self.tableView.frame.origin.y;
         frame =  CGRectMake(button.frame.origin.x, self.pickupDateContainerView.frame.size.height+self.pickupDateContainerView.frame.origin.y, button.frame.size.width, 150);
         animation = UIViewAnimationOptionCurveEaseOut;
         [button setSelected: YES];
