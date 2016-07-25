@@ -1,0 +1,42 @@
+
+  <?php  
+        $prices = $params['prices'];
+        
+  ?>
+<style>
+    .title{
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<div class="table-responsive">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Dry Clean</th>
+          <th>Laundry</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <?php foreach($prices as $category => $items): ?>
+          <tr class="">
+              <td colspan="4" class="success title"><?php echo $category; ?></td>
+          </tr>
+          
+          <?php foreach($items as $item): ?>
+        <tr class="">
+          <td><?php echo $item['name']; ?></td>
+          <td><?php echo $item['price_dryclean']; ?></td>
+          <td><?php echo $item['price_laundry']; ?></td>
+          <td>
+              <!-- a href="" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a href="" title="Add Items"><span class="glyphicon glyphicon-plus"></span></a -->
+          </td>
+        </tr>
+        <?php endforeach; ?>  
+      <?php endforeach; ?>  
+      </tbody>
+    </table>
+</div>

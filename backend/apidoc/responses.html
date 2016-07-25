@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kidlr API Response</title>
+  <!-- bootstrap styles -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        .main-group{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .sub-group{
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .sidenav {
+            width: 228px;
+            margin: 0;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            z-index: 10;
+        }
+        .sidenav > li.nav-header > a {
+            padding: 5px 15px;
+            border: 1px solid #e5e5e5;
+            width: 190px;
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+    </style>  
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <ul class="sidenav nav nav-list">
+          <li class="nav-header active" data-group="Albums"><a href="#api-Albums">Albums</a></li>
+        <li data-group="Albums" data-name="CreateAlbum" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-CreateAlbum">Create Album</a>
+        </li>
+        <li data-group="Albums" data-name="ListAlbums" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-ListAlbums">List Albums</a>
+        </li>
+        <li data-group="Albums" data-name="MediaList" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-MediaList">Media List</a>
+        </li>
+        <li data-group="Albums" data-name="RemoveMedia" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-RemoveMedia">Remove Media</a>
+        </li>
+        <li data-group="Albums" data-name="ShowMedia" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-ShowMedia">Show Media</a>
+        </li>
+        <li data-group="Albums" data-name="UpdateAlbum" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-UpdateAlbum">Update Album</a>
+        </li>
+        <li data-group="Albums" data-name="UploadMedia" data-version="0.1.0" class="is-new">
+          <a href="#api-Albums-UploadMedia">Upload Media</a>
+        </li>
+		
+		<li class="nav-header" data-group="Comment"><a href="#api-Comment">Comment</a></li>
+		<li data-group="Comment" data-name="CreateComment" data-version="0.1.0" class="is-new">
+          <a href="#api-Comment-CreateComment">Create Comment</a>
+        </li>
+		<li data-group="Comment" data-name="ListComments" data-version="0.1.0" class="is-new">
+          <a href="#api-Comment-ListComments">List Comments</a>
+        </li>
+		
+        <li class="nav-header" data-group="Events"><a href="#api-Events">Events</a></li>
+        <li data-group="Events" data-name="CreateEvent" data-version="0.1.0" class="is-new">
+          <a href="#api-Events-CreateEvent">Create Event</a>
+        </li>
+        <li data-group="Events" data-name="DeleteEvent" data-version="0.1.0" class="is-new">
+          <a href="#api-Events-DeleteEvent">Delete Event</a>
+        </li>
+        <li data-group="Events" data-name="ListEvents" data-version="0.1.0" class="is-new">
+          <a href="#api-Events-ListEvents">List Events</a>
+        </li>
+        <li data-group="Events" data-name="UpdateEventInvite" data-version="0.1.0" class="is-new">
+          <a href="#api-Events-UpdateEventInvite">Update Event Invite</a>
+        </li>
+        <li data-group="Events" data-name="UpdateEvent" data-version="0.1.0" class="is-new">
+          <a href="#api-Events-UpdateEvent">Update Event</a>
+        </li>
+          <li class="nav-header" data-group="Images"><a href="#api-Images">Images</a></li>
+        <li data-group="Images" data-name="ListImages" data-version="0.1.0" class="is-new">
+          <a href="#api-Images-ListImages">List Images</a>
+        </li>
+        <li data-group="Images" data-name="RemoveImage" data-version="0.1.0" class="is-new">
+          <a href="#api-Images-RemoveImage">Remove Image</a>
+        </li>
+        <li data-group="Images" data-name="ShowImage" data-version="0.1.0" class="is-new">
+          <a href="#api-Images-ShowImage">Show Image</a>
+        </li>
+        <li data-group="Images" data-name="Upload" data-version="0.1.0" class="is-new">
+          <a href="#api-Images-Upload">Upload</a>
+        </li>
+          <li class="nav-header" data-group="Medical"><a href="#api-Medical">Medical</a></li>
+        <li data-group="Medical" data-name="CreateMedical" data-version="0.1.0" class="is-new">
+          <a href="#api-Medical-CreateMedical">Create Medical</a>
+        </li>
+        <li data-group="Medical" data-name="DeleteMedical" data-version="0.1.0" class="is-new">
+          <a href="#api-Medical-DeleteMedical">Delete Medical</a>
+        </li>
+        <li data-group="Medical" data-name="ListMedical" data-version="0.1.0" class="is-new">
+          <a href="#api-Medical-ListMedical">List Medicals</a>
+        </li>
+        <li data-group="Medical" data-name="UpdateMedical" data-version="0.1.0" class="is-new">
+          <a href="#api-Medical-UpdateMedical">Update Medical</a>
+        </li>
+          <li class="nav-header" data-group="Posts"><a href="#api-Posts">Posts</a></li>
+        <li data-group="Posts" data-name="CreatePostWithImage" data-version="0.1.0" class="is-new">
+          <a href="#api-Posts-CreatePostWithImage">Create Post with Image</a>
+        </li>
+        <li data-group="Posts" data-name="CreatePost" data-version="0.1.0" class="is-new">
+          <a href="#api-Posts-CreatePost">Create Post</a>
+        </li>
+        <li data-group="Posts" data-name="DeletePost" data-version="0.1.0" class="is-new">
+          <a href="#api-Posts-DeletePost">Delete Post</a>
+        </li>
+        <li data-group="Posts" data-name="ListPosts" data-version="0.1.0" class="is-new">
+          <a href="#api-Posts-ListPosts">List Posts</a>
+        </li>
+        <li data-group="Posts" data-name="UpdatePost" data-version="0.1.0" class="is-new">
+          <a href="#api-Posts-UpdatePost">Update Post</a>
+        </li>
+          <li class="nav-header" data-group="Questions"><a href="#api-Questions">Questions</a></li>
+        <li data-group="Questions" data-name="CreateAnswer" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-CreateAnswer">Create Answer</a>
+        </li>
+        <li data-group="Questions" data-name="CreateQuestion" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-CreateQuestion">Create Question</a>
+        </li>
+        <li data-group="Questions" data-name="CreateTag" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-CreateTag">Create Tag</a>
+        </li>
+        <li data-group="Questions" data-name="ListAnswers" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-ListAnswers">List Answers</a>
+        </li>
+        <li data-group="Questions" data-name="ListQuestions" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-ListQuestions">List Questions</a>
+        </li>
+        <li data-group="Questions" data-name="SearchTags" data-version="0.1.0" class="is-new">
+          <a href="#api-Questions-SearchTags">Search Tags</a>
+        </li>
+        
+		
+		<li class="nav-header" data-group="Smile"><a href="#api-Smile">Smile</a></li>
+		<li data-group="Smile" data-name="CreateSmile" data-version="0.1.0" class="is-new">
+          <a href="#api-Smile-CreateSmile">Create Smile</a>
+        </li>
+		<li data-group="Smile" data-name="ListSmiles" data-version="0.1.0" class="is-new">
+          <a href="#api-Smile-ListSmiles">List Smiles</a>
+        </li>
+		
+		<li class="nav-header" data-group="Users"><a href="#api-Users">Users</a></li>
+        <li data-group="Users" data-name="AddBaby" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-AddBaby">Add Baby</a>
+        </li>
+        <li data-group="Users" data-name="All_Friends" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-All_Friends">All Friends</a>
+        </li>
+        <li data-group="Users" data-name="AnnouceBaby" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-AnnouceBaby">Annouce a Baby</a>
+        </li>
+        <li data-group="Users" data-name="CancelFriendRequest" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-CancelFriendRequest">Cancel Friend Request</a>
+        </li>
+        <li data-group="Users" data-name="DeleteFriendRequest" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-DeleteFriendRequest">Delete Friend Request</a>
+        </li>
+        <li data-group="Users" data-name="DeleteBaby" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-DeleteBaby">Delete a Baby</a>
+        </li>
+        <li data-group="Users" data-name="ForgetPassword" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-ForgetPassword">Forget Password</a>
+        </li>
+        <li data-group="Users" data-name="FriendRequests" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-FriendRequests">Friend Requests</a>
+        </li>
+        <li data-group="Users" data-name="FriendsChildren" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-FriendsChildren">Friends Children</a>
+        </li>
+        <li data-group="Users" data-name="GetUserId" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-GetUserId">Get User Id</a>
+        </li>
+        <li data-group="Users" data-name="GetUser" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-GetUser">Get User</a>
+        </li>
+        <li data-group="Users" data-name="IsLoggedIn" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-IsLoggedIn">Is logged in</a>
+        </li>
+        <li data-group="Users" data-name="ListBabies" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-ListBabies">List Babies</a>
+        </li>
+        <li data-group="Users" data-name="ListSentRequests" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-ListSentRequests">List Sent Requests</a>
+        </li>
+        <li data-group="Users" data-name="Login" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-Login">Login</a>
+        </li>
+        <li data-group="Users" data-name="Logout" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-Logout">Logout</a>
+        </li>
+        <li data-group="Users" data-name="RegisterDevice" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-RegisterDevice">Register User Device</a>
+        </li>
+        <li data-group="Users" data-name="Register" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-Register">Register new User</a>
+        </li>
+        <li data-group="Users" data-name="ResetPassword" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-ResetPassword">Reset Password</a>
+        </li>
+        <li data-group="Users" data-name="SearchFriends" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-SearchFriends">Search Friends</a>
+        </li>
+        <li data-group="Users" data-name="SendFriendRequest" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-SendFriendRequest">Send Friend Request</a>
+        </li>
+        <li data-group="Users" data-name="SendInvite" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-SendInvite">Send Invite</a>
+        </li>
+        <li data-group="Users" data-name="SocialLogin" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-SocialLogin">Social Login</a>
+        </li>
+        <li data-group="Users" data-name="SuggestedFriends" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-SuggestedFriends">Suggested Friends</a>
+        </li>
+        <li data-group="Users" data-name="UpdateBaby" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-UpdateBaby">Update Baby</a>
+        </li>
+        <li data-group="Users" data-name="UpdateFriendRelation" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-UpdateFriendRelation">Update Friend Relation</a>
+        </li>
+        <li data-group="Users" data-name="UpdateFriendRequest" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-UpdateFriendRequest">Update Friend Request</a>
+        </li>
+        <li data-group="Users" data-name="Update" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-Update">Update User</a>
+        </li>
+        <li data-group="Users" data-name="UserProfile" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-UserProfile">User Profile</a>
+        </li>
+        <li data-group="Users" data-name="VerifySocialId" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-VerifySocialId">Verify Social Id</a>
+        </li>
+        <li data-group="Users" data-name="VerifyEmail" data-version="0.1.0" class="is-new">
+          <a href="#api-Users-VerifyEmail">Verify email</a>
+        </li>
+  </ul>
+        </div>
+        <div class="col-lg-9">
+            <h1 class="main-group" id="api-Albums">Albums</h1>
+            <hr>
+            
+            
+            <h2 class="sub-group" id="api-Albums-CreateAlbum">Create Album</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "album_id": "9"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Albums-ListAlbums">List Album</h2>
+            <pre>
+            {
+				"status": "success",
+				"message": "",
+				"data": {
+					"albums": [
+						{
+							"album": {
+								"id": "4",
+								"name": "My First Album",
+								"description": null,
+								"total_no_of_pictures": "6",
+								"visibility": "5",
+								"date_created": "2015-08-10 10:06:32",
+								"date_modified": null,
+								"user_id": "6",
+								"thumbnail": "kidlr.localhost/api/album/media/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&album_id=4&media_system_name=1441629185_McWdDiHeU.png&size=thumbnail",
+								"children": [],
+								"sharings": []
+							}
+						},
+						{
+							"album": {
+								"id": "5",
+								"name": "My First Album",
+								"description": null,
+								"total_no_of_pictures": null,
+								"visibility": "5",
+								"date_created": "2015-08-10 10:06:51",
+								"date_modified": null,
+								"user_id": "6",
+								"thumbnail": null,
+								"children": [],
+								"sharings": []
+							}
+						}
+					]
+				}
+			}
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Albums-MediaList">Media List</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "media": [
+                        {
+                            "id": "1",
+                            "name": "SampleVideo_1080x720_1mb.mp4",
+                            "description": null,
+                            "mime_type": "video/mp4",
+                            "size": "1055736",
+                            "extension": "mp4",
+                            "system_name": "1441614156_of6gRVjp0.mp4",
+                            "likes": null,
+                            "date_created": "2015-09-07 10:22:36",
+                            "date_modified": null,
+                            "albums_id": "4",
+							"smile_count": "1",
+							"comment_count": "1"
+                        },
+                        {
+                            "id": "5",
+                            "name": "dilemmaselectbg.png",
+                            "description": null,
+                            "mime_type": "image/png",
+                            "size": "2893734",
+                            "extension": "png",
+                            "system_name": "1441629185_McWdDiHeU.png",
+                            "likes": null,
+                            "date_created": "2015-09-07 14:33:05",
+                            "date_modified": null,
+                            "albums_id": "4",
+							"smile_count": "1",
+							"comment_count": "1"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Albums-RemoveMedia">Remove Media</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Albums-ShowMedia">Show Media</h2>
+            <pre>
+                Displays an Image or Video if successful, otherwise returns a null value
+            </pre>
+            
+            <h2 class="sub-group" id="api-Albums-UpdateAlbum">Update Album</h2>
+            <pre>
+            {
+                "status": "success",
+                    "message": "The information is updated successfully",
+                    "data": {
+                        "album_id": "9"
+                    }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Albums-UploadMedia">Upload Media</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {}
+            }
+            </pre>
+            
+            
+			<h1 class="main-group" id="api-Comment">Comment</h1>
+            <hr>
+            
+            
+            <h2 class="sub-group" id="api-Comment-CreateComment">Create Comment</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "comment_id": "9"
+                }
+            }
+            </pre>
+			<h2 class="sub-group" id="api-Comment-ListComments">List Comments</h2>
+            <pre>
+            {
+				"status": "success",
+				"message": "",
+				"data": {
+					"comments": [
+						{
+							"id": "1",
+							"related_to": "1",
+							"related_id": "5",
+							"user_id": "6",
+							"description": "This is a lovely picture",
+							"date_created": "2015-11-19 12:37:18",
+							"date_modified": null,
+							"first_name": "Ahsan",
+							"middle_name": null,
+							"last_name": "Ali",
+							"user_image": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image",
+							"user_name": "Ahsan Ali"
+						}
+					]
+				}
+			}
+            </pre>
+			
+			
+            <h1 class="main-group" id="api-Events">Events</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Events-CreateEvent">Create Event</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "event_id": "5"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Events-DeleteEvent">Delete Event</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Events-ListEvents">List Events</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "events": [
+                        {
+                            "id": "3",
+                            "name": "Hassan Birthday",
+                            "description": "I am expecting a great Birthday Party",
+                            "date_time": "2015-12-05 12:12:12",
+                            "location": "my house, Lahore",
+                            "date_created": "2015-08-17 13:37:06",
+                            "date_modified": null,
+                            "user_id": "6"
+                        },
+                        {
+                            "id": "5",
+                            "name": "Farhan Birthday",
+                            "description": "I am expecting a great Birthday Party",
+                            "date_time": "2015-11-06 12:12:12",
+                            "location": "my house, Lahore",
+                            "date_created": "2015-10-14 09:50:31",
+                            "date_modified": null,
+                            "user_id": "6"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Events-UpdateEventInvite">Update Event Invite</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "user_id": "6",
+                    "event_id": "3"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Events-UpdateEvent">Update Event</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "event_id": "3"
+                }
+            }
+            </pre>
+            
+            
+            <h1 class="main-group" id="api-Images">Images</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Images-ListImages">List Images</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "images": [
+                        {
+                            "name": "file1",
+                            "extension": "jpg",
+                            "size": "845941",
+                            "mime_type": "image/png",
+                            "system_name": "1438860632_J9Gahpg0q.png"
+                        },
+                        {
+                            "name": "3fish.png",
+                            "extension": "jpg",
+                            "size": "9978",
+                            "mime_type": "image/png",
+                            "system_name": "1440406540_jsRiI4F1n.jpg"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Images-RemoveImage">Remove Image</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Images-ShowImage">Show Image</h2>
+            <pre>
+                Displays an image, otherwise returns null
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Images-Upload">Upload</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "img": [IMAGE_URL]
+                }
+            }
+            </pre>
+            
+            
+            <h1 class="main-group" id="api-Medical">Medical</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Medical-CreateMedical">Create Medical</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "medical_id": "2"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Medical-DeleteMedical">Delete Medical</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Medical-ListMedical">List Medical</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "medical": [
+                        {
+                            "id": "1",
+                            "name": " Vaccination",
+                            "description": "This report is about my Faraz vaccination",
+                            "appointment_on": "2015-12-05 12:12:12",
+                            "date_created": "2015-08-13 13:45:43",
+                            "date_modified": "2015-08-13 13:48:53",
+                            "children_id": "2"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Medical-UpdateMedical">Update Medical</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "medical_id": "3"
+                }
+            }
+            </pre>
+            
+            
+            <h1 class="main-group" id="api-Posts">Posts</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Posts-CreatePostWithImage">Create Post with Image</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "post_id": "9"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Posts-CreatePost">Create Post</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "post_id": "9"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Posts-DeletePost">Delete Post</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Posts-ListPosts">List Posts</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "posts": [
+                        {
+                            "id": "2",
+                            "description": "Ahmad is looking good today",
+                            "date_created": "2015-08-20 08:48:46",
+                            "date_modified": "2015-08-20 09:10:16",
+                            "user_id": "6",
+                            "children_id": null
+                        },
+                        {
+                            "id": "3",
+                            "description": "Faraz is looking good today",
+                            "date_created": "2015-08-20 08:49:46",
+                            "date_modified": null,
+                            "user_id": "6",
+                            "children_id": "2"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Posts-UpdatePost">Update</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "post_id": "3"
+                }
+            }
+            </pre>
+            
+            
+            <h1 class="main-group" id="api-Questions">Questions</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Questions-CreateAnswer">Create Answer</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "answer_id": "9"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Questions-CreateQuestion">Create Question</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "question_id": "9"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Questions-CreateTag">Create Tag</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "tag_id": "9"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Questions-ListAnswers">List Answers</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "answers": [
+                        {
+                            "id": "2",
+                            "description": "I think he is eating too much junk food",
+                            "date_created": "2015-08-12 15:56:52",
+                            "date_modified": null,
+                            "questions_id": "2",
+                            "user_id": "6"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Questions-ListQuestions">List Questions</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "questions": [
+                         {
+							"id": "2",
+							"title": "Why is my baby weak?",
+							"description": "He is very weak, any help?",
+							"visibility": "5",
+							"views": "1",
+							"date_created": "2015-08-12 10:03:21",
+							"date_modified": null,
+							"user_id": "6",
+							"first_name": "Ahsan",
+							"middle_name": null,
+							"last_name": "Ali",
+							"user_img": "http://kidlr.lotiv.com/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ii=&ca=main_image",
+							"user_full_name": "Ahsan Ali",
+							"answers_count": "1",
+							"total_upvotes": "0",
+							"tags": [],
+							"question_img": null
+						},
+						{
+							"id": "3",
+							"title": "Why is my baby weak?",
+							"description": "He is very weak, any help?",
+							"visibility": "5",
+							"views": null,
+							"date_created": "2015-08-12 10:03:46",
+							"date_modified": null,
+							"user_id": "6",
+							"first_name": "Ahsan",
+							"middle_name": null,
+							"last_name": "Ali",
+							"user_img": "http://kidlr.lotiv.com/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ii=&ca=main_image",
+							"user_full_name": "Ahsan Ali",
+							"answers_count": "0",
+							"total_upvotes": "0",
+							"tags": [
+								{
+									"tag_id": "1",
+									"tag_name": "Illness"
+								},
+								{
+									"tag_id": "3",
+									"tag_name": "Vaccination"
+								},
+								{
+									"tag_id": "5",
+									"tag_name": "Awareness"
+								}
+							],
+							"question_img": null
+						}
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Questions-SearchTags">Search Tags</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "tags": {
+                        "3": "Vaccination",
+                        "4": "Health",
+                        "5": "Awareness"
+                    }
+                }
+            }
+            </pre>
+            
+            
+			<h1 class="main-group" id="api-Smile">Smile</h1>
+            <hr>
+            
+            
+            <h2 class="sub-group" id="api-Smile-CreateSmile">Create Smile</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "smile_id": "9"
+                }
+            }
+            </pre>
+			<h2 class="sub-group" id="api-Smile-ListSmiles">List Smiles</h2>
+            <pre>
+				{
+					"status": "success",
+					"message": "",
+					"data": {
+						"smiles": [
+							{
+								"id": "1",
+								"related_to": "1",
+								"related_id": "5",
+								"user_id": "6",
+								"description": null,
+								"date_created": "2015-11-19 12:26:36",
+								"date_modified": null,
+								"first_name": "Ahsan",
+								"middle_name": null,
+								"last_name": "Ali",
+								"user_image": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image",
+								"user_name": "Ahsan Ali"
+							}
+						]
+					}
+				}
+            </pre>
+			
+			
+            <h1 class="main-group" id="api-Users">Users</h1>
+            <hr>
+            
+            <h2 class="sub-group" id="api-Users-AddBaby">Add Baby</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "baby_id": "9"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-All_Friends">All Friends</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "all_friends": [
+                        {
+                            "request_id": "12",
+                            "receiver_id": "6",
+                            "sender_id": "16",
+                            "relation": "0",
+                            "name": "Aleem Razzaq Khan",
+                            "img": null
+                        },
+                        {
+                            "request_id": "4",
+                            "receiver_id": "9",
+                            "sender_id": "6",
+                            "relation": "0",
+                            "name": "Mohsin Khan Wajid",
+                            "img": null
+                        },
+                        {
+                            "request_id": "2",
+                            "receiver_id": "10",
+                            "sender_id": "6",
+                            "relation": "1",
+                            "name": "Mohsin Khan Ali",
+                            "img": null
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-AnnouceBaby">Announce a Baby</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {
+                    "baby_id": "10"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-CancelFriendRequest">Cancel Friend Request</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-DeleteFriendRequest">Delete Friend Request</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-DeleteBaby">Delete a Baby</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is deleted successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-ForgetPassword">Forget Password</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "Email has been sent successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-FriendRequests">Friend Requests</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "friend_requests": [
+                        {
+                            "request_id": "14",
+                            "user_id": "15",
+                            "name": "Ahsan Butt",
+                            "relation": "0",
+                            "status": "1",
+                            "date_created": "2015-08-25 13:23:19",
+                            "date_modified": null,
+                            "img": null
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-FriendsChildren">Friend's Children</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "children": [
+                        {
+                            "id": "5",
+                            "first_name": "Khalil",
+                            "last_name": "Khan",
+                            "middle_name": "Ahmad",
+                            "gender": "male",
+                            "birthday": "2015-04-01",
+                            "date_created": "2015-08-11 08:31:08",
+                            "date_modified": null,
+                            "weight": "9",
+                            "height": "30",
+                            "user_id": "16",
+                            "name": "Khalil Ahmad Khan",
+                            "img": null
+                        },
+                        {
+                            "id": "6",
+                            "first_name": "Zile",
+                            "last_name": "Khan",
+                            "middle_name": "",
+                            "gender": "female",
+                            "birthday": "2015-04-01",
+                            "date_created": "2015-08-11 08:31:08",
+                            "date_modified": null,
+                            "weight": "11",
+                            "height": "34",
+                            "user_id": "16",
+                            "name": "Zile Khan",
+                            "img": null
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-GetUserId">Get User Id</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "user_id": "6"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-GetUser">Get User</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "user": {
+                        "id": "6",
+                        "email": "ali@gmail.com",
+                        "password": "125545",
+                        "first_name": "Ahsan",
+                        "last_name": "Ali",
+                        "middle_name": null,
+                        "status": null,
+                        "type": null,
+                        "gender": "male",
+                        "registration_origin": "standard",
+                        "img": "kidlr.localhost/api/image/show?access_token=1440056934216CE697-88CA-409B-B4F6-946F87F5ECE6&rt=users&ri=6&ca=main_image"
+                    }
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-IsLoggedIn">Is Logged In</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The user is already logged in",
+                "data": {
+                    "token": "1440056934216CE697-88CA-409B-B4F6-946F87F5ECE6"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-ListBabies">List Babies</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "children": [
+                        {
+                            "id": "1",
+                            "first_name": "Ayyan",
+                            "last_name": "Khan",
+                            "middle_name": "Muhammad",
+                            "gender": "female",
+                            "birthday": "2015-01-01",
+                            "date_created": "2015-08-11 08:22:09",
+                            "date_modified": null,
+                            "weight": "7",
+                            "height": "90",
+                            "user_id": "6",
+                            "child_id": "1",
+                            "img": null
+                        },
+                        {
+                            "id": "3",
+                            "first_name": "Ahmad",
+                            "last_name": "Khan",
+                            "middle_name": "Muhammad",
+                            "gender": "male",
+                            "birthday": "2015-04-01",
+                            "date_created": "2015-08-11 08:31:08",
+                            "date_modified": null,
+                            "weight": "9",
+                            "height": "30",
+                            "user_id": "6",
+                            "child_id": "3",
+                            "img": null
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Users-ListSentRequests">List Sent Requests</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "connections": [
+                        {
+                            "request_id": "2",
+                            "receiver_id": "10",
+                            "sender_id": "6",
+                            "relation": "1",
+                            "status": "2",
+                            "invite_sent_on": null,
+                            "invitee_decided_on": "2015-08-28 16:25:03",
+                            "date_modified": "2015-08-28 16:25:03",
+                            "name": "Mohsin Khan Ali",
+                            "img": null
+                        },
+                        {
+                            "request_id": "4",
+                            "receiver_id": "9",
+                            "sender_id": "6",
+                            "relation": "0",
+                            "status": "2",
+                            "invite_sent_on": "2015-08-25 15:11:21",
+                            "invitee_decided_on": null,
+                            "date_modified": null,
+                            "name": "Mohsin Khan Wajid",
+                            "img": null
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-Login">Login</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The user is logged in successfully",
+                "data": {
+                    "details": {
+                        "registration_origin": "standard",
+                        "first_name": "Ahsan",
+                        "last_name": "Ali",
+                        "middle_name": null,
+                        "status": "1",
+                        "type": "1",
+                        "gender": "male",
+                        "date_modified": "2015-09-04 12:25:57",
+                        "email": "ali@gmail.com",
+                        "id": "6",
+                        "img": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image"
+                    },
+                    "access_token": "144489055661701A49-F252-437B-BC11-5A4CEA871814"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-Logouts">Logout</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The user is logged out successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-RegisterDevice">Register Device</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is saved successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-Register">Register New User</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The user has been created successfully.",
+                "data": {
+                    "user_id": "9",
+                    "access_token": "144489055661701A49-F252-437B-BC11-5A4CEA871814",
+                    "img": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-ResetPassword">Reset Password</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-SearchFriends">Search Friends</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "users": [
+                        {
+                            "id": "13",
+                            "name": "Aleem Razzaq Khan",
+                            "img": null,
+                            "request_sender": "no",
+                            "request_receiver": "no",
+                            "friend_as_sender": "no",
+                            "friend_as_receiver": "no",
+                            "request_id": ""
+                        },
+                        {
+                            "id": "15",
+                            "name": "Ahsan Butt",
+                            "img": null,
+                            "request_sender": "yes",
+                            "request_receiver": "no",
+                            "friend_as_sender": "no",
+                            "friend_as_receiver": "no",
+                            "request_id": "14"
+                        }
+                       
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-SendFriendRequest">Send Friend Request</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "Friend request has been sent successfully.",
+                "data": {
+                    "request_id": "90",
+                    "receiver_id": "9",
+                    "sender_id": "10",
+                    "relation": "2",
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-SendInvite">Send Invite</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "Invite has been sent successfully.",
+                "data": {
+                    "album_id": "9"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-SocialLogin">Social Login</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The user is logged in successfully",
+                "data": {
+                    "details": {
+                        "registration_origin": "standard",
+                        "first_name": "Ahsan",
+                        "last_name": "Ali",
+                        "middle_name": null,
+                        "status": "1",
+                        "type": "1",
+                        "gender": "male",
+                        "date_modified": "2015-09-04 12:25:57",
+                        "email": "ali@gmail.com",
+                        "id": "6",
+                        "img": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image"
+                    },
+                    "access_token": "144489055661701A49-F252-437B-BC11-5A4CEA871814"
+                }
+            }
+            </pre>
+            
+            
+            <h2 class="sub-group" id="api-Users-SuggestedFriends">Suggested Friends</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "friend_suggestions": [
+                        {
+                            "id": "15",
+                            "name": "Ahsan Butt",
+                            "img": null,
+                            "request_sender": "yes",
+                            "request_receiver": "no"
+                        },
+                        {
+                            "id": "13",
+                            "name": "Aleem Razzaq Khan",
+                            "img": null,
+                            "request_sender": "no",
+                            "request_receiver": "no"
+                        }
+                    ]
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-UpdateBaby">Update Baby</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "baby_id": "15"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-UpdateFriendRelation">Update Friend Relation</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-UpdateFriendRequest">Update Friend Request</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {}
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-Update">Update User</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "The information is updated successfully",
+                "data": {
+                    "details": {
+                        "first_name": "Ahsan",
+                        "last_name": "Ali",
+                        "middle_name": null,
+                        "status": "1",
+                        "type": "1",
+                        "gender": "male",
+                        "date_modified": "2015-09-04 12:25:57",
+                    },
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-UserProfile">User Profile</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "",
+                "data": {
+                    "user_profile": {
+                        "id": "6",
+                        "name": "Ahsan Ali",
+                        "gender": "male",
+                        "img": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image"
+                    },
+                    "children_profiles": [
+                        {
+                            "child_id": "1",
+                            "name": "Ayyan Muhammad Khan",
+                            "age": {
+                                "years": "0",
+                                "months": "9",
+                                "days": "13"
+                            },
+                            "birthday": "2015-01-01",
+                            "weight": "7",
+                            "height": "90",
+                            "gender": "female",
+                            "img": null
+                        },
+                        {
+                            "child_id": "3",
+                            "name": "Ahmad Muhammad Khan",
+                            "age": {
+                                "years": "0",
+                                "months": "6",
+                                "days": "13"
+                            },
+                            "birthday": "2015-04-01",
+                            "weight": "9",
+                            "height": "30",
+                            "gender": "male",
+                            "img": null
+                        }
+                    ],
+                    "friends": "",
+                    "requests": {
+                        "request_id": "15",
+                        "receiver_id": "23",
+                        "sender_id": "6",
+                        "relation": "0",
+                        "name": "Ahsan Ali",
+                        "img": "kidlr.localhost/api/image/show?access_token=144489055661701A49-F252-437B-BC11-5A4CEA871814&rt=users&ri=6&ca=main_image"
+                    },
+                    "same_user": "yes"
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-VerifySocialId">Verify Social Id</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "Email exists",
+                "data": {
+                    "record": {
+                        "first_name": "Ahsan",
+                        "last_name": "Ali",
+                        "middle_name": null,
+                        "id": "1",
+                        "email": "something@something.com",
+                        "password": "ar4542q5gfwr"
+                    },
+                }
+            }
+            </pre>
+            
+            <h2 class="sub-group" id="api-Users-VerifyEmail">Verify Email</h2>
+            <pre>
+            {
+                "status": "success",
+                "message": "Email exists",
+                "data": {}
+            }
+            </pre>
+            
+            
+        </div>
+    </div>
+    
+    
+
+</div>
+    
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>    
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var $page = $('html, body');
+    $('a').click(function(){
+    $page.animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+</script>
+</body>
+</html>

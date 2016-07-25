@@ -1,0 +1,129 @@
+
+  <?php  if(isset($params['error'])){ 
+      echo '<p class="text-danger">'.$params['error'].'</p>'; return;
+      
+  }
+//print_r($params['order']);
+$orderStatuses = SystemOptions::getOrderStatuses();
+$order = $params['order'];
+$status =  ( $orderStatuses[$order['status']] ) ? $orderStatuses[$order['status']] : ' - ';
+
+$statusString = '<select id="status_list" class="form-control" onchange="updateStatus(this)">';
+foreach ($orderStatuses as $statusKey => $orderStatus){
+    $selected = ($statusKey == $order['status']) ? ' selected ' : ' '; 
+    $statusString .= '<option value="'.$statusKey.'" '.$selected.'>'.$orderStatus.'</option>';
+}
+$statusString .= '</select>';
+  ?>
+<style>
+    .totals{
+        
+    }
+    .totals td{
+        color: darkblue;
+        font-weight: bold;
+        border-top: 1px solid green !important;
+    }
+    .italic-name{
+        font-size: 7pt;
+        color: silver;
+        
+    }
+    .status{
+        height: 60px;
+    }
+    
+</style>
+<h4>Order Details: </h4>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-8 well well-sm">
+            <ul class="list-group col-md-6">
+            <li class="list-group-item"><span class="pull-right"><?php echo $order['first_name'].' '.$order['last_name']; ?></span> Customer:</li>
+            <li class="list-group-item"><span class="pull-right"><?php echo $order['location']; ?></span> Location:</li>
+            <li class="list-group-item" id="status_plain"><span class="pull-right" id="new_status"><?= $status; ?> 
+                    <a id="edit_status_action" href="" title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                </span> Status:</li>
+            <li class="list-group-item status"  id="status_edit" style="display:none;"><span class="pull-right"><?= $statusString; ?></span> Status:</li>
+          </ul>
+            <ul class="list-group col-md-6">
+            <li class="list-group-item"><span class="pull-right"><?php echo date('d M Y, g a', strtotime($order['pickup_time'])); ?></span> Pickup Time: </li>
+            <li class="list-group-item"><span class="pull-right"><?php echo date('d M Y, g a', strtotime($order['dropoff_time'])); ?></span> Dropoff Time:</li>
+            <li class="list-group-item"><span class="pull-right"><?php echo $order['address']; ?></span> Address:</li>
+          </ul>
+        </div>
+        
+    </div>    
+</div>
+<a class="btn btn-primary" href="<?php echo Utility::base_url(); ?>/orders/items/add?oid=<?=$order['id'];?>">Add Items</a>
+<div><h4>Order Items: </h4> </div>
+    <div class="well well-lg">
+        <div class="table-responsive">
+            <table class="table table-hover table-responsive table-condensed">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Service</th>
+                    <th>Price(dryclean)</th>
+                    <th>Price(laundry)</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $i =1; $priceDryClean = 0; $priceLaundry = 0; $quantity = 0;
+                        foreach ($params['orderItems'] as $item): 
+                        //echo '<pre>';  print_r($item); echo '</pre>';
+                        $priceDryClean +=  $item['price_dryclean'];
+                        $priceLaundry +=  $item['price_laundry'];
+                        $quantity +=  $item['quantity'];
+                    ?>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td><?= $item['name']; ?><span class="italic-name"><i> ( <?= $item['category']; ?> )</i></span></td>
+                        <td><?= $item['price_dryclean']; ?></td>
+                        <td><?= $item['price_laundry']; ?></td>
+                        <td><?= $item['quantity']; ?></td>
+                      </tr>
+                    <?php
+                        $i++;
+                        endforeach; 
+                    ?> 
+                      <tr class="totals">
+                        <td colspan="2">Totals</td>
+                        <td><?= $priceDryClean; ?></td>
+                        <td><?= $priceLaundry; ?></td>
+                        <td><?= $quantity; ?></td>
+                      </tr>  
+                </tbody>
+            </table>
+        </div>    
+    </div>
+
+<script type="text/javascript">
+function updateStatus(elem) {
+    var statusVal = elem.options[elem.selectedIndex].text;
+    var statusId = elem.selectedIndex;
+    
+  document.getElementById("loader").style.display = 'block';  
+  var url = "<?php echo Utility::base_url().'/orders/status/update'; ?>";
+  var oid = "<?php echo $order['id']; ?>";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+       var res = JSON.parse(xhttp.responseText);
+        console.log(res.status);
+        if(res.status === 1){
+            document.getElementById("loader").style.display = 'none';
+            document.getElementById("new_status").innerHTML = statusVal;
+        }
+      console.log(xhttp.responseText);
+    }
+  };
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("oid="+oid+"&ost="+statusId);
+  
+}    
+</script>

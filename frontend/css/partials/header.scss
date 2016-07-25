@@ -1,0 +1,173 @@
+.header-main{
+    background:url(../images/header.png) 0px 0px no-repeat;
+    padding:190px 0 0px;
+    background-size:100% 100%;
+    min-height:1095px;
+    position:relative;
+    @include mobile{
+        padding:90px 0 0px;
+        background:none;
+    }
+}
+.header{
+    padding:0px 0 0;
+    z-index:999;
+    position:fixed;
+    width:100%;
+    top:0px;
+    left:0px;
+    min-height:110px;
+    background:$naviBlue;
+    @include navigation{
+       background:$naviBlue;
+       min-height:initial;
+    }
+    .navigation-holder{
+        background:$naviBlue;
+        padding:13px 0px;
+        @include navigation{
+            padding:0px;
+        }
+        .navbar-toggle {  
+            padding:0px 0px 0;
+            width:100%;
+            margin:0px;
+            float:left;
+        }
+        .menu-btn {  
+            display:block;
+            padding:7px 0px;
+            background:$pumpkin;
+            width:100%;
+            color:$white;
+            @include mobile{  
+                width:100%;
+            }
+        }
+        .navbar {  
+            min-height:inherit;
+            padding:0px;
+            margin:0px;
+
+        }
+    }
+}
+ul{  
+    &.navigation{  
+        display:block;
+        padding:0px 0 0 5px;
+        margin:0px;
+        text-align: center;
+        @include navigation {  
+            padding:10px;
+            text-align:left;
+        }
+        & li{  
+            padding-right:30px;
+            background:none !important;
+            display:inline-block;
+            @include navigation{
+                display:block;
+            }
+            &.why-laudrywalaz{
+                padding-right:230px;
+                @include navigation{
+                    padding-right: inherit;
+                }
+            }
+            &.active{  
+                & a {  
+                    color:$pumpkin;
+                    text-decoration:none;
+                    background:none;
+                }
+            }
+            @include tablet{  
+                padding:0 22px 0 0;	
+            }
+            &:last-child{  
+                padding-right:0px;
+            }
+            @include navigation{  
+                float:none;
+                padding:0px 0px;
+            }
+            & a {  
+                font-family:$bebasReguler;
+                font-size:21px;
+                color:$black;
+                display:inline-block;
+                padding:0px 0px 0px;
+                background:none !important;
+                &:hover{  
+                    color:$pumpkin;
+                    text-decoration:none;
+                    background:none;
+                }
+                &.active {  
+                   color:$pumpkin;
+                }
+                @include navigation{
+                    display:block;
+                    padding:5px 0px;
+                }
+
+            }
+        }
+    }
+}
+.logo{
+    max-width:100px;
+    margin:0px auto -57px;
+    @include navigation{
+        max-width:80px;
+        margin:5px auto 0px;
+        display:inline-block;
+    }
+    img{
+        max-width:100%;
+        margin:3px 0 0;
+    }
+}
+
+.desktop-nav{
+    display:block !important;
+    @include navigation{
+        display:none !important;
+    }
+}
+.mobile-nav{
+    display:none !important;
+    @include navigation{
+        display:block !important;
+    }
+}
+
+.mobile-navi-list{
+    @include navigation{
+       display:none; 
+    }
+}
+.navi-opener{
+    position:absolute;
+    width:45px;
+    top:28px;
+    right:40px;
+    & img{
+        width:100%;
+    }
+    & a{
+        text-decoration:none;
+        text-transform:uppercase;
+        font-size:25px;
+        font-family: $bebasReguler;
+    }
+   display:none; 
+   @include navigation{
+       display:block; 
+    }
+}
+
+
+
+

@@ -1,0 +1,88 @@
+.app-holder{
+    background:url(../images/get-the-app-bg.png) 50% 100px repeat-x fixed;
+    min-height:1200px;
+    position:relative;
+  @include cover-background();
+  @include mobile{
+      min-height:auto;
+      background:url(../images/get-the-app-bg.png) 50% 0px repeat-x;
+  }
+}
+.laundry-flowers{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    max-width:250px;
+    z-index:100;
+    @include mobile{
+        display:none;
+    }
+    & img{
+        max-width:100%;
+    }
+}
+.laundry-pen{
+    position:absolute;
+    bottom:100px;
+    right:0px;
+    max-width:150px;
+    z-index:100;
+   @include mobile{
+        display:none;
+    }
+    & img{
+        max-width:100%;
+    }
+}
+.try-our-app{
+    padding:107px 0 0 80px;
+    @include mobile{
+      padding:40px 0 0 0px;  
+    }
+    & h2{
+        color:#363970;
+        padding:0 0 20px;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:45px;
+       
+        @include mobile{
+           font-size:35px; 
+        }
+    }
+    & p{
+        color:#888888;
+        padding:0 0 40px;
+        font-family:$roboto;
+        font-weight:300;
+        font-size:25px;
+       
+    }
+    & img{
+        @include mobile{
+            padding:0px 0px 10px;
+        } 
+        
+    }
+}
+.try-our-app-iPad{
+    
+    position:relative;
+    z-index:700;
+    @include mobile{
+        background:none;
+    }
+    img{
+        max-width:100%;
+        
+        @include mobile{
+            display: block;
+            padding:0 0 25px;
+        }
+    }
+}
+.appstore-btns{
+    img{
+        max-width:100%;
+    }
+}

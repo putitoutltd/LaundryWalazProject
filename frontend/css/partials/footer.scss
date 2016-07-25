@@ -1,0 +1,112 @@
+.footer-holder{
+    padding:30px 0px;
+    @include mobile{  
+        padding:10px 0px;   
+    }
+}
+.footer-logo{
+    border-right:1px solid #b7b7b7;
+    min-height:110px;
+    text-align:center;
+    @include mobile{
+        border-right:none;
+        text-align:center;
+        min-height:inherit;
+    }
+    span{
+        display:block;
+        font-size:20px;
+        color:#434343;
+        font-family:$roboto;
+        font-weight:300;
+        img{
+            max-width:120px;
+
+        }
+    }
+}
+.laundry-location-footer{
+    font-size:20px;
+    border-right:1px solid #b7b7b7;
+    color:#434343;
+    font-family:$roboto;
+    font-weight:300;
+     min-height:110px;
+     line-height:30px;
+     padding:0 0 0 30px;
+     background:url(../images/laundry-location.png) 0px 7px no-repeat;
+    @include mobile{
+        border-right:1px solid #fff;
+        min-height:inherit;
+        padding:20px 0px;
+        text-align:center;
+        background:none;
+    }
+}
+.footer-links{
+    padding:0px 0 15px;
+    @include mobile{
+        padding:0 0 20px;
+        text-align:center;
+    }
+    h3{
+        font-size:15px;
+        color:$black;
+        font-family:$roboto;
+        font-weight:600;
+        text-transform:uppercase;
+        padding:0 0 15px;
+    }
+    ul{
+        display:block;
+        margin:0px;
+        padding:0px;
+        text-align:center;
+        li{
+            list-style-type:none;
+            padding:0 5px 5px;
+            display:inline-block;
+            a{
+                display:block;
+                font-size:18px;
+                color:#434343;
+                font-family:$roboto;
+                font-weight:300; 
+            }
+        }
+    }
+}
+ul.social-links{
+    display:block;
+    margin:0px;
+    padding:0px 0 25px 20px;
+    text-align:center;
+    @include mobile{
+        padding:0 0 20px;
+        text-align:center;
+    }
+    li {
+        list-style-type:none;
+        display: inline-block;
+        padding:0 5px;
+        a{
+            img{
+                width:36px;
+            }
+        }
+    }
+}
+.copyrights{
+    display:block;
+    font-size:20px;
+    color:#434343;
+    font-family:$roboto;
+    font-weight:300; 
+    text-align:center;
+    padding:30px 0px;
+    @include mobile{
+        text-align:center;
+        padding:10px 20px;
+        font-size:18px;
+    }
+}

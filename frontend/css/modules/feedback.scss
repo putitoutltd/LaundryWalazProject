@@ -1,0 +1,71 @@
+.feedback{
+    padding:50px 25px 0 0;
+    @include mobile{
+        padding:20px 0px;
+    }
+    
+}
+.feedback-row{
+    padding:0 0 20px;
+    max-width:614px;
+    div.operating-areas-options{
+        max-width:300px;
+        padding:0 0 0;
+    }
+    
+    p{
+        font-size:20px;
+        font-family:$roboto;
+        font-weight:300;
+        color:$grey;
+    }
+    textarea{
+        width:100%;
+        box-sizing: border-box;
+        padding:10px;
+        resize:none;
+        border:1px solid #a1a1a1;
+        font-family:$roboto;
+        font-size:18px;
+        font-weight:300;
+        color:$black;
+        min-height:120px;
+        &:focus{
+            outline:none;
+
+        }
+        &:active{
+            outline:none;
+
+        }
+        &:hover{
+            outline:none;
+
+        }
+    }
+    .operating-areas-options {
+        .btn-default{
+            font-size:20px;
+            color:$grey;
+        }
+    }
+}
+.laundry-submit{
+    width:245px;
+        height:53px;
+        background:#72bce3;
+        display:inline-block;
+        text-align:center;
+        margin:0 auto 10px;
+        color:$white;
+        font-size:21px;
+        font-family:$roboto;
+        font-weight:300;
+        padding:4px 0 0;
+        text-decoration:none;
+        border:none;
+        outline:none;
+        &:hover{
+            text-decoration:none;  
+        }
+}
