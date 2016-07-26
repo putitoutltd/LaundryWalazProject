@@ -74,12 +74,14 @@
 - (IBAction)loginButtonPressed:(id)sender
 {
     PIOLoginViewController *loginViewController = [PIOLoginViewController new];
+    loginViewController.fromDemoScreen = YES;
     [self.navigationController pushViewController: loginViewController animated: YES];
 }
 
 - (IBAction)startNowButtonPressed:(id)sender
 {
     PIOMapViewController *mapViewController = [PIOMapViewController new];
+    mapViewController.fromDemoScreen = YES;
     [self.navigationController pushViewController: mapViewController animated: YES];
 }
 

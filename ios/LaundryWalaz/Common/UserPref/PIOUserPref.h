@@ -10,6 +10,9 @@
 
 @interface PIOUserPref : NSObject
 
++ (void)setAccessToken:(NSString *)accessToken;
++ (NSString *)requestAccessToken;
+
 + (void)setInforSavedForFuture:(BOOL)infoSavedForFuture;
 + (BOOL)isInforSavedForFuture;
 

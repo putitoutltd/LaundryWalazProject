@@ -18,6 +18,16 @@ NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
     return [NSString stringWithFormat:@"%@%@", PIOBaseURL, path];
 }
 
++ (NSString *)headerParamValue
+{
+    return @"{sPjadfadf@4hyBASYdfsLdWJFz2juAdAOI(MkjAnRhsTVC>Wih))J9WT(kr";
+}
+
++ (NSString *)headerParamName
+{
+    return @"auth-token";
+}
+
 + (NSString *)loginServiceURL
 {
     return [NSString stringWithFormat:@"%@%@", PIOBaseURL, @"login"];
@@ -33,14 +43,9 @@ NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
     return [self requestURLWithPath:@"/api/user/register"];
 }
 
-+ (NSString *)headerParamValue
++ (NSString *)forgotPasswordURL
 {
-    return @"{sPjadfadf@4hyBASYdfsLdWJFz2juAdAOI(MkjAnRhsTVC>Wih))J9WT(kr";
-}
-
-+ (NSString *)headerParamName
-{
-    return @"auth-token";
+    return [self requestURLWithPath:@"/api/user/forget-password"];
 }
 
 @end

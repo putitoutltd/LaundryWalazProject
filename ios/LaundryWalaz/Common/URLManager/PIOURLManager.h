@@ -16,7 +16,6 @@ extern NSString *const PIOBaseURL;
 + (NSString *)headerParamValue;
 + (NSString *)userRegisterURL;
 + (NSString *)userLoginURL;
-
-
++ (NSString *)forgotPasswordURL;
 
 @end

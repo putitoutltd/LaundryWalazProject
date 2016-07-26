@@ -9,6 +9,7 @@
 #import "PIORegisterViewController.h"
 #import "UIImage+DeviceSpecificMedia.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
 #import "PIOUser.h"
 
 @interface PIORegisterViewController ()
@@ -74,9 +75,19 @@
         if ([[PIOAppController sharedInstance] connectedToNetwork]) {
             
             [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
-            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: self.firstNameTextField.text lastName:self.lastNameTextField.text email: self.emailTextField.text password: self.passwordTextField.text phone: self.phoneTextField.text address: nil locationID: nil];
+            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: self.firstNameTextField.text lastName:self.lastNameTextField.text email: self.emailTextField.text password: self.passwordTextField.text phone: self.phoneTextField.text address: nil locationID: @"1"];
             
             [PIOUser userRegistration: user callback:^(NSError *error, BOOL status, id responseObject) {
+                [[PIOAppController sharedInstance] hideActivityView];
+                if (status) {
+                    NSString *message = (NSString *)responseObject;
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                    [self.navigationController popViewControllerAnimated: YES];
+                }
+                else {
+                    PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                }
                 
             }];
         }

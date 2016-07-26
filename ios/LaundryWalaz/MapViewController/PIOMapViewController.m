@@ -12,6 +12,7 @@
 #import "PIOOrderViewController.h"
 #import "PIOAppController.h"
 #import "PIOMyAnnotation.h"
+#import "PIOOrder.h"
 
 #define MINIMUM_ZOOM_ARC 0.019 //approximately 1 miles (1 degree of arc ~= 69 miles)
 #define ANNOTATION_REGION_PAD_FACTOR 1.15
@@ -49,13 +50,13 @@ const double DHA_6_LONG = 74.458424;
 
 NSString *const PIOPlace_Cantt = @"Cantt";
 NSString *const PIOPlace_Cavalary = @"Cavalary ground";
-NSString *const PIOPlace_DHA_Phase_5 = @"DHA Phase 5";
-NSString *const PIOPlace_DHA_Phase_6 = @"DHA Phase 6";
-NSString *const PIOPlace_Gulberg_1 = @"Gulberg 1";
-NSString *const PIOPlace_Gulberg_2 = @"Gulberg 2";
-NSString *const PIOPlace_Gulberg_3 = @"Gulberg 3";
-NSString *const PIOPlace_Gulberg_4 = @"Gulberg 4";
-NSString *const PIOPlace_Gulberg_5 = @"Gulberg 5";
+NSString *const PIOPlace_DHA_Phase_5 = @"DHA Phase V";
+NSString *const PIOPlace_DHA_Phase_6 = @"DHA Phase VI";
+NSString *const PIOPlace_Gulberg_1 = @"Gulberg";
+NSString *const PIOPlace_Gulberg_2 = @"Gulberg II";
+NSString *const PIOPlace_Gulberg_3 = @"Gulberg III";
+NSString *const PIOPlace_Gulberg_4 = @"Gulberg IV";
+NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
 
 #define lat  [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LAT], [NSNumber numberWithDouble: CAVALRY_GROUND_LAT], [NSNumber numberWithDouble: GULBERG_1_LAT], [NSNumber numberWithDouble: GULBERG_2_LAT], GULBERG_3_LAT, [NSNumber numberWithDouble: GULBERG_4_LAT],[NSNumber numberWithDouble: GULBERG_5_LAT], [NSNumber numberWithDouble: DHA_5_LAT], [NSNumber numberWithDouble: DHA_6_LAT],  nil]
 
@@ -90,10 +91,13 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg 5";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // Hide Back button
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem=nil;
-    self.backButtonHide = YES;
+    if (! self.isFromDemoSreen) {
+        // Hide Back button
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem=nil;
+        self.backButtonHide = YES;
+    }
+    
     
     self.menuButtonNeedToHide = NO;
     self.navigationController.navigationBar.hidden = NO;
@@ -165,7 +169,14 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg 5";
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter correct address for order pickup." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
+        
+        PIOOrder *order = [[PIOOrder alloc]initWithInitialParameters: self.addressTextField.text location: self.locationTextField.text];
+        if ([PIOAppController sharedInstance].LoggedinUser  != nil) {
+            order.customer = [PIOAppController sharedInstance].LoggedinUser;
+        }
+        
         PIOOrderViewController *orderViewController = [PIOOrderViewController new];
+        orderViewController.order = order;
         [self.navigationController pushViewController: orderViewController animated: YES];
     }
     
@@ -372,12 +383,11 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg 5";
 
 - (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation:(id<MKAnnotation>) annotation
 {
-    //    if (annotation == mapView.userLocation)
-    //    {
-    //        return nil;
-    //    }
-    //    else
-    //    {
+        if (annotation == mapView.userLocation)
+        {
+            return nil;
+        }
+        
     MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"VoteSpotPin"];
     if (pin == nil)
     {

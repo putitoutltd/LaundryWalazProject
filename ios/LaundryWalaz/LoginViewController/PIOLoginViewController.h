@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PIOBaseViewController.h"
+
 @interface PIOLoginViewController : PIOBaseViewController
+
+@property (nonatomic, assign, getter= isFromDemoSreen) BOOL fromDemoScreen;
 
 @end

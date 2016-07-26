@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PIOBaseViewController.h"
+#import "PIOOrder.h"
 
 @interface PIOContactInfoViewController : PIOBaseViewController
+
+@property (nonatomic, strong) PIOOrder *order;
 
 @end

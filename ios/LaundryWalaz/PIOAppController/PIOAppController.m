@@ -12,7 +12,7 @@
 
 
 #import "PIOHowToUseViewController.h"
-
+#import "PIOMapViewController.h"
 #import "Flurry.h"
 
 static PIOAppController *sharedInstance = nil;
@@ -130,6 +130,10 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 
 - (UIViewController *)initialViewController
 {
+    if ([PIOUserPref requestAccessToken]) {
+        PIOMapViewController *mapViewController = [PIOMapViewController new];
+        return  mapViewController;
+    }
     PIOHowToUseViewController * howToUseViewController = [PIOHowToUseViewController new];
     return howToUseViewController;
     

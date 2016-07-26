@@ -105,6 +105,7 @@
 		45892A861D4234530013BDBE /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 45892A841D4234530013BDBE /* terms.html */; };
 		45892A871D4234530013BDBE /* faqs.html in Resources */ = {isa = PBXBuildFile; fileRef = 45892A851D4234530013BDBE /* faqs.html */; };
 		45892A8A1D42524A0013BDBE /* PIOMyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45892A891D42524A0013BDBE /* PIOMyAnnotation.m */; };
+		4594831B1D47814A009EF2FC /* PIOOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4594831A1D47814A009EF2FC /* PIOOrder.m */; };
 		45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */; };
 		45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */; };
 		45AA90CD1D46374800979518 /* PIOUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AA90CC1D46374800979518 /* PIOUser.m */; };
@@ -296,6 +297,8 @@
 		45892A851D4234530013BDBE /* faqs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = faqs.html; sourceTree = "<group>"; };
 		45892A881D42524A0013BDBE /* PIOMyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOMyAnnotation.h; path = ../PIOMyAnnotation.h; sourceTree = "<group>"; };
 		45892A891D42524A0013BDBE /* PIOMyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOMyAnnotation.m; path = ../PIOMyAnnotation.m; sourceTree = "<group>"; };
+		459483191D47814A009EF2FC /* PIOOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrder.h; path = Models/PIOOrder.h; sourceTree = "<group>"; };
+		4594831A1D47814A009EF2FC /* PIOOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrder.m; path = Models/PIOOrder.m; sourceTree = "<group>"; };
 		45A302821D3E1A05009539F2 /* PIOOrderSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrderSummaryViewController.h; path = OrderSummaryViewController/PIOOrderSummaryViewController.h; sourceTree = "<group>"; };
 		45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOOrderSummaryViewController.m; path = OrderSummaryViewController/PIOOrderSummaryViewController.m; sourceTree = "<group>"; };
 		45A302841D3E1A05009539F2 /* PIOOrderSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOOrderSummaryViewController.xib; path = OrderSummaryViewController/PIOOrderSummaryViewController.xib; sourceTree = "<group>"; };
@@ -857,6 +860,8 @@
 			children = (
 				45AA90CB1D46374800979518 /* PIOUser.h */,
 				45AA90CC1D46374800979518 /* PIOUser.m */,
+				459483191D47814A009EF2FC /* PIOOrder.h */,
+				4594831A1D47814A009EF2FC /* PIOOrder.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1264,6 +1269,7 @@
 				454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */,
 				452726CF1D25132E008A90B5 /* UIImage+DeviceSpecificMedia.m in Sources */,
 				454A275F1D1C080C00E30CDF /* PIOUserPref.m in Sources */,
+				4594831B1D47814A009EF2FC /* PIOOrder.m in Sources */,
 				45892A821D4230730013BDBE /* PIOWebViewController.m in Sources */,
 				452EA3871D229759003F1825 /* PIOContactInfoViewController.m in Sources */,
 				454A275B1D1C07DD00E30CDF /* PIOConstants.m in Sources */,

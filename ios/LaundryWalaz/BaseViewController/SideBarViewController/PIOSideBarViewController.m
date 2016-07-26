@@ -58,7 +58,11 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
     [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
+    if (![PIOUserPref requestAccessToken]) {
+        self.logOutButton.hidden = YES;
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -268,6 +272,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 - (void)flushDataOnLogout:(UIViewController *)visibleViewController withViewControllerArray:(NSArray *)viewControllers
 {
     
+    [PIOUserPref setAccessToken: nil];
     if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {
         PIOHowToUseViewController *loginViewController;
         for (UIViewController *viewController in viewControllers) {
