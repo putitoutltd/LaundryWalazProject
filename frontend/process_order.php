@@ -1,8 +1,9 @@
 <?php 
-
+    include_once('settings.php');
 
     $action = filter_input(INPUT_POST, 'action');
     $email = filter_input(INPUT_POST, 'email');
+    $accessToken = filter_input(INPUT_POST, 'ac');
     $phone = filter_input(INPUT_POST, 'phone');
     $password = filter_input(INPUT_POST, 'password');
     $first_name = filter_input(INPUT_POST, 'first_name');
@@ -25,7 +26,7 @@ $createOrder =  array(
     'location_id' => $locations_id,
     'address' => $address,
     'password' => $password,
-    'user_id' => $user_id,
+    'access_token' => $accessToken,
     'pickup_time' => date('Y-m-d H:i:s',  strtotime($pickup_time)),
     'dropoff_time' => date('Y-m-d H:i:s',  strtotime($dropoff_time)),
     'special_instructions' => $special_instructions
@@ -41,12 +42,48 @@ if($action == 'create_order'){
 
 
 
+
+if($action == 'verify_identity'){ 
+    // checking if user token is valid
+    $endPoint3 = 'api/user/is_logged_in';
+    $loggedInData = array(
+        'access_token' => $accessToken
+    );
+    
+    echo sendRequest($endPoint3, $loggedInData, 'PUT');
+    
+    return;
+}
+
+
+
+if($action == 'create_user'){ 
+    
+    // register a new user
+    $endPoint1 = 'api/user/register';
+    $registerUser =  array(
+       // 'username' => '',
+        'email' => $email,
+        'password' => $password,
+        'first_name' => $first_name,
+        'phone' => $phone,
+        'last_name' => $last_name,
+       
+    );
+    
+    echo sendRequest($endPoint1, $registerUser);
+    
+    return;
+}
+
+
+
 // CALLS
 //sendRequest($endPoint1, $registerUser);
 
 
 function sendRequest($endPoint, $data , $method = 'POST' ){
-        $host = 'http://backend.laundrywalaz.localhost/';
+        $host = BACKEND_URL;
         $url = $host.$endPoint;
         //echo $url;
         //print_r($data);

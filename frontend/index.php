@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en-US">
+    <?php 
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        include_once('settings.php');
+        $serverUrl = FRONTEND_URL;
+    ?>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -51,11 +58,101 @@
             #today_time_li,#tomorrow_time_li,#other_time_li{
                 visibility: hidden;
             }
+            .text-danger{
+                color: red;
+                font-size: 10pt;
+            }
+            #has-error{
+                display: none;
+                color: red;
+                position: fixed;
+                z-index: 1000;
+                background-color: #e6e6e6;
+                opacity: 0.9;
+                width: 100%;
+                top: 0;
+                padding: 15px;
+                font-size: 15pt;
+                text-align: center;
+                font-weight: bold;
+                
+            }
+            #has-success{
+                display: none;
+                color: green;
+                position: fixed;
+                z-index: 1000;
+                background-color: #e6e6e6;
+                opacity: 0.9;
+                width: 100%;
+                top: 0;
+                padding: 15px;
+                font-size: 15pt;
+                text-align: center;
+                font-weight: bold;
+                
+            }
+            #r_error{
+                text-align: center;
+                color: red;
+            }
         </style>
 
     </head>
     <?php 
-    
+        //echo md5('4f5y123#$%');
+        
+        $hasError = FALSE; $loggedIn = FALSE;
+        $loginFormSubmitted = filter_input(INPUT_POST, 'login_submit');
+        if($loginFormSubmitted){
+            // user login
+            $endPoint4 = 'api/user/login';
+            $userLogin =  array(
+                'email' => filter_input(INPUT_POST, 'login_email'),
+                'password' => filter_input(INPUT_POST, 'login_password')
+            );
+            $loginResponse = sendRequest($endPoint4, $userLogin, 'POST');
+            if($loginResponse->status == 'failure'){
+                $_SESSION['has_error'] = $loginResponse->message;
+                
+                $hasError = $_SESSION['has_error'];
+                //$redirectUrl = filter_input(INPUT_SERVER, 'HTTP_REFERER').'#loginForm';
+                //header('Location: '.$redirectUrl); 
+            }
+            else if($loginResponse->status == 'success'){
+                $loggedIn = TRUE;
+                $cookie_name = "_lw";
+                $cookie_value = time().'something';
+                setcookie($cookie_name, md5($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
+                ?>
+                    <script>
+                var userData = '<?php echo json_encode($loginResponse->data); ?>';       
+                // Check browser support
+                if (typeof(Storage) !== "undefined") {
+                    // Store
+                    localStorage.setItem("_lus", userData);
+                    
+                } else {
+                    alert("Sorry, your browser does not support Web Storage...");
+                }
+                </script>
+                <?php
+                
+            }/*
+            echo '<pre style="z-index: 1000;position: absolute;">';            
+            print_r($loginResponse);
+            //print_r($_SERVER);
+            echo '</pre>';
+            */
+            
+        }
+        
+        $userData = new stdClass();
+        if(isset($_COOKIE['_lw'])){ 
+            $loggedIn = TRUE;
+        }else{
+            
+        }
         // date calculations
         date_default_timezone_set("Asia/Karachi");
 
@@ -119,7 +216,15 @@
     ?>
 
     <body class="document-body" data-spy="scroll" data-target=".header" data-offset="175">
-
+        
+        
+        <div id="has-error" style="<?php if($hasError){ echo 'display: block;';} ?>">
+            <?= $hasError; ?>
+            <?php unset($_SESSION['has_error']); ?>
+        </div>
+        <div id="has-success">
+        </div>
+        
         <!-- header main begins -->
         <div class="header-main" id="home">
 
@@ -140,7 +245,8 @@
                                     <li><a href="#pricing-table" class="page-scroll">pricing</a></li>
                                     <li><a href="#schedule" class="page-scroll">schedule a pick-up</a></li>
                                     <li><a href="#operating-areas" class="page-scroll">operating areas</a></li>
-                                    <!-- li><a href="" data-toggle="modal" data-target="#loginForm" class="page-scroll">login</a></li-->
+                                    <li class="menu_login" ><a href="" data-toggle="modal" data-target="#loginForm" class="page-scroll">login</a></li>
+                                    <li class="menu_logout" ><a onclick="logout()" href="">logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -162,7 +268,8 @@
                                     <li><a href="#pricing-table" class="page-scroll">pricing</a></li>
                                     <li><a href="#schedule" class="page-scroll">schedule a pick-up</a></li>
                                     <li><a href="#operating-areas" class="page-scroll">operating areas</a></li>
-                                    <!-- li><a href="#" class="page-scroll">login</a></li -->
+                                    <li class="menu_login" ><a href="" data-toggle="modal" data-target="#loginForm" class="page-scroll">login</a></li>
+                                    <li class="menu_logout" ><a onclick="logout()" href="">logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -464,6 +571,8 @@
         <div class="schedule-holder" id="schedule" data-speed="0" data-type="background">
             <div class="schedul-visual">
                 <div class="schedule-inn">
+                    
+                    <?php if($loggedIn){ ?>
                     <div class="schedule-holder-inner">  
                         <ul class="nav nav-tabs row">
                             <li class="col-md-6 col-sm-6 col-xs-6 active laundry-tabs-head"><a data-toggle="tab" href="#regular">Standard </a></li>
@@ -676,7 +785,7 @@
 
                         </div>
                     </div>
-
+                    
                     <!-- contact holder begins -->
                     <div class="contact-info-holder clearfix">
                         <div class="contact-info-holder-inner">
@@ -684,7 +793,7 @@
                                 <div class="contact-info">
                                     <!-- h3>Existing User login here</h3>
                                     <a href="" data-toggle="modal" data-target="#loginForm">Login</a -->
-                                    <div class="personal-info">
+                                    <div class="personal-info" id="order_contact_info">
                                         <h4>Your contact information</h4>
                                         <div class="form-row clearfix">
                                             <div class="col-md-6 col-sm-12 col-xs-12">
@@ -745,7 +854,18 @@
 
                     </div>
                     <!-- order confirmation ends -->
-
+                    <?php // logged in if ends
+                    }else {  ?>
+                    <!-- without login block -->
+                    <div class="well well-lg">
+                        <h2 class="animated zoomIn">Please login below to continue with your order
+                            <p>
+                                <a href="" data-toggle="modal" data-target="#loginForm" class="btn btn-success">LOGIN</a>
+                            </p>    
+                        </h2>
+                    </div>
+                    <!-- without login block ends -->
+                    <?php } ?>
                 </div>
 
             </div>
@@ -836,25 +956,28 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="login-form-rows">
-                                    <div class="form-row">
-                                        <input type="email" class="contact-input" placeholder="Email" >
+                                <form name="login_form" method="POST" action="">
+                                    <div class="login-form-rows">
+                                        <div class="form-row">
+                                            <input type="email" class="contact-input" name="login_email"  id="login_email" placeholder="Email" >
+                                        </div>
+                                        <div class="form-row">
+                                            <input type="password" id="login_password"  name="login_password"   class="contact-input" placeholder="Password" >
+                                        </div>
+                                        
+                                        <div class="form-row align-center remember-margin">
+                                            <input tabindex="9" name="remember_me" value="1" type="checkbox" id="square-checkbox-2">
+                                            <label for="square-checkbox-2">Remember me</label>
+                                        </div>
+                                        <div class="form-row align-center">
+                                            <input type="submit" name="login_submit" class="login-submit" value="Login" >
+                                        </div>
+                                        <div class="form-row align-center">
+                                            <a href="#" class="forgot">Fogot password?</a>
+                                            <p class="register-link">If you are not already registered. <a href="" data-toggle="modal" data-target="#registerForm">Click here to register</a></p>
+                                        </div>
                                     </div>
-                                    <div class="form-row">
-                                        <input type="password" class="contact-input" placeholder="Password" >
-                                    </div>
-                                    <div class="form-row align-center remember-margin">
-                                        <input tabindex="9" type="checkbox" id="square-checkbox-2">
-                                        <label for="square-checkbox-2">Remember me</label>
-                                    </div>
-                                    <div class="form-row align-center">
-                                        <input type="submit" class="login-submit" value="Login" >
-                                    </div>
-                                    <div class="form-row align-center">
-                                        <a href="#" class="forgot">Fogot password?</a>
-                                        <p class="register-link">If you are not already registered. <a href="" data-toggle="modal" data-target="#registerForm">Click here to register</a></p>
-                                    </div>
-                                </div>
+                                </form>    
                             </div>
                         </div>
 
@@ -875,6 +998,7 @@
                     <div class="modal-body">
                         <div class="login-form-inner clearfix">
                             <h1>Register with Laundry Walaz</h1> 
+                            <p id="r_error"></p> 
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="login-key">
 
@@ -882,28 +1006,30 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="personal-info">
-                                    <div class="form-row clearfix">
-                                        <div class="col-md-6 col-sm-12 col-xs-12">
-                                            <input type="text" class="contact-input" placeholder="First Name" >
+                                <form id="r_form">
+                                    <div class="personal-info">
+                                        <div class="form-row clearfix">
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                <input id="r_first_name" name="r_first_name" type="text" class="contact-input" placeholder="First Name*" >
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 col-xs-12 no-padding-right">
+                                                <input id="r_last_name"  name="r_last_name" type="text" class="contact-input" placeholder="Last Name*" >
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-12 col-xs-12 no-padding-right">
-                                            <input type="text" class="contact-input" placeholder="Last Name" >
+                                        <div class="form-row">
+                                            <input type="email"  id="r_email" name="r_email" class="contact-input" placeholder="Email*" >
+                                        </div>
+                                        <div class="form-row">
+                                            <input type="number" id="r_phone"  name="r_phone" class="contact-input" placeholder="Phone*" >
+                                        </div>
+                                        <div class="form-row">
+                                            <input type="password" id="r_password" name="r_password"  class="contact-input" placeholder="Password*" >
+                                        </div>
+                                        <div class="form-row align-center reg-btn">
+                                            <input type="button" id="r_submit" onclick="registerUser()" name="r_submit" class="login-submit" value="Register" >
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <input type="email" class="contact-input" placeholder="Email" >
-                                    </div>
-                                    <div class="form-row">
-                                        <input type="number" class="contact-input" placeholder="Phone" >
-                                    </div>
-                                    <div class="form-row">
-                                        <input type="password" class="contact-input" placeholder="Password" >
-                                    </div>
-                                    <div class="form-row align-center reg-btn">
-                                        <input type="submit" class="login-submit" value="Register" >
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
 
@@ -1179,6 +1305,134 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
         <script src="js/custom.js" type="text/javascript"></script>
         
         <script>
+            
+           
+            var usr = localStorage.getItem("_lus");
+            if(usr){
+                // user is logged in
+                $(".menu_login").hide();
+                $(".menu_logout").show();
+                
+                // filling in user information in contact section
+                var obj = JSON.parse(usr);
+                console.log(obj);
+                $("#first_name").val(obj.details.first_name);
+                $("#last_name").val(obj.details.last_name);
+                $("#email").val(obj.details.email);
+                $("#phone").val(obj.details.phone);
+                $("#order_contact_info :input").prop("readonly", true);
+                
+            }else{
+                // user is not logged in
+            }
+            
+            function logout(){
+                
+                event.preventDefault();
+                createCookie("_lw","",-1);
+                localStorage.removeItem("_lus");
+                
+                $("#has-success").html("You have logged out successfully");
+                $("#has-success").show(2000);
+                setTimeout(function(){ $("#has-success").hide(1000); }, 3000);
+                setTimeout(function(){ window.location = "<?= $serverUrl; ?>"; }, 4000);
+                
+            }
+            
+            function sync_user() {
+                var ac = localStorage.getItem("_lus");
+                if(!ac){
+                    return;
+                }
+                var obj = JSON.parse(ac);
+                 var detailObj = {
+                     'ac'                 : obj.access_token,
+                     'action'             : 'verify_identity'
+                 };
+                 
+                 //return;
+                 // process the form
+                 $.ajax({
+                     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                     url         : 'process_order.php', // the url where we want to POST
+                     data        : detailObj, // our data object
+                     dataType    : 'json', // what type of data do we expect back from the server
+                     encode          : true
+                 })
+                // using the done promise callback
+                .done(function(data) {
+                    
+                    if(data.status === 'failure'){
+                        createCookie("_lw","",-1);
+                        localStorage.removeItem("_lus");
+
+                        $("#has-success").html("You session has expired, Please login again");
+                        $("#has-success").show(2000);
+                        setTimeout(function(){ $("#has-success").hide(1000); }, 3000);
+                        setTimeout(function(){ window.location = "<?= $serverUrl; ?>"; }, 4000);
+
+                    }
+                });
+            }
+
+            sync_user();
+             
+             
+            function registerUser() {
+                       
+                var ufirstName = $("#r_first_name").val();
+                var ulastName = $("#r_last_name").val();
+                var uemail = $("#r_email").val();
+                var uphone = $("#r_phone").val();
+                var upwd = $("#r_password").val();
+                
+                if(ufirstName == '' || ulastName == '' || uemail == '' || uphone == '' || upwd == '' ){
+                    //alert("all fields are required");
+                    $("#r_error").css("color", "red");
+                    $("#r_error").html("All fields are required");
+                    return;
+                }else{
+                    $("#r_error").html(" ");
+                }
+                $("#r_error").css("color", "green");
+                $("#r_error").html("Processing...");
+                $("#r_form :input").prop("disabled", true);
+                 var Obj = {
+                     'email'                 : uemail,
+                     'phone'                 : uphone,
+                     'password'              : upwd,
+                     'first_name'            : ufirstName,
+                     'last_name'             : ulastName,
+                     'action'                : 'create_user'
+                 };
+
+                 //console.log(orderObj);
+                 // process the form
+                 $.ajax({
+                     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                     url         : 'process_order.php', // the url where we want to POST
+                     data        : Obj, // our data object
+                     dataType    : 'json', // what type of data do we expect back from the server
+                     encode          : true
+                 })
+                     // using the done promise callback
+                     .done(function(data) {
+
+                         if(data.status === 'success'){
+                            
+                            $("#r_error").html("Verification email has been sent to your account, It will show up within 10 minutes."); 
+                            setTimeout(function(){ window.location = "<?= $serverUrl; ?>"; }, 3000);
+                         }
+                         else if(data.status === 'failure'){
+                             $("#r_form :input").prop("disabled", false);
+                              $("#r_error").html(data.message);
+                         }
+
+                         // log data to the console so we can see
+                         console.log(data); 
+                         // here we will handle errors and validation messages
+                     });
+                } 
              
             $(document).ready(function () {
                 $(".navi-opener").click(function () {
@@ -1217,6 +1471,9 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 }
                  if(window.location.href.indexOf('#terms') != -1) {
                     $('#terms').modal('show');
+                }
+                if(window.location.href.indexOf('#loginForm') != -1) {
+                    $('#loginForm').modal('show');
                 }
                 
                 $(".laundry-order").click(function () {
@@ -1329,10 +1586,27 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 }
                 
             }
+            
+            function createCookie(name,value,days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime()+(days*24*60*60*1000));
+                    var expires = "; expires="+date.toGMTString();
+                }
+                else{ var expires = ""; }
+                document.cookie = name+"="+value+expires+"; path=/";
+            }
 
                    function processOrder() {
                        
                        $("#processing").show();
+                       
+                       var ac = localStorage.getItem("_lus");
+                        if(!ac){
+                            return;
+                        }
+                        var obj = JSON.parse(ac);
+                         
                        
                        var formattedPickUpTime = orderPickDate+" "+orderPickTime;
                        var formattedDropOffTime = orderDeliverDate+" 19:00:00";
@@ -1344,7 +1618,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                             'last_name'             : lastName,
                             'locations_id'          : orderLocation,
                             'address'               : orderAddress,
-                            'user_id'               : '',
+                            'ac'                    : obj.access_token,
                             'pickup_time'           : formattedPickUpTime,
                             'dropoff_time'          : formattedDropOffTime,
                             'special_instructions'  : specialInstructions,
@@ -1366,7 +1640,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 if(data.status === 'success'){
                                     
                                     var x = new Date(orderPickDate);
-                                    var y = new Date(formattedDropOffTime);
+                                    var y = new Date(orderDeliverDate);
                                     
                                     var da = x.getDate();	
                                     var mo = x.getMonth() + 1;	
@@ -1403,6 +1677,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 // here we will handle errors and validation messages
                             });
                     }
+                    
                     
                     
                     function sendAreaMail() {
@@ -1474,29 +1749,11 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
         </script>
         
         <?php
-// update user information
-        $endPoint2 = 'api/user/order/create';
-        $createOrder = array(
-            //'email' => 'abc@gmail.com',
-            //'phone' => '445545411',
-            //'first_name' => 'PK',
-            //'last_name' => 'User11',
-            //'location_id' => '1',
-            //'address' => 'Lahore, Pakistan',
-            'user_id' => '3',
-            'pickup_time' => '2016-07-19 10:00:00',
-            'dropoff_time' => '2016-07-20 20:00:00',
-            'special_instructions' => 'I will be here between 5 - 9',
-        );
-
-//$orderResponse = sendRequest($endPoint2, $createOrder);
-// CALLS
-//sendRequest($endPoint1, $registerUser);
-
+        
 
         function sendRequest($endPoint, $data, $method = 'POST') {
-            $host = 'http://backend.laundrywalaz.com/';
-            //$host = 'http://backend.laundrywalaz.localhost/';
+            
+            $host = BACKEND_URL;
             $url = $host . $endPoint;
             //  echo $url;
 

@@ -86,7 +86,7 @@
                                     //sendRequest($endPoint, $verifyToken, 'PUT',$environment);
                                     switch ($environment) {
                                         case 'st':
-                                            $host = 'http://backend.laundrywalaz.localhost/';
+                                            $host = 'http://backend-staging.laundrywalaz.com/';
                                             break;
                                         case 'pr':
                                             $host = 'http://backend.laundrywalaz.com/';

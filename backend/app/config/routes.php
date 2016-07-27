@@ -12,6 +12,7 @@ Router\Helper::map('user', array(
     '/api/user/device' => array('post' => 'register_device_token'),
     '/api/user/device/remove' => array('put' => 'remove_device_token'),
     '/api/user/getuser' => array('put' => 'get_user_by_token'),
+    '/api/user/is_logged_in' => array('put' => 'is_logged_in'),
     '/' => array('get' => 'index'),
     '/admin/login' => array('post' => 'admin_login'),
     '/admin/logout' => array('get' => 'admin_logout'),

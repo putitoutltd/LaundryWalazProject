@@ -158,6 +158,42 @@
     "groupTitle": "Users"
   },
   {
+    "type": "put",
+    "url": "/api/user/is_logged_in",
+    "title": "Is Logged In",
+    "name": "IsLoggedIn",
+    "group": "Users",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>The token you receive if successfully login</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "response",
+            "description": "<p>It sends true if a user is logged in User with a notification and returns an array with success or failure with message.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "D:/wamp/www/laundrywalaz/backend/app/controllers/user_controller.php",
+    "groupTitle": "Users"
+  },
+  {
     "type": "post",
     "url": "/api/user/login",
     "title": "Login",
