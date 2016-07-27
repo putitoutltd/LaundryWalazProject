@@ -75,7 +75,7 @@
         if ([[PIOAppController sharedInstance] connectedToNetwork]) {
             
             [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
-            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: self.firstNameTextField.text lastName:self.lastNameTextField.text email: self.emailTextField.text password: self.passwordTextField.text phone: self.phoneTextField.text address: nil locationID: @"1"];
+            PIOUser *user = [[PIOUser alloc] initWithParametersID: nil firstName: self.firstNameTextField.text lastName:self.lastNameTextField.text email: self.emailTextField.text password: self.passwordTextField.text phone: self.phoneTextField.text address: nil locationID: nil];
             
             [PIOUser userRegistration: user callback:^(NSError *error, BOOL status, id responseObject) {
                 [[PIOAppController sharedInstance] hideActivityView];

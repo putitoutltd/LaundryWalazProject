@@ -12,6 +12,4 @@
 
 @interface PIOContactInfoViewController : PIOBaseViewController
 
-@property (nonatomic, strong) PIOOrder *order;
-
 @end

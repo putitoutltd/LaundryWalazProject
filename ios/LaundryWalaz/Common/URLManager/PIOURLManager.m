@@ -48,4 +48,14 @@ NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
     return [self requestURLWithPath:@"/api/user/forget-password"];
 }
 
++ (NSString *)createorderURL
+{
+    return [self requestURLWithPath:@"/api/order/create"];
+}
+
++ (NSString *)orderStatusURL
+{
+    return [self requestURLWithPath:@"/api/order/status"];
+}
+
 @end

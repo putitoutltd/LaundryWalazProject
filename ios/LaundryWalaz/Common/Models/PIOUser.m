@@ -15,9 +15,10 @@
 
 @implementation PIOUser
 
-- (instancetype)initWithParametersFirstName:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password phone:(NSString *)phone address:(NSString *)address locationID:(NSString *)locationID
+- (instancetype)initWithParametersID:(NSString *)ID firstName:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password phone:(NSString *)phone address:(NSString *)address locationID:(NSString *)locationID
 {
     if ((self = [super init])) {
+        self.ID = ID;
         self.firstName = firstName;
         self.lastName = lastName;
         self.email  = email;
@@ -118,12 +119,20 @@
                 if ([PIOAppController sharedInstance].isRemeberMe) {
                     [PIOUserPref setAccessToken:dictionary[@"data"][@"access_token"]];
                 }
+                else {
+                      [PIOUser saveInfoForFuture: NO user: nil];
+                }
                 
                 // Save Access Token temporary. If required in any API
                 [PIOAppController sharedInstance].accessToken = dictionary[@"data"][@"access_token"];
                 
                 PIOUser *user = [[PIOUser alloc]initWithDict: dictionary[@"data"][@"details"]];
                 [PIOAppController sharedInstance].LoggedinUser = user;
+                // If Remember Me check is enabled. Save user info for future
+                if ([PIOAppController sharedInstance].isRemeberMe) {
+                    [PIOUser saveInfoForFuture: YES user: user];
+                }
+                
                 callback(nil, YES, user);
             } else {
                 callback(error, NO, nil);
@@ -132,6 +141,7 @@
         
     }];
 }
+
 
 
 + (void)forgotPassword:(NSString *)email callback:(void (^)(NSError *error,BOOL status, id responseObject))callback
@@ -162,5 +172,22 @@
     }];
 }
 
++ (void)saveInfoForFuture:(BOOL)isSaved user:(PIOUser *)user
+{
+    if (isSaved) {
+         [PIOUserPref setUserID: user.ID];
+        [PIOUserPref setFirstName: user.firstName];
+        [PIOUserPref setLastName: user.lastName];
+        [PIOUserPref setEmailAddress: user.email];
+        [PIOUserPref setPhoneNumber: user.phone];
+    }
+    else {
+        [PIOUserPref setFirstName: @""];
+        [PIOUserPref setLastName: @""];
+        [PIOUserPref setEmailAddress: @""];
+        [PIOUserPref setPhoneNumber: @""];
+    }
+    
+}
 
 @end

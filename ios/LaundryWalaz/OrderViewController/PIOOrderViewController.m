@@ -9,6 +9,7 @@
 #import "PIOOrderViewController.h"
 #import "IQActionSheetPickerView.h"
 #import "PIOContactInfoViewController.h"
+#import "PIOLoginViewController.h"
 #import "PIOAppController.h"
 
 @interface PIOOrderViewController () <IQActionSheetPickerViewDelegate>
@@ -136,7 +137,8 @@
     if (self.expressDeliveryButton.isSelected) {
         return;
     }
-    
+    self.pickupSelectedDate = nil;
+    self.deliverOnSelectedDate = nil;
     [self resetAllButtonsStates];
     [self hideAllDropdownButtons];
     
@@ -148,7 +150,7 @@
     
     
     [self setButtonStateIfSelected: self.todayPickupButton isSelected:YES withColor: [UIColor clearColor]];
-    [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+    
     
     [self.deliveryDateContainerView setUserInteractionEnabled: NO];
     // [self.pickupDateContainerView setUserInteractionEnabled: NO];
@@ -158,6 +160,9 @@
         [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
         self.todayPickupButton.enabled = NO;
         [self hideAllDropdownButtons];
+    }
+    else {
+        [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
     }
     
 }
@@ -176,6 +181,7 @@
     switch (button.tag) {
         case PIOOrderDayTodayPickUp: {
             
+            dropdownButton = self.todayTimePickerButton;
             [self.todayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.todayPickupButton;
             
@@ -195,7 +201,7 @@
         case PIOOrderDayTomorrowPickUp: {
             [self.tomorrowTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.tomorrowPickupButton;
-            
+            dropdownButton = self.tomorrowTimePickerButton;
             self.tomorrowTimePickerButton.hidden = self.isFromExpressDelivery;
             self.todayTimePickerButton.hidden = YES;
             self.otherdayTimePickerButton.hidden = YES;
@@ -213,6 +219,7 @@
             
             // Date will be selected using calender
             
+            dropdownButton = self.otherdayTimePickerButton;
             [self.otherdayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.otherDayPickupButton;
             
@@ -241,7 +248,7 @@
             [self setButtonStateIfSelected: self.todayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             
-            self.deliverOnSelectedDate = [self stringToDate: self.todayDeliveryDateLabel.text];
+            self.deliverOnSelectedDate = [self stringToDate: self.tomorrowDeliveryDateLabel.text];
             
             break;
         }
@@ -323,14 +330,22 @@
         return;
     }
    
-    NSString *pickupDateString = [self addTimeToDate: self.pickupSelectedDate time: timeString isOnlyDae: NO];
-    NSString *deliverOnDateString = [self addTimeToDate: self.deliverOnSelectedDate time: nil isOnlyDae: YES];
+    if ([PIOAppController sharedInstance].accessToken) {
+        NSString *pickupDateString = [self addTimeToDate: self.pickupSelectedDate time: timeString isOnlyDae: NO];
+        NSString *deliverOnDateString = [self addTimeToDate: self.deliverOnSelectedDate time: nil isOnlyDae: YES];
+        
+        [PIOAppController sharedInstance].order.pickupTime = pickupDateString;
+        [PIOAppController sharedInstance].order.deliveronTime = deliverOnDateString;
+        
+        PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
+        [self.navigationController pushViewController: contactInfoViewController animated: YES];
+    }
+    else {
+        PIOLoginViewController *loginViewController = [PIOLoginViewController new];
+        loginViewController.fromDemoScreen = NO;
+        [self.navigationController pushViewController: loginViewController animated: YES];
+    }
     
-    self.order.pickupTime = pickupDateString;
-    self.order.deliveronTime = deliverOnDateString;
-    PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
-    contactInfoViewController.order = self.order;
-    [self.navigationController pushViewController: contactInfoViewController animated: YES];
 }
 
 - (IBAction)dropdownButtonPressed:(id)sender
@@ -401,8 +416,6 @@
         [self.openCalendarDeliveryTitleLabel setText: [self dateToDateString: date]];
     }
     
-    
-    self.pickupSelectedDate = date;
 }
 
 
@@ -435,7 +448,7 @@
     NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
     NSDateFormatter *outputDateFormatter = [[NSDateFormatter alloc] init];
     [outputDateFormatter setTimeZone:outputTimeZone];
-    [outputDateFormatter setDateFormat:@"yyyy-MM-dd-HH:mm:ss"];
+    [outputDateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [outputDateFormatter stringFromDate:newDate];
 }
 

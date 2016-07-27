@@ -106,7 +106,7 @@
         if ([[PIOAppController sharedInstance] connectedToNetwork]) {
             
             [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
-            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: nil lastName:nil email: self.emailAddressTextField.text password: self.passwordTextField.text phone: nil address: nil locationID: nil];
+            PIOUser *user = [[PIOUser alloc] initWithParametersID: nil firstName: nil lastName:nil email: self.emailAddressTextField.text password: self.passwordTextField.text phone: nil address: nil locationID: nil];
             
             [PIOUser userLogin: user callback:^(NSError *error, BOOL status, id responseObject) {
                 [[PIOAppController sharedInstance] hideActivityView];

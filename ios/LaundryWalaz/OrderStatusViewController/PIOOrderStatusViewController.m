@@ -9,6 +9,8 @@
 #import "PIOOrderStatusViewController.h"
 #import "UIImage+DeviceSpecificMedia.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
+#import "PIOOrder.h"
 
 @interface PIOOrderStatusViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -41,6 +43,7 @@
     [self.pickupTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
     [self.timeLabel setFont: [UIFont PIOMyriadProLightWithSize: 31.06f]];
     [self.dayLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.04f]];
+    [self orderStatus];
 
 }
 
@@ -55,14 +58,86 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma  mark - Private Methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)orderStatus
+{
+    if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+        [[PIOAppController sharedInstance] showActivityViewWithMessage: @" "];
+        [PIOOrder orderStatusCallback:^(NSError *error, BOOL status, id responseObject) {
+            [[PIOAppController sharedInstance] hideActivityView];
+            if (status) {
+                NSString *status = (NSString *)responseObject;
+                UIImage *backgroundImage = nil;
+                switch ( [status integerValue]) {
+                    case 0:
+                    {
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-01"];
+                        [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.pickupTime];
+                        
+                        break;
+                    }
+                    case 1:
+                    {
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-02"];
+                        [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
+                        break;
+                    }
+                    case 2:
+                    {
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-03"];
+                        [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
+                        break;
+                    }
+                    case 3:
+                    {
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-04"];
+                        [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
+                        break;
+                    }
+                    case 4:
+                    {
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-04"];
+                        [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
+                        break;
+                    }
+                        
+                    default:
+                        break;
+                }
+                self.backgroundImageView.image = backgroundImage;
+                
+                
+            }
+            else {
+                PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+            }
+        }];
+    }
 }
-*/
+
+
+- (void)dateToDateString:(NSString *)dateStr
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //    NSString *dateStr = [dateFormatter stringFromDate: date];
+    NSDate *dddddd = [dateFormatter dateFromString:dateStr];
+    
+    NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init] ;
+    [monthDayFormatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
+    [monthDayFormatter setDateFormat:@"EEEE"];
+    NSString *day = [monthDayFormatter stringFromDate:dddddd] ;
+    
+    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
+    [monthDayFormatter setTimeZone: outputTimeZone];
+    [monthDayFormatter setDateFormat:@"hh:mm a"];
+    NSString *time = [monthDayFormatter stringFromDate:dddddd];
+    
+    self.dayLabel.text = day;
+    self.timeLabel.text = time;
+    
+}
 
 @end

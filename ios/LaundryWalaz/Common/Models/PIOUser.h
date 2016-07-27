@@ -18,8 +18,10 @@
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *locationID;
+@property (nonatomic, strong) NSString *pickupTime;
+@property (nonatomic, strong) NSString *deliveronTime;
 
-- (instancetype)initWithParametersFirstName:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password phone:(NSString *)phone address:(NSString *)address locationID:(NSString *)locationID;
+- (instancetype)initWithParametersID:(NSString *)ID firstName:(NSString *)firstName lastName:(NSString *)lastName email:(NSString *)email password:(NSString *)password phone:(NSString *)phone address:(NSString *)address locationID:(NSString *)locationID;
 
 // User Registration API Call
 + (void)userRegistration:(PIOUser *)user callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
@@ -29,4 +31,5 @@
 
 // Forgot Password API Call
 + (void)forgotPassword:(NSString *)email callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
+
 @end
