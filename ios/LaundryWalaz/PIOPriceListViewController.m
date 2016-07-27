@@ -27,10 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // Hide Back button
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem=nil;
-    self.backButtonHide = YES;
+    if (!self.isFromFAQs) {
+        // Hide Back button
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem=nil;
+        self.backButtonHide = YES;
+    }
+   
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Pricing" onViewController:self];

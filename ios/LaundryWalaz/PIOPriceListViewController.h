@@ -11,4 +11,6 @@
 
 @interface PIOPriceListViewController : PIOBaseViewController
 
+@property (nonatomic, assign, getter= isFromFAQs) BOOL fromFAQs;
+
 @end

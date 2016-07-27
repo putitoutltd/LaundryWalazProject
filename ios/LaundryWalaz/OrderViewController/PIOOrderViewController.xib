@@ -15,6 +15,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOOrderViewController">
             <connections>
                 <outlet property="continueButton" destination="BEu-sM-snj" id="LjI-Hk-Rcd"/>
+                <outlet property="deliverMessageLabel" destination="DjL-fm-HR3" id="NiR-ge-ka2"/>
                 <outlet property="deliverTitleLabel" destination="HPX-P9-z5d" id="VIn-po-MrK"/>
                 <outlet property="deliveronDateTitleLabel" destination="DjL-fm-HR3" id="skl-dH-Xh8"/>
                 <outlet property="deliveryDateContainerView" destination="koY-nj-w56" id="g7e-cf-vaz"/>
@@ -28,6 +29,7 @@
                 <outlet property="otherdayTimePickerButton" destination="iqX-F3-AGD" id="MCL-GW-gAB"/>
                 <outlet property="pickUpTitleLabel" destination="pU7-ny-BPC" id="ZdU-fB-CRa"/>
                 <outlet property="pickupDateContainerView" destination="U6a-hu-kxd" id="w7s-Gb-ZHj"/>
+                <outlet property="pickupMessageLabel" destination="6ah-Nh-mX9" id="VI5-9a-4c0"/>
                 <outlet property="regularDeliveryButton" destination="mds-Pb-kwp" id="c5H-w4-gBW"/>
                 <outlet property="tableView" destination="eZK-1K-alY" id="eDm-fx-wB8"/>
                 <outlet property="todayDateLabel" destination="ArA-xg-68C" id="ugH-9j-9cW"/>
@@ -219,7 +221,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="20" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="08:00 PM" image="dropdown">
+                            <state key="normal" title="00:00" image="dropdown">
                                 <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -233,7 +235,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="20" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="08:00 PM" image="dropdown">
+                            <state key="normal" title="00:00" image="dropdown">
                                 <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
@@ -247,13 +249,20 @@
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <inset key="titleEdgeInsets" minX="-23" minY="0.0" maxX="20" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="08:00 PM" image="dropdown">
+                            <state key="normal" title="00:00" image="dropdown">
                                 <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="dropdownButtonPressed:" destination="-1" eventType="touchUpInside" id="BR9-bn-50A"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Express Service, please place your order by maximum 10 am. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6ah-Nh-mX9">
+                            <rect key="frame" x="12" y="49" width="300" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -266,7 +275,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" id="koY-nj-w56">
-                    <rect key="frame" x="0.0" y="307" width="320" height="80"/>
+                    <rect key="frame" x="0.0" y="307" width="320" height="85"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="WxR-4G-3wV">
@@ -357,9 +366,9 @@
                             </subviews>
                             <color key="backgroundColor" red="0.3411764705882353" green="0.66274509803921566" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliver on: 5:00 PM to 9:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DjL-fm-HR3">
-                            <rect key="frame" x="10" y="51" width="298" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliveries are made from 6:00 - 9:00 pm on the chosen day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DjL-fm-HR3">
+                            <rect key="frame" x="8" y="49" width="304" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>

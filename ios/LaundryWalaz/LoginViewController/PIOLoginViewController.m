@@ -11,7 +11,10 @@
 #import "PIOContactInfoViewController.h"
 #import "PIOForgotPasswordViewController.h"
 #import "PIORegisterViewController.h"
+#import "PIOMapViewController.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
+#import "PIOUser.h"
 
 
 @interface PIOLoginViewController ()
@@ -75,9 +78,11 @@
 {
     if (self.rememberMeButton.isSelected) {
         [self.rememberMeButton setSelected: NO];
+        [PIOAppController sharedInstance].remeberMe = NO;
     }
     else {
         [self.rememberMeButton setSelected: YES];
+        [PIOAppController sharedInstance].remeberMe = YES;
     }
 }
 
@@ -97,13 +102,38 @@
         return;
     }
     else {
-        NSArray *viewControllers = [[PIOAppController sharedInstance] navigationController].viewControllers;
-        for (UIViewController *viewController in viewControllers) {
-            if ([viewController isKindOfClass:[PIOContactInfoViewController class]]) {
-                [self.navigationController popViewControllerAnimated: YES];
-                break;
-            }
+        
+        if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+            
+            [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+            PIOUser *user = [[PIOUser alloc] initWithParametersFirstName: nil lastName:nil email: self.emailAddressTextField.text password: self.passwordTextField.text phone: nil address: nil locationID: nil];
+            
+            [PIOUser userLogin: user callback:^(NSError *error, BOOL status, id responseObject) {
+                [[PIOAppController sharedInstance] hideActivityView];
+                if (status) {
+                    if (self.isFromDemoSreen) {
+                        PIOMapViewController *mapViewController = [PIOMapViewController new];
+                        [self.navigationController pushViewController: mapViewController animated: YES];
+                    }
+                    else {
+                        PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
+                        [self.navigationController pushViewController: contactInfoViewController animated: YES];
+                    }
+                    
+                }
+                else {
+                    PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                    NSString *message = APIResponse.message;
+                    if ([message isEqualToString: @"You email is still not verified"]) {
+                        message = @"Verification email has been sent to your email address. Please verify your email address before login.";
+                    }
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                }
+                
+            }];
         }
+        
+        
     }
 }
 

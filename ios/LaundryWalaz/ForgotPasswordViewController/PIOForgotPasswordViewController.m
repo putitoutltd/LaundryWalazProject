@@ -8,6 +8,8 @@
 
 #import "PIOForgotPasswordViewController.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
+#import "PIOUser.h"
 
 @interface PIOForgotPasswordViewController ()
 
@@ -58,6 +60,21 @@
         return;
     }
     else {
+        if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+            [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+            [PIOUser forgotPassword: self.emailAddressTextField.text callback:^(NSError *error, BOOL status, id responseObject) {
+                [[PIOAppController sharedInstance] hideActivityView];
+                if (status) {
+                    
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"New password has been sent to your email address successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                    [self.navigationController popViewControllerAnimated: YES];
+                }
+                else {
+                    PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                }
+            }];
+        }
         
     }
 }

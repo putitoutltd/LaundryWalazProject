@@ -10,4 +10,7 @@
 
 extern NSString *const PIODashboardTitles[];
 extern int PIODashboardTitlesCount;
-
+extern NSString *const PIOResponseStatus;
+extern NSString *const PIOResponseMessage;
+extern NSString *const PIOResponseStatusFailure;
+extern NSString *const PIOResponseStatusSuccess;

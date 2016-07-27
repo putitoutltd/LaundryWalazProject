@@ -11,4 +11,6 @@
 
 @interface PIOMapViewController : PIOBaseViewController
 
+@property (nonatomic, assign, getter= isFromDemoSreen) BOOL fromDemoScreen;
+
 @end

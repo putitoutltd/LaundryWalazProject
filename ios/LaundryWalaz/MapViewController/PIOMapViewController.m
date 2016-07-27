@@ -11,22 +11,73 @@
 #import <MapKit/MapKit.h>
 #import "PIOOrderViewController.h"
 #import "PIOAppController.h"
+#import "PIOMyAnnotation.h"
+#import "PIOOrder.h"
+
+#define MINIMUM_ZOOM_ARC 0.019 //approximately 1 miles (1 degree of arc ~= 69 miles)
+#define ANNOTATION_REGION_PAD_FACTOR 1.15
+#define MAX_DEGREES_ARC 360
 
 #define METERS_MILE 1609.344
 #define METERS_FEET 3.28084
+
+const double LAHORE_CANTT_LAT = 31.478726;
+const double LAHORE_CANTT_LONG = 74.416029;
+
+const double CAVALRY_GROUND_LAT = 31.500772;
+const double CAVALRY_GROUND_LONG = 74.369010;
+
+const double GULBERG_1_LAT = 31.525502;
+const double GULBERG_1_LONG = 74.349248;
+
+const double GULBERG_2_LAT = 31.523263;
+const double GULBERG_2_LONG = 74.348483;
+
+const double GULBERG_3_LAT = 31.505354;
+const double GULBERG_3_LONG = 74.349949;
+
+const double GULBERG_4_LAT = 31.526759;
+const double GULBERG_4_LONG = 74.337485;
+
+const double GULBERG_5_LAT = 31.537782;
+const double GULBERG_5_LONG = 74.347750;
+
+const double DHA_5_LAT = 31.462538;
+const double DHA_5_LONG = 74.408592;
+
+const double DHA_6_LAT = 31.471504;
+const double DHA_6_LONG = 74.458424;
+
+NSString *const PIOPlace_Cantt = @"Cantt";
+NSString *const PIOPlace_Cavalary = @"Cavalary ground";
+NSString *const PIOPlace_DHA_Phase_5 = @"DHA Phase V";
+NSString *const PIOPlace_DHA_Phase_6 = @"DHA Phase VI";
+NSString *const PIOPlace_Gulberg_1 = @"Gulberg";
+NSString *const PIOPlace_Gulberg_2 = @"Gulberg II";
+NSString *const PIOPlace_Gulberg_3 = @"Gulberg III";
+NSString *const PIOPlace_Gulberg_4 = @"Gulberg IV";
+NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
+
+#define lat  [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LAT], [NSNumber numberWithDouble: CAVALRY_GROUND_LAT], [NSNumber numberWithDouble: GULBERG_1_LAT], [NSNumber numberWithDouble: GULBERG_2_LAT], GULBERG_3_LAT, [NSNumber numberWithDouble: GULBERG_4_LAT],[NSNumber numberWithDouble: GULBERG_5_LAT], [NSNumber numberWithDouble: DHA_5_LAT], [NSNumber numberWithDouble: DHA_6_LAT],  nil]
 
 @interface PIOMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
+@property (nonatomic, strong) NSMutableArray *GULBERG_Annotations;
+@property (nonatomic, strong) NSMutableArray *DHA_Annotations;
+@property (nonatomic, strong) NSMutableArray *annotations;
+@property (nonatomic, strong) NSMutableArray *longitudes;
+@property (nonatomic, strong)  NSMutableArray *latitudes;
+@property (nonatomic, strong) NSString *address;
+
 @property (nonatomic, weak) IBOutlet UIButton *confirmAddressButton;
 @property (nonatomic, weak) IBOutlet UIButton *dropdownButton;
 @property (nonatomic, strong) NSMutableArray *locations;
 @property (nonatomic, weak) IBOutlet UITextField *locationTextField;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
 @property (nonatomic, weak) IBOutlet UITextField *addressTextField;
 
@@ -39,44 +90,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-    // Hide Back button
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.leftBarButtonItem=nil;
-    self.backButtonHide = YES;
+    
+    if (! self.isFromDemoSreen) {
+        // Hide Back button
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem=nil;
+        self.backButtonHide = YES;
+    }
+    
     
     self.menuButtonNeedToHide = NO;
     self.navigationController.navigationBar.hidden = NO;
     
-    // Add Locations for dropdown list
-    self.locations = [NSMutableArray arrayWithObjects: @"Cantt", @"Cavalary ground", @"DHA Phase 5&6", @"Gulberg I-V", nil];
     
-    self.mapView.delegate = self;
-    [[self mapView] setShowsUserLocation:YES];
-    self.locationManager = [[CLLocationManager alloc] init];
-    geocoder = [[CLGeocoder alloc] init];
-    [[self locationManager] setDelegate:self];
-    
-    // we have to setup the location maanager with permission in later iOS versions
-    if ([[self locationManager] respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [[self locationManager] requestWhenInUseAuthorization];
-    }
-    
-    [[self locationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
-    [[self locationManager] startUpdatingLocation];
-    
-    // Set Screen Title
-    [[PIOAppController sharedInstance] titleFroNavigationBar: @"Where?" onViewController:self];
-    [self hideTableview];
-    
-    // Set Tableview Border
-    self.tableView.layer.borderWidth = .8;
-    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
     [self.addressTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
     [self.locationTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.0]];
     [self.confirmAddressButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.75]];
-    
+    [self addAllPlacesOnMap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,8 +115,8 @@
     [super viewWillAppear: animated];
     
     
+    
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -138,11 +169,159 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter correct address for order pickup." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
+        
+        PIOOrder *order = [[PIOOrder alloc]initWithInitialParameters: self.addressTextField.text location: self.locationTextField.text];
+        if ([PIOAppController sharedInstance].LoggedinUser  != nil) {
+            order.customer = [PIOAppController sharedInstance].LoggedinUser;
+        }
+        
         PIOOrderViewController *orderViewController = [PIOOrderViewController new];
+        orderViewController.order = order;
         [self.navigationController pushViewController: orderViewController animated: YES];
     }
     
     
+}
+
+#pragma  mark - Private Methods
+
+- (void)addAllPlacesOnMap
+{
+    
+    // Add Locations for dropdown list
+    self.locations = [NSMutableArray arrayWithObjects: @"Cantt", @"Cavalary ground", @"DHA Phase 5&6", @"Gulberg I-V", nil];
+    
+    self.mapView.delegate = self;
+    [[self mapView] setShowsUserLocation:YES];
+    self.locationManager = [[CLLocationManager alloc] init];
+    geocoder = [[CLGeocoder alloc] init];
+    [[self locationManager] setDelegate:self];
+    
+    // we have to setup the location maanager with permission in later iOS versions
+    if ([[self locationManager] respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [[self locationManager] requestWhenInUseAuthorization];
+    }
+    
+    [[self locationManager] setDesiredAccuracy:kCLLocationAccuracyBest];
+    [[self locationManager] startUpdatingLocation];
+    
+    // Set Screen Title
+    [[PIOAppController sharedInstance] titleFroNavigationBar: @"Where?" onViewController:self];
+    [self hideTableview];
+    
+    // Set Tableview Border
+    self.tableView.layer.borderWidth = .8;
+    self.tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    self.annotations = [[NSMutableArray alloc]init];
+    self.DHA_Annotations = [[NSMutableArray alloc]init];
+    self.GULBERG_Annotations = [[NSMutableArray alloc]init];
+    
+    self.latitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LAT],
+                 [NSNumber numberWithDouble: CAVALRY_GROUND_LAT],
+                 [NSNumber numberWithDouble: DHA_5_LAT],
+                 [NSNumber numberWithDouble: DHA_6_LAT],
+                 [NSNumber numberWithDouble: GULBERG_1_LAT],
+                 [NSNumber numberWithDouble: GULBERG_2_LAT],
+                 [NSNumber numberWithDouble: GULBERG_3_LAT],
+                 [NSNumber numberWithDouble: GULBERG_4_LAT],
+                 [NSNumber numberWithDouble: GULBERG_5_LAT],  nil];
+    
+    self.longitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LONG],
+                  [NSNumber numberWithDouble: CAVALRY_GROUND_LONG],
+                  [NSNumber numberWithDouble: DHA_5_LONG],
+                  [NSNumber numberWithDouble: DHA_6_LONG],
+                  [NSNumber numberWithDouble: GULBERG_1_LONG],
+                  [NSNumber numberWithDouble: GULBERG_2_LONG],
+                  [NSNumber numberWithDouble: GULBERG_3_LONG],
+                  [NSNumber numberWithDouble: GULBERG_4_LONG],
+                  [NSNumber numberWithDouble: GULBERG_5_LONG], nil];
+    
+    NSMutableArray *places = [NSMutableArray arrayWithObjects: PIOPlace_Cantt,
+                              PIOPlace_Cavalary,
+                              PIOPlace_DHA_Phase_5,
+                              PIOPlace_DHA_Phase_6,
+                              PIOPlace_Gulberg_1,
+                              PIOPlace_Gulberg_2,
+                              PIOPlace_Gulberg_3,
+                              PIOPlace_Gulberg_4,
+                              PIOPlace_Gulberg_5, nil];
+    
+    
+    
+    for ( int i=0; i<[self.latitudes count]; i++)
+    {
+        CLLocationCoordinate2D coord;
+        
+        coord.latitude=[[NSString stringWithFormat:@"%@",[self.latitudes objectAtIndex:i]] floatValue];
+        coord.longitude=[[NSString stringWithFormat:@"%@",
+                          [self.longitudes objectAtIndex:i]] floatValue];
+        //        MKCoordinateRegion region1;
+        //        region1.center=coord;
+        //        region1.span.longitudeDelta=20 ;
+        //        region1.span.latitudeDelta=20;
+        //        [self.mapView setRegion:region1 animated:YES];
+        
+        NSString *titleStr =[places objectAtIndex:i] ;
+        // NSLog(@"title is:%@",titleStr);
+        
+        PIOMyAnnotation*  annotObj =[[PIOMyAnnotation alloc]initWithCoordinate:coord title:titleStr];
+        [self.annotations addObject: annotObj];
+        if (i>= 2 && i <= 3) {
+            [self.DHA_Annotations addObject: annotObj];
+        }
+        else if (i>= 4) {
+            [self.GULBERG_Annotations addObject: annotObj];
+        }
+        [self.mapView addAnnotation: annotObj];
+    }
+    
+    // [self.mapView addAnnotations: annotations];
+    [self performSelector: @selector( zoomMapAfterDelay) withObject:nil afterDelay:.5];
+}
+- (void)zoomMapAfterDelay
+{
+    [self zoomMapViewToFitAnnotations: self.mapView animated: YES withAnnotations: self.annotations];
+    
+}
+
+//size the mapView region to fit its annotations
+- (void)zoomMapViewToFitAnnotations:(MKMapView *)mapView animated:(BOOL)animated withAnnotations:(NSArray *)annotaionArray
+{
+    
+    NSInteger count = [annotaionArray count];
+    if ( count == 0) { return; } //bail if no annotations
+    
+    //convert NSArray of id <MKAnnotation> into an MKCoordinateRegion that can be used to set the map size
+    //can't use NSArray with MKMapPoint because MKMapPoint is not an id
+    MKMapPoint points[count]; //C array of MKMapPoint struct
+    for( int i=0; i<count; i++ ) //load points C array by converting coordinates to points
+    {
+        CLLocationCoordinate2D coordinate = [(id <MKAnnotation>)[annotaionArray objectAtIndex:i] coordinate];
+        points[i] = MKMapPointForCoordinate(coordinate);
+    }
+    //create MKMapRect from array of MKMapPoint
+    MKMapRect mapRect = [[MKPolygon polygonWithPoints:points count:count] boundingMapRect];
+    //convert MKCoordinateRegion from MKMapRect
+    MKCoordinateRegion region = MKCoordinateRegionForMapRect(mapRect);
+    
+    //add padding so pins aren't scrunched on the edges
+    region.span.latitudeDelta  *= ANNOTATION_REGION_PAD_FACTOR;
+    region.span.longitudeDelta *= ANNOTATION_REGION_PAD_FACTOR;
+    //but padding can't be bigger than the world
+    if( region.span.latitudeDelta > MAX_DEGREES_ARC ) { region.span.latitudeDelta  = MAX_DEGREES_ARC; }
+    if( region.span.longitudeDelta > MAX_DEGREES_ARC ){ region.span.longitudeDelta = MAX_DEGREES_ARC; }
+    
+    //and don't zoom in stupid-close on small samples
+    if( region.span.latitudeDelta  < MINIMUM_ZOOM_ARC ) { region.span.latitudeDelta  = MINIMUM_ZOOM_ARC; }
+    if( region.span.longitudeDelta < MINIMUM_ZOOM_ARC ) { region.span.longitudeDelta = MINIMUM_ZOOM_ARC; }
+    //and if there is a sample of 1 we want the max zoom-in instead of max zoom-out
+    if( count == 1 )
+    {
+        region.span.latitudeDelta = MINIMUM_ZOOM_ARC;
+        region.span.longitudeDelta = MINIMUM_ZOOM_ARC;
+    }
+    [mapView setRegion:region animated:animated];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -179,16 +358,18 @@
     
     
     // Reverse Geocoding
-//    NSLog(@"Resolving the Address");
+    //    NSLog(@"Resolving the Address");
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-//        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+        //        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
         if (error == nil && [placemarks count] > 0) {
             placemark = [placemarks lastObject];
-            self.addressTextField.text = [NSString stringWithFormat:@"%@ %@\n%@\n%@",
-                                          placemark.thoroughfare,
-                                          placemark.locality,
-                                          placemark.administrativeArea,
-                                          placemark.country];
+           
+            self.address =[NSString stringWithFormat:@"%@ %@\n%@\n%@",
+                      placemark.thoroughfare,
+                      placemark.locality,
+                      placemark.administrativeArea,
+                      placemark.country];
+
         } else {
             NSLog(@"%@", error.debugDescription);
         }
@@ -202,12 +383,11 @@
 
 - (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation:(id<MKAnnotation>) annotation
 {
-    //    if (annotation == mapView.userLocation)
-    //    {
-    //        return nil;
-    //    }
-    //    else
-    //    {
+        if (annotation == mapView.userLocation)
+        {
+            return nil;
+        }
+        
     MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"VoteSpotPin"];
     if (pin == nil)
     {
@@ -257,13 +437,31 @@
         [self hideTableview];
         
         
-        
+        NSArray *array = [NSArray arrayWithObject: [self.annotations objectAtIndex: indexPath.row]];
+        if (indexPath.row == 2) {
+            array = self.DHA_Annotations;
+        }
+        else if (indexPath.row == 3) {
+            array = self.GULBERG_Annotations;
+        }
+        [self zoomMapViewToFitAnnotations: self.mapView animated: YES withAnnotations: array];
+        [self performSelector: @selector(abc) withObject:nil afterDelay:1.0];
     }];
     
 }
 
 
-
+- (void)abc {
+    MKMapPoint userPoint = MKMapPointForCoordinate(self.mapView.userLocation.location.coordinate);
+    MKMapRect mapRect = self.mapView.visibleMapRect;
+    BOOL inside = MKMapRectContainsPoint(mapRect, userPoint);
+    if (!inside) {
+        self.addressTextField.text = @"";
+    }
+    else {
+        [self.addressTextField setText: self.address];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

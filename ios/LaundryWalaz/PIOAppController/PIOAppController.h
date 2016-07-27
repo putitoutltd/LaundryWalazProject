@@ -12,6 +12,10 @@
 #import "AFHTTPSessionManager+Additions.h"
 #import "TSMessage.h"
 #import "UIFont+Additions.h"
+#import "PIOConstants.h"
+#import "PIOUserPref.h"
+#import "AppDelegate.h"
+#import "PIOUser.h"
 
 @class PIOProgressBarViewController;
 
@@ -45,6 +49,9 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 @property (nonatomic, assign, getter=isInternetActive) BOOL internetActive;
 @property (nonatomic, assign) PIODeviceName currentDeviceName;
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) PIOUser *LoggedinUser;
+@property (nonatomic, assign, getter=isRemeberMe) BOOL remeberMe;
+@property (nonatomic, strong) NSString *accessToken;
 
 + (PIOAppController *)sharedInstance;
 

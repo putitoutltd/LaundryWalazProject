@@ -15,6 +15,7 @@
 #import "CDRTranslucentSideBar.h"
 #import "PIOFeedbackViewController.h"
 #import "PIOOrderStatusViewController.h"
+#import "PIOWebViewController.h"
 #import "PIOConstants.h"
 
 const NSInteger PIOLogOutButtonIndex = 0;
@@ -57,7 +58,11 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
     [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
+    if (![PIOUserPref requestAccessToken]) {
+        self.logOutButton.hidden = YES;
+    }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -145,9 +150,57 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
         }
         case PIODashboardRowTypeFAQs: {
+            if (![visibleViewController isKindOfClass:[PIOWebViewController class]] ) {
+                
+                PIOWebViewController *webViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOWebViewController class]]) {
+                        webViewController = (PIOWebViewController *)viewController;
+                        break;
+                    }
+                }
+                
+                if (webViewController == nil) {
+                    webViewController = [PIOWebViewController new];
+                    webViewController.fromFAQs = YES;
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: webViewController animated:NO];
+                } else {
+                    webViewController.fromFAQs = YES;
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: webViewController animated:NO];
+                }
+            }
+            else {
+                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: @"faqs" forKey: @"page"];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshPage" object: dict];
+            }
+            
+            
             break;
         }
         case PIODashboardRowTypeTerms: {
+            if (![visibleViewController isKindOfClass:[PIOWebViewController class]] ) {
+                
+                PIOWebViewController *webViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOWebViewController class]]) {
+                        webViewController = (PIOWebViewController *)viewController;
+                        break;
+                    }
+                }
+                
+                if (webViewController == nil) {
+                    webViewController = [PIOWebViewController new];
+                    webViewController.fromFAQs = NO;
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: webViewController animated:NO];
+                } else {
+                    webViewController.fromFAQs = NO;
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: webViewController animated:NO];
+                }
+            }
+            else {
+                NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: @"terms" forKey: @"page"];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshPage" object: dict];
+            }
             break;
         }
         case PIODashboardRowTypeFeedback: {
@@ -219,6 +272,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 - (void)flushDataOnLogout:(UIViewController *)visibleViewController withViewControllerArray:(NSArray *)viewControllers
 {
     
+    [PIOUserPref setAccessToken: nil];
     if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {
         PIOHowToUseViewController *loginViewController;
         for (UIViewController *viewController in viewControllers) {

@@ -8,6 +8,7 @@
 
 #import "PIOUserPref.h"
 
+NSString *const PIOAccessTokenKey = @"PIOAccessToken";
 NSString *const PIOInfoSavedForFutureKey = @"PIOInfoSavedForFuture";
 NSString *const PIOFirstNameKey = @"PIOFirstName";
 NSString *const PIOLastName = @"PIOLastName";
@@ -15,6 +16,20 @@ NSString *const PIOEmailAddressKey = @"PIOEmailAddress";
 NSString *const PIOPhoneKey = @"PIOPhone";
 
 @implementation PIOUserPref
+
+
++ (void)setAccessToken:(NSString *)accessToken
+{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:PIOAccessTokenKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *)requestAccessToken
+{
+    
+    return [[NSUserDefaults standardUserDefaults] objectForKey:PIOAccessTokenKey];
+}
 
 + (void)setInforSavedForFuture:(BOOL)infoSavedForFuture;
 {
