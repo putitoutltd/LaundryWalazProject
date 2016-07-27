@@ -79,7 +79,7 @@ class UserController extends BaseController
         $locationsModel = new LocationsModel();
         $allLocations = $locationsModel->getAllLocations(TRUE);
         
-        if(!in_array($data['locations_id'], $allLocations)){
+        if(!empty($data['locations_id']) && !in_array($data['locations_id'], $allLocations)){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Location is '.Messages::INVALID;
             $response['data'] = $data['locations_id'];
@@ -523,6 +523,32 @@ class UserController extends BaseController
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Current ' . Messages::PASSWORD_DOES_NOT_MATCH;
         }
+        Response::sendResponse($response);
+    }
+    
+    
+    /**
+    * @api {put} /api/user/is_logged_in  Is Logged In
+    * @apiName IsLoggedIn
+    * @apiGroup Users
+    * @apiVersion 0.1.0
+    *
+    * @apiParam {string} access_token  The token you receive if successfully login
+    * 
+    * @apiSuccess {Array} response It sends true if a user is logged in
+    * User with a notification and returns an array with success or failure with message.
+    */
+    protected function _is_logged_in()
+    {
+        $auth_token = $this->app->request->headers->get("auth-token");
+        $this->validateHeaders($auth_token);    // validating auth headers
+        
+        $accessToken = Utility::escapeSpecial($this->request->params('access_token'));
+        $this->validateAccessToken($accessToken);
+        
+        $response = array();
+        $response['status'] = Response::SUCCESS;
+        
         Response::sendResponse($response);
     }
     /**

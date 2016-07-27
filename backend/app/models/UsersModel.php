@@ -52,7 +52,7 @@ class UsersModel extends DbConnect
      */
     public function loginAuthentication($email, $password)
     {
-        $query = "SELECT first_name,last_name,status, type,date_modified,email,id  FROM $this->_table WHERE email = :email AND password = :password LIMIT 1";
+        $query = "SELECT first_name,last_name,status, type, phone, date_modified,email,id  FROM $this->_table WHERE email = :email AND password = :password LIMIT 1";
         return $this->getRow($query, array(':email' => $email, ':password' => $password));
     }
     

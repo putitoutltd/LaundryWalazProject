@@ -188,7 +188,7 @@ class OrderController extends BaseController
         
         $ordersModel = $this->model;
         $lastOrder = $ordersModel->getLastOrderByUserId($userId);
-        if($lastOrder['status'] < 4){
+        if($lastOrder && $lastOrder['status'] < 4){
             $response['status'] = Response::FAILURE;
             $response['message'] = Messages::ORDER_IN_PROGRESS;
             $response['data'] = $lastOrder;
