@@ -590,6 +590,92 @@ class UserController extends BaseController
         }
     }
     
+     /**
+    * @api {get} /api/user/send_area_request  Send Area Request
+    * @apiName SendAreaRequest
+    * @apiGroup Users
+    * @apiVersion 0.1.0
+    *
+    * @apiParam {string} area_name  The name of the area to be requested
+    * @apiParam {string} email  Email of the person who is requesting
+    *
+    * @apiSuccess {Array} response it returns success or failure.
+    */
+    
+    protected function _send_area_request()
+    {
+        $auth_token = $this->app->request->headers->get("auth-token");
+        $this->validateHeaders($auth_token);    // validating auth headers
+       
+        $areaName = $this->request->params('area_name');
+        $email = mb_strtolower($this->request->params('email'), 'UTF-8');
+        // required fields validation
+        $requiredParams = array('area_name'=>$areaName, 'email' => $email);
+        $this->validateEmptyValues($requiredParams);
+        
+        
+        if(!empty($email) && !empty($areaName) ){
+            
+            if(EmailTemplates::sendAreaEmail($email, $areaName)){
+                $response['status'] = Response::SUCCESS;
+                $response['message'] = Messages::EMAIL_SENT_SUCCESSFULLY;
+            }else{
+                $response['status'] = Response::FAILURE;
+                $response['message'] = 'data '.Messages::UNABLE_TO_SEND_EMAIL;
+            }
+            Response::sendResponse($response);
+        }else{
+            $response['status'] = Response::FAILURE;
+            $response['message'] = 'data '.Messages::IS_NOT_VALID;
+            Response::sendResponse($response);
+        }
+    }
+    
+    
+     /**
+    * @api {get} /api/user/send_feedback  Send Feedback
+    * @apiName SendFeedback
+    * @apiGroup Users
+    * @apiVersion 0.1.0
+    *
+    * @apiParam {string} about  The service for which the feedback is about
+    * @apiParam {string} feedback  The feedback from the user
+    *
+    * @apiSuccess {Array} response it returns success or failure.
+    */
+    
+    protected function _send_feedback()
+    {
+        $auth_token = $this->app->request->headers->get("auth-token");
+        $this->validateHeaders($auth_token);    // validating auth headers
+       
+        $about = $this->request->params('about');
+        $feedback = $this->request->params('feedback');
+        
+        // required fields validation
+        $requiredParams = array('about'=>$about, 'feedback' => $feedback);
+        $this->validateEmptyValues($requiredParams);
+        
+        
+        if(!empty($about) && !empty($feedback) ){
+            
+            if(EmailTemplates::sendFeedbackEmail($about, $feedback)){
+                $response['status'] = Response::SUCCESS;
+                $response['message'] = Messages::EMAIL_SENT_SUCCESSFULLY;
+            }else{
+                $response['status'] = Response::FAILURE;
+                $response['message'] = 'data '.Messages::UNABLE_TO_SEND_EMAIL;
+            }
+            Response::sendResponse($response);
+        }else{
+            $response['status'] = Response::FAILURE;
+            $response['message'] = 'data '.Messages::IS_NOT_VALID;
+            Response::sendResponse($response);
+        }
+    }
+    
+    
+    
     private function sendVerificationEmail($email,$receiverName){
         
         $response = array();

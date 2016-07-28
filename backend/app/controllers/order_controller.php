@@ -211,6 +211,42 @@ class OrderController extends BaseController
         Response::sendResponse($response);
     }
     
+    
+    
+    
+    /**
+    * @api {post} /api/order/status  Order Status
+    * @apiName OrderStatus
+    * @apiGroup Orders
+    * @apiVersion 0.1.0
+    *
+    * @apiParam {string} access_token The dynamic token generated after successful login
+    * 
+    *
+    * @apiSuccess {Array} response it returns an array with user details if successful other wise failure with message.
+    */
+    protected function _get_order_status()
+    {
+        $auth_token = $this->app->request->headers->get("auth-token");
+        $this->validateHeaders($auth_token);    // validating auth headers
+        
+        $accessToken = Utility::escapeSpecial($this->request->params('access_token'));
+        $userId = $this->validateAccessToken($accessToken);
+        
+        $ordersModel = $this->model;
+        $lastOrder = $ordersModel->getLastOrderByUserId($userId);
+        if($lastOrder){
+            $response['status'] = Response::SUCCESS;
+            $response['message'] = Messages::ORDER_IN_PROGRESS;
+            $response['data']['order'] = $lastOrder;
+        }else{
+            $response['status'] = Response::FAILURE;
+            $response['message'] = Messages::RECORD_NOT_INSERTED;
+        }
+        
+        Response::sendResponse($response);
+    }
+    
     protected function _list_orders()
     {
         if($this->isUserAuthenticated !== TRUE){

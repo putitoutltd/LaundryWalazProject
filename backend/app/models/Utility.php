@@ -97,6 +97,13 @@ class Utility
         $url = defined('API_URL') ? API_URL : '';
         return $url;           
     }
+    
+    public static function get_admin_email()
+    {
+        $url = defined('ADMIN_EMAIL') ? ADMIN_EMAIL : '';
+        return $url; 
+    }
+    
 
     /**
      * 

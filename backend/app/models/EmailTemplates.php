@@ -486,6 +486,153 @@ class EmailTemplates
         
     }
     
+    public static function sendAreaEmail($sender, $area){
+        
+        
+        $subject = 'New area was requested';
+        
+        $body = '<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- [ view port meta tag ] -->
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+        <title>Welcome to Kiddlr</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lt IE 8]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+                border: none;
+                outline: none;
+            }
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            body {
+                font-family: Verdana, sans-serif;
+                font-size: 14px;
+                color: #565656;
+                background: #f8f8f8;
+                margin: 0px;
+                padding: 6px 40px 0;
+            }
+            table.Bs{
+                border-collapse:separate !important;
+            }
+
+            @media only screen and (min-width: 768px) {
+            }
+        </style>
+    </head>
+
+    <body>
+        <html>
+        <head>
+          <title>New area requested</title>
+        </head>
+        <body>
+          <p>The requested area is <b>'.$area.'</b></p>
+          <p>Requested by <b>'.$sender.'</b></p>
+
+
+        </body>
+        </html>
+    </body>
+</html>';
+        $receiver = Utility::get_admin_email();
+        return Utility::sendEmail(self::$fromAddr,  self::$fromName , $receiver,$subject , $body);
+        
+    }
+    
+    
+    public static function sendFeedbackEmail($about, $feedback){
+        
+        
+        $subject = 'New area was requested';
+        
+        $body = '<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!-- [ view port meta tag ] -->
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+        <title>Welcome to Kiddlr</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lt IE 8]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!--[if lt IE 7]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+                border: none;
+                outline: none;
+            }
+            a {
+                color: #333;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            body {
+                font-family: Verdana, sans-serif;
+                font-size: 14px;
+                color: #565656;
+                background: #f8f8f8;
+                margin: 0px;
+                padding: 6px 40px 0;
+            }
+            table.Bs{
+                border-collapse:separate !important;
+            }
+
+            @media only screen and (min-width: 768px) {
+            }
+        </style>
+    </head>
+
+    <body>
+        <html>
+        <head>
+          <title>New Feedback Received</title>
+        </head>
+        <body>
+          <p>The feedback was about <b>'.$about.'</b></p>
+          <p>'.$feedback.'</p> 
+
+
+        </body>
+        </html>
+    </body>
+</html>';
+        $receiver = Utility::get_admin_email();
+        return Utility::sendEmail(self::$fromAddr,  self::$fromName , $receiver,$subject , $body);
+        
+    }
+    
     public static function resetPassword($receiver,$name){
         
         $subject = 'Password has been reset for '.$name.' at Kidlr';

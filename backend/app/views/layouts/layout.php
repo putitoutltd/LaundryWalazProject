@@ -90,8 +90,8 @@
                 <div class="list-group">
                     <a href="<?php echo Utility::base_url(); ?>/orders" class="list-group-item active">Orders</a>
                     <a href="<?php echo Utility::base_url(); ?>/users" class="list-group-item">Users</a>
-                    <!-- a href="<?php echo Utility::base_url(); ?>/reports" class="list-group-item">Reports</a -->
                     <a href="<?php echo Utility::base_url(); ?>/pricing" class="list-group-item">Pricing</a>
+                    <a href="<?php echo Utility::base_url(); ?>/reports" class="list-group-item">Reports</a>
                     <a href="<?php echo Utility::base_url(); ?>/admin/logout" class="list-group-item">Logout</a>
                 </div>
             </div>
