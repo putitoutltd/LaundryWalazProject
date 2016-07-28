@@ -13,6 +13,8 @@ Router\Helper::map('user', array(
     '/api/user/device/remove' => array('put' => 'remove_device_token'),
     '/api/user/getuser' => array('put' => 'get_user_by_token'),
     '/api/user/is_logged_in' => array('put' => 'is_logged_in'),
+    '/api/user/send_area_request' => array('get' => 'send_area_request'),
+    '/api/user/send_feedback' => array('get' => 'send_feedback'),
     '/' => array('get' => 'index'),
     '/admin/login' => array('post' => 'admin_login'),
     '/admin/logout' => array('get' => 'admin_logout'),
@@ -22,6 +24,7 @@ Router\Helper::map('user', array(
 ));
 Router\Helper::map('service', array(
     '/api/services/list' => array('get' => 'get_all_services'),
+    '/api/services/operating_areas' => array('get' => 'get_all_operating_areas'),
     '/services/update' => array('any' => 'edit_service'),
     '/pricing' => array('get' => 'list_prices'),
     
@@ -29,6 +32,7 @@ Router\Helper::map('service', array(
 
 Router\Helper::map('order', array(
     '/api/order/create' => array('post' => 'create_order'),
+    '/api/order/status' => array('post' => 'get_order_status'),
     '/orders' => array('get' => 'list_orders'),
     '/orders/edit' => array('get' => 'edit_order'),
     '/orders/items/add' => array('get' => 'add_items'),
@@ -38,6 +42,13 @@ Router\Helper::map('order', array(
     
 ));
 
+Router\Helper::map('report', array(
+    '/reports' => array('get' => 'list_reports'),
+    '/reports/area_report' => array('get' => 'area_report'),
+    '/reports/sales_report' => array('get' => 'sales_report'),
+    '/reports/orders_report' => array('get' => 'orders_report'),
+    
+));
 
 Router\Helper::map('cron', array(
     '/cron/broadcast_push_notifications/?' => array('get' => 'broadcast_push_notifications'),

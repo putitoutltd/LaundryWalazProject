@@ -50,6 +50,37 @@ class ServiceController extends BaseController
     }
     
     
+    /**
+    * @api {get} /api/services/operating_areas  Operating Areas
+    * @apiName OperatingAreas
+    * @apiGroup Services
+    * @apiVersion 0.1.0
+    *
+    *
+    * @apiSuccess {Array} response it returns an array with operating areas list.
+    */
+    protected function _get_all_operating_areas()
+    {
+        $auth_token = $this->app->request->headers->get("auth-token");
+        $this->validateHeaders($auth_token);    // validating auth headers
+       
+        $servicesModel = $this->model;
+        
+        $allAreas = $servicesModel->getAllLocations();
+       
+         if(count($allAreas) == 0){
+            $response['status'] = Response::FAILURE;
+            $response['message'] = 'Areas '.Messages::NOT_FOUND;
+        }else{
+            $response['status'] = Response::SUCCESS;
+            $response['data']['operating_areas'] = $allAreas;
+        }
+        
+            
+        Response::sendResponse($response);
+    }
+    
+    
     protected function _list_prices()
     {
         if($this->isUserAuthenticated !== TRUE){

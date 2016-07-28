@@ -56,7 +56,7 @@
     <td align="left" valign="top">
     	<img src="images/email/laundry-walaz-logo.png" alt="" style="width:132px; margin:16px 0 -84px 16px;" >
     </td>
-    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;">January 1, 2017</td>
+    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
   </tr>
 </table>
 
@@ -66,45 +66,47 @@
     <td align="left" valign="top" style="border:10px solid #5aacd9; padding:94px 20px 20px 20px; min-height:200px;">
     	
         <!-- cotent table begins -->
-        <form action="" method="GET">
+        
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="left" valign="top" style="padding:0 0 10px;">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="25%" align="left" valign="middle"><label for="pw1">Password :</label></td>
-    <td width="75%" align="left" valign="top" style="padding:0 0 20px;"><input type="password" id="pw1" name="pw1" style="border:1px solid #333; padding:7px; width:300px;" ></td>
-  </tr>
-  <tr>
-    <td align="left" valign="middle"><label for="pw2">Repeat Password :</label></td>
-    <td align="left" valign="top"><input type="password" id="pw2" name="pw2" style="border:1px solid #333; padding:7px; width:300px;" ></td>
-  </tr>
-  <tr>
-    <td align="left" valign="middle">&nbsp;</td>
-    <td align="left" valign="top" style="padding:15px 0 20px 0;">
-    	<input type="submit" name="pwdr" value="Save" style="background:#5aacd9; font-size:16px; font-weight:bold; padding:7px 20px; color:#fff; cursor:pointer;" >
-                                    <?php 
-                                        $email = filter_input(INPUT_GET, 'et');
-                                        $token = filter_input(INPUT_GET, 'pt');
-                                        $timestamp = filter_input(INPUT_GET, 'vd');
-                                        $environment = filter_input(INPUT_GET, 'en');
-                                    ?>
-                                    <input type="hidden" name="et" value="<?= $email; ?>" />
-                                    <input type="hidden" name="pt" value="<?= $token; ?>" />
-                                    <input type="hidden" name="vd" value="<?= $timestamp; ?>" />
-                                    <input type="hidden" name="en" value="<?= $environment; ?>" />
-    </td>
-  </tr>
-</table>
-
+    <form action="" method="GET">    
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="25%" align="left" valign="middle"><label for="pw1">Password :</label></td>
+              <td width="75%" align="left" valign="top" style="padding:0 0 20px;"><input type="password" id="pw1" name="pw1" style="border:1px solid #333; padding:7px; width:300px;" ></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle"><label for="pw2">Repeat Password :</label></td>
+              <td align="left" valign="top"><input type="password" id="pw2" name="pw2" style="border:1px solid #333; padding:7px; width:300px;" ></td>
+            </tr>
+            <tr>
+              <td align="left" valign="middle">&nbsp;</td>
+              <td align="left" valign="top" style="padding:15px 0 20px 0;">
+                  <input type="submit" name="pwdr" value="Save" style="background:#5aacd9; font-size:16px; font-weight:bold; padding:7px 20px; color:#fff; cursor:pointer;" >
+                                              <?php 
+                                                  $email = filter_input(INPUT_GET, 'et');
+                                                  $token = filter_input(INPUT_GET, 'pt');
+                                                  $timestamp = filter_input(INPUT_GET, 'vd');
+                                                  $environment = filter_input(INPUT_GET, 'en');
+                                              ?>
+                                              <input type="hidden" name="et" value="<?= $email; ?>" />
+                                              <input type="hidden" name="pt" value="<?= $token; ?>" />
+                                              <input type="hidden" name="vd" value="<?= $timestamp; ?>" />
+                                              <input type="hidden" name="en" value="<?= $environment; ?>" />
+              </td>
+            </tr>
+        </table>
+    </form>
+    
     	 
     </td>
   </tr>
   <tr>
     <td align="left" valign="top" style="text-align:center;">
     	<?php
-
-                                    if(filter_input(INPUT_GET, 'pwdr')){
+                                $msg = " ";
+                                    if(filter_input(INPUT_GET, 'pwdr')){ 
                                         $endPoint = 'api/user/reset-forgot-password';
 
                                         $email = filter_input(INPUT_GET, 'et');
@@ -157,17 +159,16 @@
                                             //echo $output;
                                             $res = json_decode($output);
                                             if (isset($res->message)) {
-                                                echo '<h1 style="font-size:24px;">' . $res->message . '</h1>';
+                                                $msg = $res->message;
                                             }
                                         } else {
-                                            echo '<h1 style="color:#f00; font-size:24px;">Access Denied!</h1>';
+                                            $msg = " Access Denied!";
                                         }
                                     }
                                     ?>
     </td>
   </tr>
 </table>
-		</form>
         <!-- cotent table ends -->
         
     </td>
@@ -176,10 +177,10 @@
     <td align="left" valign="top" style="background:#5aacd9;">
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">You've received this confirmation email to update you about your activities on Laundry Walaz App/website</td>
+    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;"><?php echo $msg; ?></td>
   </tr>
   <tr>
-    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">&copy; 2016 Laundry Walaz. 1600 Amphitheatre Parkway, Mountain View, CA 94043 </td>
+    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">&copy; <?php echo date('Y'); ?> Laundry Walaz </td>
   </tr>
   <tr>
     <td align="left" valign="top" style="padding:16px 16px 10px 16px;">

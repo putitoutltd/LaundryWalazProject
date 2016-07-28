@@ -1,0 +1,55 @@
+<div class="row">
+    
+    <div class="col-md-6">
+        <form name="area_month" method="GET" class="form-inline">
+            <div class="form-group">
+            <label>Select Month: </label>
+                <select  name="month" class="form-control">
+                    <?php 
+                        $selectedMonth = filter_input(INPUT_GET, 'month');
+                        $currentMonth = date('Y-m');
+                        for($i=0; $i < 13; $i++): 
+                            $formattedMonth = date('M Y', strtotime($currentMonth));
+                            $selected = ($selectedMonth === $currentMonth) ? ' selected ' : ' ';
+                     ?>
+                            <option <?php echo $selected; ?> value="<?php echo $currentMonth; ?>"><?php echo $formattedMonth; ?></option>
+                    <?php
+                        $currentMonth = date('Y-m', strtotime('-1 month',strtotime($currentMonth)));
+                        endfor; 
+                    ?>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-info" type="submit" value="Show Report" />
+            </div>
+        </form>
+        <br />
+        <div class="panel panel-primary"> 
+            <div class="panel-heading"> 
+                <h3 class="panel-title">Monthly Area Report</h3> 
+            </div> 
+            <div class="panel-body"> 
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="pull-right"><b><u>Orders</u></b></span>
+                        <b><u>Area</u></b>
+                    </li>
+                    <?php if ( count($params['report']) > 0 ){ 
+                            foreach ($params['report'] as $report){
+                                ?>
+                                <li class="list-group-item">
+                                  <span class="badge"><?= $report['orders']; ?></span>
+                                  <?= $report['name']; ?>
+                                </li>
+                            <?php }
+                            
+                            }else{
+                                echo 'No data found';
+                            } ?>
+                </ul>
+            </div> 
+        </div>
+    </div>
+    
+</div>

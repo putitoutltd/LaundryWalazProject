@@ -56,6 +56,18 @@ if($action == 'verify_identity'){
 }
 
 
+if($action == 'forgot_password'){ 
+    // checking if user token is valid
+    $endPoint = 'api/user/forget-password';
+    $data = array(
+        'email' => $email
+    );
+    
+    echo sendRequest($endPoint, $data, 'POST');
+    
+    return;
+}
+
 
 if($action == 'create_user'){ 
     

@@ -99,6 +99,65 @@ define({ "api": [
     "groupTitle": "Orders"
   },
   {
+    "type": "post",
+    "url": "/api/order/status",
+    "title": "Order Status",
+    "name": "OrderStatus",
+    "group": "Orders",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "access_token",
+            "description": "<p>The dynamic token generated after successful login</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "response",
+            "description": "<p>it returns an array with user details if successful other wise failure with message.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "D:/wamp/www/laundrywalaz/backend/app/controllers/order_controller.php",
+    "groupTitle": "Orders"
+  },
+  {
+    "type": "get",
+    "url": "/api/services/operating_areas",
+    "title": "Operating Areas",
+    "name": "OperatingAreas",
+    "group": "Services",
+    "version": "0.1.0",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "response",
+            "description": "<p>it returns an array with operating areas list.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "D:/wamp/www/laundrywalaz/backend/app/controllers/service_controller.php",
+    "groupTitle": "Services"
+  },
+  {
     "type": "get",
     "url": "/api/services/list",
     "title": "Services List",
@@ -450,6 +509,92 @@ define({ "api": [
             "optional": false,
             "field": "response",
             "description": "<p>It updates the password and sends an email to the User with a notification and returns an array with success or failure with message.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "D:/wamp/www/laundrywalaz/backend/app/controllers/user_controller.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/send_area_request",
+    "title": "Send Area Request",
+    "name": "SendAreaRequest",
+    "group": "Users",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "area_name",
+            "description": "<p>The name of the area to be requested</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the person who is requesting</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "response",
+            "description": "<p>it returns success or failure.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "D:/wamp/www/laundrywalaz/backend/app/controllers/user_controller.php",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/send_feedback",
+    "title": "Send Feedback",
+    "name": "SendFeedback",
+    "group": "Users",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "about",
+            "description": "<p>The service for which the feedback is about</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "<p>string</p> ",
+            "optional": false,
+            "field": "feedback",
+            "description": "<p>The feedback from the user</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "<p>Array</p> ",
+            "optional": false,
+            "field": "response",
+            "description": "<p>it returns success or failure.</p> "
           }
         ]
       }

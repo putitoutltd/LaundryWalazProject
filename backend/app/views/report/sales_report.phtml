@@ -1,0 +1,72 @@
+<div class="row">
+    
+    <div class="col-md-8">
+        <form name="area_month" method="GET" class="form-inline">
+            <div class="form-group">
+            <label>Select Month: </label>
+                <select  name="month" class="form-control">
+                    <?php 
+                        $selectedMonth = filter_input(INPUT_GET, 'month');
+                        $currentMonth = date('Y-m');
+                        for($i=0; $i < 13; $i++): 
+                            $formattedMonth = date('M Y', strtotime($currentMonth));
+                            $selected = ($selectedMonth === $currentMonth) ? ' selected ' : ' ';
+                     ?>
+                            <option <?php echo $selected; ?> value="<?php echo $currentMonth; ?>"><?php echo $formattedMonth; ?></option>
+                    <?php
+                        $currentMonth = date('Y-m', strtotime('-1 month',strtotime($currentMonth)));
+                        endfor; 
+                    ?>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-info" type="submit" value="Show Report" />
+            </div>
+        </form>
+        <br />
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price (Laundry)</th>
+                  <th>Price (Dryclean)</th>
+                  <th>Quantity</th>
+                  <th>Total (Laundry)</th>
+                  <th>Total (Dryclean)</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+              <?php if ( count($params['report']) > 0 ): ?>
+                <?php
+                    $totalDryClean = 0; $totalLaundry = 0;
+                    foreach($params['report'] as $report): 
+                    
+                    $totalDryClean +=  $report['total_dryclean'];
+                    $totalLaundry  +=  $report['total_laundry'];
+                ?>  
+                  <tr class="">
+                    <td><?php echo $report['name']; ?></td>
+                    <td><?php echo $report['price_dryclean']; ?></td>
+                    <td><?php echo $report['price_laundry']; ?></td>
+                    <td><?php echo $report['quantity']; ?></td>
+                    <td><?php echo $report['total_dryclean']; ?></td>
+                    <td><?php echo $report['total_laundry']; ?></td>
+                  </tr>
+                <?php endforeach; ?>
+                  <tr class="info">
+                      <td colspan="4"><b>Totals</b></td>
+                    <td><b><?php echo $totalDryClean; ?></b></td>
+                    <td><b><?php echo $totalLaundry; ?></b></td>
+                  </tr>
+              <?php else: ?>
+                  <tr><td colspan="5"> No data found.</td></tr>
+              <?php endif; ?>  
+              </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>

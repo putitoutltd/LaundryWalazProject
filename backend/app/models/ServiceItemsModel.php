@@ -11,8 +11,11 @@ class ServiceItemsModel extends DbConnect
 
     protected $_table = 'service_items';
     protected $_categories = 'service_categories';
-    
-    
+    protected $_locations = 'locations';
+
+
+
+
 
     public function __construct()
     {
@@ -35,6 +38,12 @@ class ServiceItemsModel extends DbConnect
             }
         }
         return $response;
+    }
+    
+    public function getAllLocations()
+    {
+        return $this->getAll("SELECT * FROM $this->_locations ORDER BY name ");
+        
     }
     
     public function getServiceItemById($itemId)
