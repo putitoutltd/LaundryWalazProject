@@ -131,6 +131,7 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 - (UIViewController *)initialViewController
 {
     if ([PIOUserPref requestAccessToken]) {
+        [self initializeUserIfSavedForFuture];
         PIOMapViewController *mapViewController = [PIOMapViewController new];
         return  mapViewController;
     }
@@ -281,6 +282,13 @@ static NSInteger PIORequestTimeOutIntervals = 20;
         [self hideActivityView];
         [TSMessage showNotificationInViewController:self.navigationController title:@"Network error" subtitle:@"Couldn't connect to the server. Check your network connection." type:TSMessageNotificationTypeError duration:TSMessageNotificationDurationAutomatic canBeDismissedByUser: YES];
     });
+}
+
+- (void)initializeUserIfSavedForFuture
+{
+    PIOUser *user = [[PIOUser alloc] initWithParametersID: [PIOUserPref requestUserID] firstName: [PIOUserPref requestFirstName] lastName: [PIOUserPref requestLastName] email: [PIOUserPref requestEmailAddress] password: nil phone: [PIOUserPref requestPhoneNumber] address: nil locationID: nil];
+    self.LoggedinUser = user;
+    self.accessToken = [PIOUserPref requestAccessToken];
 }
 
 #pragma mark - MBProgressHUDDelegate

@@ -16,6 +16,9 @@
 + (void)setInforSavedForFuture:(BOOL)infoSavedForFuture;
 + (BOOL)isInforSavedForFuture;
 
++ (void)setUserID:(NSString *)ID;
++ (NSString *)requestUserID;
+
 + (void)setFirstName:(NSString *)firstName;
 + (NSString *)requestFirstName;
 

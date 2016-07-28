@@ -11,19 +11,17 @@
 #import "PIOOrderSummaryViewController.h"
 #import "PIOAppController.h"
 #import "PIOUserPref.h"
+#import "PIOUser.h"
+#import "PIOAPIResponse.h"
 
-@interface PIOContactInfoViewController () <UITextViewDelegate>
+@interface PIOContactInfoViewController () <UITextViewDelegate, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *saveForFutureButton;
 @property (nonatomic, assign, getter= isInfoSavedForFuture) BOOL infoSavedForFuture;
-@property (nonatomic, weak) IBOutlet UILabel *topTitleLabel;
-@property (nonatomic, weak) IBOutlet UIButton *loginButton;
 @property (nonatomic, weak) IBOutlet UILabel *infoTitleLabel;
 @property (nonatomic, weak) IBOutlet UITextField *firstNameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *lastNameTextField;
 @property (nonatomic, weak) IBOutlet UITextField *emailTextField;
 @property (nonatomic, weak) IBOutlet UITextField *phoneTextField;
-@property (nonatomic, weak) IBOutlet UILabel *futureOrderTitleLabel;
 @property (nonatomic, weak) IBOutlet UITextView *specialInstrructionsTextView;
 @property (nonatomic, weak) IBOutlet UIButton *saveButton;
 
@@ -43,7 +41,7 @@
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Contact" onViewController:self];
      self.specialInstrructionsTextView.layer.borderWidth = 1.0;
     self.specialInstrructionsTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    [self fillScreenContentIfSavedForFuture];
+    [self fillScreenContentIfSavedForFutureForUser: [PIOAppController sharedInstance].order.customer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,22 +63,6 @@
     [self.navigationController pushViewController: loginViewController animated: YES];
 }
 
-- (IBAction)rememberMeButtonPressed:(id)sender
-{
-    UIButton *button = (UIButton *)sender;
-    if (button.isSelected) {
-        [button setSelected: NO];
-        [PIOUserPref setInforSavedForFuture: NO];
-        [self saveInfoForFuture: NO];
-    }
-    else {
-        [button setSelected: YES];
-        [PIOUserPref setInforSavedForFuture: YES];
-        [self saveInfoForFuture: YES];
-    }
-
-}
-
 - (IBAction)saveButtonPressed:(id)sender
 {
     
@@ -93,62 +75,55 @@
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Please enter a valid email address." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else {
-        if ([PIOUserPref isInforSavedForFuture]) {
-            [self saveInfoForFuture: YES];
+        
+        [PIOAppController sharedInstance].order.specialInstructions = self.specialInstrructionsTextView.text;
+        if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+            [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+            [PIOOrder createOrder: [PIOAppController sharedInstance].order callback:^(NSError *error, BOOL status, id responseObject) {
+                [[PIOAppController sharedInstance] hideActivityView];
+                if ( status) {
+                    [PIOAppController sharedInstance].order.ID = (NSString *)responseObject;
+                    PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
+                    [self.navigationController pushViewController: orderSummaryViewController animated: YES];
+                }
+                else {
+                    PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                }
+            }];
         }
-        PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
-        [self.navigationController pushViewController: orderSummaryViewController animated: YES];
+        
     }
 }
 
 #pragma mark - Private Methods
 
-- (void)fillScreenContentIfSavedForFuture
+- (void)fillScreenContentIfSavedForFutureForUser:(PIOUser *)user
 {
-    if ([PIOUserPref isInforSavedForFuture]) {
-        [self.saveForFutureButton setSelected: YES];
-        [self.firstNameTextField setText:[PIOUserPref requestFirstName]];
-        [self.lastNameTextField setText:[PIOUserPref requestLastName]];
-        [self.emailTextField setText:[PIOUserPref requestEmailAddress]];
-        [self.phoneTextField setText:[PIOUserPref requestPhoneNumber]];
-    }
-    
-}
-
-- (void)saveInfoForFuture:(BOOL)isSaved
-{
-    
-    if (isSaved) {
-        [PIOUserPref setFirstName: self.firstNameTextField.text];
-        [PIOUserPref setLastName: self.lastNameTextField.text];
-        [PIOUserPref setEmailAddress: self.emailTextField.text];
-        [PIOUserPref setPhoneNumber: self.phoneTextField.text];
-    }
-    else {
-        [PIOUserPref setFirstName: @""];
-        [PIOUserPref setLastName: @""];
-        [PIOUserPref setEmailAddress: @""];
-        [PIOUserPref setPhoneNumber: @""];
-    }
-    
+    [self.firstNameTextField setText: user.firstName];
+    [self.lastNameTextField setText: user.lastName];
+    [self.emailTextField setText: user.email];
+    [self.phoneTextField setText: user.phone];
 }
 
 
 - (void)applyFonts
 {
-    [self.topTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47]];
-    [self.loginButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.75f]];
+    
     [self.infoTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47]];
     [self.firstNameTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.lastNameTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.emailTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.phoneTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
-    [self.futureOrderTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.saveButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.75f]];
     [self.specialInstrructionsTextView setFont: [UIFont PIOMyriadProLightWithSize: 14.98f]];
 }
 
 #pragma mark - UITextViewDelegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return NO;
+}
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {

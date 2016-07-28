@@ -30,6 +30,4 @@ typedef NS_ENUM(NSInteger, PIOOrderDay) {
 
 @interface PIOOrderViewController : PIOBaseViewController
 
-@property (nonatomic, strong) PIOOrder *order;
-
 @end

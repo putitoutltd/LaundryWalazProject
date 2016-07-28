@@ -65,6 +65,7 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
 }
+@property (nonatomic, strong) NSString *locationID;
 @property (nonatomic, strong) NSMutableArray *GULBERG_Annotations;
 @property (nonatomic, strong) NSMutableArray *DHA_Annotations;
 @property (nonatomic, strong) NSMutableArray *annotations;
@@ -170,13 +171,13 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     }
     else {
         
-        PIOOrder *order = [[PIOOrder alloc]initWithInitialParameters: self.addressTextField.text location: self.locationTextField.text];
+        [PIOAppController sharedInstance].order = [[PIOOrder alloc]initWithInitialParameters: self.addressTextField.text location: self.locationID];
         if ([PIOAppController sharedInstance].LoggedinUser  != nil) {
-            order.customer = [PIOAppController sharedInstance].LoggedinUser;
+            [PIOAppController sharedInstance].order.customer = [PIOAppController sharedInstance].LoggedinUser;
         }
         
+        
         PIOOrderViewController *orderViewController = [PIOOrderViewController new];
-        orderViewController.order = order;
         [self.navigationController pushViewController: orderViewController animated: YES];
     }
     
@@ -436,7 +437,7 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
         [self.locationTextField setText: [self.locations objectAtIndex: indexPath.row]];
         [self hideTableview];
         
-        
+        self.locationID = [NSString stringWithFormat: @"%li", (long)indexPath.row+1];
         NSArray *array = [NSArray arrayWithObject: [self.annotations objectAtIndex: indexPath.row]];
         if (indexPath.row == 2) {
             array = self.DHA_Annotations;

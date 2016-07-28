@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="AddressTitleLabel" destination="ybM-oT-oKe" id="qgU-RT-KHW"/>
                 <outlet property="addressLabel" destination="ib2-UR-Et5" id="0GO-Gz-nhA"/>
-                <outlet property="cancelButton" destination="qeJ-hP-iIv" id="Obm-ic-KvI"/>
                 <outlet property="deliverDateLabel" destination="z8a-EF-F7P" id="LI3-ef-AQ0"/>
                 <outlet property="deliveryDateTitleLabel" destination="2sx-CO-55V" id="QpM-Fs-ddV"/>
                 <outlet property="orderIDLabel" destination="b9R-UC-VaC" id="nR0-oj-kGZ"/>
@@ -101,18 +100,6 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qeJ-hP-iIv">
-                    <rect key="frame" x="87" y="394" width="146" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="Cancel Order">
-                        <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="cancelOrderButtonPressed:" destination="-1" eventType="touchUpInside" id="6uZ-Uh-msm"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b4S-mD-IOJ">
                     <rect key="frame" x="87" y="429" width="146" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -128,7 +115,7 @@
             </subviews>
             <color key="backgroundColor" red="0.37254901960784315" green="0.66666666666666663" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="7" y="123"/>
+            <point key="canvasLocation" x="65" y="110"/>
         </view>
     </objects>
     <resources>

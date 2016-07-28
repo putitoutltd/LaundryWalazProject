@@ -10,6 +10,7 @@
 
 NSString *const PIOAccessTokenKey = @"PIOAccessToken";
 NSString *const PIOInfoSavedForFutureKey = @"PIOInfoSavedForFuture";
+NSString *const PIOUserIDKey = @"PIOUserID";
 NSString *const PIOFirstNameKey = @"PIOFirstName";
 NSString *const PIOLastName = @"PIOLastName";
 NSString *const PIOEmailAddressKey = @"PIOEmailAddress";
@@ -41,6 +42,18 @@ NSString *const PIOPhoneKey = @"PIOPhone";
 {
     return [[NSUserDefaults standardUserDefaults] boolForKey: PIOInfoSavedForFutureKey];
 }
+
++ (void)setUserID:(NSString *)ID
+{
+    [[NSUserDefaults standardUserDefaults] setObject: ID forKey: PIOUserIDKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSString *)requestUserID
+{
+    return  [[NSUserDefaults standardUserDefaults] objectForKey: PIOUserIDKey];
+}
+
 
 + (void)setFirstName:(NSString *)firstName
 {

@@ -16,6 +16,7 @@
 #import "PIOUserPref.h"
 #import "AppDelegate.h"
 #import "PIOUser.h"
+#import "PIOOrder.h"
 
 @class PIOProgressBarViewController;
 
@@ -52,6 +53,7 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 @property (nonatomic, strong) PIOUser *LoggedinUser;
 @property (nonatomic, assign, getter=isRemeberMe) BOOL remeberMe;
 @property (nonatomic, strong) NSString *accessToken;
+@property (nonatomic, strong) PIOOrder *order;
 
 + (PIOAppController *)sharedInstance;
 
