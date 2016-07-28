@@ -132,6 +132,7 @@
 
 - (IBAction)expressButtonPressed:(id)sender
 {
+    timeString = nil;
     self.fromExpressDelivery = YES;
     self.pickupMessageLabel.hidden = NO;
     if (self.expressDeliveryButton.isSelected) {
@@ -155,7 +156,7 @@
     [self.deliveryDateContainerView setUserInteractionEnabled: NO];
     // [self.pickupDateContainerView setUserInteractionEnabled: NO];
     
-    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:9];
+    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:8];
     if (isTimeGreaterThan9AM) {
         [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
         self.todayPickupButton.enabled = NO;
@@ -181,6 +182,7 @@
     switch (button.tag) {
         case PIOOrderDayTodayPickUp: {
             
+            self.deliverOnSelectedDate = nil;
             dropdownButton = self.todayTimePickerButton;
             [self.todayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.todayPickupButton;
@@ -199,6 +201,7 @@
             break;
         }
         case PIOOrderDayTomorrowPickUp: {
+             self.deliverOnSelectedDate = nil;
             [self.tomorrowTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.tomorrowPickupButton;
             dropdownButton = self.tomorrowTimePickerButton;
@@ -216,7 +219,7 @@
             break;
         }
         case PIOOrderDayOtherDayPickUp: {
-            
+             self.deliverOnSelectedDate = nil;
             // Date will be selected using calender
             
             dropdownButton = self.otherdayTimePickerButton;
@@ -322,6 +325,10 @@
         }
         
         self.deliverOnSelectedDate = self.pickupSelectedDate;
+        if (timeString == nil) {
+            timeString = @"11:00 AM";
+        }
+        
         
     }
     else {
@@ -332,11 +339,12 @@
    
     if ([PIOAppController sharedInstance].accessToken) {
         NSString *pickupDateString = [self addTimeToDate: self.pickupSelectedDate time: timeString isOnlyDae: NO];
-        NSString *deliverOnDateString = [self addTimeToDate: self.deliverOnSelectedDate time: nil isOnlyDae: YES];
+        timeString = @"07:00 PM";
+        NSString *deliverOnDateString = [self addTimeToDate: self.deliverOnSelectedDate time: timeString isOnlyDae: NO];
         
         [PIOAppController sharedInstance].order.pickupTime = pickupDateString;
         [PIOAppController sharedInstance].order.deliveronTime = deliverOnDateString;
-        
+        [PIOAppController sharedInstance].order.customer = [PIOAppController sharedInstance].LoggedinUser;
         PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
         [self.navigationController pushViewController: contactInfoViewController animated: YES];
     }
@@ -480,7 +488,7 @@
     {
         
         NSLog(@"date1 is equal to date2");
-        return  NO;
+        return  YES;
     }
     
     

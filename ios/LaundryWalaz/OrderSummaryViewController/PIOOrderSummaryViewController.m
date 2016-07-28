@@ -39,6 +39,10 @@
     
     // Hide Back button
     self.navigationItem.leftBarButtonItem=nil;
+    // Hide Back button
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem=nil;
+    self.backButtonHide = YES;
    
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Summary" onViewController:self];
@@ -46,70 +50,6 @@
     [self applyFonts];
     [self showOrderSummary];
 }
-
-- (void)showOrderSummary
-{
-    self.orderIDLabel.text = [PIOAppController sharedInstance].order.ID;
-    self.pickUpDateLabel.text = [self dateToDateString: [PIOAppController sharedInstance].order.pickupTime  isDeliveryDateAndTime: NO];
-    NSString *deliverDate = [self dateToDateString: [PIOAppController sharedInstance].order.deliveronTime  isDeliveryDateAndTime: YES];
-    
-    self.deliverDateLabel.text = [deliverDate stringByAppendingString: @" 6:00 PM to 9:00 PM"];
-    self.addressLabel.text = [PIOAppController sharedInstance].order.address;
-    
-    NSDictionary *fontAttributes = @{NSFontAttributeName : [UIFont PIOMyriadProLightWithSize: 11.25f]};
-    CGSize textSize = [self.addressLabel.text sizeWithAttributes:fontAttributes];
-    CGFloat textHeight = textSize.height;
-    CGRect frame = self.addressLabel.frame;
-    frame.size.height = textHeight;
-    self.addressLabel.frame = frame;
-}
-- (NSString *)dateToDateString:(NSString *)dateStr isDeliveryDateAndTime:(BOOL)isDeliveryMode
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//    NSString *dateStr = [dateFormatter stringFromDate: date];
-    NSDate *dddddd = [dateFormatter dateFromString:dateStr];
-    
-     NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init] ;
-    [monthDayFormatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
-    [monthDayFormatter setDateFormat:@"EEEE"];
-    NSString *day = [monthDayFormatter stringFromDate:dddddd] ;
-    
-    [monthDayFormatter setDateFormat:@"d MMM"];
-    int date_day = [[monthDayFormatter stringFromDate:dddddd] intValue];
-
-    
-    NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
-    NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
-    NSString *suffix = [suffixes objectAtIndex:date_day];
-    NSString *format = [NSString stringWithFormat:@"%d",date_day];
-    NSString *dateStrfff = [format stringByAppendingString:suffix];
-    
-    [monthDayFormatter setDateFormat:@"MMM"];
-    NSString *monthString = [monthDayFormatter stringFromDate:dddddd];
-   
-    [monthDayFormatter setDateFormat:@"yyyy"];
-    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
-    
-     NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
-    [monthDayFormatter setTimeZone: outputTimeZone];
-    [monthDayFormatter setDateFormat:@"hh:mm a"];
-    NSString *time = [monthDayFormatter stringFromDate:dddddd];
-    
-    NSString *final = [day stringByAppendingString:@", "];
-    final = [final stringByAppendingString:dateStrfff];
-    final = [final stringByAppendingString:@" "];
-    final = [final stringByAppendingString:monthString];
-    if (!isDeliveryMode) {
-        final = [final stringByAppendingString:@" "];
-        final = [final stringByAppendingString:time];
-    }
-    
-    
-    NSLog(@"final string:---> %@",final);
-    return final;
-}
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -153,6 +93,70 @@
     [self.cancelButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
     [self.orderStatusButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
     
+}
+
+
+- (void)showOrderSummary
+{
+    self.orderIDLabel.text = [PIOAppController sharedInstance].order.ID;
+    self.pickUpDateLabel.text = [self dateToDateString: [PIOAppController sharedInstance].order.pickupTime  isDeliveryDateAndTime: NO];
+    NSString *deliverDate = [self dateToDateString: [PIOAppController sharedInstance].order.deliveronTime  isDeliveryDateAndTime: YES];
+    
+    self.deliverDateLabel.text = [deliverDate stringByAppendingString: @" 6:00 PM to 9:00 PM"];
+    self.addressLabel.text = [PIOAppController sharedInstance].order.address;
+    
+    NSDictionary *fontAttributes = @{NSFontAttributeName : [UIFont PIOMyriadProLightWithSize: 11.25f]};
+    CGSize textSize = [self.addressLabel.text sizeWithAttributes:fontAttributes];
+    CGFloat textHeight = textSize.height;
+    CGRect frame = self.addressLabel.frame;
+    frame.size.height = textHeight;
+    self.addressLabel.frame = frame;
+}
+- (NSString *)dateToDateString:(NSString *)dateStr isDeliveryDateAndTime:(BOOL)isDeliveryMode
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //    NSString *dateStr = [dateFormatter stringFromDate: date];
+    NSDate *dddddd = [dateFormatter dateFromString:dateStr];
+    
+    NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init] ;
+    [monthDayFormatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
+    [monthDayFormatter setDateFormat:@"EEEE"];
+    NSString *day = [monthDayFormatter stringFromDate:dddddd] ;
+    
+    [monthDayFormatter setDateFormat:@"d MMM"];
+    int date_day = [[monthDayFormatter stringFromDate:dddddd] intValue];
+    
+    
+    NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
+    NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
+    NSString *suffix = [suffixes objectAtIndex:date_day];
+    NSString *format = [NSString stringWithFormat:@"%d",date_day];
+    NSString *dateStrfff = [format stringByAppendingString:suffix];
+    
+    [monthDayFormatter setDateFormat:@"MMM"];
+    NSString *monthString = [monthDayFormatter stringFromDate:dddddd];
+    
+    [monthDayFormatter setDateFormat:@"yyyy"];
+    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
+    
+    NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
+    [monthDayFormatter setTimeZone: outputTimeZone];
+    [monthDayFormatter setDateFormat:@"hh:mm a"];
+    NSString *time = [monthDayFormatter stringFromDate:dddddd];
+    
+    NSString *final = [day stringByAppendingString:@", "];
+    final = [final stringByAppendingString:dateStrfff];
+    final = [final stringByAppendingString:@" "];
+    final = [final stringByAppendingString:monthString];
+    if (!isDeliveryMode) {
+        final = [final stringByAppendingString:@" "];
+        final = [final stringByAppendingString:time];
+    }
+    
+    
+    NSLog(@"final string:---> %@",final);
+    return final;
 }
 
 #pragma mark - UIAlertViewDelegate

@@ -82,6 +82,8 @@
             [PIOOrder createOrder: [PIOAppController sharedInstance].order callback:^(NSError *error, BOOL status, id responseObject) {
                 [[PIOAppController sharedInstance] hideActivityView];
                 if ( status) {
+                    
+                        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Order placed successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeSuccess];
                     [PIOAppController sharedInstance].order.ID = (NSString *)responseObject;
                     PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
                     [self.navigationController pushViewController: orderSummaryViewController animated: YES];

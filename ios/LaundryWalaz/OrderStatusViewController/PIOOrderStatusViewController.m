@@ -43,6 +43,12 @@
     [self.pickupTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
     [self.timeLabel setFont: [UIFont PIOMyriadProLightWithSize: 31.06f]];
     [self.dayLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.04f]];
+    
+    [self.pickupTitleLabel setText: @""];
+    [self.timeLabel setText: @""];
+    [self.dayLabel setText: @""];
+    self.backgroundImageView.image = nil;
+    
     [self orderStatus];
 
 }
@@ -63,7 +69,7 @@
 - (void)orderStatus
 {
     if ([[PIOAppController sharedInstance] connectedToNetwork]) {
-        [[PIOAppController sharedInstance] showActivityViewWithMessage: @" "];
+        [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
         [PIOOrder orderStatusCallback:^(NSError *error, BOOL status, id responseObject) {
             [[PIOAppController sharedInstance] hideActivityView];
             if (status) {

@@ -172,6 +172,36 @@
     }];
 }
 
++ (void)userFeedback:(NSString *)feedbackAbout feedbackDetail:(NSString *)feedbackText callback:(void (^)(NSError *error,BOOL status, id responseObject))callback
+{
+    NSString *requestURL = [PIOURLManager feedbackURL];
+    NSDictionary *parameters =  [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 feedbackAbout, @"about",
+                                 feedbackText, @"feedback", nil];
+    
+    [PIORequestHandler getRequest: requestURL parameters: parameters callback:^(NSError *error, BOOL status, id responseObject) {
+        NSDictionary *dictionary = (NSDictionary *)responseObject;
+        
+        if (error == nil && !status) {
+            if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
+                PIOAPIResponse * APIResponse = [[PIOAPIResponse alloc] initWithDict:dictionary];
+                callback(nil,NO, APIResponse);
+            }
+        }
+        else if (status) {
+            
+            if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
+                
+                callback(nil, YES, nil);
+            } else {
+                callback(error, NO, nil);
+            }
+        }
+        
+    }];
+}
+
+
 + (void)saveInfoForFuture:(BOOL)isSaved user:(PIOUser *)user
 {
     if (isSaved) {

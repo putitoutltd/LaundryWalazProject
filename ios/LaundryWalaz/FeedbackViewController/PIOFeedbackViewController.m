@@ -8,6 +8,8 @@
 
 #import "PIOFeedbackViewController.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
+#import "PIOUser.h"
 
 @interface PIOFeedbackViewController () <UITextViewDelegate>
 @property (nonatomic, weak) IBOutlet UIButton *dropdownButton;
@@ -35,7 +37,7 @@
     // Do any additional setup after loading the view from its nib.
     
     // Add feedback options for dropdown list
-    self.feedbackOpntions = [NSMutableArray arrayWithObjects: @"Cantt", @"Cavalary ground", @"DHA Phase 5&6", @"Gulberg I-V", nil];
+    self.feedbackOpntions = [NSMutableArray arrayWithObjects: @"Your feedback about?", @"Quality", @"Staff", @"Service", nil];
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Feedback" onViewController:self];
@@ -68,7 +70,20 @@
 
 - (IBAction)sendButtonPressed:(id)sender
 {
-    [self.navigationController popViewControllerAnimated: YES];
+    if (self.feedbackAboutTextField.text.length == 0) {
+        
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please feedback about option." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        return;
+        
+    }
+    else if ([self.feedbackDetailTextView.text isEqualToString: @"Feedback detail"] || self.feedbackDetailTextView.text.length == 0) {
+        
+         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter some feedback to send." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        return;
+    }
+    
+    [self feedbackAPICall];
+    
 }
 
 
@@ -116,6 +131,25 @@
     self.tableView.frame =  CGRectMake(self.feedbackAboutTextField.frame.origin.x, self.feedbackAboutTextField.frame.size.height+self.feedbackAboutTextField.frame.origin.y, self.feedbackAboutTextField.frame.size.width,0);
 }
 
+- (void)feedbackAPICall
+{
+    if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+        [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+        [PIOUser userFeedback: self.feedbackAboutTextField.text feedbackDetail: self.feedbackDetailTextView.text callback:^(NSError *error, BOOL status, id responseObject) {
+            [[PIOAppController sharedInstance] hideActivityView];
+            if (status) {
+                [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Feedback sent successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeSuccess];
+                self.feedbackDetailTextView.text = nil;
+                self.feedbackAboutTextField.text = nil;
+            }
+            else {
+                PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+            }
+        }];
+    }
+}
+
 #pragma mark - Table View Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -146,9 +180,6 @@
     } completion:^(BOOL finished) {
         [self.feedbackAboutTextField setText: [self.feedbackOpntions objectAtIndex: indexPath.row]];
         [self hideTableview];
-        
-        
-        
     }];
     
 }

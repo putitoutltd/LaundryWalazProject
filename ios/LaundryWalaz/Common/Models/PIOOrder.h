@@ -18,6 +18,10 @@
 @property (nonatomic, strong) NSString *pickupTime;
 @property (nonatomic, strong) NSString *deliveronTime;
 @property (nonatomic, strong) NSString *specialInstructions;
+@property (nonatomic, strong) NSMutableArray *bedLinenList;
+@property (nonatomic, strong) NSMutableArray *womenApparelList;
+@property (nonatomic, strong) NSMutableArray *menApparelList;
+
 
 - (instancetype)initWithInitialParameters:(NSString *)address location:(NSString *)location;
 
@@ -26,5 +30,8 @@
 
 // Order Status API Call
 + (void)orderStatusCallback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
+
+// Prcing List API Call
++ (void)pricingListCallback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
 
 @end

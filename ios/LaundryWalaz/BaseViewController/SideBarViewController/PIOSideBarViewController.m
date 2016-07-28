@@ -60,6 +60,8 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
     if (![PIOAppController sharedInstance].accessToken) {
         self.logOutButton.hidden = YES;
+        self.myOrderButton.enabled = NO;
+        self.myOrderButton.alpha = 0.7;
     }
 }
 
@@ -273,6 +275,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 {
     
     [PIOUserPref setAccessToken: nil];
+    [[PIOAppController sharedInstance] setAccessToken: nil];
     if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {
         PIOHowToUseViewController *loginViewController;
         for (UIViewController *viewController in viewControllers) {

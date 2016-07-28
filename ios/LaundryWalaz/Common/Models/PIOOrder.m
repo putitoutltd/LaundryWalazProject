@@ -11,6 +11,7 @@
 #import "PIORequestHandler.h"
 #import "PIOAppController.h"
 #import "PIOAPIResponse.h"
+#import "PIOPricingList.h"
 
 @implementation PIOOrder
 
@@ -39,9 +40,6 @@
                       order.deliveronTime, @"dropoff_time",
                       order.specialInstructions, @"special_instructions",
                       nil];
-    
-    
-    
     return userDictionary;
 }
 
@@ -100,6 +98,57 @@
                 [PIOAppController sharedInstance].LoggedinUser.deliveronTime = dictionary[@"data"][@"order"][@"dropoff_time"];
                 
                 callback(error, YES, status);
+            }
+            else {
+                callback(error, NO, nil);
+            }
+        }
+        
+    }];
+}
+
++ (void)pricingListCallback:(void (^)(NSError *error,BOOL status, id responseObject))callback
+{
+    NSString *requestURL = [PIOURLManager pricingListURL];
+//    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys: [PIOAppController sharedInstance].accessToken, @"access_token", nil];
+    
+    [PIORequestHandler getRequest: requestURL parameters: nil callback:^(NSError *error, BOOL status, id responseObject) {
+        NSDictionary *dictionary = (NSDictionary *)responseObject;
+        if (error == nil && !status) {
+            if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
+                PIOAPIResponse * APIResponse = [[PIOAPIResponse alloc] initWithDict:dictionary];
+                
+                callback(nil,NO, APIResponse);
+            }
+        }
+        else if (status) {
+            
+            if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
+                
+                PIOOrder *order = [[PIOOrder alloc] init];
+                order.bedLinenList = [[NSMutableArray alloc]init];
+                order.menApparelList = [[NSMutableArray alloc]init];
+                order.womenApparelList = [[NSMutableArray alloc]init];
+                
+                NSArray *BedLinen = dictionary[@"data"][@"Bed Linen"];
+                for (NSDictionary *dict in BedLinen) {
+                    PIOPricingList *priceList = [[PIOPricingList alloc] initWithInitialParameters: [dict objectForKey: @"category"] name: [dict objectForKey: @"name"] priceDryclean: [dict objectForKey: @"price_dryclean"] priceLaundry: [dict objectForKey: @"price_laundry"]];
+                    [order.bedLinenList addObject: priceList];
+                }
+                
+                NSArray *menApparelList = dictionary[@"data"][@"Men's Apparel"];
+                for (NSDictionary *dict in menApparelList) {
+                    PIOPricingList *priceList = [[PIOPricingList alloc] initWithInitialParameters: [dict objectForKey: @"category"] name: [dict objectForKey: @"name"] priceDryclean: [dict objectForKey: @"price_dryclean"] priceLaundry: [dict objectForKey: @"price_laundry"]];
+                    [order.menApparelList addObject: priceList];
+                }
+                
+                NSArray *womenApparelList = dictionary[@"data"][@"Women's Apparel"];
+                for (NSDictionary *dict in womenApparelList) {
+                    PIOPricingList *priceList = [[PIOPricingList alloc] initWithInitialParameters: [dict objectForKey: @"category"] name: [dict objectForKey: @"name"] priceDryclean: [dict objectForKey: @"price_dryclean"] priceLaundry: [dict objectForKey: @"price_laundry"]];
+                    [order.womenApparelList addObject: priceList];
+                }
+                
+                callback(error, YES, order);
             }
             else {
                 callback(error, NO, nil);

@@ -37,6 +37,31 @@
     }];
 }
 
+// GET request method.
+
++ (void)getRequest:(NSString *)requestURL parameters:(NSDictionary *)parameters callback:(void (^)(NSError *error,BOOL status, id responseObject))callback
+{
+    [[PIOAppController sharedInstance].sessionManager GET:requestURL parameters:parameters progress:nil success: ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSError *error;
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&error];
+        NSLog(@"resonse%@",dictionary);
+        if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
+            callback(nil,NO, dictionary);
+        } else {
+            if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
+                
+                callback(error, YES, dictionary);
+            } else {
+                callback(error, NO, nil);
+            }
+        }
+    } failure: ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        callback(error, NO, nil);
+    }];
+}
+
+
 // PUT request method
 
 + (void)putRequest:(NSString *)requestURL parameters:(NSDictionary *)parameters callback:(void (^)(NSError *error,BOOL status, id responseObject))callback

@@ -58,4 +58,14 @@ NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
     return [self requestURLWithPath:@"/api/order/status"];
 }
 
++ (NSString *)pricingListURL
+{
+    return [self requestURLWithPath:@"/api/services/list"];
+}
+
++ (NSString *)feedbackURL
+{
+    return [self requestURLWithPath:@"/api/user/send_feedback"];
+}
+
 @end

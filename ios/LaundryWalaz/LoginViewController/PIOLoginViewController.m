@@ -116,8 +116,7 @@
                         [self.navigationController pushViewController: mapViewController animated: YES];
                     }
                     else {
-                        PIOContactInfoViewController *contactInfoViewController = [PIOContactInfoViewController new];
-                        [self.navigationController pushViewController: contactInfoViewController animated: YES];
+                        [self.navigationController popViewControllerAnimated: NO];
                     }
                     
                 }

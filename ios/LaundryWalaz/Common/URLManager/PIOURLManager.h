@@ -19,5 +19,7 @@ extern NSString *const PIOBaseURL;
 + (NSString *)forgotPasswordURL;
 + (NSString *)createorderURL;
 + (NSString *)orderStatusURL;
++ (NSString *)pricingListURL;
++ (NSString *)feedbackURL;
 
 @end

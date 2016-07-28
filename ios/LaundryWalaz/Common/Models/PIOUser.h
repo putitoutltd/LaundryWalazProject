@@ -32,4 +32,7 @@
 // Forgot Password API Call
 + (void)forgotPassword:(NSString *)email callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
 
+// Feedback API Call
++ (void)userFeedback:(NSString *)feedbackAbout feedbackDetail:(NSString *)feedbackText callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
+
 @end

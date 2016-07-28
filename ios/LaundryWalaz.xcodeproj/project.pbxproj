@@ -145,6 +145,7 @@
 		45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */; };
 		45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9D1D38CE9400524329 /* login-btn@2x.png */; };
 		45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9E1D38CE9400524329 /* login-btn@3x.png */; };
+		45D829F71D49D9CD00131B5D /* PIOPricingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D829F61D49D9CD00131B5D /* PIOPricingList.m */; };
 		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
@@ -344,6 +345,8 @@
 		45CEAB9C1D38CE9400524329 /* login-btn-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-667h@2x.png"; sourceTree = "<group>"; };
 		45CEAB9D1D38CE9400524329 /* login-btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@2x.png"; sourceTree = "<group>"; };
 		45CEAB9E1D38CE9400524329 /* login-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@3x.png"; sourceTree = "<group>"; };
+		45D829F51D49D9CD00131B5D /* PIOPricingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOPricingList.h; path = Models/PIOPricingList.h; sourceTree = "<group>"; };
+		45D829F61D49D9CD00131B5D /* PIOPricingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOPricingList.m; path = Models/PIOPricingList.m; sourceTree = "<group>"; };
 		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -862,6 +865,8 @@
 				45AA90CC1D46374800979518 /* PIOUser.m */,
 				459483191D47814A009EF2FC /* PIOOrder.h */,
 				4594831A1D47814A009EF2FC /* PIOOrder.m */,
+				45D829F51D49D9CD00131B5D /* PIOPricingList.h */,
+				45D829F61D49D9CD00131B5D /* PIOPricingList.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1246,6 +1251,7 @@
 				452727131D252FB2008A90B5 /* UIFont+Additions.m in Sources */,
 				45CE0EF91D3F8DA2007BDAED /* PIOPriceListCustomTableViewCell.m in Sources */,
 				454A276F1D1C085200E30CDF /* AFHTTPSessionManager+Additions.m in Sources */,
+				45D829F71D49D9CD00131B5D /* PIOPricingList.m in Sources */,
 				457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */,
 				452304491D1D21800006EB01 /* PIOLoginViewController.m in Sources */,
 				454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */,

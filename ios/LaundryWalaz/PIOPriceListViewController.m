@@ -9,12 +9,18 @@
 #import "PIOPriceListViewController.h"
 #import "PIOPriceListCustomTableViewCell.h"
 #import "PIOAppController.h"
+#import "PIOAPIResponse.h"
+#import "PIOOrder.h"
+#import "PIOPricingList.h"
 
 @interface PIOPriceListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *headerTitles;
 @property (nonatomic, strong) NSMutableArray *headerImages;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) PIOOrder *order;
+@property (nonatomic, strong) NSMutableArray *priceList;
 
 @end
 
@@ -40,6 +46,7 @@
     
     self.headerTitles = [NSMutableArray arrayWithObjects: @"MEN’S WEAR CLOTHING", @"WOMEN’S WEAR CLOTHING", @"BED LINEN", nil];
     self.headerImages = [NSMutableArray arrayWithObjects: @"menz-wears", @"womenz-wears", @"bed-linen", nil];
+    [self pricingListAPICall];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -53,6 +60,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma  mark - Private Methods
+
+- (void)pricingListAPICall
+{
+    if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+        [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
+        [PIOOrder pricingListCallback:^(NSError *error, BOOL status, id responseObject) {
+            [[PIOAppController sharedInstance] hideActivityView];
+            if (status) {
+                self.order = (PIOOrder *)responseObject;
+                [self.tableView reloadData];
+            
+            }
+            else {
+                PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
+                [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: APIResponse.message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+            }
+            
+        }];
+    }
+}
 
 #pragma mark - Table View Delegate
 
@@ -65,15 +93,15 @@
     NSInteger rows = 0;
     switch (section) {
         case 0:
-            rows = 20+1;
+            rows = self.order.menApparelList.count+1;
             break;
             
         case 1:
-            rows = 20;
+            rows = self.order.womenApparelList.count;
             break;
             
         case 2:
-            rows = 20;
+            rows = self.order.bedLinenList.count;
             break;
             
         default:
@@ -89,28 +117,33 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PIOPriceListCustomTableViewCell" owner:self options:nil] objectAtIndex:0];
 //        [cell drawCellForMother:self.mother];
     }
+    NSInteger row;
     if (indexPath.section == 0) {
+        self.priceList = self.order.menApparelList;
         if (indexPath.row==0) {
             return cell;
         }
+        row = indexPath.row-1;
     }
-    else if (indexPath.row ==1)
+    else if (indexPath.section ==1)
     {
-        
+        self.priceList = self.order.womenApparelList;
+        row = indexPath.row;
     }
-    else {
-        
+    else if (indexPath.section ==2) {
+        self.priceList = self.order.bedLinenList;
+        row = indexPath.row;
     }
     
+    PIOPricingList *pricingListObj = [self.priceList objectAtIndex: row];
     [cell.itemLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.38]];
     [cell.dryCleanLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.38]];
     [cell.laundryLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.38]];
     
-    
     cell.cellBackgroundView.backgroundColor = [UIColor clearColor];
-    [cell.itemLabel setText: @"Suit 2PC Linen"];
-    [cell.dryCleanLabel setText: @"280"];
-    [cell. laundryLabel setText: @"280"];
+    [cell.itemLabel setText: pricingListObj.name];
+    [cell.dryCleanLabel setText: pricingListObj.priceDryclean];
+    [cell. laundryLabel setText: pricingListObj.priceLaundry];
     
     return cell;
     

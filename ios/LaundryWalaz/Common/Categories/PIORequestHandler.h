@@ -15,4 +15,6 @@
 + (void)putRequest:(NSString *)requestURL parameters:(NSDictionary *)parameters callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
 
 + (void)deleRequest:(NSString *)requestURL parameters:(NSDictionary *)parameters callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
+
++ (void)getRequest:(NSString *)requestURL parameters:(NSDictionary *)parameters callback:(void (^)(NSError *error,BOOL status, id responseObject))callback;
 @end
