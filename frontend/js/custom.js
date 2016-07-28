@@ -10,6 +10,7 @@ var lastName;
 var email;
 var phone;
 var futureReference;
+var orderGlobalStatuses = ['Awaiting Pick Up','Going in Laundry','Cleaning Your Laundry','Clean Laundry on your way','Delivered'];
 
 $(function () {
 

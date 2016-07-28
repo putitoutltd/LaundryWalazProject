@@ -49,10 +49,10 @@
         <link href="css/all.css" rel="stylesheet" type="text/css">
         
         <style>
-            #processing{
+            #processing,#order_details_block{
                 display:none;
             }
-            #order_details,#msg1,#msg2{
+            #order_details,#msg1,#msg2,#msg3{
                 display:none;
             }
             #today_time_li,#tomorrow_time_li,#other_time_li{
@@ -95,6 +95,22 @@
             #r_error{
                 text-align: center;
                 color: red;
+            }
+            #order_details_block{
+                position: relative;
+                z-index: 9999;
+            }
+            .seal-order{
+                background: url(images/order-confirmation.png) 0px 0px no-repeat;
+            }
+            .running_order{
+                padding: 10px;
+                text-align: center;
+                background: url(images/order-confirmation.png) 0px 0px no-repeat;
+                color: #FFF;
+            }
+            .menu_logout{
+                
             }
         </style>
 
@@ -246,7 +262,7 @@
                                     <li><a href="#schedule" class="page-scroll">schedule a pick-up</a></li>
                                     <li><a href="#operating-areas" class="page-scroll">operating areas</a></li>
                                     <li class="menu_login" ><a href="" data-toggle="modal" data-target="#loginForm" class="page-scroll">login</a></li>
-                                    <li class="menu_logout" ><a onclick="logout()" href="">logout</a></li>
+                                    <li class="menu_logout" style="display: none;" ><a onclick="logout()" href="">logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -269,7 +285,7 @@
                                     <li><a href="#schedule" class="page-scroll">schedule a pick-up</a></li>
                                     <li><a href="#operating-areas" class="page-scroll">operating areas</a></li>
                                     <li class="menu_login" ><a href="" data-toggle="modal" data-target="#loginForm" class="page-scroll">login</a></li>
-                                    <li class="menu_logout" ><a onclick="logout()" href="">logout</a></li>
+                                    <li class="menu_logout"  style="display: none;"  ><a onclick="logout()" href="">logout</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -573,6 +589,32 @@
                 <div class="schedule-inn">
                     
                     <?php if($loggedIn){ ?>
+                    
+                    <!-- order status begins -->
+                    <div class="order-confirmation-holder clearfix" id="order_details_block">
+                        <div class="">
+                            <div class="seal-order">
+                                <div id="">
+                                    <img src="images/seal.png" alt="" >
+                                    <h3><span id="o_uname"></span>, your Order is currently in progress.</h3>
+                                    <h4>order id</h4>
+                                    <h5>DC-000<span id="o_orderid"></span></h5>
+                                    <h4>status</h4>
+                                    <h5><span id="o_status"></span></h5>
+                                    <h4>PICK-UP Date</h4>
+                                    <h5 id="o_upickup"></h5>
+                                    <h4>Delivery Date</h4>
+                                    <h5 id="o_udropoff"></h5>
+                                </div>    
+                            </div>
+                               <!--  <div class="continue-btn">
+                                <a href="javascript:void(null);" class="continue">Continue</a>
+                            </div> -->
+                        </div>
+
+                    </div>
+                    <!-- order confirmation ends -->
+                    
                     <div class="schedule-holder-inner">  
                         <ul class="nav nav-tabs row">
                             <li class="col-md-6 col-sm-6 col-xs-6 active laundry-tabs-head"><a data-toggle="tab" href="#regular">Standard </a></li>
@@ -973,7 +1015,7 @@
                                             <input type="submit" name="login_submit" class="login-submit" value="Login" >
                                         </div>
                                         <div class="form-row align-center">
-                                            <a href="#" class="forgot">Fogot password?</a>
+                                            <a href="#" data-toggle="modal" data-target="#forgotForm" class="forgot">Fogot password?</a>
                                             <p class="register-link">If you are not already registered. <a href="" data-toggle="modal" data-target="#registerForm">Click here to register</a></p>
                                         </div>
                                     </div>
@@ -1260,17 +1302,18 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="feedback">
                                     <div class="feedback-row clearfix">
-                                        <p>Enter you email or password. We will email you instructions on how to reset your password.</p>
+                                        <p>Enter you email and we will email you instructions on how to reset your password.</p>
                                     </div>
                                     <div class="feedback-row">
-                                        <input type="email" class="contact-input" placeholder="Email" >
+                                        <input type="email" id="forgot_email" name="forgot_email" class="contact-input" placeholder="Email" >
                                     </div>
                                     <div class="feedback-row">
-                                        <input type="password" class="contact-input" placeholder="Password" >
+                                        <input type="button" onclick="sendForgotMail()" class="laundry-submit" name="forget_password" value="Send" >
                                     </div>
-                                    <div class="feedback-row">
-                                        <input type="submit" class="laundry-submit" value="Send" >
+                                    <div class="form-row" id="msg3">
+                                        We have sent you an email on how to reset your password.
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -1315,7 +1358,27 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 
                 // filling in user information in contact section
                 var obj = JSON.parse(usr);
-                console.log(obj);
+                
+                var orderDetails = obj.order;
+                console.log(orderDetails);
+                if(orderDetails && orderDetails.status < 4){
+                    $("#order_details_block").show();
+                    $(".schedule-holder-inner").hide();
+                    
+                    var pDate = formatDate(orderDetails.pickup_time);
+                    var dDate = formatDate(orderDetails.dropoff_time);
+
+                    var displayPickDate = pDate;
+                    var displayDropDate = dDate;
+                    var oStatus = (orderGlobalStatuses[orderDetails.status]) ? orderGlobalStatuses[orderDetails.status] : '-';
+                    
+                    $("#o_upickup").html(displayPickDate);
+                    $("#o_udropoff").html(displayDropDate);
+                    $("#o_uname").html(orderDetails.first_name);
+                    $("#o_orderid").html(orderDetails.id);
+                    $("#o_status").html(oStatus);
+                    
+                }
                 $("#first_name").val(obj.details.first_name);
                 $("#last_name").val(obj.details.last_name);
                 $("#email").val(obj.details.email);
@@ -1448,7 +1511,11 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 $('input').iCheck({
                     checkboxClass: 'icheckbox_square-green',
                 });
-                
+                $(".forgot").click(function () {
+                    window.setTimeout(function () {
+                        $('#loginForm').modal('hide');
+                    }, 1000);
+                });
                 $(".selectpicker").change(function () {
                     if(this.id !== 'regular_location'){
                         orderPickTime = $(this).val();
@@ -1639,26 +1706,11 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 
                                 if(data.status === 'success'){
                                     
-                                    var x = new Date(orderPickDate);
-                                    var y = new Date(orderDeliverDate);
-                                    
-                                    var da = x.getDate();	
-                                    var mo = x.getMonth() + 1;	
-                                    var ye = x.getFullYear();
-                                    if(mo < 10){
-                                        mo = "0"+mo;
-                                    }
-                                    
-                                    var displayPickDate = da+"-"+mo+"-"+ye+" "+orderPickTime;
-                                    
-                                    var da1 = y.getDate();	
-                                    var mo1 = y.getMonth() + 1;	
-                                    var ye1 = y.getFullYear();
-                                    if(mo1 < 10){
-                                        mo1 = "0"+mo1;
-                                    }
-                                    
-                                    var displayDropDate = da1+"-"+mo1+"-"+ye1+" "+" 06:00 pm - 09:00 pm";
+                                    var pDate = formatDate(orderPickDate);
+                                    var dDate = formatDate(orderDeliverDate);
+                                   
+                                    var displayPickDate = pDate+" "+orderPickTime;
+                                    var displayDropDate = dDate+" 06:00 pm - 09:00 pm";
 
                                     $("#uname").html(orderObj.first_name+" "+orderObj.last_name);
                                     $("#orderid").html(data.data.order_id);
@@ -1679,6 +1731,34 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     }
                     
                     
+                    function sendForgotMail() {
+                       var areaEmail = $("#forgot_email").val();
+                       
+                       var dataObj = {
+                            'email'                 : areaEmail,
+                            'action'                : 'forgot_password'
+                        };
+                        $("#msg3").html("Processing...");
+                        $("#msg3").show();
+                        // process the form
+                        $.ajax({
+                            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : 'process_order.php', // the url where we want to POST
+                            data        : dataObj, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        })
+                            // using the done promise callback
+                            .done(function(data) {
+                                if(data.message){
+                                    
+                                    $("#msg3").html(data.message);        
+                                    setTimeout(function(){ $("#msg3").hide(1000); }, 4000);
+                    
+                                }
+                                // here we will handle errors and validation messages
+                            });
+                    }
                     
                     function sendAreaMail() {
                        var areaEmail = $("#area_email").val();
@@ -1744,6 +1824,27 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 // here we will handle errors and validation messages
                             });
                     }
+                    
+                    function formatDate(dateString){
+                        
+                        var x = new Date(dateString);
+                        
+                        var da = x.getDate();	
+                        var mo = x.getMonth() + 1;	
+                        var ye = x.getFullYear();
+                        
+                        if(da < 10){
+                            da = "0"+da;
+                        }
+                        if(mo < 10){
+                            mo = "0"+mo;
+                        }
+
+                        return da+"-"+mo+"-"+ye;
+
+                    }
+                    
+                    
         
             
         </script>

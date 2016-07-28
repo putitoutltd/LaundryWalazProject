@@ -26,7 +26,9 @@
 	
 	//Pause carousel  
 	//$myCarousel.carousel('pause');
-	
+	$myCarousel.carousel().mouseover(function(){
+            $myCarousel.carousel();
+        });
 	
 	//Other slides to be animated on carousel slide event 
 	$myCarousel.on('slide.bs.carousel', function (e) {
