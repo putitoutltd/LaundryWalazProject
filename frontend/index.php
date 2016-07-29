@@ -1132,7 +1132,7 @@
 
         <!-- terms popup begins -->
         <div id="terms" class="modal fade" role="dialog">
-            <div class="login-form-holder">
+            <div class="login-form-holder copytext-modal">
                 <button type="button" class="close-modal" data-dismiss="modal"></button>
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -1191,7 +1191,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
 
         <!-- faq's popup begins -->
         <div id="faqs" class="modal fade" role="dialog">
-            <div class="login-form-holder">
+            <div class="login-form-holder copytext-modal">
                 <button type="button" class="close-modal" data-dismiss="modal"></button>
                 <!-- Modal content-->
                 <div class="modal-content">
