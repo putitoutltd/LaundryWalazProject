@@ -1002,16 +1002,22 @@
                                         <div class="form-row">
                                             <input type="password" id="login_password"  name="login_password"   class="contact-input" placeholder="Password" >
                                         </div>
-                                        
-                                        <div class="form-row align-center remember-margin">
+                                        <div class="clearfix">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-row align-center">
                                             <input tabindex="9" name="remember_me" value="1" type="checkbox" id="square-checkbox-2">
                                             <label for="square-checkbox-2">Remember me</label>
                                         </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <a href="#" data-toggle="modal" data-target="#forgotForm" class="forgot">Fogot password?</a>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="form-row align-center">
                                             <input type="submit" name="login_submit" class="login-submit" value="Login" >
                                         </div>
                                         <div class="form-row align-center">
-                                            <a href="#" data-toggle="modal" data-target="#forgotForm" class="forgot">Fogot password?</a>
                                             <p class="register-link">If you are not already registered. <a href="" data-toggle="modal" data-target="#registerForm">Click here to register</a></p>
                                         </div>
                                     </div>

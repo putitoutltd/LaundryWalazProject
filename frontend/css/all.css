@@ -1514,7 +1514,7 @@ ul.timings-list {
     border-bottom: 1px solid #a1a1a1; }
 
 .login-form-holder {
-  max-width: 768px;
+  max-width: 450px;
   margin: 40px auto;
   position: relative; }
   @media only screen and (max-width: 767px) {
@@ -1522,7 +1522,7 @@ ul.timings-list {
       margin: 40px 15px; } }
   .login-form-holder h1 {
     text-align: left;
-    font-size: 40px;
+    font-size: 31px;
     font-family: "Source Sans Pro", sans-serif;
     color: #888888;
     padding: 10px 0 10px 0px;
@@ -1530,7 +1530,7 @@ ul.timings-list {
     text-align: center; }
     @media only screen and (max-width: 767px) {
       .login-form-holder h1 {
-        font-size: 30px; } }
+        font-size: 25px; } }
 
 .login-form-inner {
   padding: 0px 0px 20px;
@@ -1538,7 +1538,7 @@ ul.timings-list {
   margin: 0 auto; }
   .login-form-inner h1 {
     text-align: left;
-    font-size: 40px;
+    font-size: 31px;
     font-family: "Source Sans Pro", sans-serif;
     color: #888888;
     padding: 10px 0 10px 0px;
@@ -1546,7 +1546,7 @@ ul.timings-list {
     text-align: center; }
     @media only screen and (max-width: 767px) {
       .login-form-inner h1 {
-        font-size: 30px; } }
+        font-size: 25px; } }
 
 .terms-policy-modal {
   max-width: 100%; }
@@ -1610,7 +1610,7 @@ a.forgot {
   background-size: 40px 40px; }
 
 p.register-link {
-  padding: 15px 0 10px;
+  padding: 0px 0 10px;
   color: #888888;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
@@ -1620,7 +1620,7 @@ p.register-link {
     display: block; }
 
 .reg-btn {
-  padding: 20px 0 50px; }
+  padding: 20px 0 0px; }
 
 label.error {
   color: #f00;
@@ -1637,7 +1637,6 @@ label.error {
   padding: 0 0 15px;
   max-width: 614px; }
   .feedback-row div.operating-areas-options {
-    max-width: 300px;
     padding: 0 0 0; }
   .feedback-row p {
     font-size: 20px;

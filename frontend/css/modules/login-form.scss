@@ -1,5 +1,5 @@
 .login-form-holder{
-    max-width:768px;
+    max-width:450px;
     margin:40px auto;
     position:relative;
     @include mobile{
@@ -7,14 +7,14 @@
     }
     h1{
         text-align: left;
-        font-size:40px;
+        font-size:31px;
         font-family:$roboto;
         color:$grey;
         padding:10px 0 10px 0px;
         font-weight:300;
         text-align:center;
         @include mobile{
-           font-size:30px;
+           font-size:25px;
         }
     }
 }
@@ -24,14 +24,14 @@
     margin:0 auto;
     h1{
         text-align: left;
-        font-size:40px;
+        font-size:31px;
         font-family:$roboto;
         color:$grey;
         padding:10px 0 10px 0px;
         font-weight:300;
         text-align:center;
         @include mobile{
-           font-size:30px;
+           font-size:25px;
         }
     }
 }
@@ -100,7 +100,7 @@ a.forgot{
     background-size:40px 40px;
 }
 p.register-link{
-    padding:15px 0 10px;
+    padding:0px 0 10px;
      color:$grey;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
@@ -112,7 +112,7 @@ p.register-link{
         
 }
 .reg-btn{
-    padding:20px 0 50px;
+    padding:20px 0 0px;
 }
 label.error{
     color:#f00;
