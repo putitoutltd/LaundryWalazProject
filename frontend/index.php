@@ -760,7 +760,7 @@
                                                         </div>
                                                     </li>
                                                     <li class="col-md-4 col-sm-4 col-xs-4">
-                                                        <input  type="text" id="express-pickup-date" readonly="readonly"  onchange="fillValue(this,'express_pick')" class="btn schedule-day picked-date">
+                                                        <input  type="text" id="express-pickup-date" readonly  onchange="fillValue(this,'express_pick')" class="btn schedule-day picked-date">
                                                         <div class="info express-date-info">
                                                             <span class="today">Other Day</span>
                                                             <span>Select Other Day</span>
@@ -990,14 +990,10 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="login-form-inner clearfix">
-
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="login-key">
-                                    <h1>Login</h1>
-                                    <span><img src="images/login-key.png" alt="" ></span>
-                                </div>
+                            <div class="login-key">
+                              <span><img src="images/login-key.png" alt="" ></span>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <h1>Login</h1>
                                 <form name="login_form" method="POST" action="">
                                     <div class="login-form-rows">
                                         <div class="form-row">
@@ -1020,7 +1016,7 @@
                                         </div>
                                     </div>
                                 </form>    
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -1039,15 +1035,11 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="login-form-inner clearfix">
-                            <h1>Register with Laundry Walaz</h1> 
-                            <p id="r_error"></p> 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="login-key">
-
                                     <span><img src="images/register-icon.png" alt="" ></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <h1>Register with Laundry Walaz</h1>
+                                <p id="r_error"></p> 
                                 <form id="r_form">
                                     <div class="personal-info">
                                         <div class="form-row clearfix">
@@ -1072,7 +1064,7 @@
                                         </div>
                                     </div>
                                 </form>
-                            </div>
+                            
                         </div>
 
                     </div>
@@ -1092,13 +1084,10 @@
                     <div class="modal-body">
                         <div class="login-form-inner clearfix">
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="login-key">
-                                    <h1>Feedback</h1>
+                           <div class="login-key">
                                     <span><img src="images/register-icon.png" alt="" ></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <h1>Feedback</h1>
                                 <div class="feedback">
                                     <div class="feedback-row clearfix">
                                         <p>We want to hear what you love and what you think we can do better.</p>
@@ -1124,7 +1113,7 @@
                                         Thank you for your feedback
                                     </div>
                                 </div>
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -1142,7 +1131,7 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-body">
-                        <div class="login-form-inner clearfix">
+                        <div class="login-form-inner terms-policy-modal clearfix">
                             <div class="copytext-holder">
                                 <h2>Terms and Policies</h2>
                                 <h3>Standards &AMP; Expectations</h3>
@@ -1201,7 +1190,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-body">
-                        <div class="login-form-inner clearfix">
+                        <div class="login-form-inner terms-policy-modal clearfix">
                             <div class="copytext-holder">
                                 <h2>Frequently Asked Questions</h2>
                                 <h3 class="subheading">1. Collection &AMP; Delivery</h3>
@@ -1293,13 +1282,10 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="login-form-inner clearfix">
-                            <h1>Forgot Login details</h1>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="login-key">
                                     <span><img src="images/register-icon.png" alt="" ></span>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <h1>Forgot Login details</h1>
                                 <div class="feedback">
                                     <div class="feedback-row clearfix">
                                         <p>Enter you email and we will email you instructions on how to reset your password.</p>
@@ -1315,7 +1301,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                     </div>
                                     
                                 </div>
-                            </div>
+                           
                         </div>
 
                     </div>
@@ -1498,6 +1484,29 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 } 
              
             $(document).ready(function () {
+            
+            // show hide modals
+          
+            $("#forgotForm").on("show.bs.modal", function(){
+                window.setTimeout(function(){
+                $('#loginForm').modal('hide');
+                }, 1000);
+                window.setTimeout(function(){
+                    $("body").addClass("modal-open");
+                }, 1500);
+                    
+               }); 
+               
+               $("#registerForm").on("show.bs.modal", function(){
+                   window.setTimeout(function(){
+                $('#loginForm').modal('hide');
+                }, 1000);
+                window.setTimeout(function(){
+                    $("body").addClass("modal-open");
+                }, 1500);
+               }); 
+            
+            
                 $(".navi-opener").click(function () {
                     $(".mobile-navi-list").slideToggle();
                 });
@@ -1511,11 +1520,6 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 $('input').iCheck({
                     checkboxClass: 'icheckbox_square-green',
                 });
-                $(".forgot").click(function () {
-                    window.setTimeout(function () {
-                        $('#loginForm').modal('hide');
-                    }, 1000);
-                });
                 $(".selectpicker").change(function () {
                     if(this.id !== 'regular_location'){
                         orderPickTime = $(this).val();
@@ -1523,15 +1527,6 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     }
                 });
 
-                $(".register-link a").click(function () {
-                    window.setTimeout(function () {
-                        $('#loginForm').modal('hide');
-                    }, 1000);
-                });
-                $(".closeterms").click(function () {
-                        $('#faqs').modal('hide');
-                });
-                
                 // open modal from email template footer links //
                 if(window.location.href.indexOf('#faqs') != -1) {
                     $('#faqs').modal('show');
@@ -1881,6 +1876,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
 
         echo '<span style="display:none">Current time is : '.date('Y-m-d H:i:s').'</span>';
         ?>
+       
 
     </body>
 </html>
