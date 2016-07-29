@@ -143,6 +143,9 @@
                         <constraint firstAttribute="height" constant="25" id="Ye1-Q8-9n9"/>
                     </constraints>
                     <state key="normal" backgroundImage="facebook.png"/>
+                    <connections>
+                        <action selector="facebookButtonPrssed:" destination="-1" eventType="touchUpInside" id="iA8-B7-PUv"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-i6-ijO">
                     <rect key="frame" x="232" y="439" width="26" height="25"/>
@@ -151,6 +154,9 @@
                         <constraint firstAttribute="width" constant="26" id="S7M-mw-xiM"/>
                     </constraints>
                     <state key="normal" backgroundImage="instagram.png"/>
+                    <connections>
+                        <action selector="instagramButtonPrssed:" destination="-1" eventType="touchUpInside" id="x6H-QA-6J3"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-im-qTk">
                     <rect key="frame" x="267" y="439" width="25" height="25"/>
@@ -159,6 +165,9 @@
                         <constraint firstAttribute="width" constant="25" id="tXQ-mz-2xd"/>
                     </constraints>
                     <state key="normal" backgroundImage="twitter.png"/>
+                    <connections>
+                        <action selector="callButtonPrssed:" destination="-1" eventType="touchUpInside" id="YO0-Al-eZB"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-fy-8qk">
                     <rect key="frame" x="8" y="436" width="49" height="30"/>
