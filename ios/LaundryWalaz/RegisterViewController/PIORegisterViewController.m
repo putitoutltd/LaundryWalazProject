@@ -80,8 +80,7 @@
             [PIOUser userRegistration: user callback:^(NSError *error, BOOL status, id responseObject) {
                 [[PIOAppController sharedInstance] hideActivityView];
                 if (status) {
-                    NSString *message = (NSString *)responseObject;
-                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: message withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Verification email has been sent to your email address. Please verify your email address before login." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
                     [self.navigationController popViewControllerAnimated: YES];
                 }
                 else {

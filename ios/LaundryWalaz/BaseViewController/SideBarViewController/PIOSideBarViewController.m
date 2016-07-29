@@ -71,6 +71,37 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)instagramButtonPrssed:(id)sender
+{
+
+    NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=laundrywalaz"];
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        [[UIApplication sharedApplication] openURL:instagramURL];
+    }
+    else{
+        NSString *iTunesLink = @"https://itunes.apple.com/pk/app/instagram/id389801252?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    }
+}
+
+- (IBAction)facebookButtonPrssed:(id)sender
+{
+    NSURL *facebookURL = [NSURL URLWithString:@"fb://profile/1735543123382061"];
+    if ([[UIApplication sharedApplication] canOpenURL:facebookURL]) {
+        [[UIApplication sharedApplication] openURL:facebookURL];
+    } else {
+        NSString *iTunesLink = @"https://itunes.apple.com/pk/app/facebook/id284882215?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+    }
+    
+}
+
+- (IBAction)callButtonPrssed:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://04236688830"]];
+    
+}
+
 
 - (IBAction)menuButtonPressed:(id)sender
 {
