@@ -58,12 +58,7 @@
 
 - (void)configureNavigationBar
 {
-    UIImage *backgroundImageForDefaultBarMetrics = [UIImage imageNamed:@"pio-navigation-bar-background"];
     
-   
-    CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height-5;
-    CGRect frame = CGRectMake(0.0f, 0.0f, backgroundImageForDefaultBarMetrics.size.width, navBarHeight);
-    [self.navigationController.navigationBar setFrame:frame];
     
     UIBarButtonItem *menuBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"menu-btn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
                                                                           style:UIBarButtonItemStylePlain
@@ -84,7 +79,15 @@
     if (self.isBackButtonHide) {
         [self hideBackButton];
     }
-
+    if ([[PIOAppController sharedInstance] currentDeviceName] != PIODeviceNameiPhone4) {
+        UIImage *backgroundImageForDefaultBarMetrics = [UIImage imageNamed:@"pio-navigation-bar-background"];
+        
+        
+        CGFloat navBarHeight = backgroundImageForDefaultBarMetrics.size.height-5;
+        CGRect frame = CGRectMake(0.0f, 0.0f, backgroundImageForDefaultBarMetrics.size.width, navBarHeight);
+        [self.navigationController.navigationBar setFrame:frame];
+    }
+    
   
 }
 

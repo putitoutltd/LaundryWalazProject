@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -162,7 +160,7 @@
                     </constraints>
                     <state key="normal" backgroundImage="twitter.png"/>
                 </button>
-                <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-fy-8qk">
+                <button opaque="NO" tag="6" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-fy-8qk">
                     <rect key="frame" x="8" y="436" width="49" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="FAQ."/>
@@ -189,17 +187,16 @@
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="top" secondItem="ZvY-GL-bra" secondAttribute="bottom" constant="-112" id="4gq-ZB-QlK"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="leading" secondItem="nWg-fy-8qk" secondAttribute="trailing" constant="-57" id="5o7-Bo-Gq8"/>
                 <constraint firstItem="Tqo-im-qTk" firstAttribute="top" secondItem="rrg-8H-2gi" secondAttribute="bottom" constant="-41" id="7ey-Ni-RVz"/>
+                <constraint firstItem="nWg-fy-8qk" firstAttribute="top" secondItem="rrg-8H-2gi" secondAttribute="bottom" constant="-44" id="7li-5L-XEw"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="leading" secondItem="8ul-vH-Rwk" secondAttribute="trailing" constant="-190" id="86P-Rg-H3U"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="E1e-ao-jGa"/>
                 <constraint firstItem="Y4d-gZ-J34" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-122" id="Exo-BT-56h"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="top" secondItem="92x-Rh-ZMR" secondAttribute="bottom" constant="-40" id="Ifj-fd-kKd"/>
                 <constraint firstAttribute="bottom" secondItem="nWg-fy-8qk" secondAttribute="bottom" constant="14" id="KFz-ib-Zm8"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerX" secondItem="36Y-yJ-j3p" secondAttribute="centerX" id="QuC-Fy-woW"/>
-                <constraint firstItem="8ul-vH-Rwk" firstAttribute="baseline" secondItem="nWg-fy-8qk" secondAttribute="firstBaseline" id="QuD-HL-uYR"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerX" secondItem="9Gn-b4-iFV" secondAttribute="centerX" id="Tra-e0-dwW"/>
                 <constraint firstItem="Oq8-XA-1YV" firstAttribute="top" secondItem="36Y-yJ-j3p" secondAttribute="bottom" constant="8" symbolic="YES" id="UuB-Mc-Wcl"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerX" secondItem="K18-OQ-QUY" secondAttribute="centerX" id="WxB-E3-QYg"/>
-                <constraint firstItem="nWg-fy-8qk" firstAttribute="baseline" secondItem="8ul-vH-Rwk" secondAttribute="firstBaseline" id="Xh1-cO-cif"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerY" secondItem="36Y-yJ-j3p" secondAttribute="centerY" constant="-71" id="Xnz-81-e2d"/>
                 <constraint firstItem="Y4d-gZ-J34" firstAttribute="top" secondItem="rrg-8H-2gi" secondAttribute="bottom" constant="-41" id="YHZ-sD-wKx"/>
                 <constraint firstItem="92x-Rh-ZMR" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-46" id="bin-fo-3L5"/>

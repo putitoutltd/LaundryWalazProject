@@ -16,6 +16,12 @@ typedef NS_ENUM(NSInteger, PIOTimeSlot) {
     PIOTimeSlotEvening,
 };
 
+typedef NS_ENUM(NSInteger, PIODay) {
+    PIODayToday,
+    PIODayTomorrow,
+    PIODayOtherDay,
+};
+
 
 typedef NS_ENUM(NSInteger, PIOOrderDay) {
     PIOOrderDayTodayPickUp,

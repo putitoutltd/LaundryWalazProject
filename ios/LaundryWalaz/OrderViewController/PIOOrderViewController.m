@@ -17,6 +17,8 @@
     UIButton *dropdownButton;
     NSMutableArray *slots;
     NSString *timeString;
+    NSInteger day;
+    
 }
 @property (weak, nonatomic) IBOutlet UILabel *deliverMessageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pickupMessageLabel;
@@ -133,6 +135,7 @@
 - (IBAction)expressButtonPressed:(id)sender
 {
     timeString = nil;
+    [self hideTableview];
     self.fromExpressDelivery = YES;
     self.pickupMessageLabel.hidden = NO;
     if (self.expressDeliveryButton.isSelected) {
@@ -181,7 +184,7 @@
     [self hideTableview];
     switch (button.tag) {
         case PIOOrderDayTodayPickUp: {
-            
+            day = PIODayToday;
             self.deliverOnSelectedDate = nil;
             dropdownButton = self.todayTimePickerButton;
             [self.todayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
@@ -201,6 +204,7 @@
             break;
         }
         case PIOOrderDayTomorrowPickUp: {
+            day = PIODayTomorrow;
              self.deliverOnSelectedDate = nil;
             [self.tomorrowTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.tomorrowPickupButton;
@@ -219,9 +223,11 @@
             break;
         }
         case PIOOrderDayOtherDayPickUp: {
+            day = PIODayOtherDay;
              self.deliverOnSelectedDate = nil;
             // Date will be selected using calender
             
+            self.tomorrowDeliveryButton.enabled = NO;
             dropdownButton = self.otherdayTimePickerButton;
             [self.otherdayTimePickerButton setTitle: @"00:00" forState:UIControlStateNormal];
             button = self.otherDayPickupButton;
@@ -291,9 +297,24 @@
 
 - (IBAction)otherDeliveryDateButtonPressed:(id)sender
 {
-    self.fromPickUp = NO;
-    NSDate *tomorrow = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: self.pickupSelectedDate];
-    [self showDatePickerWithMinDate: tomorrow ];
+    
+     NSDate *date = [NSDate new];
+     self.fromPickUp = NO;
+    if (day == PIODayOtherDay) {
+       
+        date = [NSDate dateWithTimeInterval:(24*60*60)  sinceDate: self.pickupSelectedDate];
+    }
+    else if (day == PIODayToday) {
+    
+        date = [NSDate dateWithTimeInterval:(24*60*60)*2 sinceDate: self.pickupSelectedDate];
+    }
+    else if (day == PIODayTomorrow) {
+        
+        date = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: self.pickupSelectedDate];
+    }
+    
+  //  NSDate *tomorrow = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: date];
+    [self showDatePickerWithMinDate: date ];
 }
 
 - (IBAction)continueButtonPressed:(id)sender
@@ -544,7 +565,12 @@
     for (int i = 1; i<=count; i++) {
         //  add two hours
         NSDateComponents *incrementalComponents = [[NSDateComponents alloc] init];
-        if (i ==1 && isToday) {
+        if (i ==1 && isToday && ( 11-hour >= 3) && count >8) {
+            incrementalComponents.hour = 11-hour;
+            i = 2;
+            count = count+1;
+        }
+        else if (i ==1 && isToday) {
             incrementalComponents.hour = 2;
         }
         else {

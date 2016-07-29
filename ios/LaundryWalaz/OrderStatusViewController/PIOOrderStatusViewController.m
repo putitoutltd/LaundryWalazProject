@@ -34,6 +34,9 @@
     self.navigationItem.leftBarButtonItem=nil;
     self.backButtonHide = YES;
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PIORefreshStatus" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshStatus) name:@"PIORefreshStatus" object:nil];
+    
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Order Status" onViewController:self];
     self.backgroundImageView.image = [UIImage imageForDeviceWithName: @"status-01"];
@@ -49,13 +52,14 @@
     [self.dayLabel setText: @""];
     self.backgroundImageView.image = nil;
     
-    [self orderStatus];
+    
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    [self orderStatus];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +69,11 @@
 }
 
 #pragma  mark - Private Methods
+
+- (void)refreshStatus
+{
+    [self orderStatus];
+}
 
 - (void)orderStatus
 {

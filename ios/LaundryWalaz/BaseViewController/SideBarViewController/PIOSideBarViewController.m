@@ -49,6 +49,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
     self.view.frame = self.view.window.frame;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PIOHideSideBarView" object:nil];
     
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideBarView) name:@"PIOHideSideBarView" object:nil];
     [self.pickUpButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.myOrderButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
@@ -244,6 +245,9 @@ const NSInteger PIOLogOutButtonIndex = 0;
                     
                     [[[PIOAppController sharedInstance] navigationController] popToViewController: orderStatusViewController animated:NO];
                 }
+            }
+            else {
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshStatus" object: nil];
             }
             
             break;

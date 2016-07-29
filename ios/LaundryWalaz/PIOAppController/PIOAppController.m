@@ -30,8 +30,6 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 
 @implementation PIOAppController
 
-
-
 #pragma mark - Life Cycle
 
 + (id) allocWithZone:(NSZone *)zone
