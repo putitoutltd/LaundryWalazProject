@@ -113,7 +113,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.37254901960784315" green="0.66666666666666663" blue="0.83137254901960789" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="65" y="110"/>
         </view>

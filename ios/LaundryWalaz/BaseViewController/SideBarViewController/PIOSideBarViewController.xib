@@ -16,6 +16,7 @@
                 <outlet property="menuBackgroundImageView" destination="rrg-8H-2gi" id="twm-AX-eDu"/>
                 <outlet property="myOrderButton" destination="K18-OQ-QUY" id="Ft6-9Y-DC3"/>
                 <outlet property="pickUpButton" destination="9Gn-b4-iFV" id="b8f-Jk-SYa"/>
+                <outlet property="pickupconst" destination="v98-o3-6dQ" id="yrz-9r-qSO"/>
                 <outlet property="priceListButton" destination="QUR-kb-Eon" id="P25-Mp-tLI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -74,11 +75,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6t-rR-x55">
-                    <rect key="frame" x="109" y="255" width="101" height="32"/>
+                    <rect key="frame" x="100" y="255" width="120" height="32"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="ZVY-Ap-Wg4"/>
-                        <constraint firstAttribute="width" constant="101" id="yji-i4-lRI"/>
+                        <constraint firstAttribute="width" constant="120" id="yji-i4-lRI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="How it Works">
@@ -147,19 +148,8 @@
                         <action selector="facebookButtonPrssed:" destination="-1" eventType="touchUpInside" id="iA8-B7-PUv"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-i6-ijO">
-                    <rect key="frame" x="232" y="439" width="26" height="25"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="CPj-rw-bDx"/>
-                        <constraint firstAttribute="width" constant="26" id="S7M-mw-xiM"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="instagram.png"/>
-                    <connections>
-                        <action selector="instagramButtonPrssed:" destination="-1" eventType="touchUpInside" id="x6H-QA-6J3"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqo-im-qTk">
-                    <rect key="frame" x="267" y="439" width="25" height="25"/>
+                    <rect key="frame" x="275" y="439" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Yjf-LD-arO"/>
                         <constraint firstAttribute="width" constant="25" id="tXQ-mz-2xd"/>
@@ -185,13 +175,24 @@
                         <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="8nF-Md-FBH"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7h-i6-ijO">
+                    <rect key="frame" x="236" y="439" width="26" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="CPj-rw-bDx"/>
+                        <constraint firstAttribute="width" constant="26" id="S7M-mw-xiM"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="instagram.png"/>
+                    <connections>
+                        <action selector="instagramButtonPrssed:" destination="-1" eventType="touchUpInside" id="x6H-QA-6J3"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="8ul-vH-Rwk" firstAttribute="centerY" secondItem="Y4d-gZ-J34" secondAttribute="centerY" id="0W8-nC-GrE"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerY" secondItem="F6t-rR-x55" secondAttribute="centerY" constant="-31" id="1fc-Gn-XFa"/>
                 <constraint firstItem="nWg-fy-8qk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="1zL-nR-4zJ"/>
-                <constraint firstItem="f7h-i6-ijO" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-88" id="370-61-uqd"/>
+                <constraint firstItem="f7h-i6-ijO" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-84" id="370-61-uqd"/>
                 <constraint firstItem="8ul-vH-Rwk" firstAttribute="leading" secondItem="nWg-fy-8qk" secondAttribute="trailing" constant="-1" id="49K-JL-WNh"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="top" secondItem="ZvY-GL-bra" secondAttribute="bottom" constant="-112" id="4gq-ZB-QlK"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="leading" secondItem="nWg-fy-8qk" secondAttribute="trailing" constant="-57" id="5o7-Bo-Gq8"/>
@@ -212,7 +213,7 @@
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="cV3-zK-UvA"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerX" secondItem="QUR-kb-Eon" secondAttribute="centerX" id="dIM-vG-QX2"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fnv-GO-Tlu"/>
-                <constraint firstItem="Tqo-im-qTk" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-53" id="gUO-Np-7bi"/>
+                <constraint firstItem="Tqo-im-qTk" firstAttribute="leading" secondItem="rrg-8H-2gi" secondAttribute="trailing" constant="-45" id="gUO-Np-7bi"/>
                 <constraint firstItem="8ul-vH-Rwk" firstAttribute="top" secondItem="Oq8-XA-1YV" secondAttribute="bottom" constant="67" id="hmH-af-Ifq"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="centerX" secondItem="F6t-rR-x55" secondAttribute="centerX" id="iq3-xu-JYO"/>
                 <constraint firstItem="rrg-8H-2gi" firstAttribute="leading" secondItem="ZvY-GL-bra" secondAttribute="trailing" constant="-110" id="jw2-UC-Abx"/>

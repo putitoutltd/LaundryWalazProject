@@ -92,14 +92,6 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if (! self.isFromDemoSreen) {
-        // Hide Back button
-        self.navigationItem.hidesBackButton = YES;
-        self.navigationItem.leftBarButtonItem=nil;
-        self.backButtonHide = YES;
-    }
-    
-    
     self.menuButtonNeedToHide = NO;
     self.navigationController.navigationBar.hidden = NO;
     
@@ -114,6 +106,12 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    if ([PIOAppController sharedInstance].accessToken != nil) {
+        // Hide Back button
+        self.navigationItem.hidesBackButton = YES;
+        self.navigationItem.leftBarButtonItem=nil;
+        self.backButtonHide = YES;
+    }
     
     
     
@@ -457,7 +455,7 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     MKMapRect mapRect = self.mapView.visibleMapRect;
     BOOL inside = MKMapRectContainsPoint(mapRect, userPoint);
     if (!inside) {
-        self.addressTextField.text = @"";
+        self.addressTextField.text = nil;
     }
     else {
         [self.addressTextField setText: self.address];

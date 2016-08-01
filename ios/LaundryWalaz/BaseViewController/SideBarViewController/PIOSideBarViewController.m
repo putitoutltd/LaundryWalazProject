@@ -25,6 +25,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
     UIViewController *visibleController;
     NSArray *controllers;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pickupconst;
 
 @property (nonatomic, weak) IBOutlet UIButton *TermsButton;
 @property (nonatomic, weak) IBOutlet UIButton *faqButton;
@@ -51,22 +52,30 @@ const NSInteger PIOLogOutButtonIndex = 0;
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideBarView) name:@"PIOHideSideBarView" object:nil];
-    [self.pickUpButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.myOrderButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.priceListButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.howItWorksButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.logOutButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
-    [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
-    [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.0f]];
+    [self.pickUpButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.myOrderButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.priceListButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.howItWorksButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.logOutButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
+    [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     if (![PIOAppController sharedInstance].accessToken) {
         self.logOutButton.hidden = YES;
         self.myOrderButton.enabled = NO;
         self.myOrderButton.alpha = 0.7;
+        self.myOrderButton.hidden = YES;
+        [self updateScreenContant];
     }
 }
 
-
+- (void)updateScreenContant
+{
+    
+    self.pickupconst.constant = 50;
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -133,9 +142,27 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
         }
         case PIODashboardRowTypeHowItWorks: {
-            PIOHowToUseViewController *howToUseViewController = [PIOHowToUseViewController new];
-            howToUseViewController.fromMenu = YES;
-            [self.navigationController pushViewController: howToUseViewController animated: YES];
+            if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]] ) {
+                PIOHowToUseViewController *howToUseViewController;
+                for (UIViewController *viewController in viewControllers) {
+                    if ([viewController isKindOfClass:[PIOHowToUseViewController class]]) {
+                        howToUseViewController = (PIOHowToUseViewController *)viewController;
+                        break;
+                    }
+                }
+                if (howToUseViewController == nil) {
+                    howToUseViewController = [PIOHowToUseViewController new];
+                    howToUseViewController.fromMenu = YES;
+                    [[[PIOAppController sharedInstance] navigationController] pushViewController: howToUseViewController animated:NO];
+                } else {
+                    howToUseViewController.fromMenu = YES;
+                    [[[PIOAppController sharedInstance] navigationController] popToViewController: howToUseViewController animated:NO];
+                }
+            }
+            else {
+                 [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
+            }
+
             break;
             
         }
@@ -328,6 +355,9 @@ const NSInteger PIOLogOutButtonIndex = 0;
             [[PIOAppController sharedInstance].navigationController popToViewController:loginViewController animated:NO];
         }
         
+    }
+    else {
+         [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
     }
     
     

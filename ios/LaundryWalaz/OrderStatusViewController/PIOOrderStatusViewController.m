@@ -82,6 +82,7 @@
         [PIOOrder orderStatusCallback:^(NSError *error, BOOL status, id responseObject) {
             [[PIOAppController sharedInstance] hideActivityView];
             if (status) {
+                [self.pickupTitleLabel setText: @"Delivery at"];
                 NSString *status = (NSString *)responseObject;
                 UIImage *backgroundImage = nil;
                 switch ( [status integerValue]) {
@@ -89,7 +90,7 @@
                     {
                         backgroundImage = [UIImage imageForDeviceWithName: @"status-01"];
                         [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.pickupTime];
-                        
+                        [self.pickupTitleLabel setText: @"Pick-Up at"];
                         break;
                     }
                     case 1:
@@ -112,6 +113,7 @@
                     }
                     case 4:
                     {
+                        [self.pickupTitleLabel setText: @"Delivered at"];
                         backgroundImage = [UIImage imageForDeviceWithName: @"status-04"];
                         [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
                         break;
@@ -142,7 +144,7 @@
     
     NSDateFormatter *monthDayFormatter = [[NSDateFormatter alloc] init] ;
     [monthDayFormatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
-    [monthDayFormatter setDateFormat:@"EEEE"];
+    [monthDayFormatter setDateFormat:@"EEEE MMMM, dd"];
     NSString *day = [monthDayFormatter stringFromDate:dddddd] ;
     
     NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];

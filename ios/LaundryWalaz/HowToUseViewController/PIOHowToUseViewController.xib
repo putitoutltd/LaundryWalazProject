@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOHowToUseViewController">
             <connections>
-                <outlet property="crossButton" destination="f2f-4B-s26" id="Hgo-a1-EfF"/>
                 <outlet property="loginButton" destination="Dgc-3S-UDL" id="FD5-sX-Rns"/>
                 <outlet property="pickupButton" destination="EON-LE-Xv4" id="J42-7e-jOi"/>
                 <outlet property="swipeView" destination="abw-Yq-1nR" id="PLj-u3-Zyj"/>
@@ -26,7 +25,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dgc-3S-UDL">
                             <rect key="frame" x="0.0" y="451" width="160" height="29"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Login" backgroundImage="pick-up.png"/>
                             <connections>
@@ -36,19 +35,19 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EON-LE-Xv4">
                             <rect key="frame" x="160" y="451" width="160" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Pick-Up" backgroundImage="pick-up.png"/>
                             <connections>
                                 <action selector="startNowButtonPressed:" destination="-1" eventType="touchUpInside" id="z6f-40-gi2"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f2f-4B-s26">
-                            <rect key="frame" x="279" y="8" width="33" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="close-menu.png"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EwE-Dr-bCL">
+                            <rect key="frame" x="268" y="8" width="39" height="39"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="menu-btn"/>
                             <connections>
-                                <action selector="crossButtonPressed:" destination="-1" eventType="touchUpInside" id="8AG-QG-RJF"/>
+                                <action selector="sideBarButtonPressed:" destination="-1" eventType="touchUpInside" id="Eoe-Ov-g60"/>
                             </connections>
                         </button>
                     </subviews>
@@ -62,11 +61,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="673" y="13"/>
+            <point key="canvasLocation" x="611" y="-18"/>
         </view>
     </objects>
     <resources>
-        <image name="close-menu.png" width="33" height="33"/>
+        <image name="menu-btn" width="39" height="39"/>
         <image name="pick-up.png" width="168" height="29"/>
     </resources>
 </document>

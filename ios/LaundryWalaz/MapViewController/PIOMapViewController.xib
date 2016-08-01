@@ -26,7 +26,7 @@
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qX-fL-fy1">
                     <rect key="frame" x="62" y="421" width="197" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Confirm Address" backgroundImage="save-btn">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -52,7 +52,7 @@
                         <action selector="dropdownButtonPressed:" destination="-1" eventType="touchUpInside" id="Sqs-Gf-1It"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="sXQ-zz-a95">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" background="location" translatesAutoresizingMaskIntoConstraints="NO" id="sXQ-zz-a95">
                     <rect key="frame" x="9" y="82" width="301" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
