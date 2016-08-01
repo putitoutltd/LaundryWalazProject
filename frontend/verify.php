@@ -56,7 +56,7 @@
     <td align="left" valign="top">
     	<img src="images/email/laundry-walaz-logo.png" alt="" style="width:132px; margin:16px 0 -84px 16px;" >
     </td>
-    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;">January 1, 2017</td>
+    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
   </tr>
 </table>
 

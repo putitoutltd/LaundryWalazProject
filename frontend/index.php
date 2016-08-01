@@ -113,14 +113,30 @@
                 
             }
         </style>
+        <script type="text/javascript">
+            //global variables
+            
+            var packageType = 'regular';
+            var orderPickDate;
+            var orderPickTime;
+            var orderDeliverDate;
+            var orderAddress;
+            var orderLocation;
+            var specialInstructions;
+            var firstName;
+            var lastName;
+            var email;
+            var phone;
+            var futureReference;
+            var orderGlobalStatuses = ['Awaiting Pick Up','Going in Laundry','Cleaning Your Laundry','Clean Laundry on your way','Delivered'];
 
-    </head>
-    <?php 
-        //echo md5('4f5y123#$%');
-        
-        $hasError = FALSE; $loggedIn = FALSE;
+        </script>
+        <?php 
+       
+        $hasError = FALSE; 
         $loginFormSubmitted = filter_input(INPUT_POST, 'login_submit');
         if($loginFormSubmitted){
+            
             // user login
             $endPoint4 = 'api/user/login';
             $userLogin =  array(
@@ -136,39 +152,35 @@
                 //header('Location: '.$redirectUrl); 
             }
             else if($loginResponse->status == 'success'){
-                $loggedIn = TRUE;
-                $cookie_name = "_lw";
-                $cookie_value = time().'something';
-                setcookie($cookie_name, md5($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
+                
                 ?>
-                    <script>
-                var userData = '<?php echo json_encode($loginResponse->data); ?>';       
-                // Check browser support
-                if (typeof(Storage) !== "undefined") {
-                    // Store
-                    localStorage.setItem("_lus", userData);
+                <script type="text/javascript">
                     
-                } else {
-                    alert("Sorry, your browser does not support Web Storage...");
-                }
+                    orderPickDate = "<?php echo filter_input(INPUT_POST, 'l_pick_date') ?>";
+                    orderPickTime = "<?php echo filter_input(INPUT_POST, 'l_pick_time') ?>";
+                    orderDeliverDate = "<?php echo filter_input(INPUT_POST, 'l_drop_date') ?>";
+                    orderAddress = "<?php echo filter_input(INPUT_POST, 'l_address') ?>";
+                    orderLocation = "<?php echo filter_input(INPUT_POST, 'l_location') ?>";
+                    
+                    //console.log(orderLocation);
+                    
+                    var userData = '<?php echo json_encode($loginResponse->data); ?>';       
+                    // Check browser support
+                    if (typeof(Storage) !== "undefined") {
+                        // Store
+                        localStorage.setItem("_lus", userData);
+
+                    } else {
+                        alert("Sorry, your browser does not support Web Storage...");
+                    }
                 </script>
                 <?php
                 
-            }/*
-            echo '<pre style="z-index: 1000;position: absolute;">';            
-            print_r($loginResponse);
-            //print_r($_SERVER);
-            echo '</pre>';
-            */
-            
+            }
         }
         
         $userData = new stdClass();
-        if(isset($_COOKIE['_lw'])){ 
-            $loggedIn = TRUE;
-        }else{
-            
-        }
+       
         // date calculations
         date_default_timezone_set("Asia/Karachi");
 
@@ -230,7 +242,7 @@
             
             //echo '<pre>'; print_r($slots); echo '</pre>'; 
     ?>
-
+    </head>	
     <body class="document-body" data-spy="scroll" data-target=".header" data-offset="220">
         
         
@@ -619,33 +631,7 @@
             <div class="schedul-visual">
                 <div class="schedule-inn">
                     
-                    <?php if($loggedIn){ ?>
-                    
-                    <!-- order status begins -->
-                    <div class="order-confirmation-holder clearfix" id="order_details_block">
-                        <div class="">
-                            <div class="seal-order">
-                                <div id="">
-                                    <img src="images/seal.png" alt="" >
-                                    <h3><span id="o_uname"></span>, your Order is currently in progress.</h3>
-                                    <h4>order id</h4>
-                                    <h5>DC-000<span id="o_orderid"></span></h5>
-                                    <h4>status</h4>
-                                    <h5><span id="o_status"></span></h5>
-                                    <h4>PICK-UP Date</h4>
-                                    <h5 id="o_upickup"></h5>
-                                    <h4>Delivery Date</h4>
-                                    <h5 id="o_udropoff"></h5>
-                                </div>    
-                            </div>
-                               <!--  <div class="continue-btn">
-                                <a href="javascript:void(null);" class="continue">Continue</a>
-                            </div> -->
-                        </div>
-
-                    </div>
-                    <!-- order confirmation ends -->
-                    
+                    <!-- Order schedule begins -->
                     <div class="schedule-holder-inner">  
                         <ul class="nav nav-tabs row">
                             <li class="col-md-6 col-sm-6 col-xs-6 active laundry-tabs-head"><a data-toggle="tab" href="#regular">Standard </a></li>
@@ -859,86 +845,106 @@
                         </div>
                     </div>
                     
-                    <!-- contact holder begins -->
-                    <div class="contact-info-holder clearfix">
-                        <div class="contact-info-holder-inner">
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="contact-info">
-                                    <!-- h3>Existing User login here</h3>
-                                    <a href="" data-toggle="modal" data-target="#loginForm">Login</a -->
-                                    <div class="personal-info" id="order_contact_info">
-                                        <h4>Your contact information</h4>
-                                        <div class="form-row clearfix">
-                                            <div class="col-md-6 col-sm-12 col-xs-12">
-                                                <input type="text" id="first_name" class="contact-input" placeholder="First Name *" >
+                    <!-- Order schedule ends -->
+                    
+                    <?php //logged in block starts ?>
+                    <div id="loggedin">
+                    
+                        <!-- order status begins -->
+                        <div class="order-confirmation-holder clearfix" id="order_details_block">
+                            <div class="">
+                                <div class="seal-order">
+                                    <div id="">
+                                        <img src="images/seal.png" alt="" >
+                                        <h3><span id="o_uname"></span>, your Order is currently in progress.</h3>
+                                        <h4>order id</h4>
+                                        <h5>DC-000<span id="o_orderid"></span></h5>
+                                        <h4>status</h4>
+                                        <h5><span id="o_status"></span></h5>
+                                        <h4>PICK-UP Date</h4>
+                                        <h5 id="o_upickup"></h5>
+                                        <h4>Delivery Date</h4>
+                                        <h5 id="o_udropoff"></h5>
+                                    </div>    
+                                </div>
+                                   <!--  <div class="continue-btn">
+                                    <a href="javascript:void(null);" class="continue">Continue</a>
+                                </div> -->
+                            </div>
+
+                        </div>
+                        <!-- order status ends -->
+
+                        <!-- contact holder begins -->
+                        <div class="contact-info-holder clearfix">
+                            <div class="contact-info-holder-inner">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="contact-info">
+                                        <!-- h3>Existing User login here</h3>
+                                        <a href="" data-toggle="modal" data-target="#loginForm">Login</a -->
+                                        <div class="personal-info" id="order_contact_info">
+                                            <h4>Your contact information</h4>
+                                            <div class="form-row clearfix">
+                                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                                    <input type="text" id="first_name" class="contact-input" placeholder="First Name *" >
+                                                </div>
+                                                <div class="col-md-6 col-sm-12 col-xs-12 no-padding-right">
+                                                    <input type="text" id="last_name" class="contact-input" placeholder="Last Name *" >
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-12 no-padding-right">
-                                                <input type="text" id="last_name" class="contact-input" placeholder="Last Name *" >
+                                            <div class="form-row contact-form-row">
+                                                <input type="text" id="email" class="contact-input" placeholder="Email *" >
                                             </div>
+                                            <div class="form-row">
+                                                <input type="text" id="phone" class="contact-input" placeholder="Phone *" >
+                                            </div>
+                                            <!-- div class="form-row">
+                                                <input tabindex="9" id="future_reference" type="checkbox" id="square-checkbox-1">
+                                                <label for="square-checkbox-1">Save it for future orders</label>
+                                            </div -->
                                         </div>
-                                        <div class="form-row contact-form-row">
-                                            <input type="text" id="email" class="contact-input" placeholder="Email *" >
-                                        </div>
-                                        <div class="form-row">
-                                            <input type="text" id="phone" class="contact-input" placeholder="Phone *" >
-                                        </div>
-                                        <!-- div class="form-row">
-                                            <input tabindex="9" id="future_reference" type="checkbox" id="square-checkbox-1">
-                                            <label for="square-checkbox-1">Save it for future orders</label>
-                                        </div -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div class="instructions">
-                                    <h5>Special instructions</h5>
-                                    <textarea id="special_instructions"></textarea>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="instructions">
+                                        <h5>Special instructions</h5>
+                                        <textarea id="special_instructions"></textarea>
+                                    </div>
+
                                 </div>
+                                <div class="continue-btn">
+                                    <a href="javascript:void(null);" class="continue laundry-contact-info">Continue</a>
+                                </div>
+                            </div>
 
-                            </div>
-                            <div class="continue-btn">
-                                <a href="javascript:void(null);" class="continue laundry-contact-info">Continue</a>
-                            </div>
                         </div>
+                        <!-- contact holder ends -->
 
-                    </div>
-                    <!-- contact holder ends -->
-
-                    <!-- order confirmation begins -->
-                    <div class="order-confirmation-holder clearfix">
-                        <div class="seal-inner">
-                            <div class="seal-order">
-                                <div id="processing">Processing...</div>
-                                <div id="order_details">
-                                    <img src="images/seal.png" alt="" >
-                                    <h3><span id="uname">Ahmad</span>, your Order has been placed.</h3>
-                                    <h4>order id</h4>
-                                    <h5>DC-000<span id="orderid"></span></h5>
-                                    <h4>PICK-UP Date</h4>
-                                    <h5 id="upickup">Monday, 26th June. 6:00 pm</h5>
-                                    <h4>Delivery Date</h4>
-                                    <h5 id="udropoff">Wednesday, 28th June. 6:00 pm</h5>
-                                </div>    
+                        <!-- order confirmation begins -->
+                        <div class="order-confirmation-holder clearfix">
+                            <div class="seal-inner">
+                                <div class="seal-order">
+                                    <div id="processing">Processing...</div>
+                                    <div id="order_details">
+                                        <img src="images/seal.png" alt="" >
+                                        <h3><span id="uname">Ahmad</span>, your Order has been placed.</h3>
+                                        <h4>order id</h4>
+                                        <h5>DC-000<span id="orderid"></span></h5>
+                                        <h4>PICK-UP Date</h4>
+                                        <h5 id="upickup">Monday, 26th June. 6:00 pm</h5>
+                                        <h4>Delivery Date</h4>
+                                        <h5 id="udropoff">Wednesday, 28th June. 6:00 pm</h5>
+                                    </div>    
+                                </div>
+                                   <!--  <div class="continue-btn">
+                                    <a href="javascript:void(null);" class="continue">Continue</a>
+                                </div> -->
                             </div>
-                               <!--  <div class="continue-btn">
-                                <a href="javascript:void(null);" class="continue">Continue</a>
-                            </div> -->
-                        </div>
 
+                        </div>
+                        <!-- order confirmation ends -->
                     </div>
-                    <!-- order confirmation ends -->
-                    <?php // logged in if ends
-                    }else {  ?>
-                    <!-- without login block -->
-                    <div class="well well-lg">
-                        <h2 class="animated zoomIn">Please login below to continue with your order
-                            <p>
-                                <a href="" data-toggle="modal" data-target="#loginForm" class="btn btn-success">LOGIN</a>
-                            </p>    
-                        </h2>
-                    </div>
-                    <!-- without login block ends -->
-                    <?php } ?>
+                    <?php // logged in if ends ?>
                 </div>
 
             </div>
@@ -1051,6 +1057,11 @@
                                         <div class="form-row align-center">
                                             <p class="register-link">If you are not already registered. <a href="" data-toggle="modal" data-target="#registerForm">Click here to register</a></p>
                                         </div>
+                                        <input type="hidden" name="l_pick_date" id="l_pick_date" value="" />
+                                        <input type="hidden" name="l_pick_time" id="l_pick_time" value="" />
+                                        <input type="hidden" name="l_drop_date" id="l_drop_date" value="" />
+                                        <input type="hidden" name="l_address" id="l_address" value="" />
+                                        <input type="hidden" name="l_location" id="l_location" value="" />
                                     </div>
                                 </form>    
                            
@@ -1379,11 +1390,39 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 $(".menu_login").hide();
                 $(".menu_logout").show();
                 
-                // filling in user information in contact section
+                $("#loggedin").css("visibility", "visible");
+                
+                updateOrderStatusScreen(usr);
                 var obj = JSON.parse(usr);
+                // if the user has filled in details earlier and logged in freshly
+                
+                if(orderPickDate && orderPickTime && orderDeliverDate  && orderAddress && orderLocation ){
+                
+                    $(".schedule-holder-inner").css("visibility", "hidden");
+                    $(".contact-info-holder-inner").css("visibility", "visible");
+
+                    $('#tomorrow_time_li').css("visibility","hidden");
+                    $('#today_time_li').css("visibility","hidden");
+                    $('#other_time_li').css("visibility","hidden");
+                }
+                
+                $("#first_name").val(obj.details.first_name);
+                $("#last_name").val(obj.details.last_name);
+                $("#email").val(obj.details.email);
+                $("#phone").val(obj.details.phone);
+                $("#order_contact_info :input").prop("readonly", true);
+                
+            }else{
+                // user is not logged in
+            }
+            
+            
+            function updateOrderStatusScreen(dataObj){
+                // filling in user information in contact section
+                var obj = JSON.parse(dataObj);
                 
                 var orderDetails = obj.order;
-                console.log(orderDetails);
+                //console.log(orderDetails);
                 if(orderDetails && orderDetails.status < 4){
                     $("#order_details_block").show();
                     $(".schedule-holder-inner").hide();
@@ -1402,16 +1441,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     $("#o_status").html(oStatus);
                     
                 }
-                $("#first_name").val(obj.details.first_name);
-                $("#last_name").val(obj.details.last_name);
-                $("#email").val(obj.details.email);
-                $("#phone").val(obj.details.phone);
-                $("#order_contact_info :input").prop("readonly", true);
-                
-            }else{
-                // user is not logged in
             }
-            
             function logout(){
                 
                 event.preventDefault();
@@ -1460,9 +1490,48 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     }
                 });
             }
+            
+            function sync_order() {
+                var ac = localStorage.getItem("_lus");
+                if(!ac){
+                    return;
+                }
+                var obj = JSON.parse(ac);
+                
+                 var detailObj = {
+                     'ac'                 : obj.access_token,
+                     'action'             : 'sync_order'
+                 };
+                 
+                 //return;
+                 // process the form
+                 $.ajax({
+                     type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                     url         : 'process_order.php', // the url where we want to POST
+                     data        : detailObj, // our data object
+                     dataType    : 'json', // what type of data do we expect back from the server
+                     encode          : true
+                 })
+                // using the done promise callback
+                .done(function(data) {
+                    //console.log(obj);
+                    if(data.status === 'success'){ 
+                        var newObj = {};
+                        newObj.access_token = obj.access_token;
+                        newObj.details = obj.details;
+                        newObj.order = data.data.order;
+                        updateOrderStatusScreen(JSON.stringify(newObj));
+                        localStorage.setItem("_lus", JSON.stringify(newObj)); 
+                        
+                    }
+                    else if(data.status === 'failure'){
+                        localStorage.removeItem("_lus");
+                    }
+                });
+            }
 
             sync_user();
-             
+            sync_order(); 
              
             function registerUser() {
                        
@@ -1560,7 +1629,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                 $(".selectpicker").change(function () {
                     if(this.id !== 'regular_location'){
                         orderPickTime = $(this).val();
-                        //alert(orderPickTime);
+                        $('#l_pick_time').val(orderPickTime);
                     }
                 });
 
@@ -1617,6 +1686,10 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                         return;
                     }
                     
+                    $("#l_address").val(orderAddress);
+                    $("#l_location").val(orderLocation);
+                    $("#l_drop_date").val(orderDeliverDate);
+                    
                     //validating dates
                     var formattedPickUpTime = orderPickDate+" "+orderPickTime;
                     var formattedDropOffTime = orderDeliverDate+" 19:00:00";
@@ -1624,7 +1697,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     var x = new Date(formattedPickUpTime);
                     var y = new Date(formattedDropOffTime);
                     
-                    console.log(formattedPickUpTime);
+                    //console.log(formattedPickUpTime);
                     
                     if(x > y){
                         alert("Pickup date cannot be greater than delivery date");
@@ -1632,13 +1705,18 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                         return;
                     }
                     
-                    $(".schedule-holder-inner").css("visibility", "hidden");
-                    $(".contact-info-holder-inner").css("visibility", "visible");
                     
-                    $('#tomorrow_time_li').css("visibility","hidden");
+                    // if logged in 
+                    if(usr){
+                        $(".schedule-holder-inner").css("visibility", "hidden");
+                        $(".contact-info-holder-inner").css("visibility", "visible");
+
+                        $('#tomorrow_time_li').css("visibility","hidden");
                         $('#today_time_li').css("visibility","hidden");
                         $('#other_time_li').css("visibility","hidden");
-             
+                    }else{
+                        $('#loginForm').modal('show');
+                    }    
                 });
                 $(".laundry-contact-info").click(function () {
                     
