@@ -2,7 +2,7 @@
     background:url(../images/rates-background.png) 10% 50% repeat-y;
     @include cover-background();
     min-height:800px;
-    padding:0px 0px;
+    padding:10px 0px 0px;
     @include mobile{
         background:none;
         min-height:auto;

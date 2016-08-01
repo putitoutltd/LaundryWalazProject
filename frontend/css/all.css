@@ -88,6 +88,47 @@ p {
       padding: 90px 0 0px;
       background: none; } }
 
+.header-strip {
+  background: #c6dff1;
+  padding: 5px 0 5px;
+  display: block; }
+  .header-strip a span {
+    font-size: 16px;
+    color: #030303;
+    display: inline-block;
+    padding: 6px 0 0; }
+    .header-strip a span:hover {
+      text-decoration: none;
+      color: #b61d17; }
+  .header-strip a img {
+    max-width: 32px;
+    margin: 0 7px 0 0;
+    float: left; }
+  .header-strip a:hover {
+    text-decoration: none;
+    color: #b61d17; }
+  @media only screen and (max-width: 1202px) {
+    .header-strip a {
+      display: block;
+      text-align: center; }
+      .header-strip a span {
+        display: none; } }
+
+.laundry-phone-number {
+  padding: 0 0 0; }
+  .laundry-phone-number img {
+    width: 32px;
+    margin: 0 5px 0 0; }
+
+.laundry-walaz-email {
+  text-align: right; }
+  .laundry-walaz-email a img {
+    float: none; }
+
+.laundry-walaz-location a img {
+  max-width: 32px;
+  width: 32px; }
+
 .header {
   padding: 0px 0 0;
   z-index: 999;
@@ -221,7 +262,8 @@ ul.navigation {
     font-family: "bebas_neue_regularregular"; }
   @media only screen and (max-width: 1202px) {
     .navi-opener {
-      display: block; } }
+      display: block;
+      top: 70px; } }
 
 .footer-holder {
   padding: 30px 0px; }
@@ -1082,7 +1124,7 @@ ul.timings-list {
     font-weight: 300; }
 
 .form-row {
-  padding: 0 0 20px; }
+  padding: 0 0 15px; }
   .form-row label {
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 300;
@@ -1319,7 +1361,7 @@ ul.timings-list {
   -o-background-size: cover;
   background-size: cover;
   min-height: 800px;
-  padding: 0px 0px; }
+  padding: 10px 0px 0px; }
   @media only screen and (max-width: 767px) {
     .pricing-holder {
       background: none;
@@ -1514,25 +1556,45 @@ ul.timings-list {
     border-bottom: 1px solid #a1a1a1; }
 
 .login-form-holder {
-  max-width: 960px;
-  margin: 60px auto;
+  max-width: 450px;
+  margin: 40px auto;
   position: relative; }
   @media only screen and (max-width: 767px) {
     .login-form-holder {
-      margin: 60px 15px; } }
-
-.login-form-inner {
-  padding: 70px 0px 48px; }
-  .login-form-inner h1 {
+      margin: 40px 15px; } }
+  .login-form-holder h1 {
     text-align: left;
-    font-size: 40px;
+    font-size: 31px;
     font-family: "Source Sans Pro", sans-serif;
     color: #888888;
-    padding: 20px 0 30px 50px;
-    font-weight: 300; }
+    padding: 10px 0 10px 0px;
+    font-weight: 300;
+    text-align: center; }
+    @media only screen and (max-width: 767px) {
+      .login-form-holder h1 {
+        font-size: 25px; } }
+
+.copytext-modal {
+  max-width: 960px; }
+
+.login-form-inner {
+  padding: 0px 0px 20px;
+  max-width: 560px;
+  margin: 0 auto; }
+  .login-form-inner h1 {
+    text-align: left;
+    font-size: 31px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #888888;
+    padding: 10px 0 10px 0px;
+    font-weight: 300;
+    text-align: center; }
     @media only screen and (max-width: 767px) {
       .login-form-inner h1 {
-        font-size: 30px; } }
+        font-size: 25px; } }
+
+.terms-policy-modal {
+  max-width: 100%; }
 
 .align-center {
   text-align: center; }
@@ -1568,10 +1630,10 @@ ul.timings-list {
       .login-key h1 {
         font-size: 30px; } }
   .login-key img {
-    max-width: 100%; }
+    max-width: 130px; }
 
 .remember-margin {
-  padding: 55px 0px; }
+  padding: 15px 0px 25px; }
 
 a.forgot {
   color: #888888;
@@ -1593,17 +1655,17 @@ a.forgot {
   background-size: 40px 40px; }
 
 p.register-link {
-  padding: 25px 0 10px;
+  padding: 0px 0 10px;
   color: #888888;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  font-size: 22px;
-  line-height: 35px; }
+  font-size: 18px;
+  line-height: 28px; }
   p.register-link a {
     display: block; }
 
 .reg-btn {
-  padding: 20px 0 70px; }
+  padding: 20px 0 0px; }
 
 label.error {
   color: #f00;
@@ -1611,22 +1673,22 @@ label.error {
   font-size: 16px; }
 
 .feedback {
-  padding: 50px 25px 0 0; }
+  padding: 5px 0px 0 0; }
   @media only screen and (max-width: 767px) {
     .feedback {
       padding: 20px 0px; } }
 
 .feedback-row {
-  padding: 0 0 20px;
+  padding: 0 0 15px;
   max-width: 614px; }
   .feedback-row div.operating-areas-options {
-    max-width: 300px;
     padding: 0 0 0; }
   .feedback-row p {
     font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 300;
-    color: #888888; }
+    color: #888888;
+    padding: 0 0 0; }
   .feedback-row textarea {
     width: 100%;
     box-sizing: border-box;
@@ -1637,7 +1699,7 @@ label.error {
     font-size: 18px;
     font-weight: 300;
     color: #030303;
-    min-height: 120px; }
+    min-height: 100px; }
     .feedback-row textarea:focus {
       outline: none; }
     .feedback-row textarea:active {

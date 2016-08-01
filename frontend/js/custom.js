@@ -1,17 +1,3 @@
-var packageType = 'regular';
-var orderPickDate;
-var orderPickTime;
-var orderDeliverDate;
-var orderAddress;
-var orderLocation;
-var specialInstructions;
-var firstName;
-var lastName;
-var email;
-var phone;
-var futureReference;
-var orderGlobalStatuses = ['Awaiting Pick Up','Going in Laundry','Cleaning Your Laundry','Clean Laundry on your way','Delivered'];
-
 $(function () {
 
 
@@ -47,7 +33,7 @@ $(function () {
     if ($(window).width() <= 990) {
         $(".document-body").attr("data-offset", "95");
     } else {
-        $(".document-body").attr("data-offset", "110");
+        $(".document-body").attr("data-offset", "155");
     }
 
     var screenHeight = $(window).height();
@@ -201,18 +187,18 @@ $(function () {
         } else {
             $(".express-date-info").fadeIn("fast");
         }
-
+        
         // populate elements values
         if (elemId === 'regular_today') {
             orderPickDate = elemValue;
             orderPickTime = $('#today_time').val();
-
+            
             $('#regular_deliver_tomorrow').attr("disabled", false);
             $('#today_time_li').css("visibility", "visible");
-            ;
+            
             $('#tomorrow_time_li').css("visibility", "hidden");
             $('#other_time_li').css("visibility", "hidden");
-            //#today_time, #tomorrow_time, #other_time
+           
         }
         if (elemId === 'express_day') {
             orderPickDate = elemValue;
@@ -259,7 +245,10 @@ $(function () {
         } else if (elemId === 'deliver-date' || elemId === 'express-deliver-date') {
             orderDeliverDate = elemValue;
         }
-
+        
+        $('#l_pick_date').val(orderPickDate);
+        $('#l_drop_date').val(orderDeliverDate);
+        $('#l_pick_time').val(orderPickTime);
 
     });
 

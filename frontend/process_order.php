@@ -56,6 +56,19 @@ if($action == 'verify_identity'){
 }
 
 
+if($action == 'sync_order'){ 
+    // checking if user token is valid
+    $endPoint = 'api/order/status';
+    $data = array(
+        'access_token' => $accessToken
+    );
+    
+    echo sendRequest($endPoint, $data, 'POST');
+    
+    return;
+}
+
+
 if($action == 'forgot_password'){ 
     // checking if user token is valid
     $endPoint = 'api/user/forget-password';

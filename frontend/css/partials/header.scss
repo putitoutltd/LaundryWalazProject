@@ -9,6 +9,67 @@
         background:none;
     }
 }
+.header-strip{
+    background:#c6dff1;
+    padding:5px 0 5px;
+    display:block;
+    & a{
+      & span{
+        font-size:16px;
+        color:$black;
+        display:inline-block;
+        padding:6px 0 0;
+        &:hover{
+            text-decoration: none;
+            color:#b61d17;
+        }
+        }
+    & img{
+        max-width:32px;
+         margin:0 7px 0 0;
+         float:left;
+    }  
+    &:hover{
+            text-decoration: none;
+            color:#b61d17;
+        }
+    }
+    @include navigation{
+        & a{
+            display:block;
+            text-align: center;
+            & span{
+                display: none;
+            }  
+        }
+    } 
+    
+}
+.laundry-phone-number{
+    padding:0 0 0;
+    & img{
+      width:32px;
+      margin:0 5px 0 0;
+    }
+}
+.laundry-walaz-email{
+    text-align: right;
+    a{
+       & img{
+        float:none;
+    }  
+    }
+   
+}
+.laundry-walaz-location{
+    a{
+      & img{
+        max-width:32px;
+        width:32px;
+    }  
+    }
+    
+}
 .header{
     padding:0px 0 0;
     z-index:999;
@@ -165,6 +226,7 @@ ul{
    display:none; 
    @include navigation{
        display:block; 
+        top:70px;
     }
 }
 

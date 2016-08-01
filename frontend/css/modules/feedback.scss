@@ -1,15 +1,14 @@
 .feedback{
-    padding:50px 25px 0 0;
+    padding:5px 0px 0 0;
     @include mobile{
         padding:20px 0px;
     }
     
 }
 .feedback-row{
-    padding:0 0 20px;
+    padding:0 0 15px;
     max-width:614px;
     div.operating-areas-options{
-        max-width:300px;
         padding:0 0 0;
     }
     
@@ -18,6 +17,7 @@
         font-family:$roboto;
         font-weight:300;
         color:$grey;
+        padding:0 0 0;
     }
     textarea{
         width:100%;
@@ -29,7 +29,7 @@
         font-size:18px;
         font-weight:300;
         color:$black;
-        min-height:120px;
+        min-height:100px;
         &:focus{
             outline:none;
 
