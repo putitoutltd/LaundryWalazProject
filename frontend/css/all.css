@@ -1361,7 +1361,7 @@ ul.timings-list {
   -o-background-size: cover;
   background-size: cover;
   min-height: 800px;
-  padding: 0px 0px; }
+  padding: 10px 0px 0px; }
   @media only screen and (max-width: 767px) {
     .pricing-holder {
       background: none;
