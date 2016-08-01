@@ -47,7 +47,7 @@ $(function () {
     if ($(window).width() <= 990) {
         $(".document-body").attr("data-offset", "95");
     } else {
-        $(".document-body").attr("data-offset", "110");
+        $(".document-body").attr("data-offset", "155");
     }
 
     var screenHeight = $(window).height();

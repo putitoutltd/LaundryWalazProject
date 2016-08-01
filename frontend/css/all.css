@@ -88,6 +88,47 @@ p {
       padding: 90px 0 0px;
       background: none; } }
 
+.header-strip {
+  background: #c6dff1;
+  padding: 5px 0 5px;
+  display: block; }
+  .header-strip a span {
+    font-size: 16px;
+    color: #030303;
+    display: inline-block;
+    padding: 6px 0 0; }
+    .header-strip a span:hover {
+      text-decoration: none;
+      color: #b61d17; }
+  .header-strip a img {
+    max-width: 32px;
+    margin: 0 7px 0 0;
+    float: left; }
+  .header-strip a:hover {
+    text-decoration: none;
+    color: #b61d17; }
+  @media only screen and (max-width: 1202px) {
+    .header-strip a {
+      display: block;
+      text-align: center; }
+      .header-strip a span {
+        display: none; } }
+
+.laundry-phone-number {
+  padding: 0 0 0; }
+  .laundry-phone-number img {
+    width: 32px;
+    margin: 0 5px 0 0; }
+
+.laundry-walaz-email {
+  text-align: right; }
+  .laundry-walaz-email a img {
+    float: none; }
+
+.laundry-walaz-location a img {
+  max-width: 32px;
+  width: 32px; }
+
 .header {
   padding: 0px 0 0;
   z-index: 999;
@@ -221,7 +262,8 @@ ul.navigation {
     font-family: "bebas_neue_regularregular"; }
   @media only screen and (max-width: 1202px) {
     .navi-opener {
-      display: block; } }
+      display: block;
+      top: 70px; } }
 
 .footer-holder {
   padding: 30px 0px; }

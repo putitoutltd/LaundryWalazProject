@@ -231,7 +231,7 @@
             //echo '<pre>'; print_r($slots); echo '</pre>'; 
     ?>
 
-    <body class="document-body" data-spy="scroll" data-target=".header" data-offset="175">
+    <body class="document-body" data-spy="scroll" data-target=".header" data-offset="220">
         
         
         <div id="has-error" style="<?php if($hasError){ echo 'display: block;';} ?>">
@@ -246,6 +246,37 @@
 
             <!-- header begins -->
             <div class="header">
+                <div class="header-strip">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="laundry-phone-number">
+                                    <a href="tel:042 36688830" target="_blank">
+                                        <img src="images/laundry-phone-number.svg" alt="Laundry Walaz Phone Number" >
+                                         <span>042 36688830-31</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="laundry-walaz-location">
+                                    <a href="#operating-areas" class="page-scroll">
+                                        <img src="images/laundry-walaz-location.svg" alt="Laundry Walaz Location" >
+                                        <span>Abid Majeed road, Girja Chowk,Lahore Cantt.</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="laundry-walaz-email">
+                                    <a href="mailto:info@laundrywalaz.com" target="_blank">
+                                        <img src="images/laundry-walaz-email.svg" alt="Laundry Walaz Email" >
+                                         <span>info@laundrywalaz.com</span>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="container">
                     <div class="logo">
                         <a href="#home" class="page-scroll"><img src="images/laundry-walaz-logo.png" alt="" ></a>
