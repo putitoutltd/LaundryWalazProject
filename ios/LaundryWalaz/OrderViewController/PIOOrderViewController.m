@@ -385,6 +385,11 @@
     NSDate *date = [NSDate new];
     BOOL isToday = YES;
     
+    BOOL isTimeGreaterThan10AM = [self compareTimeIf6PMWithTimeToCompare:9];
+    
+    if (!isTimeGreaterThan10AM) {
+        isToday = NO;
+    }
     if (button == self.tomorrowTimePickerButton) {
         
         date = [NSDate dateWithTimeInterval:(24*60*60) sinceDate: [NSDate new]];
