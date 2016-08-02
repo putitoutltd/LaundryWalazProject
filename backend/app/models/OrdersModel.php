@@ -77,10 +77,8 @@ class OrdersModel extends DbConnect
     public function getAllOrders()
     {
         
-        $response = array();
         $results = $this->getAll("SELECT t.*,u.first_name, u.last_name FROM $this->_table t "
-                . "INNER JOIN $this->_users u on u.id = t.users_id ORDER BY t.id DESC ");
-        
+                . "INNER JOIN $this->_users u on u.id = t.users_id ORDER BY t.id DESC LIMIT 0,200 ");
         
         return $results;
     }

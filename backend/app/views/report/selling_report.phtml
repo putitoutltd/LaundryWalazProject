@@ -27,26 +27,31 @@
         <br />
         <div class="panel panel-primary"> 
             <div class="panel-heading"> 
-                <h3 class="panel-title">Monthly Orders Report</h3> 
+                <h3 class="panel-title">Monthly Most Selling Report</h3> 
             </div> 
             <div class="panel-body"> 
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <span class="pull-right"><b><u>Number of Orders</u></b></span>
-                        <b><u>Status</u></b>
+                        <span class="pull-right"><b><u>Number of Unit Sold</u></b></span>
+                        <b><u>Item</u></b>
                     </li>
                     <?php 
                         $orderStatuses = SystemOptions::getOrderStatuses();
                         if ( count($params['report']) > 0 ){ 
+                            $grandTotal = 0; 
                             foreach ($params['report'] as $report){ 
+                                $grandTotal += $report['total_sales'];
                                 ?>
                                 <li class="list-group-item">
-                                  <span class="badge"><?= $report['no_of_status']; ?></span>
-                                  <?php echo (array_key_exists($report['status'], $orderStatuses)) ? $orderStatuses[$report['status']] : ' - '; ?>
+                                  <span class="badge"><?= $report['total_sales']; ?></span>
+                                  <?php echo $report['name']; ?>
                                 </li>
-                            <?php }
-                            
-                            }else{
+                            <?php } ?>
+                                <li class="list-group-item">
+                                  <span class="badge"><?= $grandTotal; ?></span>
+                                  <b>Total Items</b>
+                                </li>
+                            <?php }else{
                                 echo 'No data found';
                             } ?>
                 </ul>

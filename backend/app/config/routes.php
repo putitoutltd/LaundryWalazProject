@@ -47,6 +47,9 @@ Router\Helper::map('report', array(
     '/reports/area_report' => array('get' => 'area_report'),
     '/reports/sales_report' => array('get' => 'sales_report'),
     '/reports/orders_report' => array('get' => 'orders_report'),
+    '/reports/selling_report' => array('get' => 'selling_report'),
+    '/reports/customer_report' => array('get' => 'customer_report'),
+    '/reports/users_report' => array('get' => 'users_report'),
     
 ));
 

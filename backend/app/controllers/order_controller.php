@@ -241,7 +241,7 @@ class OrderController extends BaseController
             $response['data']['order'] = $lastOrder;
         }else{
             $response['status'] = Response::FAILURE;
-            $response['message'] = Messages::RECORD_NOT_INSERTED;
+            $response['message'] = 'Order '.Messages::NOT_FOUND;
         }
         
         Response::sendResponse($response);
