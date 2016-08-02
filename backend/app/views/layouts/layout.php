@@ -84,14 +84,21 @@
     <div class="container">
         
         <div class="row">
-
+            <?php 
+                $currentAction =  filter_input(INPUT_SERVER, 'REQUEST_URI');
+                
+                $orderActive = (strpos($currentAction, 'orders')) ? ' active ' : '';
+                $userActive = (strpos($currentAction, 'users')) ? ' active ' : '';
+                $priceActive = (strpos($currentAction, 'pricing')) ? ' active ' : '';
+                $reportActive = (strpos($currentAction, 'reports')) ? ' active ' : '';
+            ?>
             <div class="col-md-2">
                 <p class="lead"><a href="<?php echo Utility::base_url(); ?>/dashboard"><img width="100" src="<?php echo Utility::theme_url(); ?>images/logo.png" ></a></p>
                 <div class="list-group">
-                    <a href="<?php echo Utility::base_url(); ?>/orders" class="list-group-item active">Orders</a>
-                    <a href="<?php echo Utility::base_url(); ?>/users" class="list-group-item">Users</a>
-                    <a href="<?php echo Utility::base_url(); ?>/pricing" class="list-group-item">Pricing</a>
-                    <a href="<?php echo Utility::base_url(); ?>/reports" class="list-group-item">Reports</a>
+                    <a href="<?php echo Utility::base_url(); ?>/orders" class="list-group-item <?= $orderActive; ?>">Orders</a>
+                    <a href="<?php echo Utility::base_url(); ?>/users" class="list-group-item <?= $userActive; ?>">Users</a>
+                    <a href="<?php echo Utility::base_url(); ?>/pricing" class="list-group-item <?= $priceActive; ?>">Pricing</a>
+                    <a href="<?php echo Utility::base_url(); ?>/reports" class="list-group-item <?= $reportActive; ?>">Reports</a>
                     <a href="<?php echo Utility::base_url(); ?>/admin/logout" class="list-group-item">Logout</a>
                 </div>
             </div>

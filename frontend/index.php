@@ -186,7 +186,7 @@
 
         $format = 'Y-m-d H:i:s';
         $fullTime = date($format);
-        //$fullTime = date('Y-m-d 09:15:s');
+        //$fullTime = date('Y-m-d 10:15:s');
 
         $currentHour = date('G');
         $disableToday = ( $currentHour >= 18 ) ? TRUE : FALSE;
@@ -205,7 +205,7 @@
                 if($newHour){ 
                     $slots[] = $newHour;
                 }
-                if($i == 0){
+                if($i == 0 && $currentHour > 8){
                     $newTime = date($format,strtotime('+2 hour',strtotime($fullTime)));
                 }else{
                     $newTime = date($format,strtotime('+1 hour',strtotime($fullTime)));

@@ -27,13 +27,13 @@
         <br />
         <div class="panel panel-primary"> 
             <div class="panel-heading"> 
-                <h3 class="panel-title">Monthly Orders Report</h3> 
+                <h3 class="panel-title">Monthly Users without Orders Report</h3> 
             </div> 
             <div class="panel-body"> 
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <span class="pull-right"><b><u>Number of Orders</u></b></span>
-                        <b><u>Status</u></b>
+                        <span class="pull-right"><b><u>Date Joined</u></b></span>
+                        <b><u>CID | Name</u></b>
                     </li>
                     <?php 
                         $orderStatuses = SystemOptions::getOrderStatuses();
@@ -41,8 +41,8 @@
                             foreach ($params['report'] as $report){ 
                                 ?>
                                 <li class="list-group-item">
-                                  <span class="badge"><?= $report['no_of_status']; ?></span>
-                                  <?php echo (array_key_exists($report['status'], $orderStatuses)) ? $orderStatuses[$report['status']] : ' - '; ?>
+                                    <span class="badge"><?= date('F d, Y', strtotime($report['date_created'])); ?></span>
+                                  <?php echo $report['uid'].' | '.$report['first_name'].' '.$report['last_name']; ?>
                                 </li>
                             <?php }
                             

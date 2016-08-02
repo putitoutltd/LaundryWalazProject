@@ -80,6 +80,61 @@ class ReportController extends BaseController
         $this->render('report/orders_report' , $data);
     }
     
+    protected function _selling_report()
+    {
+        if($this->isUserAuthenticated !== TRUE){
+            $this->redirect('/');
+        } 
+        $params = $this->request->params();
+        $yearMonth= ( isset($params['month']) && !empty($params['month']) ) ? $params['month'] : date('Y-m');
+        
+        $reportsModel = $this->model;
+        $monthReport = $reportsModel->getMonthlyMostSellingReport($yearMonth);
+        
+        $this->page_title = 'Monthly Most Selling Report';
+        $data = array(
+            'report' => $monthReport
+        );
+        $this->render('report/selling_report' , $data);
+    }
+    
+    protected function _customer_report()
+    {
+        if($this->isUserAuthenticated !== TRUE){
+            $this->redirect('/');
+        } 
+        $params = $this->request->params();
+        $yearMonth= ( isset($params['month']) && !empty($params['month']) ) ? $params['month'] : date('Y-m');
+        
+        $reportsModel = $this->model;
+        $monthReport = $reportsModel->getMonthlyRepeatedCustomers($yearMonth);
+        
+        $this->page_title = 'Monthly Most Repeating Customers Report';
+        $data = array(
+            'report' => $monthReport
+        );
+        $this->render('report/customer_report' , $data);
+    }
+    
+    
+    protected function _users_report()
+    {
+        if($this->isUserAuthenticated !== TRUE){
+            $this->redirect('/');
+        } 
+        $params = $this->request->params();
+        $yearMonth= ( isset($params['month']) && !empty($params['month']) ) ? $params['month'] : date('Y-m');
+        
+        $reportsModel = $this->model;
+        $monthReport = $reportsModel->getMonthlyUsersWithoutOrders($yearMonth);
+        
+        $this->page_title = 'Monthly Users without Orders Report';
+        $data = array(
+            'report' => $monthReport
+        );
+        $this->render('report/users_report' , $data);
+    }
+    
     
         
 }
