@@ -69,17 +69,14 @@ const NSInteger PIOLogOutButtonIndex = 0;
     }
 }
 
-- (void)updateScreenContant
-{
-    
-    self.pickupconst.constant = 50;
-    
-    
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - IBAction
+
 - (IBAction)instagramButtonPrssed:(id)sender
 {
 
@@ -152,10 +149,8 @@ const NSInteger PIOLogOutButtonIndex = 0;
                 }
                 if (howToUseViewController == nil) {
                     howToUseViewController = [PIOHowToUseViewController new];
-                    howToUseViewController.fromMenu = YES;
                     [[[PIOAppController sharedInstance] navigationController] pushViewController: howToUseViewController animated:NO];
                 } else {
-                    howToUseViewController.fromMenu = YES;
                     [[[PIOAppController sharedInstance] navigationController] popToViewController: howToUseViewController animated:NO];
                 }
             }
@@ -317,14 +312,18 @@ const NSInteger PIOLogOutButtonIndex = 0;
     
 }
 
+- (IBAction)crossButtonPressed:(id)sender
+{
+    [self hideBarView];
+}
+#pragma mark - Private Methods
 
-#pragma mark - UIActionSheetDelegate
-
--(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+- (void)updateScreenContant
+{
     
-    if (buttonIndex == PIOLogOutButtonIndex) {
-        [self callLogoutAPI];
-    }
+    self.pickupconst.constant = 50;
+    
+    
 }
 
 - (void)callLogoutAPI
@@ -357,7 +356,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
         
     }
     else {
-         [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
     }
     
     
@@ -372,9 +371,17 @@ const NSInteger PIOLogOutButtonIndex = 0;
         [visibleViewController removeFromParentViewController];
     }
 }
-- (IBAction)crossButtonPressed:(id)sender
-{
-    [self hideBarView];
+
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex == PIOLogOutButtonIndex) {
+        [self callLogoutAPI];
+    }
 }
+
+
+
 
 @end

@@ -24,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    sleep(5);
+    sleep(5);
     [self internetConnectionChecking];
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
@@ -47,10 +47,10 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
    
     
-    [self performSelector: @selector(abc) withObject: nil afterDelay: 0.1];
+    [self performSelector: @selector(configureNavigationBar) withObject: nil afterDelay: 0.1];
 }
 
-- (void)abc
+- (void)configureNavigationBar
 {
      [[NSNotificationCenter defaultCenter] postNotificationName: @"configureNavigationBar" object:nil];
 }
@@ -68,11 +68,6 @@
     UINavigationController *navigationController = [[PIOAppController sharedInstance] navigationController];
     navigationController.navigationBarHidden = NO;
     [self.window setRootViewController:navigationController];
-}
-
-+ (AppDelegate *)delegate
-{
-    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)internetConnectionChecking

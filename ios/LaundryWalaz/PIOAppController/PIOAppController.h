@@ -18,12 +18,6 @@
 #import "PIOUser.h"
 #import "PIOOrder.h"
 
-@class PIOProgressBarViewController;
-
-typedef NS_ENUM(NSInteger, PIOPictureSourceType){
-    PIOPictureSourceTypeCamera,
-    PIOPictureSourceTypeLibrary
-};
 
 typedef NS_ENUM(NSInteger, PIODeviceName){
     PIODeviceNameiPhone4,
@@ -76,12 +70,9 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 
 - (void)showActivityViewWithMessage:(NSString *)message;
 - (void)hideActivityView;
-- (void)customizeNavigationBar:(UINavigationController *)navigationController;
 - (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message withNotificationPosition:(unsigned int)position type:(TSMessageNotificationType)type;
 - (void)showInternetNotAvailableAletr;
-- (NSString *)daySuffixForDate:(NSDate *)date;
 - (void)titleFroNavigationBar:(NSString *)title onViewController:(UIViewController *)viewController;
-- (UIImageView *)roundedRectImageView:(UIImageView*)imageView;
 
 #pragma mark - Log Flurry Events
 

@@ -192,6 +192,24 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 
 - (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message withNotificationPosition:(unsigned int)position type:(TSMessageNotificationType)type
 {
+    if ([message isEqualToString: @"Invalid Access token"]) {
+
+          [TSMessage showNotificationInViewController: self.navigationController
+                                              title: @"Error !"
+                                           subtitle: @"Your session has been expired, please login again."
+                                              image:nil
+                                               type: TSMessageNotificationTypeError
+                                           duration: TSMessageNotificationDurationEndless
+                                           callback:nil
+                                        buttonTitle:@"OK"
+                                     buttonCallback:^{
+                                         [self sessionExpired];
+                                     }
+                                         atPosition: position
+                               canBeDismissedByUser: YES];
+        return;
+    }
+    
     [TSMessage showNotificationInViewController: self.navigationController
                                           title: title
                                        subtitle: message
@@ -206,29 +224,32 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     
 }
 
-- (NSString *)daySuffixForDate:(NSDate *)date
+- (void)sessionExpired
 {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSInteger dayOfMonth = [calendar component:NSCalendarUnitDay fromDate:date];
-    switch (dayOfMonth) {
-        case 1:
-        case 21:
-        case 31: return @"st";
-        case 2:
-        case 22: return @"nd";
-        case 3:
-        case 23: return @"rd";
-        default: return @"th";
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"PIOHideSideBarView"  object:nil];
+    [PIOUserPref setAccessToken:nil];
+    [self setAccessToken:nil];
+    UIViewController *visibleViewController = [self navigationController].visibleViewController;
+    NSArray *viewControllers = [self navigationController].viewControllers;
+    
+    if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {
+        PIOHowToUseViewController *loginViewController;
+        for (UIViewController *viewController in viewControllers) {
+            if ([viewController isKindOfClass:[PIOHowToUseViewController class]]) {
+                loginViewController = (PIOHowToUseViewController *)viewController;
+                break;
+            }
+        }
+        if (loginViewController == nil) {
+            loginViewController = [PIOHowToUseViewController new];
+            [self.navigationController pushViewController:loginViewController animated:NO];
+        }else{
+            
+            [self.navigationController popToViewController:loginViewController animated:NO];
+        }
     }
+    
 }
-
-- (UIImageView *)roundedRectImageView:(UIImageView*)imageView
-{
-    imageView.layer.cornerRadius = imageView.frame.size.width / 2;
-    imageView.clipsToBounds = YES;
-    return imageView;
-}
-
 
 #pragma mark - Lifecycle methods
 

@@ -114,7 +114,7 @@
                     case 4:
                     {
                         [self.pickupTitleLabel setText: @"Delivered at"];
-                        backgroundImage = [UIImage imageForDeviceWithName: @"status-04"];
+                        backgroundImage = [UIImage imageForDeviceWithName: @"status-05"];
                         [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
                         break;
                     }

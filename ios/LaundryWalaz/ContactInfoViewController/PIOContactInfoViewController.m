@@ -111,7 +111,6 @@
 
 - (void)applyFonts
 {
-    
     [self.infoTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.47]];
     [self.firstNameTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
     [self.lastNameTextField setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];

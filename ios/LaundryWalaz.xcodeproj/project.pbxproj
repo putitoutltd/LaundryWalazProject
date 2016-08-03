@@ -77,6 +77,10 @@
 		4530EA371D2683ED00EAADBF /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4530EA311D2683ED00EAADBF /* logo@3x.png */; };
 		4530EA381D2683ED00EAADBF /* menu-bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4530EA321D2683ED00EAADBF /* menu-bg@3x.png */; };
 		4530EA391D2683ED00EAADBF /* twitter@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4530EA331D2683ED00EAADBF /* twitter@3x.png */; };
+		45315E3A1D52017000764C13 /* status-05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45315E391D52017000764C13 /* status-05@2x.png */; };
+		45315E3C1D52017B00764C13 /* status-05-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45315E3B1D52017B00764C13 /* status-05-568h@2x.png */; };
+		45315E3E1D52018700764C13 /* status-05-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45315E3D1D52018700764C13 /* status-05-667h@2x.png */; };
+		45315E401D52018F00764C13 /* status-05@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45315E3F1D52018F00764C13 /* status-05@3x.png */; };
 		453BE7E01D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf in Resources */ = {isa = PBXBuildFile; fileRef = 453BE7DF1D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf */; };
 		454A271C1D1BEF3600E30CDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271B1D1BEF3600E30CDF /* main.m */; };
 		454A271F1D1BEF3600E30CDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A271E1D1BEF3600E30CDF /* AppDelegate.m */; };
@@ -249,6 +253,10 @@
 		4530EA311D2683ED00EAADBF /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		4530EA321D2683ED00EAADBF /* menu-bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bg@3x.png"; sourceTree = "<group>"; };
 		4530EA331D2683ED00EAADBF /* twitter@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@3x.png"; sourceTree = "<group>"; };
+		45315E391D52017000764C13 /* status-05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-05@2x.png"; sourceTree = "<group>"; };
+		45315E3B1D52017B00764C13 /* status-05-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-05-568h@2x.png"; sourceTree = "<group>"; };
+		45315E3D1D52018700764C13 /* status-05-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-05-667h@2x.png"; sourceTree = "<group>"; };
+		45315E3F1D52018F00764C13 /* status-05@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "status-05@3x.png"; sourceTree = "<group>"; };
 		453BE7DF1D269D3B00244328 /* ufonts.com_myriadpro-light-opentype.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ufonts.com_myriadpro-light-opentype.otf"; sourceTree = "<group>"; };
 		454A27171D1BEF3600E30CDF /* LaundryWalaz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaundryWalaz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454A271B1D1BEF3600E30CDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -920,6 +928,7 @@
 				45CE0F061D3FA54A007BDAED /* status-02@2x.png */,
 				45CE0F071D3FA54A007BDAED /* status-03@2x.png */,
 				45CE0F081D3FA54A007BDAED /* status-04@2x.png */,
+				45315E391D52017000764C13 /* status-05@2x.png */,
 			);
 			path = OrderStatus4s;
 			sourceTree = "<group>";
@@ -931,6 +940,7 @@
 				45CE0F0B1D3FA54A007BDAED /* status-02-568h@2x.png */,
 				45CE0F0C1D3FA54A007BDAED /* status-03-568h@2x.png */,
 				45CE0F0D1D3FA54A007BDAED /* status-04-568h@2x.png */,
+				45315E3B1D52017B00764C13 /* status-05-568h@2x.png */,
 			);
 			path = OrderStatus5s;
 			sourceTree = "<group>";
@@ -942,6 +952,7 @@
 				45CE0F101D3FA54A007BDAED /* status-02@3x.png */,
 				45CE0F111D3FA54A007BDAED /* status-03@3x.png */,
 				45CE0F121D3FA54A007BDAED /* status-04@3x.png */,
+				45315E3F1D52018F00764C13 /* status-05@3x.png */,
 			);
 			path = OrderStatus6plus;
 			sourceTree = "<group>";
@@ -953,6 +964,7 @@
 				45CE0F151D3FA54A007BDAED /* status-02-667h@2x.png */,
 				45CE0F161D3FA54A007BDAED /* status-03-667h@2x.png */,
 				45CE0F171D3FA54A007BDAED /* status-04-667h@2x.png */,
+				45315E3D1D52018700764C13 /* status-05-667h@2x.png */,
 			);
 			path = OrderStatus6s;
 			sourceTree = "<group>";
@@ -1077,12 +1089,14 @@
 				452726DE1D2515EC008A90B5 /* pick-up@2x.png in Resources */,
 				452727101D252ECE008A90B5 /* MyriadPro-SemiboldIt.otf in Resources */,
 				4530EA341D2683ED00EAADBF /* close-menu@3x.png in Resources */,
+				45315E401D52018F00764C13 /* status-05@3x.png in Resources */,
 				452727071D252ECE008A90B5 /* MyriadPro-Bold.otf in Resources */,
 				45CE0EF31D3F8367007BDAED /* Pricing.xcassets in Resources */,
 				452726E01D2515EC008A90B5 /* third-slide@2x.png in Resources */,
 				454A27271D1BEF3600E30CDF /* Assets.xcassets in Resources */,
 				4530EA0D1D26839400EAADBF /* close-menu@2x.png in Resources */,
 				4530EA271D2683D800EAADBF /* close-menu-667h@2x.png in Resources */,
+				45315E3E1D52018700764C13 /* status-05-667h@2x.png in Resources */,
 				45892A871D4234530013BDBE /* faqs.html in Resources */,
 				45CE0F261D3FA54A007BDAED /* status-03-667h@2x.png in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
@@ -1122,6 +1136,7 @@
 				4530EA1E1D2683A100EAADBF /* menu-bg-568h@2x.png in Resources */,
 				452339381D3CAD230062A4F2 /* PIOFeedbackViewController.xib in Resources */,
 				4530EA101D26839400EAADBF /* logo@2x.png in Resources */,
+				45315E3A1D52017000764C13 /* status-05@2x.png in Resources */,
 				45CE0F271D3FA54A007BDAED /* status-04-667h@2x.png in Resources */,
 				452726DF1D2515EC008A90B5 /* second-slide@2x.png in Resources */,
 				45CE0F1C1D3FA54A007BDAED /* status-01-568h@2x.png in Resources */,
@@ -1142,6 +1157,7 @@
 				45CE0F181D3FA54A007BDAED /* status-01@2x.png in Resources */,
 				45CA86051D37A0AF001F3014 /* register-icon@3x.png in Resources */,
 				45892A861D4234530013BDBE /* terms.html in Resources */,
+				45315E3C1D52017B00764C13 /* status-05-568h@2x.png in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
 				4530EA2A1D2683D800EAADBF /* logo-667h@2x.png in Resources */,

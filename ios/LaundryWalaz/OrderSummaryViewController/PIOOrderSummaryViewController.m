@@ -138,7 +138,7 @@
     NSString *monthString = [monthDayFormatter stringFromDate:dddddd];
     
     [monthDayFormatter setDateFormat:@"yyyy"];
-    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
+//    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
     
     NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
     [monthDayFormatter setTimeZone: outputTimeZone];

@@ -39,7 +39,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    
     self.navigationController.navigationBar.hidden = YES;
+    
+    // Controll Buttons on screen for Logged in user
     if ([PIOAppController sharedInstance].accessToken != nil) {
         self.loginButton.hidden = YES;
         self.pickupButton.hidden = YES;
@@ -97,8 +100,6 @@
     [[[PIOAppController sharedInstance] navigationController].visibleViewController addChildViewController:sideBarViewController];
     self.sideBar.view.frame = CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height);
     sideBarViewController.view.frame = self.sideBar.view.frame;
-    //    self.sideBar.translucentStyle = UIBarStyleBlack;
-    // Set ContentView in SideBar
     self.sideBar.sideBarWidth = self.view.window.frame.size.width;
     [self.sideBar setContentViewInSideBar:sideBarViewController.view];
     [self.sideBar show];

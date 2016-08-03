@@ -444,13 +444,14 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
             array = self.GULBERG_Annotations;
         }
         [self zoomMapViewToFitAnnotations: self.mapView animated: YES withAnnotations: array];
-        [self performSelector: @selector(abc) withObject:nil afterDelay:1.0];
+        [self performSelector: @selector(fillAddressField) withObject:nil afterDelay:1.0];
     }];
     
 }
 
 
-- (void)abc {
+- (void)fillAddressField
+{
     MKMapPoint userPoint = MKMapPointForCoordinate(self.mapView.userLocation.location.coordinate);
     MKMapRect mapRect = self.mapView.visibleMapRect;
     BOOL inside = MKMapRectContainsPoint(mapRect, userPoint);

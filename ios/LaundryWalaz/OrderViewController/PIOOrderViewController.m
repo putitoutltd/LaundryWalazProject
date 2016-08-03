@@ -54,7 +54,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *tomorrowDateLabel;
 @property (nonatomic, weak) IBOutlet UILabel *otherDayPickUpTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *openCalendarTitleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *otherDateLabel;
 @property (nonatomic, weak) IBOutlet UILabel *deliverTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *todayDeliveryTitleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *todayDeliveryDateLabel;
@@ -159,7 +158,7 @@
     [self.deliveryDateContainerView setUserInteractionEnabled: NO];
     // [self.pickupDateContainerView setUserInteractionEnabled: NO];
     
-    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:8];
+    BOOL isTimeGreaterThan9AM = [self compareTimeIf6PMWithTimeToCompare:11];
     if (isTimeGreaterThan9AM) {
         [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
         self.todayPickupButton.enabled = NO;
