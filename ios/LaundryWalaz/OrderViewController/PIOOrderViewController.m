@@ -128,6 +128,9 @@
     }
     else {
         [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+        if (slots.count >0) {
+            [self.todayTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
+        }
     }
 }
 
@@ -177,6 +180,7 @@
     
     
 }
+
 - (IBAction)pickupAndDeliveryButtonPressed:(id)sender
 {
     UIButton *button = (UIButton *)sender;
@@ -199,6 +203,10 @@
             [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             
             self.pickupSelectedDate = [self stringToDate: self.todayDateLabel.text];
+            [self dropdownButtonPressed: dropdownButton];
+            if (slots.count >0) {
+                [self.todayTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
+            }
             
             break;
         }
@@ -219,6 +227,10 @@
             [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             
             self.pickupSelectedDate = [self stringToDate: self.tomorrowDateLabel.text];
+            [self dropdownButtonPressed: dropdownButton];
+            if (slots.count >0) {
+                [self.tomorrowTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
+            }
             break;
         }
         case PIOOrderDayOtherDayPickUp: {
@@ -237,6 +249,10 @@
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
+            [self dropdownButtonPressed: dropdownButton];
+            if (slots.count >0) {
+                [self.otherdayTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
+            }
             
             break;
         }
@@ -399,10 +415,7 @@
         isToday = NO;
     }
     
-    
     slots = [self generateTimeSlotsForOrderWiOption: isToday withDate: date];
-    
-    
     [self.tableView reloadData];
     
     
@@ -670,18 +683,24 @@
     //        [self.expressDeliveryButton setSelected: NO];
     //    }
     
-//    [self regularButtonPressed: nil];
+     [self regularButtonPressed: nil];
     BOOL isTimeGreaterThan6PM = [self compareTimeIf6PMWithTimeToCompare:18];
     if (isTimeGreaterThan6PM) {
         [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
         self.todayPickupButton.enabled = NO;
         
+        [self hideAllDropdownButtons];
+    }
+    else
+    {
+        [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
+        [self dropdownButtonPressed: dropdownButton];
+        if (slots.count >0) {
+            [self.todayTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
+        }
         
     }
-    [self hideAllDropdownButtons];
-//    else {
-//        [self pickupAndDeliveryButtonPressed: self.todayPickupButton];
-//    }
+    
     
     
 }
@@ -780,13 +799,13 @@
     [[self.regularDeliveryButton titleLabel] setNumberOfLines:2];
     
     // Setup the string
-    NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:@"REGULAR\nnext day delivery"];
+    NSMutableAttributedString *titleText = [[NSMutableAttributedString alloc] initWithString:@"STANDARD\n next day delivery"];
     
     // Set the font to bold from the beginning of the string to the ","
-    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:17.96f] forKey:NSFontAttributeName] range:NSMakeRange(0, 7)];
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:17.96f] forKey:NSFontAttributeName] range:NSMakeRange(0, 8)];
     
     // Normal font for the rest of the text
-    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(7, 18)];
+    [titleText addAttributes:[NSDictionary dictionaryWithObject:[UIFont PIOMyriadProLightWithSize:9] forKey:NSFontAttributeName] range:NSMakeRange(8, 19)];
     
     // Set the attributed string as the buttons' title text
     [self.regularDeliveryButton setAttributedTitle:titleText forState:UIControlStateNormal];

@@ -356,23 +356,23 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     
     
     
-    // Reverse Geocoding
-    //    NSLog(@"Resolving the Address");
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        //        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0) {
-            placemark = [placemarks lastObject];
-           
-            self.address =[NSString stringWithFormat:@"%@ %@\n%@\n%@",
-                      placemark.thoroughfare,
-                      placemark.locality,
-                      placemark.administrativeArea,
-                      placemark.country];
-
-        } else {
-            NSLog(@"%@", error.debugDescription);
-        }
-    } ];
+//    // Reverse Geocoding
+//    //    NSLog(@"Resolving the Address");
+//    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+//        //        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+//        if (error == nil && [placemarks count] > 0) {
+//            placemark = [placemarks lastObject];
+//           
+//            self.address =[NSString stringWithFormat:@"%@ %@\n%@\n%@",
+//                      placemark.thoroughfare,
+//                      placemark.locality,
+//                      placemark.administrativeArea,
+//                      placemark.country];
+//
+//        } else {
+//            NSLog(@"%@", error.debugDescription);
+//        }
+//    } ];
     [[self locationManager] stopUpdatingLocation];
     
 }

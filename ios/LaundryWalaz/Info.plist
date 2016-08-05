@@ -20,38 +20,26 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>fb</string>
+		<string>fbapi</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+		<string>fb-messenger-api</string>
+		<string>twitter</string>
+		<string>whatsapp</string>
+		<string>wechat</string>
+		<string>line</string>
+		<string>instagram</string>
+		<string>kakaotalk</string>
+		<string>mqq</string>
+		<string>vk</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>I need location</string>
-	<key>NSLocationUsageDescription</key>
-	<string>I need location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>I need location</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UIStatusBarHidden</key>
-	<true/>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>MyriadPro-Regular.otf</string>
-		<string>ufonts.com_myriadpro-light-opentype.otf</string>
-	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -67,25 +55,35 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>LSApplicationQueriesSchemes</key>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>I need location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>I need location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>I need location</string>
+	<key>UIAppFonts</key>
 	<array>
-		<string>instagram</string>
-
-            <string>fb</string>
-            <string>fbapi</string>
-            <string>fbauth2</string>
-            <string>fbshareextension</string>
-            <string>fb-messenger-api</string>
-            <string>twitter</string>
-            <string>whatsapp</string>
-            <string>wechat</string>
-            <string>line</string>
-            <string>instagram</string>
-            <string>kakaotalk</string>
-            <string>mqq</string>
-            <string>vk</string>
-            <string>comgooglemaps</string>
-        
+		<string>MyriadPro-Regular.otf</string>
+		<string>ufonts.com_myriadpro-light-opentype.otf</string>
 	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
