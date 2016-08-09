@@ -8,6 +8,7 @@
             '2' => 'info',
             '3' => 'warning',
             '4' => 'success',
+          //  '5' => 'danger',
         );
   ?>
 
@@ -28,7 +29,7 @@
       </thead>
       <tbody>
       <?php foreach($orders as $order): ?>    
-        <tr class="<?php echo ($classColors[$order['status']]) ? $classColors[$order['status']] : ' '; ?>">
+        <tr class="<?php echo (isset($classColors[$order['status']])) ? $classColors[$order['status']] : ' '; ?>">
           <td><?php echo $order['first_name'].' '.$order['last_name']; ?></td>
           <td><?php echo $order['users_id']; ?></td>
           <td><?php echo $order['id']; ?></td>

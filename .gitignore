@@ -1,0 +1,5 @@
+
+.ssh
+.cache
+settings.php
+/frontend/backup/*

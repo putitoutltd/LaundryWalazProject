@@ -57,7 +57,8 @@ class SystemOptions
             '1' => 'Going in Laundry',
             '2' => 'Cleaning Your Laundry',
             '3' => 'Clean Laundry on your way',
-            '4' => 'Delivered'
+            '4' => 'Delivered',
+            '5' => 'Canceled'
         );
     }
     
