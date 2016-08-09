@@ -1,0 +1,285 @@
+
+  <?php  if(isset($params['error'])){ 
+      echo '<p class="text-danger">'.$params['error'].'</p>'; return;
+      
+  }
+//print_r($params['order']);
+$orderStatuses = SystemOptions::getOrderStatuses();
+$locations = $params['locations'];
+//echo '<pre>';print_r($locations); '</pre>';
+
+$statusString = '<select id="status_list" class="form-control" name="status_list">';
+foreach ($orderStatuses as $statusKey => $orderStatus){
+    //$selected = ($statusKey == $order['status']) ? ' selected ' : ' '; 
+    $statusString .= '<option value="'.$statusKey.'" >'.$orderStatus.'</option>';
+}
+$statusString .= '</select>';
+
+
+$locationString = '<select id="locations_list" class="form-control" name="location_id">';
+foreach ($locations as $location){
+    //$selected = ($statusKey == $order['status']) ? ' selected ' : ' '; 
+    $locationString .= '<option value="'.$location['id'].'" >'.$location['name'].'</option>';
+}
+$locationString .= '</select>';
+
+// full day time slots 
+
+$slotsString = '<option value=""></option><option value="11:00:00">11:00 am</option>';
+$format = 'Y-m-d H:i:s';
+
+$startTime = date('Y-m-d 11:00:00');
+$newStartHour = '11:00 am';
+for($i=0; $i < 10; $i++){
+
+    $newTime = date($format,strtotime('+1 hour',strtotime($startTime)));
+    $newHourPlain = date('H:i:s', strtotime($newTime));
+    $newStartHour = date('h:i a', strtotime($newTime));
+    $startTime = $newTime;
+    
+    $slotsString .= '<option value="'.$newHourPlain.'">'.$newStartHour.'</option>';
+}
+
+$dropOffslotsString = '<option value=""></option><option value="18:00:00">06:00 pm</option>';
+$DropstartTime = date('Y-m-d 18:00:00');
+$dropNewStartHour = '06:00 pm';
+for($i=0; $i < 3; $i++){
+
+    $newTime = date($format,strtotime('+1 hour',strtotime($DropstartTime)));
+    $newHourPlain = date('H:i:s', strtotime($newTime));
+    $dropNewStartHour = date('h:i a', strtotime($newTime));
+    $DropstartTime = $newTime;
+    
+    $dropOffslotsString .= '<option value="'.$newHourPlain.'">'.$dropNewStartHour.'</option>';
+}
+
+
+?>
+<style>
+    .totals{
+        
+    }
+    .totals td{
+        color: darkblue;
+        font-weight: bold;
+        border-top: 1px solid green !important;
+    }
+    .italic-name{
+        font-size: 7pt;
+        color: silver;
+        
+    }
+    .status{
+        height: 60px;
+    }
+    .order_form div{
+        position:relative;
+    }
+   .order_form ul#search_results{
+        display: none;
+        width:100%;
+        margin:0px;
+        padding:0px;
+        position:absolute;
+        top:65px;
+        left:0px;
+        z-index:700;
+        background:#C8DFF3;
+        border:1px solid #e9e9e9;
+        border-radius:5px;
+        height: 150px;
+        overflow-y: scroll;
+        
+    }
+    .order_form ul#search_results li{
+        list-style-type:none;
+        padding:0 7px 10px;
+        margin:0px;
+        border-bottom: 1px solid #337ab7;
+        cursor: pointer;
+    }
+    .cid{
+        width: 70px;
+    }
+    .close_box{
+        height: 35px;
+    }
+    .close_box span{
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #status_plain{
+        height: 60px;
+    }
+    .user_form{
+        display: none;
+    }
+    .pickup-col {
+        padding-left:0px;
+        padding-right:0px;
+    }
+</style>
+<h4>Add Order Details: </h4>
+<?php if(isset($params['error1'])): ?>
+<p class="text-danger"><?= $params['error1']; ?></p>
+<?php endif; ?>
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-8 well well-sm">
+            
+            <form class="order_form" name="order_form" action="/api/order/create" method="POST">
+                <div class="row user_form" >
+                    <div class="col-md-6 ">
+                        <div class="form-group has-feedback">
+                          <label for="first_name">First Name</label>
+                          <input type="text"   name="first_name" id="first_name"   class="form-control" placeholder="First Name">
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="last_name">Last Name</label>
+                          <input type="text"  name="last_name" id="last_name"   class="form-control" placeholder="Last Name">
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="phone">Phone</label>
+                          <input type="text" name="phone" id="phone"   class="form-control" placeholder="Phone">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="form-group has-feedback">
+                          <label for="email">Email</label>
+                          <input type="email" name="email" id="email"  class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group has-feedback">
+                          <label for="password">Password</label>
+                          <input type="password"  name="password" id="password" class="form-control" placeholder="Password">
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <hr class="user_form">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="form-group has-feedback">
+                          <label for="customer">Customer</label>
+                          <input type="text" required="required" autocomplete="off"  name="customer" id="customer"   onkeyup="getCustomersList(this.value)" class="form-control" placeholder="Type to Search">
+                          <i class="glyphicon glyphicon-user form-control-feedback"></i>
+                            <input required="required"  type="hidden" value=""  id="user_id" name="user_id" />
+                            <ul id="search_results" >
+
+                             </ul>
+                        </div>
+                        <div class="form-group">
+                          <label for="location">Location</label>
+                          <?php echo $locationString; ?>
+                        </div>
+                        <div class="form-group">
+                          <label for="special_instructions">Special Instructions</label>
+                          <input  type="text" class="form-control" id="address" name="special_instructions" placeholder="Special Instructions">
+                        </div>
+                        <button type="submit" name="order_submit" class="btn btn-default">Submit</button>
+                    </div>
+                    <div class="col-md-6">
+                        
+                        <div class="input-group form-group date has-feedback clearfix">
+                            <div class="col-md-7 col-sm-7 col-xs-7 pickup-col">
+                                <label for="pickup">Pick Up</label>
+                            <input  required="required" type="text" id="pickup" name="pickup" class="form-control datepicker time_slot" value="<?php echo date('Y-m-d'); ?>">
+                            <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                                <label for="pickup_time1">Time</label>
+                                <select class="form-control time_slot" style="padding-right: 10px;"  id="pickup_time1"> <?php echo $slotsString; ?></select>
+                            </div>
+                            <input type="hidden" id="pickup_time" name="pickup_time" value="" /> 
+                        </div>
+                        
+                        <div class="input-group form-group date has-feedback clearfix">
+                            <div class="col-md-7 col-sm-7 col-xs-7 pickup-col">
+                                <label for="dropoff">Drop Off</label>
+                            <input  required="required" type="text" id="dropoff" name="dropoff" class="form-control datepicker time_slot" value="<?php echo date('Y-m-d'); ?>">
+                            <i class="glyphicon glyphicon-calendar form-control-feedback"></i>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-5">
+                                <label for="dropoff_time1">Time</label>
+                                <select class="form-control time_slot" style="padding-right: 10px;" id="dropoff_time1"> <?php echo $dropOffslotsString; ?></select>
+                            </div>
+                            <input type="hidden" id="dropoff_time" name="dropoff_time" value="" />  
+                        </div>
+                        <div class="form-group">
+                          <label for="address">Address</label>
+                          <input  required="required" type="text" class="form-control" id="address" name="address" placeholder="Address">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>    
+</div>
+
+
+<script type="text/javascript">
+
+
+function getCustomersList(customerString) {
+    
+  if(customerString.length < 3){
+      return;
+  }
+  var str = customerString;
+  
+  var url = "<?php echo Utility::base_url().'/users?listOnly=1&userString='; ?>"+str;
+  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+        var res = JSON.parse(xhttp.responseText);
+        
+        $("#search_results").show(1000);
+        var resultsHtml = '<li onclick="CloseBox()" class="close_box"><span title="Close" class="pull-right" >[ X ]</span></li>';
+        if(res.length > 0){
+            //console.log(res);
+            for(i=0; i < res.length; i++){
+                var cName = res[i].first_name+" "+res[i].last_name;
+                var cid = res[i].id;
+                
+                
+                //resultsHtml.concat("<li>"+fName+" "+lName+"</li>");
+                resultsHtml += '<li onclick="ChooseCustomer(this.id,&quot;'+cName+'&quot;)" id="'+cid+'">'+cName+'<span class="pull-right cid" >CID: '+cid+'</span></li>';
+            }
+           // document.getElementById("new_status").innerHTML = statusVal;
+        }else{
+            resultsHtml += '<li>No Results Found!</li>';
+            resultsHtml += '<li onclick="showUserForm()" style="padding:5px;"> <span class="btn btn-success">Add New User </span></li>';
+        }
+           
+      $("#search_results").html(resultsHtml);
+      //document.getElementById("search_results").innerHTML = "<li>hi i am li</li>";
+      //console.log(xhttp.responseText);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send();
+  
+}   
+
+function CloseBox(){
+    $("#search_results").hide();
+}
+function showUserForm(){
+    $(".user_form").show(1000);
+    $(".user_form :input").prop("required", true);
+}
+function ChooseCustomer(cid,cName){
+    $("#user_id").val(cid);
+    $("#customer").val(cName);
+    //alert(cName);
+    CloseBox();
+}
+
+</script>

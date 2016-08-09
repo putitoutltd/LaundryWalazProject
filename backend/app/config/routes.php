@@ -39,6 +39,7 @@ Router\Helper::map('order', array(
     '/orders/items/additem' => array('post' => 'add_items'),
     '/orders/status/update' => array('post' => 'update_order_status'),
     '/orders/delete' => array('post' => 'delete_order'),
+    '/orders/add' => array('any' => 'add_order'),
     
 ));
 

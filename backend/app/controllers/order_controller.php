@@ -38,12 +38,18 @@ class OrderController extends BaseController
     */
     protected function _create_order()
     {
-        $auth_token = $this->app->request->headers->get("auth-token");
-        $this->validateHeaders($auth_token);    // validating auth headers
-        $email = mb_strtolower($this->request->params('email'), 'UTF-8');
         
-        $accessToken = Utility::escapeSpecial($this->request->params('access_token'));
-        $userId = $this->validateAccessToken($accessToken);
+        if($this->isUserAuthenticated !== TRUE){
+            
+            $auth_token = $this->app->request->headers->get("auth-token");
+            $this->validateHeaders($auth_token);    // validating auth headers
+        
+            $accessToken = Utility::escapeSpecial($this->request->params('access_token'));
+            $userId = $this->validateAccessToken($accessToken);
+        }else{
+            $userId = $this->request->params('user_id');
+        } 
+        $email = mb_strtolower($this->request->params('email'), 'UTF-8');
         
         $todayDate = date('Y-m-d H:i:s');
         $data = array(
@@ -64,7 +70,7 @@ class OrderController extends BaseController
             'date_modified'         => $todayDate,
             
         );
-        
+        //echo '<pre>'; print_r($data); echo '</pre>';  die();
         // required fields validation
         $requiredParams = array('locations_id'=> $data['locations_id'],'address'=> $data['address']);
         $this->validateEmptyValues($requiredParams);
@@ -74,40 +80,40 @@ class OrderController extends BaseController
         if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Email '.Messages::IS_NOT_VALID;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         
         // validating dates
         if(date('Y-m-d H:i:s',  strtotime($data['pickup_time'])) != $data['pickup_time']){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Pickup Time '.Messages::IS_NOT_VALID;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         if(date('Y-m-d H:i:s',  strtotime($data['dropoff_time'])) != $data['dropoff_time']){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Dropoff Time '.Messages::IS_NOT_VALID;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         // pick up cannot be set in past
         
         if( date('Y-m-d') > date('Y-m-d',  strtotime($data['pickup_time'])) ){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Pickup Time '.Messages::IS_NOT_VALID;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         
         // drop off cannot be set in past
         if( date('Y-m-d') > date('Y-m-d',  strtotime($data['dropoff_time']))   ){
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Dropoff Time '.Messages::IS_NOT_VALID;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         
         // pick up cannot be greater than dropoff
         if( strtotime($data['dropoff_time']) <= strtotime($data['pickup_time']) ){
             $response['status'] = Response::FAILURE;
             $response['message'] = Messages::PICKUP_DROPOFF_MISMATCH;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         
         $usersModel = new UsersModel();
@@ -118,7 +124,7 @@ class OrderController extends BaseController
             if(!$userRecord){
                 $response['status'] = Response::FAILURE;
                 $response['message'] = 'User Id '.Messages::IS_NOT_VALID;
-                Response::sendResponse($response);
+                $this->processResponseForOrder($response);
             }
             //$userId = $data['user_id'];
             // overriding users details with saved details
@@ -140,13 +146,14 @@ class OrderController extends BaseController
         if(empty($data['user_id']) && !empty($data['email'])){
             $userRecord = $usersModel->getRecordByEmail($data['email']);
             if(!$userRecord){
+                $password = $this->request->params('password');
                 $userData = array(
                      // 'username'              => $this->request->params('username'),
                     'email'                 => $email,
-                    'status'                => 2,
+                    'status'                => 1,
                     'type'                  => 2,
                     'phone'                 => $this->request->params('phone'),
-                    'password'              => $this->request->params('password'),
+                    'password'              => Utility::encryptPassword($password),
                     'first_name'            => $this->request->params('first_name'),
                     'last_name'             => $this->request->params('last_name'),
                     'locations_id'          => $this->request->params('location_id'),
@@ -169,7 +176,7 @@ class OrderController extends BaseController
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Location is '.Messages::INVALID;
             $response['data'] = $data['locations_id'];
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
         }
         
         // creating order without items
@@ -192,7 +199,7 @@ class OrderController extends BaseController
             $response['status'] = Response::FAILURE;
             $response['message'] = Messages::ORDER_IN_PROGRESS;
             $response['data'] = $lastOrder;
-            Response::sendResponse($response);
+            $this->processResponseForOrder($response);
             
         }
         $orderId = $ordersModel->saveOrder($orderData);
@@ -208,10 +215,23 @@ class OrderController extends BaseController
             $response['status'] = Response::FAILURE;
             $response['message'] = Messages::RECORD_NOT_INSERTED;
         }
-        Response::sendResponse($response);
+        
+        $this->processResponseForOrder($response);
     }
     
-    
+    private function processResponseForOrder($response){
+        
+        if($this->isUserAuthenticated !== TRUE){
+            Response::sendResponse($response);
+        }else{
+            if($response['status'] === Response::SUCCESS){
+                $this->redirect('/orders');
+            }
+            else{
+                $this->redirect('/orders/add?error1='.$response['message']);
+            }
+        }
+    }
     
     
     /**
@@ -285,6 +305,27 @@ class OrderController extends BaseController
         $data['orderItems'] = $order['orderItems'];
         $this->render('order/edit_order',$data );
     }
+    
+    
+    protected function _add_order()
+    {
+       if($this->isUserAuthenticated !== TRUE){
+            $this->redirect('/');
+        } 
+        $data = array();
+        
+        /*
+        $ordersModel = $this->model;
+        $order = $ordersModel->getOrderById($orderId);
+         * 
+         */
+        $locationModel = new LocationsModel();
+        $locations = $locationModel->getAllLocations();
+        $this->page_title = 'Add Order';
+        $data['locations'] = $locations;
+        $this->render('order/add_order',$data );
+    }
+    
     
     protected function _add_items()
     {
@@ -459,5 +500,32 @@ class OrderController extends BaseController
         }
            
     }
+    
+    
+    private function sendRequest($endPoint, $data , $method = 'POST' , $file = array()){
+        $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
+       
+        $url = $host.$endPoint;
+      //  echo $url;
         
+        $ch = curl_init();                    // initiate curl
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // return the output in string format
+        curl_setopt($ch, CURLOPT_POST, true);  // tell curl you want to post something
+        //if($putRequest){
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        //}
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // define what you want to post
+       
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'auth-token: {sPjadfadf@4hyBASYdfsLdWJFz2juAdAOI(MkjAnRhsTVC>Wih))J9WT(kr'
+        ));
+        //curl_setopt($ch, CURLOPT_HEADER, true);
+        $output = curl_exec($ch); // execute
+        
+        curl_close($ch); // close curl handle
+        //var_dump($output);
+        return $output;
+       
+    }
 }

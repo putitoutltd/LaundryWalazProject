@@ -104,6 +104,10 @@ class Utility
         return $url; 
     }
     
+    public static function encryptPassword($plainPassword){
+        
+        return md5('4f5y'.$plainPassword.'#$%');
+    }
 
     /**
      * 

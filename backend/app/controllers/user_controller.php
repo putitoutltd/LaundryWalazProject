@@ -746,11 +746,20 @@ class UserController extends BaseController
         if($this->isUserAuthenticated !== TRUE){
             $this->redirect('/');
         } 
-        
+        $params = $this->request->params();
+        $listOnly = ( isset($params['listOnly']) && $params['listOnly'] == 1 ) ? TRUE : FALSE;
+        $userString = ( isset($params['userString'])  ) ? $params['userString'] : FALSE;
         $usersModel = $this->model;
         
-        $allUsers = $usersModel->getAllUsers();
-        
+        if($userString){
+            $allUsers = $usersModel->getAllUsers($userString);
+        }else{
+            $allUsers = $usersModel->getAllUsers();
+        }
+        if($listOnly){
+            echo json_encode($allUsers);
+            return;
+        }
         
         $this->page_title = 'Pricing';
         $this->render('user/list_users',array('users' => $allUsers) );
@@ -758,7 +767,7 @@ class UserController extends BaseController
     
     private function encryptPassword($plainPassword){
         
-        return md5('4f5y'.$plainPassword.'#$%');
+        return Utility::encryptPassword($plainPassword);
     }
     
         
