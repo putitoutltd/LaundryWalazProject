@@ -270,12 +270,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-4">
-                                <div class="laundry-walaz-location">
-                                    <a href="#operating-areas" class="page-scroll">
-                                        <img src="images/laundry-walaz-location.svg" alt="Laundry Walaz Location" >
-                                        <span>Abid Majeed road, Girja Chowk,Lahore Cantt.</span>
-                                    </a>
-                                </div>
+                                &nbsp;
                             </div>
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="laundry-walaz-email">
