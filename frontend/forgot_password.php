@@ -73,7 +73,7 @@
     <form action="" method="GET">    
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="25%" align="left" valign="middle"><label for="pw1">Password :</label></td>
+              <td width="25%" align="left" valign="top" style="padding:8px 0 0;"><label for="pw1">Password :</label></td>
               <td width="75%" align="left" valign="top" style="padding:0 0 20px;"><input type="password" id="pw1" name="pw1" style="border:1px solid #333; padding:7px; width:300px;" ></td>
             </tr>
             <tr>
