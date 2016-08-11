@@ -410,17 +410,17 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="try-our-app">
-                            <h2>Our App is coming soon</h2>
+                            <h2>Tried Our App Yet ?</h2>
                             <p>Clean clothes are just a tap away with Laundry Walaz.</p>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
+                            <!--div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="appstore-btns">
                                     <a href="#"><img src="images/app-store.png" alt="" ></a>
                                 </div>
 
-                            </div>
+                            </div -->
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="appstore-btns">
-                                    <a href="#"><img src="images/goolge-play.png" alt="" ></a>
+                                    <a target="_blank" href="https://play.google.com/store/apps/details?id=putitout.laundrywalaz"><img src="images/goolge-play.png" alt="" ></a>
                                 </div>
 
                             </div>
@@ -1042,7 +1042,7 @@
                                         </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <a href="#" data-toggle="modal" data-target="#forgotForm" class="forgot">Fogot password?</a>
+                                                <a href="#" data-toggle="modal" data-target="#forgotForm" class="forgot">Forgot password?</a>
                                             </div>
                                         </div>
                                         
@@ -1331,7 +1331,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 <h1>Forgot Login details</h1>
                                 <div class="feedback">
                                     <div class="feedback-row clearfix">
-                                        <p>Enter you email and we will email you instructions on how to reset your password.</p>
+                                        <p>Enter your email and we will email you instructions on how to reset your password.</p>
                                     </div>
                                     <div class="feedback-row">
                                         <input type="email" id="forgot_email" name="forgot_email" class="contact-input" placeholder="Email" >

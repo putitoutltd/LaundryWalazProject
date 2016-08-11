@@ -56,7 +56,7 @@
     <td align="left" valign="top">
     	<img src="images/email/laundry-walaz-logo.png" alt="" style="width:132px; margin:16px 0 -84px 16px;" >
     </td>
-    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
+    <td align="left" valign="top" style="font-size:14px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
   </tr>
 </table>
 
@@ -139,11 +139,11 @@
   <tr>
     <td align="left" valign="top" style="background:#5aacd9;">
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
+  <!--tr>
     <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">You've received this confirmation email to update you about your activities on Laundry Walaz App/website</td>
-  </tr>
+  </tr-->
   <tr>
-    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">&copy; 2016 Laundry Walaz. 1600 Amphitheatre Parkway, Mountain View, CA 94043 </td>
+    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">&copy; 2016 Laundry Walaz.</td>
   </tr>
   <tr>
     <td align="left" valign="top" style="padding:16px 16px 10px 16px;">

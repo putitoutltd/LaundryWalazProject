@@ -255,11 +255,22 @@ class OrderController extends BaseController
         
         $ordersModel = $this->model;
         $lastOrder = $ordersModel->getLastOrderByUserId($userId);
-        if($lastOrder){
+        if($lastOrder && $lastOrder['status'] < 4){
             $response['status'] = Response::SUCCESS;
             $response['message'] = Messages::ORDER_IN_PROGRESS;
             $response['data']['order'] = $lastOrder;
-        }else{
+        }
+        else if($lastOrder && $lastOrder['status'] == 4){
+            $response['status'] = Response::SUCCESS;
+            //$response['message'] = Messages::ORDER_IN_PROGRESS;
+            $response['data']['order'] = $lastOrder;
+        }
+        else if($lastOrder && $lastOrder['status'] == 5){
+            $response['status'] = Response::SUCCESS;
+            $response['message'] = Messages::ORDER_CANCELLED;
+            $response['data']['order'] = $lastOrder;
+        }
+        else{
             $response['status'] = Response::FAILURE;
             $response['message'] = 'Order '.Messages::NOT_FOUND;
         }
@@ -496,7 +507,8 @@ class OrderController extends BaseController
 
         // Mail it
         if(!empty($message)){
-            return @mail($to, $subject, $message, $headers);
+            return Utility::sendEmail('service@laundrywalaz.com',  'Laundrywalaz' , $to,$subject , $message);
+            //return @mail($to, $subject, $message, $headers);
         }
            
     }
