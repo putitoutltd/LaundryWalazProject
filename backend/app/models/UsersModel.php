@@ -190,12 +190,20 @@ class UsersModel extends DbConnect
         return TRUE;
     }
     
-    public function getAllUsers()
+    public function getAllUsers($matchingString = "")
     {
         
         //$response = array();
-        $results = $this->getAll("SELECT t.* FROM $this->_table t  ORDER BY t.date_created ");
-        
+        if(strpos($matchingString, " ")){
+            $matchingString1 = explode(" ", $matchingString);
+            $matchingString = $matchingString1[0];
+        }
+        if(!empty($matchingString)){
+            $results = $this->getAll("SELECT t.* FROM $this->_table t "
+                    . "WHERE first_name LIKE :match OR  last_name LIKE :match ORDER BY t.date_created ", array(':match' => '%'.$matchingString.'%'));
+        }else{
+            $results = $this->getAll("SELECT t.* FROM $this->_table t  ORDER BY t.date_created ");
+        }
         
         return $results;
     }

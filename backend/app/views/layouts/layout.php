@@ -13,6 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo Utility::theme_url(); ?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo Utility::theme_url(); ?>css/datepicker.css" rel="stylesheet">
+
 
     <!-- Custom CSS -->
     <link href="<?php echo Utility::theme_url(); ?>css/style.css" rel="stylesheet">
@@ -85,9 +87,15 @@
         
         <div class="row">
             <?php 
-                $currentAction =  filter_input(INPUT_SERVER, 'REQUEST_URI');
+                $currentAction =  $_SERVER['REQUEST_URI'];
                 
-                $orderActive = (strpos($currentAction, 'orders')) ? ' active ' : '';
+                $orderActive = $orderAddActive = '';
+                if(strpos($currentAction, 'orders/add')){
+                    $orderAddActive = ' active ';
+                }
+                else if(strpos($currentAction, 'orders')){
+                    $orderActive = ' active ';
+                }
                 $userActive = (strpos($currentAction, 'users')) ? ' active ' : '';
                 $priceActive = (strpos($currentAction, 'pricing')) ? ' active ' : '';
                 $reportActive = (strpos($currentAction, 'reports')) ? ' active ' : '';
@@ -96,6 +104,7 @@
                 <p class="lead"><a href="<?php echo Utility::base_url(); ?>/dashboard"><img width="100" src="<?php echo Utility::theme_url(); ?>images/logo.png" ></a></p>
                 <div class="list-group">
                     <a href="<?php echo Utility::base_url(); ?>/orders" class="list-group-item <?= $orderActive; ?>">Orders</a>
+                    <a href="<?php echo Utility::base_url(); ?>/orders/add" class="list-group-item <?= $orderAddActive; ?>">Add Order</a>
                     <a href="<?php echo Utility::base_url(); ?>/users" class="list-group-item <?= $userActive; ?>">Users</a>
                     <a href="<?php echo Utility::base_url(); ?>/pricing" class="list-group-item <?= $priceActive; ?>">Pricing</a>
                     <a href="<?php echo Utility::base_url(); ?>/reports" class="list-group-item <?= $reportActive; ?>">Reports</a>
@@ -133,6 +142,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo Utility::theme_url(); ?>js/bootstrap.min.js"></script>
+    <script src="<?php echo Utility::theme_url(); ?>js/bootstrap-datepicker.js" type="text/javascript"></script>
+
 
     <!-- Custom -->
     <script src="<?php echo Utility::theme_url(); ?>js/custom.js"></script>

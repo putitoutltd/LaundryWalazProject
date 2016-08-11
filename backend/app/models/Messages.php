@@ -60,6 +60,7 @@ class Messages
     const ORDER_CREATED_SUCCESSFULLY = 'Order Created Successfully';
     const PICKUP_DROPOFF_MISMATCH = 'Pickup time cannot be later than dropoff time';
     const ORDER_IN_PROGRESS = 'One of your orders is already in progress';
+    const ORDER_CANCELLED = 'Your order has been cancelled';
     const ERROR_UPDATING_PASSWORD = 'Error updating password';
     
     

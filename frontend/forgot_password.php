@@ -56,7 +56,7 @@
     <td align="left" valign="top">
     	<img src="images/email/laundry-walaz-logo.png" alt="" style="width:132px; margin:16px 0 -84px 16px;" >
     </td>
-    <td align="left" valign="top" style="font-size:18px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
+    <td align="left" valign="top" style="font-size:14px; color:#fff; text-align:right; padding:16px 16px 0 0;"><?php echo date('F d, Y'); ?></td>
   </tr>
 </table>
 
@@ -73,11 +73,11 @@
     <form action="" method="GET">    
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td width="25%" align="left" valign="middle"><label for="pw1">Password :</label></td>
+              <td width="25%" align="left" valign="top" style="padding:8px 0 0;"><label for="pw1">New Password :</label></td>
               <td width="75%" align="left" valign="top" style="padding:0 0 20px;"><input type="password" id="pw1" name="pw1" style="border:1px solid #333; padding:7px; width:300px;" ></td>
             </tr>
             <tr>
-              <td align="left" valign="middle"><label for="pw2">Repeat Password :</label></td>
+              <td align="left" width="30%" valign="middle"><label for="pw2">Repeat New Password :</label></td>
               <td align="left" valign="top"><input type="password" id="pw2" name="pw2" style="border:1px solid #333; padding:7px; width:300px;" ></td>
             </tr>
             <tr>
@@ -103,7 +103,7 @@
     </td>
   </tr>
   <tr>
-    <td align="left" valign="top" style="text-align:center;">
+    <td align="left" valign="top" style="color: red; font-weight: bold;">
     	<?php
                                 $msg = " ";
                                     if(filter_input(INPUT_GET, 'pwdr')){ 
@@ -166,6 +166,7 @@
                                         }
                                     }
                                     ?>
+        <?php echo $msg; ?>
     </td>
   </tr>
 </table>
@@ -177,7 +178,7 @@
     <td align="left" valign="top" style="background:#5aacd9;">
     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;"><?php echo $msg; ?></td>
+    <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;"></td>
   </tr>
   <tr>
     <td align="left" valign="top" style="font-size:15px; color:#fff; padding:16px 16px 10px 16px;">&copy; <?php echo date('Y'); ?> Laundry Walaz </td>
