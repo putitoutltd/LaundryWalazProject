@@ -85,6 +85,7 @@
                 [self.pickupTitleLabel setText: @"Delivery at"];
                 NSString *status = (NSString *)responseObject;
                 UIImage *backgroundImage = nil;
+                self.pickupTitleLabel.hidden = NO;
                 switch ( [status integerValue]) {
                     case 0:
                     {
@@ -116,6 +117,13 @@
                         [self.pickupTitleLabel setText: @"Delivered at"];
                         backgroundImage = [UIImage imageForDeviceWithName: @"status-05"];
                         [self dateToDateString: [PIOAppController sharedInstance].LoggedinUser.deliveronTime];
+                        break;
+                    }
+                    case 5:
+                    {
+                        self.pickupTitleLabel.hidden = YES;
+                        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Your order has been cancelled." withNotificationPosition: TSMessageNotificationPositionTop type: 0];
+                        
                         break;
                     }
                         
