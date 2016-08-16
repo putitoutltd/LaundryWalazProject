@@ -361,10 +361,13 @@ class OrderController extends BaseController
             $ordersModel->deleteItemsByOrderId($orderId);
             foreach ($params['items'] as $item){
                 $quantity = ( isset($params['quantity_'.$item]) )? $params['quantity_'.$item] : 1;
+                $type = ( isset($params['type_'.$item]) )? $params['type_'.$item][0] : 'dryclean';
+                
                 $itemData = array(
                     'orders_id' => $orderId,
                     'service_items_id' => $item,
-                    'quantity' => $quantity
+                    'quantity' => $quantity,
+                    'laundry_type' => $type
                 );
                 $ordersModel->saveOrderItem($itemData);
                 
@@ -437,8 +440,10 @@ class OrderController extends BaseController
         $params = $this->request->params();
         $orderId = ( isset($params['oid']) && !empty($params['oid']) ) ? $params['oid'] : '';
         $orderStatus = ( isset($params['ost']) && !empty($params['ost']) ) ? $params['ost'] : '';
-        
-        if(!empty($orderId) && !empty($orderStatus)){ 
+        if(!empty($orderId) && !empty($orderStatus)){
+            if($orderStatus == '100'){ 
+                $orderStatus = (int) 0;
+            }
             $ordersModel = $this->model;
             $orderStatuses = SystemOptions::getOrderStatuses();
             $order = $ordersModel->getOrderById($orderId);
@@ -470,11 +475,7 @@ class OrderController extends BaseController
     
     private function sendOrderEmail($orderDetails){
        
-        /*
-        $to  = 'info@laundrywalaz.com' . ', '; // note the comma
-        $to .= 'rashid.akram@putitout.co.uk';
-        */
-         $to  = 'info@laundrywalaz.com';
+        $receiver = Utility::get_admin_email();
         $subject = 'New Order Placed';
         
         // message
@@ -507,7 +508,7 @@ class OrderController extends BaseController
 
         // Mail it
         if(!empty($message)){
-            return Utility::sendEmail('service@laundrywalaz.com',  'Laundrywalaz' , $to,$subject , $message);
+            return Utility::sendEmail('service@laundrywalaz.com',  'Laundrywalaz' , $receiver,$subject , $message);
             //return @mail($to, $subject, $message, $headers);
         }
            

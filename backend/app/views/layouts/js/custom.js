@@ -1,4 +1,4 @@
-$("#edit_status_action").click(function(){
+$("#edit_status_action").click(function( event ){
         event.preventDefault();
         $("#status_plain").hide();
         $("#status_edit").show();

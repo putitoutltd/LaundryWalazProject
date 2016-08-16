@@ -251,6 +251,7 @@ function getCustomersList(customerString) {
                 //resultsHtml.concat("<li>"+fName+" "+lName+"</li>");
                 resultsHtml += '<li onclick="ChooseCustomer(this.id,&quot;'+cName+'&quot;)" id="'+cid+'">'+cName+'<span class="pull-right cid" >CID: '+cid+'</span></li>';
             }
+            resultsHtml += '<li onclick="showUserForm()" style="padding:5px;"> <span class="btn btn-success">Add New User </span></li>';
            // document.getElementById("new_status").innerHTML = statusVal;
         }else{
             resultsHtml += '<li>No Results Found!</li>';

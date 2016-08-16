@@ -59,3 +59,8 @@ Router\Helper::map('cron', array(
     '/cron/vaccination/activity/?' => array('get' => 'generate_vaccination_activity'),
 ));
 
+Router\Helper::map('test', array(
+    
+    '/test_service/email' => array('get' => 'send_test_email'),
+));
+

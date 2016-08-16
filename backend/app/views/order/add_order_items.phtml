@@ -12,46 +12,80 @@
   }
 //echo '<pre>'; print_r($params['orderItems']); echo '</pre>';
 //die();
-?>
-<style>
-.cat_title{
-    color: silver;
-}
+?><style>
+    .title{
+        font-weight: bold;
+        text-align: center;
+    }
+    .quantity{
+        text-align: right;
+    }
+    .quantity input{
+        width: 200px;
+        text-align: right;
+    }
+    .submit-buttons td{
+        text-align: left;
+    }
 </style>
-<h3><u>Choose Order Items</u></h3>
-<hr>
-<form class="form-inline" method="POST" role="form" action="<?php echo Utility::base_url(); ?>/orders/items/additem">
-    <?php foreach ($serviceList as $category => $items): ?>
-    <h5><u class="cat_title"><?php echo $category; ?></u></h5>
-    <div class="row">
-    
-    <?php foreach ($items as $item): ?>
-    <?php 
-        $checked = ' ';
-        $quantity = 1;
-        if((isset($orderItemsArranged[$item['id']]))){
-            $checked = ' checked ';
-            $quantity = $orderItemsArranged[$item['id']]['quantity'];
-        }
-        
-    ?>
-    <div class="col-md-3">
-        <div class="checkbox">
-            <label><input type="checkbox" <?= $checked; ?> name="items[]" value="<?= $item['id']; ?>"> <?= $item['name']; ?></label>
-            <input type="number"  min="1"  class="form-control" name="quantity_<?= $item['id']; ?>" placeholder="1" value="<?= $quantity; ?>">
-        </div>
-    </div>        
-    
-    
-    <?php endforeach; ?>
-    </div>
-    <hr>
-    <?php endforeach; ?>
-    
-    
-    <input type="hidden" value="<?=$order['id'];?>" name="oid" />  
-  <button type="submit" class="btn btn-default">Submit</button>
-  
-</form>
-<a href="<?php echo Utility::base_url(); ?>/orders/edit?oid=<?=$order['id'];?>" class="btn btn-default pull-right">Back to Order</a>
-    
+<div class="table-responsive">
+    <form class="form-inline" method="POST" role="form" action="<?php echo Utility::base_url(); ?>/orders/items/additem">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Dry Clean</th>
+              <th>Laundry</th>
+              <th style="text-align:right;">Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($serviceList as $category => $items): ?>
+              <tr class="">
+                  <td colspan="4" class="success title"><?php echo $category; ?></td>
+              </tr>
+
+              <?php foreach ($items as $item): 
+                    $checked = $radioCheckedDry = $radioCheckedLaundry = ' ';
+                    $quantity = 1;
+                    if((isset($orderItemsArranged[$item['id']]))){
+                        $checked = ' checked ';
+                        $radioCheckedDry = ($orderItemsArranged[$item['id']]['laundry_type'] == 'dryclean') ? ' checked ' : ' ';
+                        $radioCheckedLaundry = ($orderItemsArranged[$item['id']]['laundry_type'] == 'laundry') ? ' checked ' : ' ';
+                        $quantity = $orderItemsArranged[$item['id']]['quantity'];
+                    }
+
+                    //$name = (strlen($item['name']) > 25) ? substr($item['name'], 0, 25).'...' : $item['name'];
+              ?>
+            <tr class="">
+              <td><input type="checkbox" <?= $checked; ?> name="items[]" value="<?= $item['id']; ?>"> <?php echo $item['name']; ?></td>
+              <td>
+                  <input type="radio" name="type_<?= $item['id']; ?>[]" id="" value="dryclean" <?= $radioCheckedDry; ?> >
+                  <?php echo $item['price_dryclean']; ?>
+
+              </td>
+              <td>
+                  <input type="radio" name="type_<?= $item['id']; ?>[]" id="" value="laundry" <?= $radioCheckedLaundry; ?>>
+                  <?php echo $item['price_laundry']; ?>
+              </td>
+              <td  class="quantity">
+                  <input type="number"  min="1"   name="quantity_<?= $item['id']; ?>" placeholder="1" value="<?= $quantity; ?>">
+              </td>
+            </tr>
+            <?php endforeach; ?>  
+          <?php endforeach; ?>
+            <tr class="submit-buttons">
+                <td colspan="2" class="success title">
+                    <input type="hidden" value="<?=$order['id'];?>" name="oid" />
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </td>
+                <td colspan="2" class="success title">
+                    <a href="<?php echo Utility::base_url(); ?>/orders/edit?oid=<?=$order['id'];?>" class="btn btn-default pull-right">Back to Order</a>
+                </td>
+              </tr>
+
+
+          </tbody>
+        </table>
+    </form>    
+</div>

@@ -65,25 +65,31 @@ $statusString .= '</select>';
                   <tr>
                     <th>#</th>
                     <th>Service</th>
-                    <th>Price(dryclean)</th>
-                    <th>Price(laundry)</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
                     <th>Quantity</th>
                   </tr>
                 </thead>
                 <tbody>
                     <?php
-                        $i =1; $priceDryClean = 0; $priceLaundry = 0; $quantity = 0;
+                        $i =1; $price = 0; $quantity = 0;
                         foreach ($params['orderItems'] as $item): 
                         //echo '<pre>';  print_r($item); echo '</pre>';
-                        $priceDryClean +=  $item['price_dryclean'];
-                        $priceLaundry +=  $item['price_laundry'];
+                        $singleItemPrice = 0;
+                        if($item['laundry_type'] == 'dryclean'){
+                            $singleItemPrice = $item['price_dryclean'];
+                        } else{
+                            $singleItemPrice = $item['price_laundry'];
+                        }   
                         $quantity +=  $item['quantity'];
+                        $totalItemPrice = $singleItemPrice * $item['quantity'];
+                        $price +=  $totalItemPrice;
                     ?>
                     <tr>
                         <td><?= $i; ?></td>
                         <td><?= $item['name']; ?><span class="italic-name"><i> ( <?= $item['category']; ?> )</i></span></td>
-                        <td><?= $item['price_dryclean']; ?></td>
-                        <td><?= $item['price_laundry']; ?></td>
+                        <td><?= $singleItemPrice; ?><span class="italic-name"><i> ( <?= $item['laundry_type']; ?> ) </i></span></td>
+                        <td><?= $totalItemPrice; ?></td>
                         <td><?= $item['quantity']; ?></td>
                       </tr>
                     <?php
@@ -91,9 +97,9 @@ $statusString .= '</select>';
                         endforeach; 
                     ?> 
                       <tr class="totals">
-                        <td colspan="2">Totals</td>
-                        <td><?= $priceDryClean; ?></td>
-                        <td><?= $priceLaundry; ?></td>
+                        <td colspan="2">&nbsp;</td>
+                        <td>Totals</td>
+                        <td><?= $price; ?></td>
                         <td><?= $quantity; ?></td>
                       </tr>  
                 </tbody>
@@ -123,7 +129,12 @@ function updateStatus(elem) {
   };
   xhttp.open("POST", url, true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.send("oid="+oid+"&ost="+statusId);
+  if(statusId === 0){
+        xhttp.send("oid="+oid+"&ost=100");
+  }else{
+      xhttp.send("oid="+oid+"&ost="+statusId);
+  }
+  
   
 }    
 </script>
