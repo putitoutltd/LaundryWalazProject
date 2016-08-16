@@ -165,7 +165,7 @@ class Utility
         $mail->Port            = SMTP_PORT;  
         $mail->IsSMTP();  
         $mail->SMTPSecure      = "ssl";
-        //$mail->SMTPDebug   = 2; 
+        $mail->SMTPDebug   = 2; 
         $mail->SMTPAuth        = true;
         $mail->SMTPKeepAlive   = true;                           
         $mail->Host            = SMTP_HOST;				 

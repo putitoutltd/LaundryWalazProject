@@ -25,14 +25,12 @@ class TestController extends BaseController
 
     protected function _send_test_email()
     {
-        $email = $this->request->params('email');
-        $link = Utility::base_url() . "/password-reset/?expiry_token=" . Utility::encrypt(1324513465);
-        $body = "Here's your Durex Turn Off reset link. You've got 30 minutes to reset your password. Reset now!
-                            <br/><br/><br/> " .
-                '<a href="' . $link . '">Reset now</a>';
-        //echo $body;
-        Utility::sendEmail("muhammad.shahbaz@putitout.co.uk", $email, "Test Email Without Html", "This is a test email");
-        Utility::sendEmail("bethan.jones@putitout.co.uk", $email, "Password Reset", $body);
+        $to = 'rashid.akram@putitout.co.uk';
+        $subject = 'test email';
+        $message = 'test email from putitout';
+        echo Utility::sendEmail('service@laundrywalaz.com',  'Laundrywalaz' , $to,$subject , $message);
+        
+        echo '<br /> testing...';
     }
 
 }

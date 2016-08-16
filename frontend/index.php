@@ -1520,7 +1520,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                         
                     }
                     else if(data.status === 'failure'){
-                        localStorage.removeItem("_lus");
+                       // localStorage.removeItem("_lus");
                     }
                 });
             }
@@ -1797,7 +1797,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                             'action'                : 'create_order'
                         };
                         
-                        //console.log(orderObj);
+                        console.log(orderObj);
                         // process the form
                         $.ajax({
                             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
