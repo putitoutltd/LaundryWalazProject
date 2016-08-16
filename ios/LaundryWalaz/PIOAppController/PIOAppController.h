@@ -74,8 +74,8 @@ typedef NS_ENUM(NSInteger, PIODeviceHeight){
 - (void)showInternetNotAvailableAletr;
 - (void)titleFroNavigationBar:(NSString *)title onViewController:(UIViewController *)viewController;
 
-#pragma mark - Log Flurry Events
+#pragma mark - Log Firebase Events
 
-- (void)logFlurryEvent:(NSString *)event eventParameterValue:(NSString *)value forKey:(NSString *)key;
+- (void)fireBaseEventWithEventName:(NSString *)event eventParameterValue:(NSString *)value forKey:(NSString *)key;
 
 @end

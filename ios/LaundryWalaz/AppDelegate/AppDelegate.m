@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PIOAppController.h"
+@import Firebase;
 
 @interface AppDelegate ()
 {
@@ -29,6 +30,7 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     [self setWindowRootViewController];
+    [FIRApp configure];
     
     return YES;
 }

@@ -9,8 +9,8 @@
 #import "PIOURLManager.h"
 
 
-//NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
-NSString *const PIOBaseURL = @"http://backend.laundrywalaz.com";
+NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
+//NSString *const PIOBaseURL = @"http://backend.laundrywalaz.com";
 
 @implementation PIOURLManager
 

@@ -102,6 +102,8 @@
 		456034281D23D56400437050 /* PIOMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456034261D23D56400437050 /* PIOMapViewController.xib */; };
 		4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342B1D23DA2E00437050 /* CoreLocation.framework */; };
 		4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342D1D23DA3600437050 /* MapKit.framework */; };
+		456A8E451D62FD6400469D86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 456A8E441D62FD6400469D86 /* GoogleService-Info.plist */; };
+		456A8E471D63013F00469D86 /* ServiceAccount.json in Resources */ = {isa = PBXBuildFile; fileRef = 456A8E461D63013F00469D86 /* ServiceAccount.json */; };
 		457F488B1D24F7F200600AB5 /* PIOPriceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */; };
 		457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */; };
 		45892A821D4230730013BDBE /* PIOWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45892A801D4230730013BDBE /* PIOWebViewController.m */; };
@@ -150,7 +152,7 @@
 		45CEABA11D38CE9400524329 /* login-btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9D1D38CE9400524329 /* login-btn@2x.png */; };
 		45CEABA21D38CE9400524329 /* login-btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45CEAB9E1D38CE9400524329 /* login-btn@3x.png */; };
 		45D829F71D49D9CD00131B5D /* PIOPricingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D829F61D49D9CD00131B5D /* PIOPricingList.m */; };
-		AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */; };
+		82C623901573C563CE5BBCA9 /* libPods-LaundryWalaz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 985AAE70CEE64FA416BE24F9 /* libPods-LaundryWalaz.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,7 +173,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.debug.xcconfig"; sourceTree = "<group>"; };
 		452304421D1D191E0006EB01 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		452304431D1D191E0006EB01 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		452304461D1D21800006EB01 /* PIOLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOLoginViewController.h; path = LoginViewController/PIOLoginViewController.h; sourceTree = "<group>"; };
@@ -296,6 +297,8 @@
 		456034261D23D56400437050 /* PIOMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOMapViewController.xib; path = MapViewController/PIOMapViewController.xib; sourceTree = "<group>"; };
 		4560342B1D23DA2E00437050 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4560342D1D23DA3600437050 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		456A8E441D62FD6400469D86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		456A8E461D63013F00469D86 /* ServiceAccount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ServiceAccount.json; sourceTree = "<group>"; };
 		457F48881D24F7F200600AB5 /* PIOPriceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOPriceListViewController.h; sourceTree = "<group>"; };
 		457F48891D24F7F200600AB5 /* PIOPriceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOPriceListViewController.m; sourceTree = "<group>"; };
 		457F488A1D24F7F200600AB5 /* PIOPriceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOPriceListViewController.xib; sourceTree = "<group>"; };
@@ -355,8 +358,9 @@
 		45CEAB9E1D38CE9400524329 /* login-btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn@3x.png"; sourceTree = "<group>"; };
 		45D829F51D49D9CD00131B5D /* PIOPricingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOPricingList.h; path = Models/PIOPricingList.h; sourceTree = "<group>"; };
 		45D829F61D49D9CD00131B5D /* PIOPricingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOPricingList.m; path = Models/PIOPricingList.m; sourceTree = "<group>"; };
-		7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
+		827CFD5DBFB4349564706365 /* Pods-LaundryWalaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.debug.xcconfig"; sourceTree = "<group>"; };
+		985AAE70CEE64FA416BE24F9 /* libPods-LaundryWalaz.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LaundryWalaz.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFAD350DB08DF4D4A45FCCFA /* Pods-LaundryWalaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaundryWalaz.release.xcconfig"; path = "Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,7 +370,7 @@
 			files = (
 				4560342E1D23DA3600437050 /* MapKit.framework in Frameworks */,
 				4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */,
-				AC91C699F4D2BC8F03D8F05F /* libPods-LaundryWalaz.a in Frameworks */,
+				82C623901573C563CE5BBCA9 /* libPods-LaundryWalaz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,16 +396,16 @@
 			children = (
 				4560342D1D23DA3600437050 /* MapKit.framework */,
 				4560342B1D23DA2E00437050 /* CoreLocation.framework */,
-				7437BAA2A3F3425507AE68E9 /* libPods-LaundryWalaz.a */,
+				985AAE70CEE64FA416BE24F9 /* libPods-LaundryWalaz.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3FFEF2C0F806143309F29CF5 /* Pods */ = {
+		11CE8B45D8075BD94C5733C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */,
-				CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */,
+				827CFD5DBFB4349564706365 /* Pods-LaundryWalaz.debug.xcconfig */,
+				CFAD350DB08DF4D4A45FCCFA /* Pods-LaundryWalaz.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -634,8 +638,8 @@
 				454A27331D1BEF3600E30CDF /* LaundryWalazTests */,
 				454A273E1D1BEF3600E30CDF /* LaundryWalazUITests */,
 				454A27181D1BEF3600E30CDF /* Products */,
-				3FFEF2C0F806143309F29CF5 /* Pods */,
 				0D988E441654942FA31AD65C /* Frameworks */,
+				11CE8B45D8075BD94C5733C4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -678,6 +682,8 @@
 		454A271A1D1BEF3600E30CDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				456A8E461D63013F00469D86 /* ServiceAccount.json */,
+				456A8E441D62FD6400469D86 /* GoogleService-Info.plist */,
 				45892A841D4234530013BDBE /* terms.html */,
 				45892A851D4234530013BDBE /* faqs.html */,
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
@@ -986,12 +992,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 454A27441D1BEF3600E30CDF /* Build configuration list for PBXNativeTarget "LaundryWalaz" */;
 			buildPhases = (
-				7A1288923D32FEEC13CC23CB /* Check Pods Manifest.lock */,
+				1C6AA58E9CF8CA9DD73588F1 /* [CP] Check Pods Manifest.lock */,
 				454A27131D1BEF3600E30CDF /* Sources */,
 				454A27141D1BEF3600E30CDF /* Frameworks */,
 				454A27151D1BEF3600E30CDF /* Resources */,
-				F1E1AF3AD30AB63620B62693 /* Embed Pods Frameworks */,
-				B9ADA0BCC892F2FE6DB5211B /* Copy Pods Resources */,
+				D395E407F069E1D5EC3ED5DC /* [CP] Embed Pods Frameworks */,
+				4FA9FA3187BC2A820100FEBB /* [CP] Copy Pods Resources */,
+				456A8E481D6302A400469D86 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1166,6 +1173,7 @@
 				452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */,
 				452726E61D251B1C008A90B5 /* first-slide-667h@2x.png in Resources */,
 				4530EA381D2683ED00EAADBF /* menu-bg@3x.png in Resources */,
+				456A8E451D62FD6400469D86 /* GoogleService-Info.plist in Resources */,
 				45CEAB9A1D38C1A200524329 /* PIOForgotPasswordViewController.xib in Resources */,
 				452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */,
 				45892A831D4230730013BDBE /* PIOWebViewController.xib in Resources */,
@@ -1186,6 +1194,7 @@
 				45CE0F001D3FA0AD007BDAED /* PIOOrderStatusViewController.xib in Resources */,
 				45CEABA01D38CE9400524329 /* login-btn-667h@2x.png in Resources */,
 				452727081D252ECE008A90B5 /* MyriadPro-BoldCond.otf in Resources */,
+				456A8E471D63013F00469D86 /* ServiceAccount.json in Resources */,
 				45CE0F1A1D3FA54A007BDAED /* status-03@2x.png in Resources */,
 				452726F11D252169008A90B5 /* second-slide-568h@2x.png in Resources */,
 				45CA86021D37A0AF001F3014 /* register-icon-568h@2x.png in Resources */,
@@ -1210,14 +1219,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7A1288923D32FEEC13CC23CB /* Check Pods Manifest.lock */ = {
+		1C6AA58E9CF8CA9DD73588F1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1225,14 +1234,27 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B9ADA0BCC892F2FE6DB5211B /* Copy Pods Resources */ = {
+		456A8E481D6302A400469D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this path with the path to the key you just downloaded\nJSON_FILE=/Volumes/Other/2016/LaundryWalaz-git/ios/LaundryWalaz/ServiceAccount.json\n\n# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:609768126062:ios:49bfcec26f787233\n\ndefaults write com.google.SymbolUpload version -integer 1   # creates file if it does not exist\nJSON=$(cat \"${JSON_FILE}\")\n/usr/bin/plutil -replace \"app_${GOOGLE_APP_ID//:/_}\" -json \"${JSON}\" \"$HOME/Library/Preferences/com.google.SymbolUpload.plist\"\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym";
+		};
+		4FA9FA3187BC2A820100FEBB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1240,14 +1262,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LaundryWalaz/Pods-LaundryWalaz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F1E1AF3AD30AB63620B62693 /* Embed Pods Frameworks */ = {
+		D395E407F069E1D5EC3ED5DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1418,7 +1440,7 @@
 		};
 		454A27451D1BEF3600E30CDF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23F2E0F6E3CF2C9F9BEB1D07 /* Pods-LaundryWalaz.debug.xcconfig */;
+			baseConfigurationReference = 827CFD5DBFB4349564706365 /* Pods-LaundryWalaz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1436,7 +1458,7 @@
 		};
 		454A27461D1BEF3600E30CDF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBCF901683A862FB41FCD01C /* Pods-LaundryWalaz.release.xcconfig */;
+			baseConfigurationReference = CFAD350DB08DF4D4A45FCCFA /* Pods-LaundryWalaz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

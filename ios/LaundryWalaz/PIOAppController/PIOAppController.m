@@ -13,7 +13,8 @@
 
 #import "PIOHowToUseViewController.h"
 #import "PIOMapViewController.h"
-#import "Flurry.h"
+
+@import FirebaseAnalytics;
 
 static PIOAppController *sharedInstance = nil;
 static bool isFirstAccess = YES;
@@ -331,17 +332,16 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     viewController.navigationItem.titleView =topTitleLabel;
 }
 
-- (void)logFlurryEvent:(NSString *)event eventParameterValue:(NSString *)value forKey:(NSString *)key
+
+
+#pragma mark - Firebase Methods
+- (void)fireBaseEventWithEventName:(NSString *)event eventParameterValue:(NSString *)value forKey:(NSString *)key
 {
+    // [START custom_event_objc]
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc]init];
     [parameters setObject: value forKey: key];
-    [self logFlurryEvent: event parameters: parameters];
-}
-
-#pragma mark - Flurry Methods
-- (void)logFlurryEvent:(NSString *)event parameters:(NSMutableDictionary *)parameters
-{
-    [Flurry logEvent:event withParameters:parameters];
+    [FIRAnalytics logEventWithName:event parameters:parameters];
+    // [END custom_event_objc]
 }
 
 @end

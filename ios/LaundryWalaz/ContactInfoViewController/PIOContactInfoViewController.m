@@ -14,6 +14,11 @@
 #import "PIOUser.h"
 #import "PIOAPIResponse.h"
 
+#define EVENTS (@[@"Cantt_Area", @"Cavalary_Ground_Area", @"DHA_Phase_5_6_Area", @"Gulberg_I_V_Area"])
+#define KEYS (@[@"CanttArea", @"CavalaryGroundArea", @"DHAPhaseArea", @"GulbergArea"])
+#define VALUES (@[@"Cantt", @"Cavalary Ground", @"DHA Phase 5 , 6", @"Gulberg I-V"])
+
+
 @interface PIOContactInfoViewController () <UITextViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, assign, getter= isInfoSavedForFuture) BOOL infoSavedForFuture;
@@ -78,6 +83,9 @@
         
         [PIOAppController sharedInstance].order.specialInstructions = self.specialInstrructionsTextView.text;
         if ([[PIOAppController sharedInstance] connectedToNetwork]) {
+            
+            [[PIOAppController sharedInstance] fireBaseEventWithEventName: [EVENTS objectAtIndex: [[PIOAppController sharedInstance].order.location integerValue]-1] eventParameterValue: [VALUES objectAtIndex: [[PIOAppController sharedInstance].order.location integerValue]-1] forKey: [KEYS objectAtIndex: [[PIOAppController sharedInstance].order.location integerValue]-1]];
+            
             [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
             [PIOOrder createOrder: [PIOAppController sharedInstance].order callback:^(NSError *error, BOOL status, id responseObject) {
                 [[PIOAppController sharedInstance] hideActivityView];
