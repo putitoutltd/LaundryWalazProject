@@ -521,21 +521,16 @@
     
     if(result == NSOrderedDescending)
     {
-        NSLog(@"date1 is later than date2");
-        
-        return YES;
+       return YES;
         
     }
     else if(result == NSOrderedAscending)
     {
-        NSLog(@"date2 is later than date1");
         return  NO;
     }
     else
     {
-        
-        NSLog(@"date1 is equal to date2");
-        return  YES;
+       return  YES;
     }
     
     
@@ -571,7 +566,6 @@
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     timeFormatter.dateFormat = @"hh:mm aa";
     NSString *currentTimeString = [timeFormatter stringFromDate:newDate];
-    NSLog(@"Current hour = %@",currentTimeString);
     if (!isToday) {
         [timeSlots addObject: currentTimeString];
     }
@@ -614,14 +608,13 @@
         NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
         NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
         if ([[array objectAtIndex:0] integerValue] == 8) {
-            NSLog(@"Two hours later = 8:00 PM");
+          
             [timeSlots addObject: @"08:00 PM"];
             break;
         }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
             break;
         }
         [timeSlots addObject: twoHoursLaterStr];
-        NSLog(@"Two hours later = %@",twoHoursLaterStr);
     }
     
     
@@ -795,7 +788,6 @@
     final = [final stringByAppendingString:monthString];
     final = [final stringByAppendingString:@" "];
     final = [final stringByAppendingString:yearString];
-    NSLog(@"final string:---> %@",final);
     return final;
 }
 
@@ -853,10 +845,9 @@
     {
         isExpressDeliveryAvailable = NO;
     }
-    NSInteger minute = [dateComponents minute];
-    NSInteger second = [dateComponents second];
+//    NSInteger minute = [dateComponents minute];
+//    NSInteger second = [dateComponents second];
     
-    NSLog(@"Current Time  %@",[NSString stringWithFormat:@"%02ld:%02ld:%02ld %@", (long)hour, (long)minute, (long)second,am_OR_pm]);
     return  isExpressDeliveryAvailable;
 }
 

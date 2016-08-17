@@ -68,8 +68,6 @@
 
 - (void)refreshPage:(NSNotification *)notification
 {
-    NSLog(@"%@", notification.object);
-    NSLog(@"%@", [notification.object objectForKey:@"page"]);
     [self loadPageWithFileName: [notification.object objectForKey:@"page"]];
 }
 -(BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request   navigationType:(UIWebViewNavigationType)navigationType {

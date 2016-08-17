@@ -21,7 +21,6 @@
         
         NSError *error;
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&error];
-        NSLog(@"resonse%@",dictionary);
         if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
             callback(nil,NO, dictionary);
         } else {
@@ -45,7 +44,6 @@
         
         NSError *error;
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:&error];
-        NSLog(@"resonse%@",dictionary);
         if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
             callback(nil,NO, dictionary);
         } else {

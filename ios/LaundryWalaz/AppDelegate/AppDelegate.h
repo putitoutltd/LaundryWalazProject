@@ -6,6 +6,9 @@
 //  Copyright © 2016 pito. All rights reserved.
 //
 
+
+#define NSLog //
+
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

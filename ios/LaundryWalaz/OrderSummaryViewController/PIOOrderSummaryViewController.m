@@ -154,8 +154,6 @@
         final = [final stringByAppendingString:time];
     }
     
-    
-    NSLog(@"final string:---> %@",final);
     return final;
 }
 

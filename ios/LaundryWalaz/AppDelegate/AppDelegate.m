@@ -95,21 +95,18 @@
     {
             case NotReachable:
         {
-            NSLog(@"The internet is down.");
             [PIOAppController sharedInstance].internetActive = NO;
             [[PIOAppController sharedInstance] showInternetNotAvailableAletr];
             break;
         }
             case ReachableViaWiFi:
         {
-            NSLog(@"The internet is working via WIFI.");
-            [PIOAppController sharedInstance].internetActive = YES;
+           [PIOAppController sharedInstance].internetActive = YES;
             
             break;
         }
             case ReachableViaWWAN:
         {
-            NSLog(@"The internet is working via WWAN.");
             [PIOAppController sharedInstance].internetActive = YES;
             break;
         }
@@ -120,20 +117,17 @@
     {
             case NotReachable:
         {
-            NSLog(@"A gateway to the host server is down.");
             [PIOAppController sharedInstance].internetActive = NO;
             break;
         }
             case ReachableViaWiFi:
         {
-            NSLog(@"A gateway to the host server is working via WIFI.");
             [PIOAppController sharedInstance].internetActive = YES;
             break;
         }
             case ReachableViaWWAN:
         {
-            NSLog(@"A gateway to the host server is working via WWAN.");
-            [PIOAppController sharedInstance].internetActive = YES;
+           [PIOAppController sharedInstance].internetActive = YES;
             break;
         }
     }

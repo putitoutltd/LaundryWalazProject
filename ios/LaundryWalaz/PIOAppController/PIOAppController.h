@@ -18,6 +18,7 @@
 #import "PIOUser.h"
 #import "PIOOrder.h"
 
+#define NSLog //
 
 typedef NS_ENUM(NSInteger, PIODeviceName){
     PIODeviceNameiPhone4,
