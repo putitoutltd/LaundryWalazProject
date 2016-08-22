@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,9 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PIOFeedbackViewController">
             <connections>
+                <outlet property="customerNameTextField" destination="Shw-WM-K0O" id="nJt-oD-a1t"/>
                 <outlet property="dropdownButton" destination="BFW-hm-HWK" id="mDG-6b-8v9"/>
                 <outlet property="feedbackAboutTextField" destination="GiM-BL-BWI" id="Oqe-3b-0Vw"/>
                 <outlet property="feedbackDetailTextView" destination="sEc-es-Jdu" id="Vik-jb-zkj"/>
+                <outlet property="orderIDTextField" destination="aZZ-RN-KEu" id="XFP-Cl-JkE"/>
                 <outlet property="sendButton" destination="WBz-xC-Skw" id="yGc-cD-9Dd"/>
                 <outlet property="tableView" destination="bkk-a1-o8r" id="mzb-4O-2ci"/>
                 <outlet property="view" destination="xHv-P6-wmF" id="nU3-4Z-52B"/>
@@ -21,34 +23,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="feedback-icon" id="Wmi-aa-GJn">
-                    <rect key="frame" x="78" y="44" width="164" height="164"/>
+                    <rect key="frame" x="78" y="18" width="164" height="164"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your feedback is about" textAlignment="natural" minimumFontSize="17" id="GiM-BL-BWI">
-                    <rect key="frame" x="19" y="217" width="282" height="24"/>
+                    <rect key="frame" x="19" y="256" width="282" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                 </textField>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="laundry-location" id="3Gy-IU-a8z">
-                    <rect key="frame" x="272" y="223" width="22" height="14"/>
+                    <rect key="frame" x="272" y="262" width="22" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BFW-hm-HWK">
-                    <rect key="frame" x="19" y="215" width="282" height="30"/>
+                    <rect key="frame" x="19" y="254" width="282" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="dropdownButtonPressed:" destination="-1" eventType="touchUpInside" id="d6r-zV-bkn"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="NHf-QU-mE6">
-                    <rect key="frame" x="19" y="242" width="282" height="1"/>
+                    <rect key="frame" x="19" y="281" width="282" height="1"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666669999997" alpha="0.68970905169999996" colorSpace="calibratedWhite"/>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Feedback detail" textAlignment="natural" id="sEc-es-Jdu">
-                    <rect key="frame" x="19" y="267" width="282" height="117"/>
+                    <rect key="frame" x="19" y="306" width="282" height="117"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -59,7 +61,7 @@
                     </connections>
                 </textView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bkk-a1-o8r">
-                    <rect key="frame" x="19" y="243" width="282" height="81"/>
+                    <rect key="frame" x="19" y="282" width="282" height="81"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -68,7 +70,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WBz-xC-Skw">
-                    <rect key="frame" x="62" y="429" width="197" height="40"/>
+                    <rect key="frame" x="62" y="435" width="197" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="Send" backgroundImage="save-btn"/>
@@ -76,6 +78,30 @@
                         <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="HvF-aL-r26"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" id="T29-ik-cpz">
+                    <rect key="frame" x="19" y="253" width="201" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.68970905169999996" colorSpace="calibratedWhite"/>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Order ID" minimumFontSize="17" id="aZZ-RN-KEu">
+                    <rect key="frame" x="228" y="228" width="84" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                </textField>
+                <view contentMode="scaleToFill" id="Z8F-3y-2DC">
+                    <rect key="frame" x="228" y="253" width="84" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="0.68970905169999996" colorSpace="calibratedWhite"/>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Customer Name" textAlignment="natural" minimumFontSize="17" id="Shw-WM-K0O">
+                    <rect key="frame" x="19" y="228" width="201" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

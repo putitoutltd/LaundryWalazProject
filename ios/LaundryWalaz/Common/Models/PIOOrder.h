@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *bedLinenList;
 @property (nonatomic, strong) NSMutableArray *womenApparelList;
 @property (nonatomic, strong) NSMutableArray *menApparelList;
+@property (nonatomic, strong) NSMutableArray *otherItems;
 
 
 - (instancetype)initWithInitialParameters:(NSString *)address location:(NSString *)location;

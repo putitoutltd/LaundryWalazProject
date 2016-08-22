@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pickupTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *oderCancelledLabel;
 
 @end
 
@@ -46,7 +47,7 @@
     [self.pickupTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
     [self.timeLabel setFont: [UIFont PIOMyriadProLightWithSize: 31.06f]];
     [self.dayLabel setFont: [UIFont PIOMyriadProLightWithSize: 12.04f]];
-    
+    [self.oderCancelledLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.46f]];
     [self.pickupTitleLabel setText: @""];
     [self.timeLabel setText: @""];
     [self.dayLabel setText: @""];
@@ -59,6 +60,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
+    self.oderCancelledLabel.hidden = YES;
     [self orderStatus];
 }
 
@@ -86,6 +88,7 @@
                 NSString *status = (NSString *)responseObject;
                 UIImage *backgroundImage = nil;
                 self.pickupTitleLabel.hidden = NO;
+                self.oderCancelledLabel.hidden = YES;
                 switch ( [status integerValue]) {
                     case 0:
                     {
@@ -122,6 +125,9 @@
                     case 5:
                     {
                         self.pickupTitleLabel.hidden = YES;
+                        self.dayLabel.hidden = YES;
+                        self.timeLabel.hidden = YES;
+                        self.oderCancelledLabel.hidden = NO;
                         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Your order has been cancelled." withNotificationPosition: TSMessageNotificationPositionTop type: 0];
                         
                         break;

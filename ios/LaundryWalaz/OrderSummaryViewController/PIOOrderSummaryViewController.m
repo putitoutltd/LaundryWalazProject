@@ -81,17 +81,17 @@
 
 - (void)applyFonts
 {
-    [self.orderPlacedTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 13.5f]];
-    [self.orderIDTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.75f]];
-    [self.orderIDLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
-    [self.pickUpDateTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.75f]];
-    [self.pickUpDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
-    [self.deliveryDateTitleLabel setFont: [UIFont PIOMyriadProLightWithSize:8.75f]];
-    [self.deliverDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
-    [self.AddressTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 8.75f]];
-    [self.addressLabel setFont: [UIFont PIOMyriadProLightWithSize: 11.25f]];
-    [self.cancelButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
-    [self.orderStatusButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.65f]];
+    [self.orderPlacedTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.5f]];
+    [self.orderIDTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.75f]];
+    [self.orderIDLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.25f]];
+    [self.pickUpDateTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.75f]];
+    [self.pickUpDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.25f]];
+    [self.deliveryDateTitleLabel setFont: [UIFont PIOMyriadProLightWithSize:15.75f]];
+    [self.deliverDateLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.25f]];
+    [self.AddressTitleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.75f]];
+    [self.addressLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.25f]];
+    [self.cancelButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.65f]];
+    [self.orderStatusButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.65f]];
     
 }
 

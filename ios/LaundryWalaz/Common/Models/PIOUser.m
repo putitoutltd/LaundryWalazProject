@@ -172,12 +172,15 @@
     }];
 }
 
-+ (void)userFeedback:(NSString *)feedbackAbout feedbackDetail:(NSString *)feedbackText callback:(void (^)(NSError *error,BOOL status, id responseObject))callback
++ (void)userFeedback:(NSString *)feedbackAbout customerName:(NSString *)cName orderID:(NSString *)orderID feedbackDetail:(NSString *)feedbackText callback:(void (^)(NSError *error,BOOL status, id responseObject))callback
 {
     NSString *requestURL = [PIOURLManager feedbackURL];
     NSDictionary *parameters =  [[NSDictionary alloc] initWithObjectsAndKeys:
                                  feedbackAbout, @"about",
-                                 feedbackText, @"feedback", nil];
+                                 feedbackText, @"feedback",
+                                 cName, @"customerName",
+                                 orderID, @"orderId",
+                                 nil];
     
     [PIORequestHandler getRequest: requestURL parameters: parameters callback:^(NSError *error, BOOL status, id responseObject) {
         NSDictionary *dictionary = (NSDictionary *)responseObject;

@@ -18,6 +18,8 @@
 @property (nonatomic, weak) IBOutlet UITextView *feedbackDetailTextView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITextField *customerNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *orderIDTextField;
 
 @end
 
@@ -70,9 +72,21 @@
 
 - (IBAction)sendButtonPressed:(id)sender
 {
-    if (self.feedbackAboutTextField.text.length == 0) {
+    if (self.customerNameTextField.text.length == 0) {
         
-        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please feedback about option." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter customer name." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        return;
+        
+    }
+    else if (self.orderIDTextField.text.length == 0) {
+        
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter order ID." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        return;
+        
+    }
+    else if (self.feedbackAboutTextField.text.length == 0) {
+        
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please select feedback about option." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
         
     }
@@ -135,7 +149,7 @@
 {
     if ([[PIOAppController sharedInstance] connectedToNetwork]) {
         [[PIOAppController sharedInstance] showActivityViewWithMessage: @""];
-        [PIOUser userFeedback: self.feedbackAboutTextField.text feedbackDetail: self.feedbackDetailTextView.text callback:^(NSError *error, BOOL status, id responseObject) {
+        [PIOUser userFeedback: self.feedbackAboutTextField.text  customerName: self.customerNameTextField.text orderID: self.orderIDTextField.text feedbackDetail: self.feedbackDetailTextView.text callback:^(NSError *error, BOOL status, id responseObject) {
             [[PIOAppController sharedInstance] hideActivityView];
             if (status) {
                 [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Feedback sent successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeSuccess];

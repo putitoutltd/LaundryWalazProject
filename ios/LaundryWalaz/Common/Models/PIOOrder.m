@@ -129,6 +129,7 @@
                 order.bedLinenList = [[NSMutableArray alloc]init];
                 order.menApparelList = [[NSMutableArray alloc]init];
                 order.womenApparelList = [[NSMutableArray alloc]init];
+                order.otherItems = [[NSMutableArray alloc]init];
                 
                 NSArray *BedLinen = dictionary[@"data"][@"Bed Linen"];
                 for (NSDictionary *dict in BedLinen) {
@@ -146,6 +147,12 @@
                 for (NSDictionary *dict in womenApparelList) {
                     PIOPricingList *priceList = [[PIOPricingList alloc] initWithInitialParameters: [dict objectForKey: @"category"] name: [dict objectForKey: @"name"] priceDryclean: [dict objectForKey: @"price_dryclean"] priceLaundry: [dict objectForKey: @"price_laundry"]];
                     [order.womenApparelList addObject: priceList];
+                }
+                
+                NSArray *otherItems = dictionary[@"data"][@"Other Items"];
+                for (NSDictionary *dict in otherItems) {
+                    PIOPricingList *priceList = [[PIOPricingList alloc] initWithInitialParameters: [dict objectForKey: @"category"] name: [dict objectForKey: @"name"] priceDryclean: [dict objectForKey: @"price_dryclean"] priceLaundry: [dict objectForKey: @"price_laundry"]];
+                    [order.otherItems addObject: priceList];
                 }
                 
                 callback(error, YES, order);

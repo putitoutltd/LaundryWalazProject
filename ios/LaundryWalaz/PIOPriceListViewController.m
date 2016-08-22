@@ -44,8 +44,8 @@
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Pricing" onViewController:self];
     
-    self.headerTitles = [NSMutableArray arrayWithObjects: @"MEN’S WEAR CLOTHING", @"WOMEN’S WEAR CLOTHING", @"BED LINEN", nil];
-    self.headerImages = [NSMutableArray arrayWithObjects: @"menz-wears", @"womenz-wears", @"bed-linen", nil];
+    self.headerTitles = [NSMutableArray arrayWithObjects: @"Men’s Apparel", @"Woman’s Apparel", @"Bed Linen", @"Other Items", nil];
+    self.headerImages = [NSMutableArray arrayWithObjects: @"menz-wears", @"womenz-wears", @"bed-linen", @"others-icon (2)", nil];
     [self pricingListAPICall];
 }
 
@@ -86,7 +86,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
-    return  3;
+    return  4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -103,6 +103,11 @@
         case 2:
             rows = self.order.bedLinenList.count;
             break;
+       
+        case 3:
+            rows = self.order.otherItems.count;
+            break;
+
             
         default:
             break;
@@ -132,6 +137,10 @@
     }
     else if (indexPath.section ==2) {
         self.priceList = self.order.bedLinenList;
+        row = indexPath.row;
+    }
+    else if (indexPath.section ==3) {
+        self.priceList = self.order.otherItems;
         row = indexPath.row;
     }
     
@@ -165,9 +174,33 @@
     
 }
 
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    
+    if (section == 3) {
+        UIView *headerView = [[UIView alloc]initWithFrame: CGRectMake(0, 0, tableView.frame.size.width, 30)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame: CGRectMake(58, 6, 300, 20)];
+        [titleLabel setText: @"All prices are exclusive of any applicable taxes"];
+        [titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 15.0f]];
+        titleLabel.textColor = [UIColor redColor];
+        [headerView addSubview: titleLabel];
+        return  headerView;
+    }
+    
+    return  nil;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 15;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 3) {
+        return 30;
+    }
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
