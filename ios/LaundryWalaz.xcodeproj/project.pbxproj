@@ -98,6 +98,10 @@
 		454A277D1D1C098500E30CDF /* PIOURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A277C1D1C098500E30CDF /* PIOURLManager.m */; };
 		454A27821D1C0CA900E30CDF /* PIOHowToUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */; };
 		454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */; };
+		454FC5D21D7D9E9400A529CA /* laundry-phone-number.png in Resources */ = {isa = PBXBuildFile; fileRef = 454FC5D01D7D9E9400A529CA /* laundry-phone-number.png */; };
+		454FC5D31D7D9E9400A529CA /* laundry-walaz-email.png in Resources */ = {isa = PBXBuildFile; fileRef = 454FC5D11D7D9E9400A529CA /* laundry-walaz-email.png */; };
+		454FC5D71D7DA0AC00A529CA /* faqs.html in Resources */ = {isa = PBXBuildFile; fileRef = 454FC5D61D7DA0AC00A529CA /* faqs.html */; };
+		454FC5DF1D7DA43A00A529CA /* laundry-walaz-email.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 454FC5DE1D7DA43A00A529CA /* laundry-walaz-email.jpg */; };
 		456034271D23D56400437050 /* PIOMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 456034251D23D56400437050 /* PIOMapViewController.m */; };
 		456034281D23D56400437050 /* PIOMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 456034261D23D56400437050 /* PIOMapViewController.xib */; };
 		4560342C1D23DA2E00437050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560342B1D23DA2E00437050 /* CoreLocation.framework */; };
@@ -109,7 +113,6 @@
 		45892A821D4230730013BDBE /* PIOWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45892A801D4230730013BDBE /* PIOWebViewController.m */; };
 		45892A831D4230730013BDBE /* PIOWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45892A811D4230730013BDBE /* PIOWebViewController.xib */; };
 		45892A861D4234530013BDBE /* terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 45892A841D4234530013BDBE /* terms.html */; };
-		45892A871D4234530013BDBE /* faqs.html in Resources */ = {isa = PBXBuildFile; fileRef = 45892A851D4234530013BDBE /* faqs.html */; };
 		45892A8A1D42524A0013BDBE /* PIOMyAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 45892A891D42524A0013BDBE /* PIOMyAnnotation.m */; };
 		4594831B1D47814A009EF2FC /* PIOOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4594831A1D47814A009EF2FC /* PIOOrder.m */; };
 		45A302851D3E1A05009539F2 /* PIOOrderSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A302831D3E1A05009539F2 /* PIOOrderSummaryViewController.m */; };
@@ -292,6 +295,10 @@
 		454A277F1D1C0CA900E30CDF /* PIOHowToUseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIOHowToUseViewController.h; sourceTree = "<group>"; };
 		454A27801D1C0CA900E30CDF /* PIOHowToUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIOHowToUseViewController.m; sourceTree = "<group>"; };
 		454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIOHowToUseViewController.xib; sourceTree = "<group>"; };
+		454FC5D01D7D9E9400A529CA /* laundry-phone-number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "laundry-phone-number.png"; sourceTree = "<group>"; };
+		454FC5D11D7D9E9400A529CA /* laundry-walaz-email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "laundry-walaz-email.png"; sourceTree = "<group>"; };
+		454FC5D61D7DA0AC00A529CA /* faqs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = faqs.html; sourceTree = "<group>"; };
+		454FC5DE1D7DA43A00A529CA /* laundry-walaz-email.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "laundry-walaz-email.jpg"; sourceTree = "<group>"; };
 		456034241D23D56400437050 /* PIOMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOMapViewController.h; path = MapViewController/PIOMapViewController.h; sourceTree = "<group>"; };
 		456034251D23D56400437050 /* PIOMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOMapViewController.m; path = MapViewController/PIOMapViewController.m; sourceTree = "<group>"; };
 		456034261D23D56400437050 /* PIOMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOMapViewController.xib; path = MapViewController/PIOMapViewController.xib; sourceTree = "<group>"; };
@@ -306,7 +313,6 @@
 		45892A801D4230730013BDBE /* PIOWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOWebViewController.m; path = WebViewController/PIOWebViewController.m; sourceTree = "<group>"; };
 		45892A811D4230730013BDBE /* PIOWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PIOWebViewController.xib; path = WebViewController/PIOWebViewController.xib; sourceTree = "<group>"; };
 		45892A841D4234530013BDBE /* terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = terms.html; sourceTree = "<group>"; };
-		45892A851D4234530013BDBE /* faqs.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = faqs.html; sourceTree = "<group>"; };
 		45892A881D42524A0013BDBE /* PIOMyAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOMyAnnotation.h; path = ../PIOMyAnnotation.h; sourceTree = "<group>"; };
 		45892A891D42524A0013BDBE /* PIOMyAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIOMyAnnotation.m; path = ../PIOMyAnnotation.m; sourceTree = "<group>"; };
 		459483191D47814A009EF2FC /* PIOOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIOOrder.h; path = Models/PIOOrder.h; sourceTree = "<group>"; };
@@ -682,10 +688,13 @@
 		454A271A1D1BEF3600E30CDF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				454FC5DE1D7DA43A00A529CA /* laundry-walaz-email.jpg */,
+				454FC5D51D7DA0AC00A529CA /* HTML */,
+				454FC5D01D7D9E9400A529CA /* laundry-phone-number.png */,
+				454FC5D11D7D9E9400A529CA /* laundry-walaz-email.png */,
 				456A8E461D63013F00469D86 /* ServiceAccount.json */,
 				456A8E441D62FD6400469D86 /* GoogleService-Info.plist */,
 				45892A841D4234530013BDBE /* terms.html */,
-				45892A851D4234530013BDBE /* faqs.html */,
 				454A272B1D1BEF3600E30CDF /* Info.plist */,
 				45CE0F031D3FA54A007BDAED /* OrderStatus */,
 				45CA85FD1D37A0AF001F3014 /* Register */,
@@ -827,6 +836,14 @@
 				454A27811D1C0CA900E30CDF /* PIOHowToUseViewController.xib */,
 			);
 			path = HowToUseViewController;
+			sourceTree = "<group>";
+		};
+		454FC5D51D7DA0AC00A529CA /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				454FC5D61D7DA0AC00A529CA /* faqs.html */,
+			);
+			path = HTML;
 			sourceTree = "<group>";
 		};
 		456034231D23D53C00437050 /* MapViewController */ = {
@@ -1105,7 +1122,6 @@
 				4530EA0D1D26839400EAADBF /* close-menu@2x.png in Resources */,
 				4530EA271D2683D800EAADBF /* close-menu-667h@2x.png in Resources */,
 				45315E3E1D52018700764C13 /* status-05-667h@2x.png in Resources */,
-				45892A871D4234530013BDBE /* faqs.html in Resources */,
 				45CE0F261D3FA54A007BDAED /* status-03-667h@2x.png in Resources */,
 				454A27831D1C0CA900E30CDF /* PIOHowToUseViewController.xib in Resources */,
 				45A302861D3E1A05009539F2 /* PIOOrderSummaryViewController.xib in Resources */,
@@ -1115,6 +1131,7 @@
 				4530EA2B1D2683D800EAADBF /* menu-bg-667h@2x.png in Resources */,
 				45CE0F1F1D3FA54A007BDAED /* status-04-568h@2x.png in Resources */,
 				4530EA111D26839400EAADBF /* menu-bg@2x.png in Resources */,
+				454FC5D31D7D9E9400A529CA /* laundry-walaz-email.png in Resources */,
 				452726F81D2522CA008A90B5 /* first-slide@3x.png in Resources */,
 				452726F01D252169008A90B5 /* pick-up-568h@2x.png in Resources */,
 				45CE0F191D3FA54A007BDAED /* status-02@2x.png in Resources */,
@@ -1168,17 +1185,20 @@
 				45315E3C1D52017B00764C13 /* status-05-568h@2x.png in Resources */,
 				452727091D252ECE008A90B5 /* MyriadPro-BoldCondIt.otf in Resources */,
 				457F488C1D24F7F200600AB5 /* PIOPriceListViewController.xib in Resources */,
+				454FC5D71D7DA0AC00A529CA /* faqs.html in Resources */,
 				4530EA2A1D2683D800EAADBF /* logo-667h@2x.png in Resources */,
 				4530EA351D2683ED00EAADBF /* facebook@3x.png in Resources */,
 				452726DD1D2515EC008A90B5 /* first-slide@2x.png in Resources */,
 				452726E61D251B1C008A90B5 /* first-slide-667h@2x.png in Resources */,
 				4530EA381D2683ED00EAADBF /* menu-bg@3x.png in Resources */,
+				454FC5D21D7D9E9400A529CA /* laundry-phone-number.png in Resources */,
 				456A8E451D62FD6400469D86 /* GoogleService-Info.plist in Resources */,
 				45CEAB9A1D38C1A200524329 /* PIOForgotPasswordViewController.xib in Resources */,
 				452726E91D251B1C008A90B5 /* third-slide-667h@2x.png in Resources */,
 				45892A831D4230730013BDBE /* PIOWebViewController.xib in Resources */,
 				452726FA1D2522CA008A90B5 /* second-slide@3x.png in Resources */,
 				45CA86091D37B41F001F3014 /* menu-btn.png in Resources */,
+				454FC5DF1D7DA43A00A529CA /* laundry-walaz-email.jpg in Resources */,
 				45CA86041D37A0AF001F3014 /* register-icon@2x.png in Resources */,
 				452726F91D2522CA008A90B5 /* pick-up@3x.png in Resources */,
 				4523044A1D1D21800006EB01 /* PIOLoginViewController.xib in Resources */,
@@ -1236,7 +1256,7 @@
 		};
 		456A8E481D6302A400469D86 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
