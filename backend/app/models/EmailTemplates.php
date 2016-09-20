@@ -314,7 +314,7 @@ class EmailTemplates
     }
     
     
-    public static function sendFeedbackEmail($about, $feedback){
+    public static function sendFeedbackEmail($about, $feedback, $customerName, $orderId){
         
         
         $subject = 'New Feedback received';
@@ -374,8 +374,10 @@ class EmailTemplates
           <title>New Feedback Received</title>
         </head>
         <body>
-          <p>The feedback was about <b>'.$about.'</b></p>
-          <p>'.$feedback.'</p> 
+            <p>The feedback was about: <b>'.$about.'</b></p>
+            <p>Customer Name: <b>'.$customerName.'</b></p>
+            <p>Order Id: <b>'.$orderId.'</b></p>
+            <p>Feedback: '.$feedback.'</p>  
 
 
         </body>

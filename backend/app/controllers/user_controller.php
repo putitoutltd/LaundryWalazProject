@@ -649,6 +649,8 @@ class UserController extends BaseController
         $auth_token = $this->app->request->headers->get("auth-token");
         $this->validateHeaders($auth_token);    // validating auth headers
        
+        $customerName = $this->request->params('customerName');
+        $orderId = $this->request->params('orderId');
         $about = $this->request->params('about');
         $feedback = $this->request->params('feedback');
         
@@ -659,7 +661,7 @@ class UserController extends BaseController
         
         if(!empty($about) && !empty($feedback) ){
             
-            if(EmailTemplates::sendFeedbackEmail($about, $feedback)){
+            if(EmailTemplates::sendFeedbackEmail($about, $feedback, $customerName, $orderId)){
                 $response['status'] = Response::SUCCESS;
                 $response['message'] = Messages::EMAIL_SENT_SUCCESSFULLY;
             }else{

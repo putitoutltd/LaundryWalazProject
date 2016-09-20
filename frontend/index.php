@@ -112,6 +112,20 @@
             .menu_logout{
                 
             }
+            .copytext-holder p span.text-icons{
+                display: inline-block;
+            }
+            .copytext-holder p span.text-icons img{
+                margin-right: 2px;
+                margin-left: 5px;
+                width: 20px;
+            }
+            .login-key img {
+                max-width: 90px;
+            }
+            .less-margin{
+                margin-bottom: 10px;
+            }
         </style>
         <script type="text/javascript">
             //global variables
@@ -412,12 +426,12 @@
                         <div class="try-our-app">
                             <h2>Tried Our App Yet ?</h2>
                             <p>Clean clothes are just a tap away with Laundry Walaz.</p>
-                            <!--div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="appstore-btns">
-                                    <a href="#"><img src="images/app-store.png" alt="" ></a>
+                                    <a href="https://itunes.apple.com/pk/app/laundrywalaz/id1144962466?ls=1&mt=8"><img src="images/app-store.png" alt="" ></a>
                                 </div>
 
-                            </div -->
+                            </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <div class="appstore-btns">
                                     <a target="_blank" href="https://play.google.com/store/apps/details?id=putitout.laundrywalaz"><img src="images/goolge-play.png" alt="" ></a>
@@ -717,7 +731,7 @@
                                                         </div>
                                                     </li>
                                                 </ul>
-                                                <p>Deliveries are made from 6:00 - 9:00 pm on the chosen day</p>
+                                                <p style="color:red;">Your order shall be delivered between 6:00 - 9:00 pm on the chosen day</p>
 
                                             </div>
                                         </div>
@@ -1136,6 +1150,12 @@
                                         <p>We want to hear what you love and what you think we can do better.</p>
                                     </div>
                                     <div class="feedback-row">
+                                        <input type="text" name="customer_name"  id="customer_name" class="laundry-input less-margin" placeholder="Your Name">
+                                    </div>
+                                    <div class="feedback-row">
+                                        <input type="text" name="order_id" id="order_id" class="laundry-input less-margin" placeholder="Order ID">
+                                    </div>
+                                    <div class="feedback-row">
                                         <div class="operating-areas-options">
                                             <select class="selectpicker" id="feedback_about">
                                                 <option>Your Feedback about ?</option>
@@ -1147,7 +1167,7 @@
                                         </div>
                                     </div>
                                     <div class="feedback-row">
-                                        <textarea id="feedback_description"></textarea>
+                                        <textarea id="feedback_description" placeholder="Your Feedback..."></textarea>
                                     </div>
                                     <div class="feedback-row">
                                         <input type="button" onclick="sendFeedback()" class="laundry-submit" value="Send" >
@@ -1242,7 +1262,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                     It's easy <br>1) Just download our app from the App Store or Google Play. Follow the on-screen instructions to schedule a pickup time within 60 seconds.
                                     <br>2) You can also place an order using our website www.laundrywalaz.com<br>
                                     <br>
-3) Simply call us on 0423-6688830-1
+3) Simply call us on <span class="text-icons"><img src="images/laundry-phone-number.svg" alt="Laundry Walaz Email"></span>042-36688830-1
  
                                 </p>
                                 <h3>How should I sort my laundry before collection?</h3>
@@ -1255,7 +1275,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 <p>You need to provide us with your Name, Mobile Number, Address and Pickup/Drop off dates and time.</p>
                                 <h3>Do I have to count the items before handing over to your rider?</h3>
                                 <p>Yes please! We request you to count your clothes at the time of pickup and verify it on the pickup slip. No claims for garment loss will be entertained once the order gets completed. Please double check the number of items provided.</p>
-                                <h3>Why do I have to sign on the invoice?</h3>
+                                <h3>Why do I have to sign the invoice?</h3>
                                 <p>By signing the slip, you agree to the number of items collected and the terms and conditions.</p>
                                 <h3>Do I get an order confirmation call?</h3>
                                 <p>Yes, our customer services will call you and confirm the order. We shall also send you an order confirmation email. </p>
@@ -1270,7 +1290,7 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 <h3>Which items can be washed and which can be dry Cleaned?</h3>
                                 <p>Read the care instructions on the clothing label inside the garment to be positive. A general rule of thumb is that dry cleaning is for synthetic materials and more refined items - e.g. suits, delicate dresses - and laundry is for natural materials - e.g. t-shirts, pants, socks. Don't worry, we process clothes according to the care label. </p>
                                 <h3>How can I contact you?</h3>
-                                <p>You can either call us on 0423-6688830-1 or by emailing us at info@laundrywalaz.com</p>
+                                <p>You can either call us on <span class="text-icons"><img src="images/laundry-phone-number.svg" alt="Laundry Walaz Email"></span>042-36688830-1 or by emailing us at <span  class="text-icons"><img src="images/laundry-walaz-email.svg" alt="Laundry Walaz Email"></span>info@laundrywalaz.com</p>
                                 <h3 class="subheading">2. Payment</h3>
                                 <h3>How much does it cost?</h3>
                                 <p>Please see our pricing list here: <a href="#pricing-table" class="page-scroll closeterms">http://laundrywalaz.com/pricing</a></p>
@@ -1290,19 +1310,19 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                                 <h3>Are my clothes insured whilst in your care?</h3>
                                 <p>You don't have to worry - we take good care of your clothes. Yes, they are and fall under the standard terms and conditions while being laundered. For any damage or loss, we are liable to pay up to 5 times the cost of work rendered.</p>
                                 <h3>Are there things that you will not wash?</h3>
-                                <p>Currently, we wash most items of clothing apart from leather items. If our laundry specialist discovers that it would not be sensible to wash a certain textile, we will contact you and agree on how to continue.</p>
+                                <p>Currently, we wash most of the clothing items apart from leather.  If our laundry specialist is unsure about how to treat a certain type of garment or fabric, we will contact you and take your consent.</p>
                                 <h3>Can you get a stain out for me?</h3>
                                 <p>We can definitely try! Stains are best treated immediately, so your garment has a better chance of recovery. Turn your garment inside out and run cold water over the stain. This will greatly help the affected area, and in return make the stain easier to remove.</p>
                                 <h3>How do I know that my personal items of laundry are in safe hands?</h3>
                                 <p>The safety of personal items is in our hearts. Our Laundry Walaz riders understand that and are hand-selected professionals. If your personal items need to be washed a certain way, don't worry we'll ask you for any special requests when we collect them.</p>
                                 <h3>How do you keep my clothes together?</h3>
-                                <p>At the washing facility we use a bag system to ensure your clothes stay together along with tagging of each individual item don't worry,we won't get them mixed up.</p>
+                                <p>We have a tagging system at our facility. All your items are tagged with a unique ID to ensure proper tracking. Don't worry they won't mix up.</p>
                                 <h3>My clothes need to be washed in a specific way - what can you do?</h3>
                                 <p>We know that your clothes are very personal items. Hence, our rider will ask you about the way your laundry should be processed at each pickup.</p>
                                 <h3>What do I do if you ruin my clothes?</h3>
                                 <p>In the unlikely event of this happening, please contact our customer care within 24 hours of receiving your items. We'll deal with these situations on a personal level.</p>
                                 <h3>Where does the washing go?</h3>
-                                <p>Your order is taken to our professional facility, which is continuously tested and monitored to ensure a high quality of service.</p>
+                                <p>Your order is taken to our facility where our specialists process it. We continuously monitor and test our washing techniques to ensure premium quality.</p>
                                 
                             </div>
 
@@ -1897,12 +1917,16 @@ LAUNDRY WALAZ will not guarantee the successful removal of any stain but will ma
                     
                      function sendFeedback() {
                        
+                        var customerName = $("#customer_name").val();
+                        var orderId = $("#order_id").val();
                         var feedbackAbout = $("#feedback_about").val();
                         var feedbackDescription = $("#feedback_description").val();
                         var orderObj = {
-                            'about'                 : feedbackAbout,
-                            'feedback'                 : feedbackDescription,
-                            'action'                : 'feedback'
+                            'customerName'      : customerName,
+                            'orderId'           : orderId,
+                            'about'             : feedbackAbout,
+                            'feedback'          : feedbackDescription,
+                            'action'            : 'feedback'
                         };
                         
                         //console.log(orderObj);
