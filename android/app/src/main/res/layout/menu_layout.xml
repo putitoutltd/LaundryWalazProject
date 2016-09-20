@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/menu_bg"
+    android:clickable="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="@dimen/_30px"
+            android:src="@drawable/logo"/>
+
+        <ImageView
+            android:id="@+id/crossImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_30px"
+            android:layout_marginTop="@dimen/_30px"
+            android:src="@drawable/close_menu"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8.8"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="32.7"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/menuSettingsImageView"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo"/>
+
+            <View
+                android:layout_toRightOf="@+id/menuSettingsImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="49.8"
+            android:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/menuSett"
+                android:layout_width="match_parent"
+                android:gravity="start"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/close_menu"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.3"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menuMyKidlrLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuPickupTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/menuPickUp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/menuFindFriendsLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuMyOrderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/menuMyOrder"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/myOrderView"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/menuManageFriendsLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuPriceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/menuPricing"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/menuAddBabyLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuHowItWorksTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/menuHowItWorks"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/menuPrivacyLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuFeedbackTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/menuFeedBack"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:id="@+id/menuLogoutLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuLogoutTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logOut"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_80_84px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.6"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuFAQTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menuFAQ"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_61px"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/_55px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/menuTermsAndPoliciesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menuTermsAndPolicies"
+            android:layout_toRightOf="@+id/menuFAQTextView"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_61px"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/_110px"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+        <ImageView
+            android:id="@+id/menuFaceBookImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/menuInstagramImageView"
+            android:layout_marginRight="@dimen/_30px"
+            android:src="@drawable/facebook"/>
+
+        <ImageView
+            android:id="@+id/menuInstagramImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30px"
+            android:layout_toLeftOf="@+id/menuCallImageView"
+            android:src="@drawable/instagram"/>
+
+        <ImageView
+            android:id="@+id/menuCallImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30px"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/_30px"
+            android:src="@drawable/call"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

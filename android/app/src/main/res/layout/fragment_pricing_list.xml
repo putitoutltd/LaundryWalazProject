@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:isScrollContainer="true"
+    android:clickable="false"
+    android:scrollbars="vertical"
+    android:scrollIndicators="right"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/headerRelativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:visibility="visible"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/staticMensWearing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/menz_wears"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/headerSectionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/staticMensWearing"
+                android:text="Men's Apparel"
+                android:textStyle="bold"
+                android:gravity="center|start|bottom"
+                android:layout_marginLeft="@dimen/_30px"
+                android:textSize="@dimen/_66px"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/view"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <LinearLayout
+            android:id="@+id/titleLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:visibility="visible"
+            android:orientation="horizontal"
+            android:background="@color/text_gray">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_weight="0.5"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/headerSectTextView"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="match_parent"
+                android:text="item"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/_30px"
+                android:gravity="start|center"
+                android:textSize="@dimen/_66px"
+                android:visibility="visible"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/headerSectionTextVi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:text="DryClean"
+                android:textStyle="bold"
+                android:gravity="start|center"
+                android:textSize="@dimen/_66px"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/_110px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/headerSectionText"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Laundry"
+                android:textStyle="bold"
+                android:layout_marginRight="5dp"
+                android:textSize="@dimen/_66px"
+                android:gravity="start|center"
+                android:visibility="visible"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <ListView
+            android:id="@+id/menListView"
+            android:layout_height="430dp"
+            android:layout_width="match_parent"
+            android:clickable="false"
+            android:isScrollContainer="false"
+            android:scrollbars="none"
+            android:scrollIndicators="none"
+            android:clipChildren="false"
+            android:fadeScrollbars="false"
+            android:longClickable="false"
+            android:smoothScrollbar="false"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:dividerHeight="0dp"
+            android:paddingBottom="30dp"
+            android:listSelector="@android:color/transparent">
+        </ListView>
+
+        <RelativeLayout
+            android:id="@+id/headerRelativeLayou"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:visibility="visible"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/staticMensWeari"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/womenz_wears"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/staticMensWeari"
+                android:text="Women's Apparel"
+                android:textStyle="bold"
+                android:gravity="center|start|bottom"
+                android:layout_marginLeft="@dimen/_30px"
+                android:textSize="@dimen/_66px"
+                android:layout_marginTop="10dp"
+                app:customTypefaceTextView="@string/fontMyriadPro"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@null"/>
+
+        <ListView
+            android:id="@+id/womenListView"
+            android:layout_height="560dp"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:clickable="false"
+            android:isScrollContainer="false"
+            android:scrollbars="none"
+            android:scrollIndicators="none"
+            android:clipChildren="false"
+            android:fadeScrollbars="false"
+            android:longClickable="false"
+            android:smoothScrollbar="false"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent">
+        </ListView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:visibility="visible"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/staticMensWear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/bed_linen"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/staticMensWear"
+                android:text="Bed Linen"
+                android:textStyle="bold"
+                android:gravity="center|start|bottom"
+                android:layout_marginLeft="@dimen/_30px"
+                android:textSize="@dimen/_66px"
+                android:layout_marginTop="10dp"
+                app:customTypefaceTextView="@string/fontMyriadPro"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@null"/>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <ListView
+            android:id="@+id/bedListView"
+            android:layout_height="160dp"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:clickable="false"
+            android:isScrollContainer="false"
+            android:scrollbars="none"
+            android:scrollIndicators="none"
+            android:clipChildren="false"
+            android:fadeScrollbars="false"
+            android:longClickable="false"
+            android:smoothScrollbar="false"
+            android:listSelector="@android:color/transparent">
+        </ListView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:visibility="visible"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/staticOtherItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginTop="5dp"
+                android:visibility="visible"
+                android:src="@drawable/others_icon"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_toRightOf="@+id/staticOtherItems"
+                android:text="Other Items"
+                android:textStyle="bold"
+                android:gravity="center|start|bottom"
+                android:layout_marginLeft="@dimen/_30px"
+                android:textSize="@dimen/_66px"
+                android:layout_marginTop="10dp"
+                app:customTypefaceTextView="@string/fontMyriadPro"
+                android:visibility="visible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@null"/>
+
+        <View
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <ListView
+            android:id="@+id/otherItemListView"
+            android:layout_height="70dp"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:cacheColorHint="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:clickable="false"
+            android:isScrollContainer="false"
+            android:scrollbars="none"
+            android:scrollIndicators="none"
+            android:clipChildren="false"
+            android:fadeScrollbars="false"
+            android:longClickable="false"
+            android:smoothScrollbar="false"
+            android:listSelector="@android:color/transparent">
+        </ListView>
+
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/priceStaticTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All prices are exclusive of any applicable taxes"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_66px"
+            android:textStyle="bold"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            ></View>
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,180 @@
+<resources>
+    <string name="app_name">Laundry Walaz</string>
+
+
+    <!--laundrywalaz-1379-->
+
+    <string-array name="areas_array">
+        <item>Select Location</item>
+        <item>Cantt</item>
+        <item>Cavalary ground</item>
+        <item>DHA Phase 5&amp;6</item>
+        <item>Gulberg I-V</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="feed_back_array">
+        <item>Your Feedback about?</item>
+        <item>Quality</item>
+        <item>Staff</item>
+        <item>Service</item>
+        <item></item>
+    </string-array>
+
+
+    <string-array name="time_array">
+        <item>11:00 am</item>
+        <item>12:00 pm</item>
+        <item>01:00 pm</item>
+        <item>02:00 pm</item>
+        <item>03:00 pm</item>
+        <item>04:00 pm</item>
+        <item>05:00 pm</item>
+        <item>06:00 pm</item>
+        <item>07:00 pm</item>
+        <item>08:00 pm</item>
+        <item></item>
+    </string-array>
+
+    <string name="login">Login</string>
+    <string name="pickup">Pick-Up</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="confirmAddress">Confirm Address</string>
+    <string name="continueNext">Continue</string>
+    <string name="emailHint">Email</string>
+    <string name="passwordHint">Password</string>
+    <string name="phoneHint">Phone</string>
+    <string name="instructionHint">Special Instructions</string>
+    <string name="feedBackDetail">Feedback detail</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="register">Register</string>
+    <string name="send">Send</string>
+    <string name="forgotLogin">Forgot Login details</string>
+    <string name="forgotPassword">Forgot Password</string>
+    <string name="forgotPasswordDetail">Enter the email or password.We wil email you instructions on how to reset your password.</string>
+
+    <!--Sippner Options-->
+
+
+    <!--When Screen-->
+    <string name="regularText">STANDARD</string>
+    <string name="nextDay">next day delivery</string>
+    <string name="expressText">EXPRESS</string>
+    <string name="expressDelivery">6 hour delivery</string>
+    <string name="when">WHEN</string>
+    <string name="pickupOn">Pick-Up on:</string>
+    <string name="deliverOn">Deliver on:</string>
+    <string name="today">TODAY</string>
+    <string name="tomorrow">TOMORROW</string>
+    <string name="OtherDay">OTHER DAY</string>
+    <string name="openCalendar">Open Calendar</string>
+    <string name="otherDay">OTHER DAY</string>
+    <string name="pickUpText">For Express Service, please place your order by maximum 10 am</string>
+
+    <string name="deliveryText">Your order shall be delivered between 6:00-9:00 pm on the chosen day.</string>
+
+    <!--Home Activity -->
+    <string name="whereText">Where?</string>
+    <string name="whenText">When?</string>
+    <string name="addInfoText">Contact</string>
+    <string name="orderStatusText">Order Status</string>
+    <string name="summaryText">Summary</string>
+
+    <!--Where screen-->
+    <string name="enterAddress">Please enter your Address.</string>
+    <string name="selectLocation">Please select your location area.</string>
+
+
+    <!--Internet Alert Messages-->
+    <string name="noInternet">No Internet is available</string>
+    <string name="serverError">Server is not responding, try again later</string>
+    <string name="loading">Loading</string>
+    <string name="registrationAlert">Verification email has been sent to your email address.Please verify your email address before login.</string>
+
+
+
+    <!--Alert Messages-->
+    <string name="cancelOrder">Are you sure you want to cancel the order.</string>
+
+
+    <!--Summary Screen -->
+    <string name="orderPlacedText">Your Order has been placed.</string>
+    <string name="orderIdText">order ID</string>
+    <string name="staticText">DC-0001</string>
+    <string name="pickupDateText">PICK-UP DATE</string>
+    <string name="deliveryDateText">DELIVERY DATE</string>
+    <string name="addressText">ADDRESS</string>
+    <string name="cancelOrderText">Cancel Order</string>
+    <string name="orderStatText">Order Status</string>
+
+    <string name="passwordSent">Password has been sent</string>
+    <!--All error Messages-->
+    <string name="invalidAccessToken">Invalid Access token</string>
+
+    <string name="invalidAccessTokenAlert">Your session expired, please login again</string>
+    <string name="errorMessageEmptyField">Please fill a field</string>
+    <string name="errorAddProfilePicture">Please add profile picture</string>
+    <string name="errorMessagePleaseFillInAllFields">Please fill in all fields</string>
+    <string name="errorMessageEmailAddressIsNotValid">Email address is not valid</string>
+    <string name="emailAddressErrorMessageEmpty">Please enter email address</string>
+    <string name="emailAddressInvalidMessage">Please enter a valid Email Address</string>
+    <string name="dateAndTimeInvalidMessage">Please select date and time to schedule vaccination</string>
+    <string name="passwordErrorMessageEmpty">Please enter Password</string>
+    <string name="phoneErrorMessageEmpty">Please enter phone number.</string>
+    <string name="errorMessagePasswordValidCharaters">Password must have aplhabetic and numeric charaters</string>
+    <string name="errorMessagePasswordLength">Minimum 6 digit password is required</string>
+    <string name="errorMessagePasswordDoNotMatch">Password do not match</string>
+    <string name="enterEmailAddress">Enter Email Address</string>
+    <string name="currentPassowrd">Current Password</string>
+    <string name="newPassowrd">New Password</string>
+    <string name="confirmNewPassowrd">Confirm New Password</string>
+
+    <!--Order Status-->
+    <string name="cancelOrderStatus">Your order has been cancelled. Please contact us on 042-36688830-1 for any queries.</string>
+
+
+    <!-- Menu -->
+    <string name="menuPickUp">Pick-Up</string>
+    <string name="menuHowItWorks">How it works</string>
+    <string name="menuHelp">Help</string>
+    <string name="menuPricing">Price List</string>
+    <string name="myProfile">My Profile</string>
+    <string name="menuFeedBack">Feedback</string>
+    <string name="menuMyOrder">My Order</string>
+    <string name="menuFAQ">FAQ.</string>
+    <string name="menuTermsAndPolicies">Terms and Policies</string>
+    <string name="settings">Settings</string>
+    <string name="logOut">Logout</string>
+
+    <string name="logoutAlert">Are you sure you want to log out?</string>
+
+    <!-- Menu More Options -->
+
+    <string name="orderStatus">Order Status</string>
+    <string name="ok">OK</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="cancel">cancel</string>
+    <string name="done">Done</string>
+    <string name="CANCEL">CANCEL</string>
+    <string name="deleteOption">Delete</string>
+    <string name="close">Close</string>
+    <string name="open">Open</string>
+    <string name="cancelOption">Cancel</string>
+    <string name="logout">Log Out</string>
+
+
+
+    <!--fonts-->
+    <!--<string name="fontSegoeUi">segoeui.ttf</string>-->
+    <!--<string name="fontSegoeUiLightItalic">seguisli.ttf</string>-->
+    <!--<string name="fontSegoeUiLight">segoeuil.ttf</string>-->
+    <!--<string name="fontSegoeUiItalic">segoeuii.ttf</string>-->
+    <!--<string name="fontSegoeUiSemiLight">segoeuisl.ttf</string>-->
+    <!--<string name="fontSegoeUiSemiBold">seguisb.ttf</string>-->
+    <!--<string name="fontSegoeUiBold">segoeuib.ttf</string>-->
+    <string name="fontMyriadPro">myriadproregular.ttf</string>
+    <string name="fontMyriadProLight">myriadproli.ttf</string>
+
+</resources>

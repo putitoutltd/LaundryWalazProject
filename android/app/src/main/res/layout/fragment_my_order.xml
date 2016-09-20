@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/orderStatusImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/cancelOrderStatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textSize="@dimen/_80_84px"
+        android:layout_margin="@dimen/_30px"
+        android:textColor="@color/light_black"
+        android:gravity="center"
+        android:visibility="gone"
+        app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/orderStatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="140dp"
+        android:textSize="@dimen/_72px"
+        android:textColor="@color/light_black"
+        android:gravity="center"
+        app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/orderTimeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="100dp"
+        android:textSize="@dimen/_95px"
+        android:lineSpacingExtra="10dp"
+        android:lineSpacingMultiplier="2"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/orderDateTextView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="75dp"
+        android:textSize="@dimen/_72px"
+        android:textColor="@color/light_black"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "509567867184",
+    "project_id": "firebase-laundrywalaz"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509567867184:android:12eced6b643f808c",
+        "android_client_info": {
+          "package_name": "putitout.laundrywalaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509567867184-quqgasoe7fmtobsnno6a23kjs199bcan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "putitout.laundrywalaz",
+            "certificate_hash": "FF7FDD651B723E93F384730AF7751C07BD865190"
+          }
+        },
+        {
+          "client_id": "509567867184-0bbojde9jgrrr0lqhenkvl46prvjcu1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBxCLgWWAlT0cG2Zf3KH8jwdimPyJf_Zs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

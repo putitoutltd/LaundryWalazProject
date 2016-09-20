@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.MapFragment"/>
+
+    <RelativeLayout
+        android:id="@+id/selectLocationRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/_30px"
+        android:layout_marginRight="@dimen/_30px"
+        android:layout_marginTop="@dimen/_50px">
+
+        <Spinner
+            android:id="@+id/spinnerShare"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:spinnerMode="dropdown"
+            android:paddingLeft="@dimen/_30px"
+            android:paddingRight="@dimen/_30px"
+            android:dropDownVerticalOffset="1px"
+            android:background="@null"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30px"
+            android:src="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/locationRelativeLayout"
+        android:layout_below="@+id/selectLocationRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_66px"
+        android:layout_marginLeft="@dimen/_30px"
+        android:layout_marginRight="@dimen/_30px"
+        android:background="@color/white">
+
+        <putitout.laundrywalaz.widgets.TypefaceEditText
+            android:id="@+id/getLocationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Address"
+            android:textColorHint="@color/text_mild_gray"
+            android:textSize="@dimen/_66px"
+            android:singleLine="true"
+            android:textColor="@color/text_mild_gray"
+            android:background="@null"
+            android:inputType="textPersonName"
+            android:maxLength="135"
+            android:maxLines="1"
+            android:layout_marginLeft="@dimen/_30px"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_marginRight="@dimen/_76px"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true"
+            android:scrollbars="horizontal"
+            android:gravity="center|start"
+            app:customTypefaceEditText="@string/fontMyriadPro"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_30px"
+            android:src="@drawable/location"/>
+
+    </RelativeLayout>
+
+    <putitout.laundrywalaz.widgets.TypefaceButton
+        android:id="@+id/confirmAddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/send_btn"
+        android:text="@string/confirmAddress"
+        android:textSize="@dimen/_56px"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/_110px"
+        app:customTypefaceButton="@string/fontMyriadProLight"/>
+
+</RelativeLayout>
