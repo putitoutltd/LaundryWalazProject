@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.2"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="28.8"
+        android:src="@drawable/feedback_icon"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.5"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="42.5"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/customerNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7"
+                android:hint="Customer Name"
+                android:textColorHint="@color/text_mild_gray"
+                android:textSize="@dimen/_66px"
+                android:singleLine="true"
+                android:textColor="@color/text_mild_gray"
+                android:background="@android:color/transparent"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="35"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"
+                android:ellipsize="end"
+                android:scrollbars="horizontal"
+                android:gravity="center|start|bottom"
+                app:customTypefaceEditText="@string/fontMyriadPro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.4"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="12.5"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/orderIDEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7"
+                android:hint="Order ID"
+                android:textColorHint="@color/text_mild_gray"
+                android:textSize="@dimen/_66px"
+                android:singleLine="true"
+                android:textColor="@color/text_mild_gray"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"
+                android:inputType="text|phone"
+                android:maxLength="35"
+                android:ellipsize="end"
+                android:scrollbars="horizontal"
+                android:gravity="center|start|bottom"
+                app:customTypefaceEditText="@string/fontMyriadPro"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="87.5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/selectLocationRelativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7">
+
+                <Spinner
+                    android:id="@+id/spinnerShareWith"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="-25dp"
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="1px"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:visibility="visible"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_below="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:background="@drawable/rect_border"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/feedbackDetailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100"
+                android:hint="@string/feedBackDetail"
+                android:textColorHint="@color/light_grey"
+                android:background="@null"
+                android:textColor="@color/light_grey"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/_66px"
+                android:textStyle="bold"
+                android:maxLength="250"
+                android:maxHeight="140dp"
+                android:scrollbars="vertical"
+                android:layout_marginTop="@dimen/_30px"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginBottom="@dimen/_30px"
+                android:layout_marginRight="@dimen/_30px"
+                android:gravity="left|top"
+                app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.6">
+
+        <putitout.laundrywalaz.widgets.TypefaceButton
+            android:id="@+id/sendFeedBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/pick_up"
+            android:text="@string/send"
+            android:textSize="@dimen/_66px"
+            android:textColor="@color/white"
+            app:customTypefaceButton="@string/fontMyriadProLight"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        android:visibility="visible"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:visibility="visible"/>
+
+</LinearLayout>

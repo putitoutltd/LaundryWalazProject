@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <putitout.laundrywalaz.widgets.KeyboardDetectorRelativeLayout
+        android:id="@+id/mainHomeRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/fragmentContainerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/headerLayout"
+            android:clickable="true"
+            android:importantForAccessibility="no"
+            android:layout_above="@+id/continueImageView">
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/headerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_bg">
+
+            <ImageView
+                android:id="@+id/menuImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="visible"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:src="@drawable/menu_btn"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/headerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_36px"
+                android:textSize="@dimen/_95px"
+                android:text=""
+                android:layout_centerInParent="true"
+                android:textColor="@color/bluish"
+                android:visibility="visible"
+                app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+            <ImageView
+                android:id="@+id/backImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:padding="10dp"
+                android:src="@drawable/back_arrow"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+    </putitout.laundrywalaz.widgets.KeyboardDetectorRelativeLayout>
+
+    <include
+        android:id="@+id/menuDrawer"
+        layout="@layout/menu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="-64dp"
+        android:importantForAccessibility="no"
+        android:clickable="true"
+        android:layout_gravity="end"/>
+
+</android.support.v4.widget.DrawerLayout>

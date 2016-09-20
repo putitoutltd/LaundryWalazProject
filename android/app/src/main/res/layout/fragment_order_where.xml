@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3"/>
+
+        <RelativeLayout
+            android:id="@+id/regularRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/active_tab"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="45.6">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/regularTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/regularText"
+                android:textSize="@dimen/_95px"
+                android:textColor="@color/bluish"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/regularTextView"
+                android:id="@+id/nextDayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nextDay"
+                android:layout_centerInParent="true"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3"/>
+
+        <RelativeLayout
+            android:id="@+id/expressRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/inactive_tab"
+            android:layout_weight="45.6">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/expressTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/expressText"
+                android:textSize="@dimen/_95px"
+                android:textColor="@color/bluish"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/expressTextView"
+                android:id="@+id/sixHourTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expressDelivery"
+                android:layout_centerInParent="true"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="4.1">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/whenTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/when"
+            android:textSize="@dimen/_110px"
+            android:textColor="@color/bluish"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="2.5">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/pickupOnTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/pickupOn"
+            android:textSize="@dimen/_72px"
+            android:textColor="@color/text_gray"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7.7"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3"/>
+
+        <RelativeLayout
+            android:id="@+id/pickUpTodayRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/todayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/today"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/todayTextView"
+                android:id="@+id/pickUpTodayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8th June 2016"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"/>
+
+        <RelativeLayout
+            android:id="@+id/pickUpTomorrowRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/tomorrowTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/tomorrow"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/tomorrowTextView"
+                android:id="@+id/pickUpTomorrowTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9th June 2016"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"/>
+
+        <RelativeLayout
+            android:id="@+id/openCalendarRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/otherDayTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/otherDay"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/otherDayTextView"
+                android:id="@+id/openCalendarTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/openCalendar"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_weight="4">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.3"/>
+
+        <LinearLayout
+            android:id="@+id/pickUpLinearLayout"
+            android:layout_width="0dp"
+            android:layout_weight="30.7"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:id="@+id/spinnerTodayRelativeLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_weight="30.7">
+
+                <Spinner
+                    android:id="@+id/spinnerToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:spinnerMode="dropdown"
+                    android:dropDownVerticalOffset="1px"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:id="@+id/spinnerTodayImageView"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+
+                    android:src="@drawable/arrow"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"/>
+
+            <RelativeLayout
+                android:id="@+id/spinnerTomorrowRelativeLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_weight="30.7">
+
+                <Spinner
+                    android:id="@+id/spinnerTomorrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:spinnerMode="dropdown"
+                    android:scrollbars="vertical"
+                    android:scrollbarStyle="insideOverlay"
+                    android:layout_marginLeft="@dimen/_30px"
+                    android:dropDownVerticalOffset="1px"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"/>
+
+            <RelativeLayout
+                android:id="@+id/spinnerOtherDayRelativeLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_weight="30.7">
+
+                <Spinner
+                    android:id="@+id/spinnerOtherDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginLeft="@dimen/_30px"
+                    android:dropDownVerticalOffset="1px"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/arrow"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/pickUpTextView"
+            android:layout_width="300dp"
+            android:lines="2"
+            android:layout_height="wrap_content"
+            android:text="@string/pickUpText"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_66px"
+            android:layout_marginRight="@dimen/_66px"
+            android:textSize="@dimen/_56px"
+            android:textColor="@color/text_gray"
+            android:visibility="gone"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="2.5">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/deliveryOnTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/deliverOn"
+            android:textSize="@dimen/_72px"
+            android:textColor="@color/text_gray"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.8"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/todayDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/today"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/todayDeliveryTextView"
+                android:id="@+id/todayDateDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8th June 2016"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"/>
+
+        <RelativeLayout
+            android:id="@+id/tomorrowDeliveryRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/tomorrowDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/tomorrow"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/tomorrowDeliveryTextView"
+                android:id="@+id/tomorrowDeliveryDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9th June 2016"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"/>
+
+        <RelativeLayout
+            android:id="@+id/deliveryOpenCalenderRelativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_bg"
+            android:gravity="center"
+            android:layout_weight="30.7">
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:id="@+id/otherDayDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/otherDay"
+                android:textSize="@dimen/_66px"
+                android:textColor="@color/white"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+            <putitout.laundrywalaz.widgets.TypefaceTextView
+                android:layout_below="@+id/otherDayDeliveryTextView"
+                android:id="@+id/otherDayDateDeliveryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/openCalendar"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_44px"
+                app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.3"/>
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/deliveryTextView"
+            android:layout_width="0dp"
+            android:layout_weight="93.7"
+            android:layout_height="wrap_content"
+            android:text="@string/deliveryText"
+            android:textSize="@dimen/_56px"
+            android:gravity="center"
+            android:textColor="@color/red"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceButton
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="5.9"
+        android:background="@drawable/send_btn"
+        android:text="@string/continueNext"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="@dimen/_56px"
+        android:textColor="@color/white"
+        app:customTypefaceButton="@string/fontMyriadProLight"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.3"/>
+
+</LinearLayout>
