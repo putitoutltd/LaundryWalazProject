@@ -5,8 +5,8 @@ package putitout.laundrywalaz.utils;
  */
 public class URLManager {
 
-  public static final String SERVER_ULR = "http://backend.laundrywalaz.com"; // For Live API URL
-//  public static final String SERVER_ULR = "http://backend-staging.laundrywalaz.com"; // For Stagging API URL
+//  public static final String SERVER_ULR = "http://backend.laundrywalaz.com"; // For Live API URL
+  public static final String SERVER_ULR = "http://backend-staging.laundrywalaz.com"; // For Stagging API URL
 
   public static final String REGISTER_USER = SERVER_ULR + "/api/user/register";
   public static final String LOGIN_USER = SERVER_ULR + "/api/user/login";

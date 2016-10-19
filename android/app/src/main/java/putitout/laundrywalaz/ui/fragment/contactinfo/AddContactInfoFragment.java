@@ -77,6 +77,7 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.addInfoText));
 
+
         sendButton = (Button) view.findViewById(R.id.sendButton);
         sendButton.setOnClickListener(this);
 
@@ -116,6 +117,10 @@ public class AddContactInfoFragment extends BaseFragment implements View.OnClick
 
         pickUpTime = getFormattedDate(pickUpTime);
         dropOffTime = getFormattedDate(dropOffTime);
+
+        LWLog.info(TAG + " pickUpTime:  " + pickUpTime);
+
+        LWLog.info(TAG + " dropOffTime:  " + dropOffTime);
 
     }
 

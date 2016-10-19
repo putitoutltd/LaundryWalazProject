@@ -391,23 +391,15 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
                         }       else if (dropOffDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Drop-Off time.", Toast.LENGTH_SHORT).show();
-                        }else{
+                        } else {
                         startActivity(new Intent(getActivity(), LoginActivity.class));
                     }
                     } else {
                         if (pickUpDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
-                        }
-//                        else if ((spinnerToday.getSelectedItemPosition() == 0 || spinnerOptionsToday.length < 0)
-//                                && (spinnerTomorrow.getSelectedItemPosition() == 0 || spinnerOptions.length < 0) &&
-//                                (spinnerOtherDay.getSelectedItemPosition() == 0 || spinnerOptions.length < 0)) {
-//                            Toast.makeText(getActivity(), "Please select correct Time.", Toast.LENGTH_SHORT).show();
-//                        }
-
-                        else if (dropOffDate.isEmpty()) {
+                        } else if (dropOffDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Drop-Off time.", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             replaceFragment(R.id.fragmentContainerLayout, new AddContactInfoFragment(), AddContactInfoFragment.TAG, true);
                         }
                     }
@@ -557,20 +549,17 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
 
                 break;
             case R.id.pickUpTodayRelativeLayout:
-
                 spinnerToday.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptionsToday));
-                spinnerToday.post(new Runnable() {
+                spinnerToday.post(new Runnable(){
                     @Override
                     public void run() {
-
                         ((ShareSpinnerAdapter) spinnerToday.getAdapter()).notifyDataSetChanged();
                         spinnerToday.setSelection(0,true);
                     }
                 });
 
-//                spinnerToday.setSelection(0);
                 cal = Calendar.getInstance(); //Create Calendar-Object
-                cal.setTime(new Date());               //Set the Calendar to now
+                cal.setTime(new Date());
                 currentHour = cal.get(Calendar.HOUR_OF_DAY);
                 isTodaySpinnerShown = true;
                 isOtherDaySpinnerShown = false;
@@ -675,7 +664,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
 
-
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + "1:00 PM");
                     pickup_time = "1:00 PM";
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
@@ -685,13 +673,10 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.openCalendarRelativeLayout:
 
-//                spinnerOtherDay.setSelection(1-1);
-
                 spinnerOtherDay.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptions));
-                spinnerOtherDay.post(new Runnable() {
+                spinnerOtherDay.post(new Runnable(){
                     @Override
                     public void run() {
-
                         ((ShareSpinnerAdapter) spinnerOtherDay.getAdapter()).notifyDataSetChanged();
                         spinnerOtherDay.setSelection(0,true);
                     }
@@ -699,7 +684,7 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
 
                 isTodaySpinnerShown=false;
                 isTomorrowSpinnerShown = false;
-                LWUtil.isNextDay=false;
+                LWUtil.isNextDay = false;
                 isOpenCalender = false;
                 openCalendarRelativeLayout.setBackgroundResource(R.drawable.send_btn);
                 pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
@@ -707,29 +692,23 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                 spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                 spinnerOtherDayRelativeLayout.setVisibility(View.VISIBLE);
+                tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
+                tomorrowDeliveryRelativeLayout.setClickable(false);
                 showDatePickerDialog(datePickerListener);
                 isOtherDaySpinnerShown = true;
-
                 LWUtil.isNextDayShown = true;
 //                pickUpDate = "";
 //                pickup_time = "";
 //                spinnerOtherDay.setSelection(0);
-                if(packageSelection.equalsIgnoreCase("EXPRESS")){
-
-
+                if (packageSelection.equalsIgnoreCase("EXPRESS")) {
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
                 }
-
-
                 break;
             case R.id.deliveryOpenCalenderRelativeLayout:
                 LWUtil.isNextDay = true;
                 isOpenCalender = true;
-
-
-//                showDatePickerDialog(datePickerListener);
                 showDatePickerOtherDayDeliveryDialog(deliveryDatePickerListener);
                 deliveryOpenCalenderRelativeLayout.setBackgroundResource(R.drawable.send_btn);
                 tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
@@ -761,8 +740,12 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                             append("-").append(numberFormat.format(datePickerDay));
 
             openCalendarTextView.setText(getFormattedDate(ss.toString()));
-            pickup_time = "";
+            pickup_time = "11:00 AM";
+
             pickUpDate = openCalendarTextView.getText().toString();
+            pickUpDateEqualsToDropOffDate();
+//            LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
+            LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + pickup_time);
             if(packageSelection.equalsIgnoreCase("EXPRESS")){
                 spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + "1:00 PM");
@@ -805,13 +788,13 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
 //            } catch (ParseException e) {
 //                e.printStackTrace();
 //            }
-//            if(dropOffDate.equalsIgnoreCase(pickUpDate)){
-//                showDateAndTime();
-//            }
+            if(dropOffDate.equalsIgnoreCase(pickUpDate)){
+                dropOffEqualsToPickUpDate();
+            }
         }
     };
 
-    public void showDateAndTime(){
+    public void dropOffEqualsToPickUpDate(){
         if (dropOffDate.trim().equals(pickUpDate)&&(pickUpDate.equals(dropOffDate.trim()))) {
             try {
                 cal.setTime(sdf.parse(dropOffDate));
@@ -821,6 +804,24 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
             cal.add(Calendar.DATE, 1);  // number of days to add
             dropOffDate = sdf.format(cal.getTime());
             otherDayDateDeliveryTextView.setText(dropOffDate);
+            dropOffDate = otherDayDateDeliveryTextView.getText().toString();
+            LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
+        }
+    }
+
+
+    public void pickUpDateEqualsToDropOffDate(){
+        if (pickUpDate.trim().equals(dropOffDate)&&(dropOffDate.equals(pickUpDate.trim()))) {
+            try {
+                cal.setTime(sdf.parse(dropOffDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            cal.add(Calendar.DATE, 1);  // number of days to add
+            dropOffDate = sdf.format(cal.getTime());
+            otherDayDateDeliveryTextView.setText(dropOffDate);
+            dropOffDate = otherDayDateDeliveryTextView.getText().toString();
+            LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
         }
     }
 

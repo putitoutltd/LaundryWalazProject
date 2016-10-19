@@ -694,6 +694,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
 
+
+
     public void clearPreviousBackStackTillTimeLine() {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         LWUtil.doSoftInputHide(this);
