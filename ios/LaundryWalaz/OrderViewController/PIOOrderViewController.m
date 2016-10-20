@@ -225,7 +225,7 @@
             self.otherdayTimePickerButton.hidden = YES;
             
             self.tomorrowDeliveryButton.enabled = NO;
-            
+            [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -237,7 +237,6 @@
                     [self.tomorrowTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
                 }
             }
-            
             break;
         }
         case PIOOrderDayOtherDayPickUp: {
@@ -253,6 +252,7 @@
             self.otherdayTimePickerButton.hidden = self.isFromExpressDelivery;
             self.tomorrowTimePickerButton.hidden = YES;
             self.todayTimePickerButton.hidden = YES;
+            [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
