@@ -1,0 +1,79 @@
+<!--
+ Copyright (C) 2013 Mobs and Geeks
+
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file 
+ except in compliance with the License. You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software distributed under the 
+ License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+ either express or implied. See the License for the specific language governing permissions and 
+ limitations under the License.
+-->
+<resources>
+
+    <declare-styleable name="TypefaceRadioButton">
+        <attr name="customTypefaceRadioButton" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TypefaceCheckedBox">
+        <attr name="customTypefaceCheckedBox" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TypefaceTextView">
+        <attr name="customTypefaceTextView" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TypefaceEditText">
+        <attr name="customTypefaceEditText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="TypefaceButton">
+        <attr name="customTypefaceButton" format="string" />
+    </declare-styleable>
+
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+    <declare-styleable name="HListView">
+        <attr name="android:entries" />
+        <attr name="android:divider" />
+        <attr name="hlv_dividerWidth" format="dimension" />
+        <attr name="hlv_headerDividersEnabled" format="boolean" />
+        <attr name="hlv_footerDividersEnabled" format="boolean" />
+        <attr name="hlv_overScrollHeader" format="reference|color" />
+        <attr name="hlv_overScrollFooter" format="reference|color" />
+
+        <!--
+        When "wrap_content" is used as value of the layout_height property.
+        Pass the position, inside the adapter, of the view being used to measure the view
+        or '-1' to use the default behavior ( default is -1 )
+        -->
+        <attr name="hlv_measureWithChild" format="integer" />
+    </declare-styleable>
+
+
+    <declare-styleable name="AbsHListView">
+        <attr name="android:listSelector" />
+        <attr name="android:smoothScrollbar" />
+        <attr name="android:drawSelectorOnTop" />
+        <attr name="android:cacheColorHint" />
+        <attr name="android:scrollingCache" />
+        <attr name="android:choiceMode" />
+
+        <attr name="hlv_stackFromRight" format="boolean" />
+        <attr name="hlv_transcriptMode">
+            <enum name="disabled" value="0"/>
+            <enum name="normal" value="1" />
+            <enum name="alwaysScroll" value="2" />
+        </attr>
+
+    </declare-styleable>
+
+</resources>

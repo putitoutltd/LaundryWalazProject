@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.2"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="28.8"
+        android:visibility="gone"
+        android:src="@drawable/register_icon"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="42.5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7">
+
+                <ImageView
+                    android:id="@+id/firstNameImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/first_name"/>
+
+                <putitout.laundrywalaz.widgets.TypefaceEditText
+                    android:id="@+id/firstNameEditText"
+                    android:layout_toRightOf="@+id/firstNameImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/firstName"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="@dimen/_66px"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/_30px"
+                   android:layout_alignParentBottom="true"
+                    android:singleLine="true"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:textColor="@color/text_gray"
+                    android:background="@null"
+                    android:inputType="textPersonName|textCapWords"
+                    android:maxLength="35"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:scrollbars="horizontal"
+                    android:gravity="center|start|bottom"
+                    app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.4"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="42.5"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/lastNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7"
+                android:hint="@string/lastName"
+                android:textColorHint="@color/text_gray"
+                android:textSize="@dimen/_66px"
+                android:textStyle="bold"
+                android:singleLine="true"
+                android:clickable="false"
+                android:editable="false"
+                android:textColor="@color/text_gray"
+                android:background="@null"
+                android:inputType="textPersonName|textCapWords"
+                android:maxLength="35"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:scrollbars="horizontal"
+                android:gravity="center|start|bottom"
+                app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="87.5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7">
+
+                <ImageView
+                    android:id="@+id/emailImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/email"/>
+
+                <putitout.laundrywalaz.widgets.TypefaceEditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/emailImageView"
+                    android:hint="@string/emailHint"
+                    android:layout_marginLeft="@dimen/_30px"
+                    android:clickable="false"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:editable="false"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="@dimen/_66px"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:textColor="@color/text_gray"
+                    android:background="@null"
+                    android:inputType="text|phone"
+                    android:maxLength="35"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:scrollbars="horizontal"
+                    android:gravity="center|start"
+                    app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.2"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="87.5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7">
+
+                <ImageView
+                    android:id="@+id/phoneImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_alignParentBottom="true"
+                    android:src="@drawable/phone"/>
+
+                <putitout.laundrywalaz.widgets.TypefaceEditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/phoneImageView"
+                    android:layout_marginLeft="@dimen/_30px"
+                    android:layout_centerInParent="true"
+                    android:hint="@string/phoneHint"
+                    android:textColorHint="@color/text_gray"
+                    android:textSize="@dimen/_66px"
+                    android:textStyle="bold"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:layout_alignParentBottom="true"
+                    android:singleLine="true"
+                    android:textColor="@color/text_gray"
+                    android:background="@null"
+                    android:inputType="textEmailAddress|textCapWords"
+                    android:maxLength="35"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:scrollbars="horizontal"
+                    android:gravity="center|start"
+                    app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14.2"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_below="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:background="@drawable/rect_border"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/passwordEitText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="100"
+                android:hint="@string/instructionHint"
+                android:textColorHint="@color/text_gray"
+                android:background="@null"
+                android:textColor="@color/text_gray"
+                android:inputType="textMultiLine"
+                android:textSize="@dimen/_76px"
+                android:textStyle="bold"
+                android:maxLength="250"
+                android:maxHeight="140dp"
+                android:scrollbars="vertical"
+                android:layout_marginTop="@dimen/_30px"
+                android:layout_marginLeft="@dimen/_30px"
+                android:layout_marginBottom="@dimen/_30px"
+                android:layout_marginRight="@dimen/_30px"
+                android:gravity="left|top"
+                app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.6">
+
+        <putitout.laundrywalaz.widgets.TypefaceButton
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/pick_up"
+            android:text="@string/send"
+            android:textSize="@dimen/_76px"
+            android:textColor="@color/white"
+            app:customTypefaceButton="@string/fontMyriadProLight"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/dummyButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:background="@drawable/active_tab"
+        android:visibility="invisible"/>
+
+</LinearLayout>
+

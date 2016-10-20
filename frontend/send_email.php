@@ -1,8 +1,8 @@
 <?php
 
 
- $action = filter_input(INPUT_POST, 'action');
-$email = 'anonymus@laundrywalaz.com';
+$action = filter_input(INPUT_POST, 'action');
+$email = 'service@laundrywalaz.com';
  // multiple recipients
  /*
 $to  = 'info@laundrywalaz.com' . ', '; // note the comma
@@ -12,6 +12,8 @@ $to .= 'rashid.akram@putitout.co.uk';
 $message = '';
  if($action == 'feedback'){
 
+     $customerName = filter_input(INPUT_POST, 'customerName');
+     $orderId = filter_input(INPUT_POST, 'orderId');
      $about = filter_input(INPUT_POST, 'about');
      $feedback = filter_input(INPUT_POST, 'feedback');
 // subject
@@ -24,8 +26,10 @@ $subject = 'New Feedback received';
           <title>New Feedback Received</title>
         </head>
         <body>
-          <p>The feedback was about <b>'.$about.'</b></p>
-          <p>'.$feedback.'</p>    
+            <p>The feedback was about: <b>'.$about.'</b></p>
+            <p>Customer Name: <b>'.$customerName.'</b></p>
+            <p>Order Id: <b>'.$orderId.'</b></p>
+            <p>Feedback: '.$feedback.'</p>    
 
         </body>
         </html>
@@ -61,7 +65,7 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Additional headers
 //$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-$headers .= 'From: Laundrywalaz User <'.$email.'>' . "\r\n";
+$headers .= 'From: Laundrywalaz<'.$email.'>' . "\r\n";
 //$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
 //$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
 

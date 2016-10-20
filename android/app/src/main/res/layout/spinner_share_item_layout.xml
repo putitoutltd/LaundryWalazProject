@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="9"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/selectedOptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="78.3"
+        android:gravity="center_vertical|start"
+        android:paddingLeft="5dp"
+        android:textColor="@color/text_mild_gray"
+        android:layout_centerVertical="true"
+        android:text="cantt"
+        android:textSize="@dimen/_65px"
+        app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+</LinearLayout>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_bg">
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/headerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/_76px"
+            android:text="Login"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:textColor="@color/bluish"
+            android:visibility="visible"
+            app:customTypefaceTextView="@string/fontMyriadPro"/>
+
+        <ImageView
+            android:id="@+id/backImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:padding="@dimen/_30px"
+            android:src="@drawable/back_arrow"
+            android:visibility="visible"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.2"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="28.8"
+        android:src="@drawable/login_key"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_below="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="87.5"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7"
+                android:hint="@string/emailHint"
+                android:textColorHint="@color/text_gray"
+                android:textSize="@dimen/_66px"
+                android:singleLine="true"
+                android:textColor="@color/text_gray"
+                android:background="@null"
+                android:inputType="textEmailAddress"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"
+                android:maxLength="35"
+                android:ellipsize="end"
+                android:scrollbars="horizontal"
+                android:gravity="center|start"
+                app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.2"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_below="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5.8"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="87.5"
+            android:orientation="vertical">
+
+            <putitout.laundrywalaz.widgets.TypefaceEditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.7"
+                android:hint="@string/passwordHint"
+                android:textColorHint="@color/text_gray"
+                android:textSize="@dimen/_66px"
+                android:singleLine="true"
+                android:textColor="@color/text_gray"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:maxLength="35"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="2dp"
+                android:scrollbars="horizontal"
+                android:gravity="center|start"
+                app:customTypefaceEditText="@string/fontMyriadProLight"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/email_separater"
+                android:layout_weight="0.1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.7"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.1"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.7"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="36.6"/>
+
+        <ImageView
+            android:id="@+id/checkImageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5.3"
+            android:background="@null"
+            android:src="@drawable/check_box_inactive"
+            android:gravity="center|start"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.6"/>
+
+        <putitout.laundrywalaz.widgets.TypefaceTextView
+            android:id="@+id/keepMePostedTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="29.7"
+            android:text="@string/rememberMe"
+            android:textSize="@dimen/_48px"
+            android:textColor="@color/dark_gray"
+            android:gravity="center|start"
+            app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="32"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:visibility="visible"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.6">
+
+        <putitout.laundrywalaz.widgets.TypefaceButton
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/login_btn"
+            android:text="@string/login"
+            android:textSize="@dimen/_66px"
+            android:textColor="@color/white"
+            app:customTypefaceButton="@string/fontMyriadProLight"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        android:visibility="visible"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/registerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.0"
+        android:text="@string/register"
+        android:textSize="@dimen/_48px"
+        android:layout_gravity="center"
+        android:textColor="@color/dark_gray"
+        android:gravity="center"
+        app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        android:visibility="visible"/>
+
+    <putitout.laundrywalaz.widgets.TypefaceTextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.0"
+        android:text="@string/forgotPassword"
+        android:textSize="@dimen/_48px"
+        android:layout_gravity="center"
+        android:textColor="@color/dark_gray"
+        android:gravity="center"
+        app:customTypefaceTextView="@string/fontMyriadProLight"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:visibility="visible"/>
+
+</LinearLayout>
+

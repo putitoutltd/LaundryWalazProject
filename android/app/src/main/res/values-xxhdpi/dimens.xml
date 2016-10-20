@@ -1,0 +1,43 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="footer_icon_reward_left_margin">25dp</dimen>
+    <dimen name="footer_icon_question_right_margin">25dp</dimen>
+    <dimen name="footer_icon_add_baby_right_margin">10dp</dimen>
+    <dimen name="footer_icon_schedule_left_margin">10dp</dimen>
+    <dimen name="registration_one_divider_margin">30dp</dimen>
+    <dimen name="profile_picture_width">150dp</dimen>
+    <dimen name="profile_picture_height">150dp</dimen>
+    <dimen name="profile_picture_margin">5dp</dimen>
+    <dimen name="search_icon_margin_top">7dp</dimen>
+
+    <item name="registrationAddABabyMaiContentHeightWeight" format="float" type="dimen">0.961</item>
+    <item name="fromMenuAddABabyMaiContentHeightWeight" format="float" type="dimen">0.812</item>
+    <item name="choosePictureActivityHeightWeight" format="float" type="dimen">0.961</item>
+
+    <dimen name="_120px">90px</dimen>
+    <dimen name="_80_84px">60.84px</dimen>
+    <dimen name="_45_83px">34.37px</dimen>
+    <dimen name="_50px">37.5px</dimen>
+    <dimen name="_88px">66px</dimen>
+    <dimen name="_40px">30px</dimen>
+    <dimen name="_44px">33px</dimen>
+    <dimen name="_56px">42px</dimen>
+    <dimen name="_55px">41.25px</dimen>
+    <dimen name="_48px">36px</dimen>
+    <dimen name="_60px">45px</dimen>
+    <dimen name="_61px">45px</dimen>
+    <dimen name="_65px">48.75px</dimen>
+    <dimen name="_66px">49.5px</dimen>
+    <dimen name="_30px">22.5px</dimen>
+    <dimen name="_36px">27px</dimen>
+    <dimen name="_35px">26.25px</dimen>
+    <dimen name="_110px">82.5px</dimen>
+    <dimen name="_72px">54px</dimen>
+    <dimen name="_75px">56.25px</dimen>
+    <dimen name="_76px">57px</dimen>
+    <dimen name="_80px">60.63px</dimen>
+    <dimen name="_98px">73.5px</dimen>
+    <dimen name="_95px">71.25px</dimen>
+</resources>
