@@ -43,7 +43,7 @@
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Feedback" onViewController:self];
-
+    
     self.feedbackDetailTextView.layer.borderWidth = 1.0;
     self.feedbackDetailTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
@@ -53,12 +53,12 @@
     
     [self hideTableview];
     
- }
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear: animated];
-
+    
     
 }
 
@@ -92,7 +92,7 @@
     }
     else if ([self.feedbackDetailTextView.text isEqualToString: @"Feedback detail"] || self.feedbackDetailTextView.text.length == 0) {
         
-         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter some feedback to send." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
+        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Please enter some feedback to send." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
         return;
     }
     

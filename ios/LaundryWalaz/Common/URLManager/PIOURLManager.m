@@ -8,14 +8,24 @@
 
 #import "PIOURLManager.h"
 
+#ifdef DEBUG
+
+// Staging URL
+NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
+#else
+
+// Live URL
+NSString *const PIOBaseURL = @"http://backend.laundrywalaz.com";
+#endif
 
 //NSString *const PIOBaseURL = @"http://backend-staging.laundrywalaz.com";
-NSString *const PIOBaseURL = @"http://backend.laundrywalaz.com";
+//NSString *const PIOBaseURL = @"http://backend.laundrywalaz.com";
 
 @implementation PIOURLManager
 
 + (NSString *)requestURLWithPath:(NSString *)path
 {
+    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", PIOBaseURL, path]);
     return [NSString stringWithFormat:@"%@%@", PIOBaseURL, path];
 }
 

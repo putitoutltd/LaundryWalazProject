@@ -32,10 +32,10 @@
 {
     [super viewWillAppear: animated];
     [self applyImageBackgroundToTheNavigationBar];
-//    [self configureNavigationBar];
-   [self performSelector: @selector(configureNavigationBar) withObject: nil afterDelay: 0.1];
-   
-     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:226.0/255.0 green: 243.0/255.0 blue:255.0/255.0 alpha: 1.0];
+    //    [self configureNavigationBar];
+    [self performSelector: @selector(configureNavigationBar) withObject: nil afterDelay: 0.1];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:226.0/255.0 green: 243.0/255.0 blue:255.0/255.0 alpha: 1.0];
     [[NSNotificationCenter  defaultCenter] addObserver: self selector: @selector( configureNavigationBar) name: @"configureNavigationBar" object:nil];
 }
 
@@ -64,7 +64,7 @@
                                                                          action:@selector(sideBarButtonPressed:)];
     if (!self.isMenuButtonNeedToHide) {
         self.navigationItem.rightBarButtonItems = @[menuBarButtonItem];
-
+        
     }
     
     self.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"pio-uinavigation-button-back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
@@ -73,7 +73,7 @@
                                                              action:@selector(backBarButtonItemPressed:)];
     //self.navigationItem.rightBarButtonItems = @[menuBarButtonItem];
     self.navigationItem.leftBarButtonItem = self.backBarButtonItem;
-   
+    
     if (self.isBackButtonHide) {
         [self hideBackButton];
     }
@@ -86,7 +86,7 @@
         [self.navigationController.navigationBar setFrame:frame];
     }
     
-  
+    
 }
 
 - (void)applyImageBackgroundToTheNavigationBar
@@ -132,18 +132,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 - (void)sideBarButtonPressed:(id)sender
 {
-    
-   
     self.sideBar = [[CDRTranslucentSideBar alloc] initWithDirectionFromRight: YES];
     self.sideBar.delegate = self;
     PIOSideBarViewController *sideBarViewController = [PIOSideBarViewController new];
     [[[PIOAppController sharedInstance] navigationController].visibleViewController addChildViewController:sideBarViewController];
     self.sideBar.view.frame = CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height);
     sideBarViewController.view.frame = self.sideBar.view.frame;
-//    self.sideBar.translucentStyle = UIBarStyleBlack;
+    //    self.sideBar.translucentStyle = UIBarStyleBlack;
     // Set ContentView in SideBar
     self.sideBar.sideBarWidth = self.view.window.frame.size.width;
     [self.sideBar setContentViewInSideBar:sideBarViewController.view];

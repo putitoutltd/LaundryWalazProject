@@ -7,7 +7,7 @@
 //
 
 
-#define NSLog //
+//#define NSLog //
 
 #import <UIKit/UIKit.h>
 

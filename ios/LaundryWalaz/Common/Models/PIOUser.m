@@ -79,7 +79,7 @@
         else if (status) {
             
             if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
-               
+                
                 // User Registered Successfully with given Email Address
                 if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusSuccess]) {
                     
@@ -98,12 +98,12 @@
 {
     NSString *requestURL = [PIOURLManager userLoginURL];
     NSDictionary *parameters =  [[NSDictionary alloc] initWithObjectsAndKeys:
-    user.email, @"email",
-    user.password, @"password", nil];
+                                 user.email, @"email",
+                                 user.password, @"password", nil];
     
     [PIORequestHandler postRequest: requestURL parameters: parameters callback:^(NSError *error, BOOL status, id responseObject) {
         NSDictionary *dictionary = (NSDictionary *)responseObject;
-       
+        
         if (error == nil && !status) {
             if ([dictionary[PIOResponseStatus] isEqualToString:PIOResponseStatusFailure]) {
                 PIOAPIResponse * APIResponse = [[PIOAPIResponse alloc] initWithDict:dictionary];
@@ -114,13 +114,13 @@
         else if (status) {
             
             if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
-               
+                
                 // If Remember Me check is enabled Access Token will be saved
                 if ([PIOAppController sharedInstance].isRemeberMe) {
                     [PIOUserPref setAccessToken:dictionary[@"data"][@"access_token"]];
                 }
                 else {
-                      [PIOUser saveInfoForFuture: NO user: nil];
+                    [PIOUser saveInfoForFuture: NO user: nil];
                 }
                 
                 // Save Access Token temporary. If required in any API
@@ -208,7 +208,7 @@
 + (void)saveInfoForFuture:(BOOL)isSaved user:(PIOUser *)user
 {
     if (isSaved) {
-         [PIOUserPref setUserID: user.ID];
+        [PIOUserPref setUserID: user.ID];
         [PIOUserPref setFirstName: user.firstName];
         [PIOUserPref setLastName: user.lastName];
         [PIOUserPref setEmailAddress: user.email];

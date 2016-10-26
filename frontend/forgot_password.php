@@ -158,7 +158,10 @@
                                             curl_close($ch); // close curl handle
                                             //echo $output;
                                             $res = json_decode($output);
-                                            if (isset($res->message)) {
+                                            if (isset($res->status) && $res->status == 'success') {
+                                                $msg = 'Your password has been changed successfully';
+                                            }
+                                            if (isset($res->message)&& $res->status == 'failure') {
                                                 $msg = $res->message;
                                             }
                                         } else {

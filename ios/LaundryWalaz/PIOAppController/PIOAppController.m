@@ -89,6 +89,7 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     return sharedInstance;
 }
 
+// current devie
 - (PIODeviceName)currentDeviceName
 {
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
@@ -108,12 +109,14 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     return _currentDeviceName;
 }
 
+// Get Current iOS Version
 - (NSInteger)currentIOSVersion
 {
     return [[[UIDevice currentDevice] systemVersion] integerValue];
 }
 
 
+// Inititialize app views 
 - (void)setupInitialViewAndNavigation
 {
     // Set up the VC's as this is a non storyboard app
@@ -194,8 +197,8 @@ static NSInteger PIORequestTimeOutIntervals = 20;
 - (void)showAlertInCurrentViewWithTitle:(NSString *)title message:(NSString *)message withNotificationPosition:(unsigned int)position type:(TSMessageNotificationType)type
 {
     if ([message isEqualToString: @"Invalid Access token"]) {
-
-          [TSMessage showNotificationInViewController: self.navigationController
+        
+        [TSMessage showNotificationInViewController: self.navigationController
                                               title: @"Error !"
                                            subtitle: @"Your session has been expired, please login again."
                                               image:nil
@@ -331,8 +334,6 @@ static NSInteger PIORequestTimeOutIntervals = 20;
     [topTitleLabel setTextColor:[UIColor colorWithRed:54.0/255.0 green:57.0/255.0 blue:112.0/255.0 alpha:1.0]];
     viewController.navigationItem.titleView =topTitleLabel;
 }
-
-
 
 #pragma mark - Firebase Methods
 - (void)fireBaseEventWithEventName:(NSString *)event eventParameterValue:(NSString *)value forKey:(NSString *)key

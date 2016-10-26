@@ -43,7 +43,7 @@
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.leftBarButtonItem=nil;
     self.backButtonHide = YES;
-   
+    
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Summary" onViewController:self];
     
@@ -138,7 +138,7 @@
     NSString *monthString = [monthDayFormatter stringFromDate:dddddd];
     
     [monthDayFormatter setDateFormat:@"yyyy"];
-//    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
+    //    NSString *yearString = [monthDayFormatter stringFromDate:dddddd];
     
     NSTimeZone *outputTimeZone = [NSTimeZone localTimeZone];
     [monthDayFormatter setTimeZone: outputTimeZone];

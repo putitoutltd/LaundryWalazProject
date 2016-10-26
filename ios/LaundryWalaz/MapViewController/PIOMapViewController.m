@@ -217,24 +217,24 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     self.GULBERG_Annotations = [[NSMutableArray alloc]init];
     
     self.latitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LAT],
-                 [NSNumber numberWithDouble: CAVALRY_GROUND_LAT],
-                 [NSNumber numberWithDouble: DHA_5_LAT],
-                 [NSNumber numberWithDouble: DHA_6_LAT],
-                 [NSNumber numberWithDouble: GULBERG_1_LAT],
-                 [NSNumber numberWithDouble: GULBERG_2_LAT],
-                 [NSNumber numberWithDouble: GULBERG_3_LAT],
-                 [NSNumber numberWithDouble: GULBERG_4_LAT],
-                 [NSNumber numberWithDouble: GULBERG_5_LAT],  nil];
+                      [NSNumber numberWithDouble: CAVALRY_GROUND_LAT],
+                      [NSNumber numberWithDouble: DHA_5_LAT],
+                      [NSNumber numberWithDouble: DHA_6_LAT],
+                      [NSNumber numberWithDouble: GULBERG_1_LAT],
+                      [NSNumber numberWithDouble: GULBERG_2_LAT],
+                      [NSNumber numberWithDouble: GULBERG_3_LAT],
+                      [NSNumber numberWithDouble: GULBERG_4_LAT],
+                      [NSNumber numberWithDouble: GULBERG_5_LAT],  nil];
     
     self.longitudes = [NSMutableArray arrayWithObjects: [NSNumber numberWithDouble: LAHORE_CANTT_LONG],
-                  [NSNumber numberWithDouble: CAVALRY_GROUND_LONG],
-                  [NSNumber numberWithDouble: DHA_5_LONG],
-                  [NSNumber numberWithDouble: DHA_6_LONG],
-                  [NSNumber numberWithDouble: GULBERG_1_LONG],
-                  [NSNumber numberWithDouble: GULBERG_2_LONG],
-                  [NSNumber numberWithDouble: GULBERG_3_LONG],
-                  [NSNumber numberWithDouble: GULBERG_4_LONG],
-                  [NSNumber numberWithDouble: GULBERG_5_LONG], nil];
+                       [NSNumber numberWithDouble: CAVALRY_GROUND_LONG],
+                       [NSNumber numberWithDouble: DHA_5_LONG],
+                       [NSNumber numberWithDouble: DHA_6_LONG],
+                       [NSNumber numberWithDouble: GULBERG_1_LONG],
+                       [NSNumber numberWithDouble: GULBERG_2_LONG],
+                       [NSNumber numberWithDouble: GULBERG_3_LONG],
+                       [NSNumber numberWithDouble: GULBERG_4_LONG],
+                       [NSNumber numberWithDouble: GULBERG_5_LONG], nil];
     
     NSMutableArray *places = [NSMutableArray arrayWithObjects: PIOPlace_Cantt,
                               PIOPlace_Cavalary,
@@ -355,23 +355,23 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
     
     
     
-//    // Reverse Geocoding
-//    //    NSLog(@"Resolving the Address");
-//    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-//        //        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-//        if (error == nil && [placemarks count] > 0) {
-//            placemark = [placemarks lastObject];
-//           
-//            self.address =[NSString stringWithFormat:@"%@ %@\n%@\n%@",
-//                      placemark.thoroughfare,
-//                      placemark.locality,
-//                      placemark.administrativeArea,
-//                      placemark.country];
-//
-//        } else {
-//            NSLog(@"%@", error.debugDescription);
-//        }
-//    } ];
+    //    // Reverse Geocoding
+    //    //    NSLog(@"Resolving the Address");
+    //    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+    //        //        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+    //        if (error == nil && [placemarks count] > 0) {
+    //            placemark = [placemarks lastObject];
+    //
+    //            self.address =[NSString stringWithFormat:@"%@ %@\n%@\n%@",
+    //                      placemark.thoroughfare,
+    //                      placemark.locality,
+    //                      placemark.administrativeArea,
+    //                      placemark.country];
+    //
+    //        } else {
+    //            NSLog(@"%@", error.debugDescription);
+    //        }
+    //    } ];
     [[self locationManager] stopUpdatingLocation];
     
 }
@@ -381,11 +381,11 @@ NSString *const PIOPlace_Gulberg_5 = @"Gulberg V";
 
 - (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation:(id<MKAnnotation>) annotation
 {
-        if (annotation == mapView.userLocation)
-        {
-            return nil;
-        }
-        
+    if (annotation == mapView.userLocation)
+    {
+        return nil;
+    }
+    
     MKAnnotationView *pin = (MKAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier: @"VoteSpotPin"];
     if (pin == nil)
     {

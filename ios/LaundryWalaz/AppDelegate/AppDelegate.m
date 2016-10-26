@@ -47,14 +47,14 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-   
+    
     
     [self performSelector: @selector(configureNavigationBar) withObject: nil afterDelay: 0.1];
 }
 
 - (void)configureNavigationBar
 {
-     [[NSNotificationCenter defaultCenter] postNotificationName: @"configureNavigationBar" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"configureNavigationBar" object:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -93,19 +93,19 @@
     NetworkStatus internetStatus = [internetReachable currentReachabilityStatus];
     switch (internetStatus)
     {
-            case NotReachable:
+        case NotReachable:
         {
             [PIOAppController sharedInstance].internetActive = NO;
             [[PIOAppController sharedInstance] showInternetNotAvailableAletr];
             break;
         }
-            case ReachableViaWiFi:
+        case ReachableViaWiFi:
         {
-           [PIOAppController sharedInstance].internetActive = YES;
+            [PIOAppController sharedInstance].internetActive = YES;
             
             break;
         }
-            case ReachableViaWWAN:
+        case ReachableViaWWAN:
         {
             [PIOAppController sharedInstance].internetActive = YES;
             break;
@@ -115,19 +115,19 @@
     NetworkStatus hostStatus = [hostReachable currentReachabilityStatus];
     switch (hostStatus)
     {
-            case NotReachable:
+        case NotReachable:
         {
             [PIOAppController sharedInstance].internetActive = NO;
             break;
         }
-            case ReachableViaWiFi:
+        case ReachableViaWiFi:
         {
             [PIOAppController sharedInstance].internetActive = YES;
             break;
         }
-            case ReachableViaWWAN:
+        case ReachableViaWWAN:
         {
-           [PIOAppController sharedInstance].internetActive = YES;
+            [PIOAppController sharedInstance].internetActive = YES;
             break;
         }
     }

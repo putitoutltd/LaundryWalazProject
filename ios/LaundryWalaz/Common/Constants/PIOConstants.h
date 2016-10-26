@@ -6,7 +6,7 @@
 //  Copyright © 2016 pito. All rights reserved.
 //
 
-#define NSLog //
+//#define NSLog //
 
 #import <Foundation/Foundation.h>
 

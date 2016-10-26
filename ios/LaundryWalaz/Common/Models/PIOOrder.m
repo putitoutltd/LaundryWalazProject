@@ -61,7 +61,7 @@
         else if (status) {
             
             if ([[PIOAppController sharedInstance] validateAPIResponse:dictionary]) {
-               
+                
                 NSString *orderID = dictionary[@"data"][@"order_id"];
                 callback(error, YES, orderID);
                 
@@ -110,7 +110,7 @@
 + (void)pricingListCallback:(void (^)(NSError *error,BOOL status, id responseObject))callback
 {
     NSString *requestURL = [PIOURLManager pricingListURL];
-//    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys: [PIOAppController sharedInstance].accessToken, @"access_token", nil];
+    //    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys: [PIOAppController sharedInstance].accessToken, @"access_token", nil];
     
     [PIORequestHandler getRequest: requestURL parameters: nil callback:^(NSError *error, BOOL status, id responseObject) {
         NSDictionary *dictionary = (NSDictionary *)responseObject;

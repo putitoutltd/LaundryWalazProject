@@ -225,7 +225,7 @@
             self.otherdayTimePickerButton.hidden = YES;
             
             self.tomorrowDeliveryButton.enabled = NO;
-            
+            [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.otherDayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -237,7 +237,6 @@
                     [self.tomorrowTimePickerButton setTitle: [slots objectAtIndex: 0] forState: UIControlStateNormal];
                 }
             }
-            
             break;
         }
         case PIOOrderDayOtherDayPickUp: {
@@ -253,6 +252,7 @@
             self.otherdayTimePickerButton.hidden = self.isFromExpressDelivery;
             self.tomorrowTimePickerButton.hidden = YES;
             self.todayTimePickerButton.hidden = YES;
+            [self setButtonStateIfSelected: self.otherDayDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowDeliveryButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.tomorrowPickupButton isSelected: NO withColor:[UIColor whiteColor]];
             [self setButtonStateIfSelected: self.todayPickupButton isSelected: NO withColor:[UIColor whiteColor]];
@@ -521,7 +521,7 @@
     
     if(result == NSOrderedDescending)
     {
-       return YES;
+        return YES;
         
     }
     else if(result == NSOrderedAscending)
@@ -530,7 +530,7 @@
     }
     else
     {
-       return  YES;
+        return  YES;
     }
     
     
@@ -608,7 +608,7 @@
         NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
         NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
         if ([[array objectAtIndex:0] integerValue] == 8) {
-          
+            
             [timeSlots addObject: @"08:00 PM"];
             break;
         }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
@@ -845,8 +845,8 @@
     {
         isExpressDeliveryAvailable = NO;
     }
-//    NSInteger minute = [dateComponents minute];
-//    NSInteger second = [dateComponents second];
+    //    NSInteger minute = [dateComponents minute];
+    //    NSInteger second = [dateComponents second];
     
     return  isExpressDeliveryAvailable;
 }
