@@ -37,7 +37,7 @@
     [self applyFonts];
     
     // hide Menu button from right side of the navigation bar.
-     self.menuButtonNeedToHide = YES;
+    self.menuButtonNeedToHide = YES;
     
     // profile image cover according to screen
     [self.profileCoverImageView setImage: [UIImage imageForDeviceWithName:@"register-icon"]];
@@ -62,9 +62,8 @@
 
 - (IBAction)registerButtonPressed:(id)sender
 {
-    
     if (self.firstNameTextField.text.length == 0 || self.lastNameTextField.text.length == 0 || self.phoneTextField.text.length == 0 || self.emailTextField.text.length == 0 || self.passwordTextField.text.length == 0 ) {
-       
+        
         [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message: @"Please fill empty fields." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeWarning];
     }
     else if (![[PIOAppController sharedInstance] isValidEmailAddress:self.emailTextField.text]) {

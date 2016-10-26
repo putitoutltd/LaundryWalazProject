@@ -39,7 +39,7 @@
         self.navigationItem.leftBarButtonItem=nil;
         self.backButtonHide = YES;
     }
-   
+    
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Pricing" onViewController:self];
@@ -71,7 +71,7 @@
             if (status) {
                 self.order = (PIOOrder *)responseObject;
                 [self.tableView reloadData];
-            
+                
             }
             else {
                 PIOAPIResponse * APIResponse = (PIOAPIResponse *) responseObject;
@@ -103,16 +103,16 @@
         case 2:
             rows = self.order.bedLinenList.count;
             break;
-       
+            
         case 3:
             rows = self.order.otherItems.count;
             break;
-
+            
             
         default:
             break;
     }
-       return rows;
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +120,7 @@
     PIOPriceListCustomTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"Price"];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"PIOPriceListCustomTableViewCell" owner:self options:nil] objectAtIndex:0];
-//        [cell drawCellForMother:self.mother];
+        //        [cell drawCellForMother:self.mother];
     }
     NSInteger row;
     if (indexPath.section == 0) {

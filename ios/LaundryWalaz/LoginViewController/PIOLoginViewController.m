@@ -16,7 +16,6 @@
 #import "PIOAPIResponse.h"
 #import "PIOUser.h"
 
-
 @interface PIOLoginViewController ()
 
 @property (nonatomic, weak) IBOutlet UIButton *registerButton;

@@ -60,6 +60,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [self.feedbackButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 20.0f]];
     [self.faqButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
     [self.TermsButton.titleLabel setFont: [UIFont PIOMyriadProLightWithSize: 16.0f]];
+    
     if (![PIOAppController sharedInstance].accessToken) {
         self.logOutButton.hidden = YES;
         self.myOrderButton.enabled = NO;
@@ -79,8 +80,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 
 - (IBAction)instagramButtonPrssed:(id)sender
 {
-
-    NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=laundrywalaz"];
+   NSURL *instagramURL = [NSURL URLWithString:@"instagram://user?username=laundrywalaz"];
     if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
         [[UIApplication sharedApplication] openURL:instagramURL];
     }
@@ -107,7 +107,6 @@ const NSInteger PIOLogOutButtonIndex = 0;
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt://04236688830"]];
     
 }
-
 
 - (IBAction)menuButtonPressed:(id)sender
 {
@@ -155,9 +154,9 @@ const NSInteger PIOLogOutButtonIndex = 0;
                 }
             }
             else {
-                 [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"PIORefreshHowToUseScreen" object: nil];
             }
-
+            
             break;
             
         }
@@ -309,7 +308,6 @@ const NSInteger PIOLogOutButtonIndex = 0;
             break;
             
     }
-    
 }
 
 - (IBAction)crossButtonPressed:(id)sender
@@ -320,10 +318,7 @@ const NSInteger PIOLogOutButtonIndex = 0;
 
 - (void)updateScreenContant
 {
-    
     self.pickupconst.constant = 50;
-    
-    
 }
 
 - (void)callLogoutAPI
@@ -334,7 +329,6 @@ const NSInteger PIOLogOutButtonIndex = 0;
 
 - (void)flushDataOnLogout:(UIViewController *)visibleViewController withViewControllerArray:(NSArray *)viewControllers
 {
-    
     [PIOUserPref setAccessToken: nil];
     [[PIOAppController sharedInstance] setAccessToken: nil];
     if (![visibleViewController isKindOfClass:[PIOHowToUseViewController class]]) {

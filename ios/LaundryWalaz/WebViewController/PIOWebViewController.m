@@ -31,7 +31,7 @@
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(refreshPage:) name: @"PIORefreshPage" object:nil];
     NSString *fileName = @"terms";
     if (self.isFromFAQs) {
-       fileName = @"faqs";
+        fileName = @"faqs";
     }
     [self loadPageWithFileName: fileName];
     
@@ -78,7 +78,7 @@
     // URL is main page
     
     if ( page.location != NSNotFound ) {
-       
+        
         PIOPriceListViewController  *priceListViewController = [PIOPriceListViewController new];
         priceListViewController.fromFAQs = YES;
         [self.navigationController pushViewController: priceListViewController animated: YES];
@@ -86,9 +86,9 @@
     }
     // URL is clicked link
     
-        
-       return YES;
-   
+    
+    return YES;
+    
 }
 
 @end

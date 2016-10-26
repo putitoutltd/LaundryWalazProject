@@ -521,7 +521,7 @@
     
     if(result == NSOrderedDescending)
     {
-       return YES;
+        return YES;
         
     }
     else if(result == NSOrderedAscending)
@@ -530,7 +530,7 @@
     }
     else
     {
-       return  YES;
+        return  YES;
     }
     
     
@@ -608,7 +608,7 @@
         NSArray *array = [twoHoursLaterStr componentsSeparatedByString: @":"];
         NSString *amORpm = [[[array objectAtIndex: 1] componentsSeparatedByString: @" "] objectAtIndex: 1];
         if ([[array objectAtIndex:0] integerValue] == 8) {
-          
+            
             [timeSlots addObject: @"08:00 PM"];
             break;
         }else if ([[array objectAtIndex:0] integerValue] == 9 && [amORpm isEqualToString: @"PM"] ) {
@@ -845,8 +845,8 @@
     {
         isExpressDeliveryAvailable = NO;
     }
-//    NSInteger minute = [dateComponents minute];
-//    NSInteger second = [dateComponents second];
+    //    NSInteger minute = [dateComponents minute];
+    //    NSInteger second = [dateComponents second];
     
     return  isExpressDeliveryAvailable;
 }

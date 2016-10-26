@@ -44,7 +44,7 @@
     
     // Set Screen Title
     [[PIOAppController sharedInstance] titleFroNavigationBar: @"Contact" onViewController:self];
-     self.specialInstrructionsTextView.layer.borderWidth = 1.0;
+    self.specialInstrructionsTextView.layer.borderWidth = 1.0;
     self.specialInstrructionsTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     [self fillScreenContentIfSavedForFutureForUser: [PIOAppController sharedInstance].order.customer];
 }
@@ -91,7 +91,7 @@
                 [[PIOAppController sharedInstance] hideActivityView];
                 if ( status) {
                     
-                        [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Order placed successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeSuccess];
+                    [[PIOAppController sharedInstance] showAlertInCurrentViewWithTitle: @"" message:@"Order placed successfully." withNotificationPosition: TSMessageNotificationPositionTop type: TSMessageNotificationTypeSuccess];
                     [PIOAppController sharedInstance].order.ID = (NSString *)responseObject;
                     PIOOrderSummaryViewController *orderSummaryViewController = [PIOOrderSummaryViewController new];
                     [self.navigationController pushViewController: orderSummaryViewController animated: YES];
