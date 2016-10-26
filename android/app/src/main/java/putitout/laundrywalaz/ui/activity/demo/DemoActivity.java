@@ -32,36 +32,20 @@ import putitout.laundrywalaz.widgets.TypefaceTextView;
  */
 public class DemoActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final int RESULT_CLOSE = 1;
-
-
     private ViewPager imageViewPager;
-
     private ImageView menuImageView;
     private ImageView crossImageView;
     private ImageView backImageView;
     private ImageView menuCallImageView;
     private ImageView menuFaceBookImageView;
     private ImageView menuInstagramImageView;
-
     private LinearLayout bottomLinearLayout;
-
     private ImagePagerAdapter imagePagerAdapter;
-
-    HomeActivity homeActivity;
-
     private Button pickUpButton;
     private Button loginButton;
-
     private int[] sliderImages;
-
-//    private View centerLine;
-
-    private AlertDialog logoutDialog;
-
     private DrawerLayout drawerLayout;
     private LinearLayout drawerMenuLinearLayout;
-
     private TypefaceTextView menuPickupTextView;
     private TypefaceTextView menuMyOrderTextView;
     private TypefaceTextView menuPriceTextView;
@@ -70,9 +54,8 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
     private TypefaceTextView menuLogoutTextView;
     private TypefaceTextView menuFAQTextView;
     private TypefaceTextView menuTermsAndPoliciesTextView;
-
-    //    private String access_Token = LWPrefs.getString(getActivity(), LWPrefs.KEY_TOKEN, "");
     private View myOrderView;
+    private AlertDialog logoutDialog;
     private boolean isPickUpFromMenu = false;
 
     @Override
@@ -86,21 +69,6 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
 
 
     public void initWidget() {
-
-//        LWUtil.isFromMenu = false;
-
-
-//
-//        if (access_Token.isEmpty()) {
-//            menuLogoutTextView.setVisibility(View.GONE);
-//            menuMyOrderTextView.setVisibility(View.GONE);
-//            myOrderView.setVisibility(View.GONE);
-//
-//        } else {
-//            menuLogoutTextView.setVisibility(View.VISIBLE);
-//            menuMyOrderTextView.setVisibility(View.VISIBLE);
-//            myOrderView.setVisibility(View.VISIBLE);
-//        }
 
         sliderImages = new int[]{R.drawable.first_slide, R.drawable.second_slide,
                 R.drawable.third_slide};
@@ -147,32 +115,23 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
         menuInstagramImageView = (ImageView) findViewById(R.id.menuInstagramImageView);
         menuInstagramImageView.setOnClickListener(this);
 
-//        centerLine = (View) findViewById(R.id.centerLine);
         myOrderView = (View) findViewById(R.id.myOrderView);
 
-
-        if (LWUtil.isFromMenu == true){
+        if (LWUtil.isFromMenu == true) {
             bottomLinearLayout.setVisibility(View.GONE);
-//            loginButton.setVisibility(View.GONE);
-//            centerLine.setVisibility(View.GONE);
-//            menuImageView.setVisibility(View.GONE);
             LWUtil.isFromMenu = false;
             isPickUpFromMenu = true;
         } else {
             bottomLinearLayout.setVisibility(View.VISIBLE);
-//            loginButton.setVisibility(View.VISIBLE);
-//            centerLine.setVisibility(View.VISIBLE);
             menuImageView.setVisibility(View.VISIBLE);
         }
         imageViewPager.setAdapter(imagePagerAdapter);
         imagePagerAdapter.notifyDataSetChanged();
         imageViewPager.setCurrentItem(0);
 
-
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(LWUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVIES);
         intentFilter.addAction(LWUtil.BROADCAST_ACTION_DEMO_ACTIVITY);
-//        intentFilter.addAction(LWUtil.BROADCAST_ACTION_COMING_FROM_HOME_ACTIVITY);
         registerReceiver(broadcastReceiver, intentFilter);
 
     }
@@ -185,9 +144,6 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
             }  else if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_DEMO_ACTIVITY)) {
                 DemoActivity.this.finish();
             }
-//            else if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_COMING_FROM_HOME_ACTIVITY)) {
-//                DemoActivity.this.finish();
-//            }
         }
     };
 
@@ -232,16 +188,10 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
                     DemoActivity.this.finish();
                     isPickUpFromMenu = false;
                 } else {
-//                    if (LWUtil.isFromMenu == false) {
-//                        startActivity(new Intent(this, HomeActivity.class));
-//                        DemoActivity.this.finish();
-//                    } else {
                     isPickUpFromMenu = false;
                     toggleMenu();
                     LWUtil.isFromPickUp = true;
                     startActivity(new Intent(this, HomeActivity.class));
-//                        this.finish();
-//                    }
                 }
 
                 break;
@@ -251,7 +201,6 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
                     toggleMenu();
                     startActivity(new Intent(this, HomeActivity.class));
                 } else {
-
                     LWUtil.isFromOrderMenu = true;
                     toggleMenu();
                     startActivity(new Intent(this, HomeActivity.class));
@@ -264,12 +213,11 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
                     toggleMenu();
                     startActivity(new Intent(this, HomeActivity.class));
                 } else {
-
-                LWUtil.isFromPriceMenu = true;
-                toggleMenu();
-                startActivity(new Intent(this, HomeActivity.class));
-                DemoActivity.this.finish();
-        }
+                    LWUtil.isFromPriceMenu = true;
+                    toggleMenu();
+                    startActivity(new Intent(this, HomeActivity.class));
+                    DemoActivity.this.finish();
+                }
                 break;
             case R.id.menuHowItWorksTextView:
                 toggleMenu();
@@ -310,14 +258,13 @@ public class DemoActivity extends BaseActivity implements View.OnClickListener {
                     LWUtil.isFromTermsMenu = true;
                     startActivity(new Intent(this, HomeActivity.class));
                     toggleMenu();
-
                 } else {
                     LWUtil.isFromTermsMenu = true;
                     startActivity(new Intent(this, HomeActivity.class));
                     toggleMenu();
                     DemoActivity.this.finish();
                 }
-                    break;
+                break;
             case R.id.menuCallImageView:
                 LWUtil.isFromCallMenu=true;
                 startActivity(new Intent(this,HomeActivity.class));

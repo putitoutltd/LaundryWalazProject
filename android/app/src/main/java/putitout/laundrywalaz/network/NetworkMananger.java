@@ -30,7 +30,6 @@ import putitout.laundrywalaz.model.UserModel;
 import putitout.laundrywalaz.utils.LWUtil;
 import putitout.laundrywalaz.utils.URLManager;
 import putitout.laundrywalaz.webservices.APIWebService;
-import putitout.laundrywalaz.webservices.CustomMultipartEntity;
 
 
 @SuppressWarnings("ALL")
@@ -76,46 +75,10 @@ public class NetworkMananger {
         return result;
     }
 
-    public static String getMultiPartApiResponse(String url, CustomMultipartEntity parameters,
-                                                 int requestType) throws Exception {
-        BufferedReader bufferReader = null;
-        String result = LWUtil.KEY_SERVER_NO_RESPONSE;
-        try {
-            HttpResponse response = getHttpResponseFromMultiPart(url, parameters, requestType);
-            bufferReader = new BufferedReader(new InputStreamReader(response
-                    .getEntity().getContent()));
-            StringBuffer stringBuffer = new StringBuffer("");
-            String line = "";
-            String lineSeparator = System.getProperty("line.separator");
-            while ((line = bufferReader.readLine()) != null) {
-                stringBuffer.append(line + lineSeparator);
-            }
-            bufferReader.close();
-            result = stringBuffer.toString();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            result = LWUtil.KEY_SERVER_NO_RESPONSE;
-        } catch (IOException io) {
-            if (bufferReader != null) {
-                try {
-                    bufferReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            io.printStackTrace();
-            result = LWUtil.KEY_SERVER_NO_RESPONSE;
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = LWUtil.KEY_SERVER_NO_RESPONSE;
-        }
-        return result;
-    }
 
 
     public static HttpResponse getHttpResponse(String webUrl, ArrayList<NameValuePair> parameters,
                                                int requestCode) throws Exception {
-
         HttpClient httpClient = new DefaultHttpClient();
 
         HttpResponse response = null;
@@ -154,17 +117,6 @@ public class NetworkMananger {
             response = httpClient.execute(httpGet);
         }
         return response;
-    }
-
-    public static HttpResponse getHttpResponseFromMultiPart(String webUrl, CustomMultipartEntity parameters,
-                                                            int requestCode) throws Exception {
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpPost postRequest = new HttpPost(webUrl);
-        postRequest.setEntity(parameters);
-        postRequest.setHeader("auth-token",
-                LWUtil.AUTH_TOKEN_KEY);
-        HttpResponse httpResponse = httpClient.execute(postRequest);
-        return httpResponse;
     }
 
     private static void sendApiRequest(Context context, int requestCode, ArrayList<NameValuePair>
@@ -229,7 +181,6 @@ public class NetworkMananger {
 //                model.getStatus() + ""));
         sendApiRequest(context, requestCode, params, webserviceResponseListener,
                 NetworkMananger.HTTP_POST_REQUEST_TYPE, URLManager.REGISTER_USER);
-
     }
 
     public static void loginUserApi(Context context, String email, String password, OnWebServiceResponse
@@ -240,7 +191,6 @@ public class NetworkMananger {
         sendApiRequest(context, requestCode, params, webServiceResponse,
                 NetworkMananger.HTTP_POST_REQUEST_TYPE, URLManager.LOGIN_USER);
     }
-
 
     public static void forgotPasswordApi(Context context, String email, OnWebServiceResponse
             webServiceResponse, int requestCode) {
@@ -275,7 +225,6 @@ public class NetworkMananger {
                 orderModel.getDropoff_time()));
         sendApiRequest(context, requestCode, params, webServiceResponse,
                 NetworkMananger.HTTP_POST_REQUEST_TYPE, URLManager.CREATE_ORDER);
-
     }
 
     public static void orderStatusApi(Context context, String access_token, OnWebServiceResponse
@@ -284,7 +233,6 @@ public class NetworkMananger {
         params.add(new BasicNameValuePair(LWUtil.KEY_ACCESS_TOKEN, access_token));
         sendApiRequest(context, requestCode, params, webServiceResponse,
                 NetworkMananger.HTTP_POST_REQUEST_TYPE, URLManager.ORDER_STATUS);
-
     }
 
     public static void feedBackApi(Context context, String about, String feedback, String customerName, String orderID, OnWebServiceResponse onWebServiceResponse, int requestCode){
@@ -297,13 +245,9 @@ public class NetworkMananger {
                 NetworkMananger.HTTP_GET_REQUEST_TYPE, URLManager.FEED_BACK);
     }
 
-
     public static void serviceListApi(Context context, OnWebServiceResponse onWebServiceResponse, int requestCode){
         ArrayList<NameValuePair> params = new ArrayList<NameValuePair>();
         sendApiRequest(context, requestCode, params, onWebServiceResponse,
                 NetworkMananger.HTTP_GET_REQUEST_TYPE, URLManager.SERVICE_LIST);
     }
-
-
-
 }

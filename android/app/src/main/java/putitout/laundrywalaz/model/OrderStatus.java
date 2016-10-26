@@ -5,7 +5,6 @@ package putitout.laundrywalaz.model;
  */
 public class OrderStatus {
 
-
     String locationId;
     String phone;
     String firstName;
@@ -20,13 +19,11 @@ public class OrderStatus {
     String date_modified;
     String users_id;
 
-
     public OrderStatus(String pickup_time, String dropoff_time, String status) {
         this.pickup_time = pickup_time;
         this.dropoff_time = dropoff_time;
         this.status = status;
     }
-
 
     public String getLocationId() {
         return locationId;

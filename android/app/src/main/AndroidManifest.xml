@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="putitout.laundrywalaz">
 
-
     <supports-screens android:smallScreens="true"
         android:normalScreens="true"
         android:largeScreens="true"
@@ -26,8 +25,6 @@
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!--<uses-permission android:name="android.permission.CALL_PHONE" />-->
-
-
     <uses-permission android:name="putitout.laundrywalaz.permission.MAPS_RECEIVE"/>
 
     <application

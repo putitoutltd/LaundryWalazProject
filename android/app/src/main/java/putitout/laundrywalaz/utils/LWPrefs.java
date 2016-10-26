@@ -25,8 +25,6 @@ public class LWPrefs {
 	public static final String KEY_EMAIL = "KEY_EMAIL";
 	public static final  String KEY_PICKUP_DATE = "KEY_PICKUP_DATE";
 
-
-
 	public static SharedPreferences sharePreference = null;
 
 	public static SharedPreferences getSharedPreference(Context context) {
@@ -39,11 +37,6 @@ public class LWPrefs {
 	public static void clearSharedPreferences(Context context) {
 		getSharedPreference(context).edit().clear().commit();
 	}
-
-
-//	public static void clearSharedPreferencesKey(Context context,String Key,String value) {
-//		getSharedPreference(context).edit().clear().commit();
-//	}
 
 	public static void saveBoolean(Context context, String key,boolean value) {
 		getSharedPreference(context).edit().putBoolean(key, value).commit();
@@ -60,16 +53,4 @@ public class LWPrefs {
 	public static String getString(Context context, String key,String defaultValue) {
 		return getSharedPreference(context).getString(key, defaultValue);
 	}
-	
-	public static void saveInt(Context context, String key, int value) {
-		getSharedPreference(context).edit().putInt(key, value).commit();
-	}
-	
-	public static int getInt(Context context, String key, int defaultValue) {
-		return getSharedPreference(context).getInt(key, defaultValue);
-	}
-
-
-
-
 }

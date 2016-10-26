@@ -26,10 +26,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import putitout.laundrywalaz.R;
 import putitout.laundrywalaz.ui.activity.home.HomeActivity;
@@ -47,22 +47,17 @@ import putitout.laundrywalaz.widgets.TypefaceTextView;
 public class WhenFragment extends BaseFragment implements View.OnClickListener {
 
     public static final String TAG = WhenFragment.class.getSimpleName();
-
     private boolean isOpenCalender = false;
     private boolean isTodaySpinnerShown = true;
     private boolean isTomorrowSpinnerShown = false;
     private boolean isOtherDaySpinnerShown = false;
     private boolean isTimeBetween8to6 = false;
-
     private Button continueButton;
-
     private Spinner spinnerTomorrow,spinnerToday,spinnerOtherDay;
     String[] spinnerOptions;
     String[] spinnerOptionsToday;
     private int currentHour;
-
     private ImageView spinnerTodayImageView;
-
     private TypefaceTextView pickUpTodayTextView;
     private TypefaceTextView pickUpTomorrowTextView;
     private TypefaceTextView openCalendarTextView;
@@ -70,7 +65,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
     private TypefaceTextView otherDayDateDeliveryTextView;
     private TypefaceTextView todayDateDeliveryTextView;
     private TypefaceTextView tomorrowDeliveryDateTextView;
-
     private RelativeLayout regularRelativeLayout;
     private RelativeLayout expressRelativeLayout;
     private RelativeLayout pickUpTodayRelativeLayout;
@@ -81,28 +75,20 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
     private RelativeLayout spinnerOtherDayRelativeLayout;
     private RelativeLayout deliveryOpenCalenderRelativeLayout;
     private RelativeLayout tomorrowDeliveryRelativeLayout;
-
     private LinearLayout pickUpLinearLayout;
+    private HomeActivity homeActivity;
+    private String packageSelection = "REGULAR";
+    SimpleDateFormat curFormater,curFormate;
+    public static final SimpleDateFormat PARSE_SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat formatSimpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
 
-    String accessToken;
+    GregorianCalendar gregorianCalendar;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+    Calendar calendarObject = Calendar.getInstance();
     String pickUpDate = "";
     String dropOffDate = "";
     String pickup_time = "";
 
-    GregorianCalendar gregorianCalendar;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
-
-    Calendar cal = Calendar.getInstance();
-
-    private HomeActivity homeActivity;
-
-    private String packageSelection = "REGULAR";
-
-    SimpleDateFormat curFormater,curFormate;
-
-    public static final SimpleDateFormat PARSE_SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-
-    private SimpleDateFormat formatSimpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
 
 
     @Override
@@ -122,15 +108,12 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
 
 
     public void initWidget(View view){
-
         homeActivity = (HomeActivity) getActivity();
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.whenText));
         LWUtil.access_Token = LWPrefs.getString(getActivity(),LWPrefs.KEY_TOKEN,"");
-
         continueButton = (Button) view.findViewById(R.id.continueButton);
         continueButton.setOnClickListener(this);
-
         pickUpTodayTextView = (TypefaceTextView) view.findViewById(R.id.pickUpTodayTextView);
         pickUpTomorrowTextView = (TypefaceTextView) view.findViewById(R.id.pickUpTomorrowTextView);
         openCalendarTextView = (TypefaceTextView) view.findViewById(R.id.openCalendarTextView);
@@ -138,10 +121,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         otherDayDateDeliveryTextView = (TypefaceTextView) view.findViewById(R.id.otherDayDateDeliveryTextView);
         todayDateDeliveryTextView = (TypefaceTextView) view.findViewById(R.id.todayDateDeliveryTextView);
         tomorrowDeliveryDateTextView = (TypefaceTextView) view.findViewById(R.id.tomorrowDeliveryDateTextView);
-
         spinnerTodayImageView = (ImageView) view.findViewById(R.id.spinnerTodayImageView);
         pickUpLinearLayout = (LinearLayout) view.findViewById(R.id.pickUpLinearLayout);
-
         regularRelativeLayout = (RelativeLayout) view.findViewById(R.id.regularRelativeLayout);
         regularRelativeLayout.setOnClickListener(this);
         expressRelativeLayout = (RelativeLayout) view.findViewById(R.id.expressRelativeLayout);
@@ -159,40 +140,22 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         deliveryOpenCalenderRelativeLayout.setOnClickListener(this);
         tomorrowDeliveryRelativeLayout = (RelativeLayout) view.findViewById(R.id.tomorrowDeliveryRelativeLayout);
         tomorrowDeliveryRelativeLayout.setOnClickListener(this);
-
-
         spinnerTomorrow = (Spinner) view.findViewById(R.id.spinnerTomorrow);
-
         spinnerToday = (Spinner) view.findViewById(R.id.spinnerToday);
-
         spinnerOtherDay = (Spinner) view.findViewById(R.id.spinnerOtherDay);
-
         spinnerToday.setBackgroundResource(R.drawable.spinner_border);
-
         spinnerTomorrow.setBackgroundResource(R.drawable.spinner_border);
-
-
         spinnerOtherDay.setBackgroundResource(R.drawable.spinner_border);
         spinnerOptions = getResources().getStringArray(R.array.time_array);
-//        if(isTimeBetween8to6 ==true) {
-//            spinnerOptionsToday = new String[3];
-//        }else{
-//            spinnerOptionsToday = getResources().getStringArray(R.array.time_array);
-//        }
 
-        curFormater = new SimpleDateFormat("hh:mm aa");
-        curFormate = new SimpleDateFormat("hh:mm");
+        curFormater = new SimpleDateFormat("hh:mm aa", Locale.US);
+        curFormate = new SimpleDateFormat("hh:mm",Locale.US);
 
         Date mDate = new Date();
         CharSequence s  = DateFormat.format("dd MMMM yyyy", mDate.getTime());
         pickUpTodayTextView.setText(s);
-//        pickUpDate = pickUpTodayTextView.getText().toString();
         todayDateDeliveryTextView.setText(s);
-
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_DATE, pickUpDate);
-
-        LWLog.info(TAG + "pickUpDate :" + pickUpDate);
-        LWLog.info(TAG + "dropOffDate :" + pickUpDate);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         Calendar c = Calendar.getInstance();
@@ -201,63 +164,38 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         pickUpTomorrowTextView.setText(tomorrowDate);
         tomorrowDeliveryDateTextView.setText(tomorrowDate);
 
-//        spinnerOtherDay.setSelection(0);
-//        spinnerToday.setSelection(0);
-//        spinnerTomorrow.setSelection(0);
-
-
-        cal = Calendar.getInstance(); //Create Calendar-Object
-        cal.setTime(new Date());               //Set the Calendar to now
-        currentHour = cal.get(Calendar.HOUR_OF_DAY);
+        calendarObject = Calendar.getInstance();//Create Calendar-Object
+        calendarObject.setTime(new Date());//Set the Calendar to now
+        currentHour = calendarObject.get(Calendar.HOUR_OF_DAY);
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME,"");
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME,"");
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME,"");
 
-        if (currentHour >= 18 && currentHour <= 24) {           // Check if currentHour is between{6 pm to 12 pm}
-            // do whatever you want
+        if (currentHour >= 18 && currentHour <= 24) {// Check if currentHour is between{6 pm to 12 pm}
             isTimeBetween8to6 = false;
             pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
             pickUpTodayRelativeLayout.setClickable(false);
-
             spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
             spinnerOptionsToday = new String[1];
             spinnerToday.setVisibility(View.INVISIBLE);
             spinnerTodayImageView.setVisibility(View.INVISIBLE);
         }
-        if (currentHour >=0000 && currentHour <= 9) {     // Check if currentHour is between{12 am to 8 am}
+        if (currentHour >=0000 && currentHour <= 9) {// Check if currentHour is between{12 am to 8 am}
             isTimeBetween8to6 = false;
             pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
-//            spinnerTodayRelativeLayout.setVisibility(View.VISIBLE);
             pickUpTodayRelativeLayout.setClickable(true);
             spinnerOptionsToday = getResources().getStringArray(R.array.time_array);
         }
-        if (currentHour >=9 && currentHour <=18) {     // Check if currentHour is between{8 am to 6 pm}
+        if (currentHour >=9 && currentHour <=18) {// Check if currentHour is between{8 am to 6 pm}
             isTimeBetween8to6 = true;
-            pickUpTodayRelativeLayout.setBackgroundResource
-                    (R.drawable.login_bg);
-//            spinnerTodayRelativeLayout.setVisibility(View.VISIBLE);
+            pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
             pickUpTodayRelativeLayout.setClickable(true);
             generateTimeSlots();
-
         }
     }
 
-
     public void generateTimeSlots(){
-
-//        if (currentHour == 8) {
-//            spinnerOptionsToday = getResources().getStringArray(R.array.time_8am_array);
-//            gregorianCalendar = new GregorianCalendar();
-//            gregorianCalendar.add(Calendar.HOUR,2);
-//            System.out.println(gregorianCalendar.getTime());
-//            spinnerOptionsToday = new String[11];
-//            for (int day = 0; day < 10; day++) {
-//                spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
-//                gregorianCalendar.roll(Calendar.HOUR, true);
-//            }
-//            spinnerOptionsToday[10]="8:00 PM";
-//        }
-        if (currentHour == 9) { // Check if currentHour is between{9 am}
+        if (currentHour == 9) {// Check if currentHour is between{9 am}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -275,9 +213,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 }
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[9]="08:00 pm";
-        } else if (currentHour == 10) {  // Check if currentHour is between{10 am}
+        } else if (currentHour == 10) {// Check if currentHour is between{10 am}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -286,9 +223,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[8]="08:00 pm";
-        } else if (currentHour == 11) {   // Check if currentHour is between{11 am}
+        } else if (currentHour == 11) {  // Check if currentHour is between{11 am}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -297,10 +233,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[7]="08:00 pm";
-        } else if (currentHour == 12) {  // Check if currentHour is between{12 am}
-
+        } else if (currentHour == 12) { // Check if currentHour is between{12 am}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -309,16 +243,14 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[6]="08:00 pm";
-//            spinnerToday.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptionsToday));
             spinnerToday.post(new Runnable() {
                 @Override
                 public void run() {
                     ((ShareSpinnerAdapter) spinnerToday.getAdapter()).notifyDataSetChanged();
                 }
             });
-        } else if (currentHour == 13) {  // Check if currentHour is between{1 pm}
+        } else if (currentHour == 13) {// Check if currentHour is between{1 pm}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -327,9 +259,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[5]="08:00 pm";
-        } else if (currentHour == 14) {  // Check if currentHour is between{2 pm}
+        } else if (currentHour == 14) {// Check if currentHour is between{2 pm}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -338,9 +269,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[4]="08:00 pm";
-        } else if (currentHour == 15) { // Check if currentHour is between{3 pm}
+        } else if (currentHour == 15) {// Check if currentHour is between{3 pm}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -349,11 +279,8 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[3]="08:00 pm";
-
-            LWLog.info("If current hour 3 pm"+ "" + Arrays.toString(spinnerOptionsToday));
-        } else if (currentHour == 16) { // Check if currentHour is between{4 pm}
+        } else if (currentHour == 16) {// Check if currentHour is between{4 pm}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -362,11 +289,9 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[2]="08:00 pm";
 
-        } else if (currentHour == 17) { // Check if currentHour is between{5 pm}
-
+        } else if (currentHour == 17) {// Check if currentHour is between{5 pm}
             gregorianCalendar = new GregorianCalendar();
             gregorianCalendar.add(Calendar.HOUR,2);
             System.out.println(gregorianCalendar.getTime());
@@ -375,7 +300,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerOptionsToday[day] = curFormater.format(gregorianCalendar.getTime());
                 gregorianCalendar.roll(Calendar.HOUR, true);
             }
-//            spinnerOptionsToday[0]="00:00";
             spinnerOptionsToday[1]="08:00 pm";
         }
     }
@@ -386,38 +310,33 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
             case R.id.continueButton:
                 if (packageSelection.equalsIgnoreCase("REGULAR")) {
                     if (LWUtil.access_Token.isEmpty()) {
-                        LWUtil.isUserLogin=true;
+                        LWUtil.isUserLogin = true;
                         if (pickUpDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
-                        }       else if (dropOffDate.isEmpty()) {
-                            Toast.makeText(getActivity(), "Please select Drop-Off time.", Toast.LENGTH_SHORT).show();
-                        } else {
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
-                    }
+                        } else if (dropOffDate.isEmpty()) {
+                            Toast.makeText(getActivity(), "Please select Drop-Off Day.", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            startActivity(new Intent(getActivity(), LoginActivity.class));
+                        }
                     } else {
                         if (pickUpDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
                         } else if (dropOffDate.isEmpty()) {
-                            Toast.makeText(getActivity(), "Please select Drop-Off time.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Please select Drop-Off Day.", Toast.LENGTH_SHORT).show();
                         } else {
                             replaceFragment(R.id.fragmentContainerLayout, new AddContactInfoFragment(), AddContactInfoFragment.TAG, true);
                         }
                     }
-                } else if (packageSelection.equalsIgnoreCase("EXPRESS")) {
+                }
+                else if (packageSelection.equalsIgnoreCase("EXPRESS")) {
                     if (LWUtil.access_Token.isEmpty()) {
                         LWUtil.isUserLogin=true;
                         if (pickUpDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
-                        }
-//                        else if (dropOffDate.isEmpty()) {
-//                            Toast.makeText(getActivity(), "Please select Drop-Off time.", Toast.LENGTH_SHORT).show();
-//                        }
-                        else{
+                        } else {
                             startActivity(new Intent(getActivity(), LoginActivity.class));
                         }
-//                        startActivity(new Intent(getActivity(), LoginActivity.class));
-
-//                        LWLog.info(""+LWUtil.isUserLogin);
                     } else {
                         if (pickUpDate.isEmpty()) {
                             Toast.makeText(getActivity(), "Please select Pick-Up Day", Toast.LENGTH_SHORT).show();
@@ -427,28 +346,19 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                     }
                 }
                 break;
-
             case R.id.regularRelativeLayout:
-
-//                isTodaySpinnerShown=true;
-//                isOtherDaySpinnerShown = false;
-                cal = Calendar.getInstance(); //Create Calendar-Object
-                cal.setTime(new Date());               //Set the Calendar to now
-                currentHour = cal.get(Calendar.HOUR_OF_DAY);
+                calendarObject = Calendar.getInstance();//Create Calendar-Object
+                calendarObject.setTime(new Date());//Set the Calendar to current time.
+                currentHour = calendarObject.get(Calendar.HOUR_OF_DAY);
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME,"");
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME,"");
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME,"");
-
-                if (currentHour >=9 && currentHour <=18) {     // Check if currentHour is between{8 am to 6 pm}
+                if (currentHour >=9 && currentHour <=18) {// Check if currentHour is between{8 am to 6 pm}
                     isTimeBetween8to6 = true;
-                    pickUpTodayRelativeLayout.setBackgroundResource
-                            (R.drawable.login_bg);
-//            spinnerTodayRelativeLayout.setVisibility(View.VISIBLE);
+                    pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     pickUpTodayRelativeLayout.setClickable(true);
                     generateTimeSlots();
-
                 }
-
                 regularRelativeLayout.setBackgroundResource(R.drawable.active_tab);
                 expressRelativeLayout.setBackgroundResource(R.drawable.inactive_tab);
                 pickUpLinearLayout.setVisibility(View.VISIBLE);
@@ -470,8 +380,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 pickUpDate = "";
                 dropOffDate = "";
                 pickup_time = "";
-                LWLog.info(TAG + "pickUpDate :" + pickUpDate);
-
                 if ((currentHour >=0000 && currentHour <= 8) ||(currentHour >=8 && currentHour <=18)) {
                     pickUpTodayRelativeLayout.setClickable(true);
                 } else {
@@ -480,14 +388,12 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 LWUtil.isNextDayShown = false;
                 break;
             case R.id.expressRelativeLayout:
-
                 spinnerTomorrow.setSelection(0);
                 spinnerOtherDay.setSelection(0);
                 spinnerToday.setSelection(0);
                 isTodaySpinnerShown = false;
                 isOtherDaySpinnerShown = false;
                 isTomorrowSpinnerShown = false;
-
                 packageSelection = "EXPRESS";
                 regularRelativeLayout.setBackgroundResource(R.drawable.inactive_tab);
                 expressRelativeLayout.setBackgroundResource(R.drawable.active_tab);
@@ -497,9 +403,7 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                 spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
                 if (currentHour >=0000 && currentHour < 11) {
-
                     packageSelection = "EXPRESS";
-
                     pickUpLinearLayout.setVisibility(View.GONE);
                     pickUpTextView.setVisibility(View.VISIBLE);
                     pickUpTodayRelativeLayout.setClickable(true);
@@ -515,16 +419,12 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                     openCalendarTextView.setText(R.string.openCalendar);
                     otherDayDateDeliveryTextView.setText(R.string.openCalendar);
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
-
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
                     pickUpDate = "";
                     dropOffDate = "";
                     pickup_time = "";
-                    LWLog.info(TAG + "pickUpDate :" + pickUpDate);
-                    LWLog.info(TAG + "pickup_time :" + pickup_time);
                     LWUtil.isNextDayShown = false;
-
                 } else {
                     pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     pickUpTomorrowRelativeLayout.setBackgroundResource(R.drawable.login_bg);
@@ -538,15 +438,11 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                     pickUpTodayRelativeLayout.setClickable(false);
                     tomorrowDeliveryRelativeLayout.setClickable(false);
                     tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
-//                    tomorrowDeliveryRelativeLayout.setClickable(false);
-//                    tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
-
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
                     pickUpTextView.setVisibility(View.VISIBLE);
                 }
-
                 break;
             case R.id.pickUpTodayRelativeLayout:
                 spinnerToday.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptionsToday));
@@ -557,29 +453,21 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                         spinnerToday.setSelection(0,true);
                     }
                 });
-
-                cal = Calendar.getInstance(); //Create Calendar-Object
-                cal.setTime(new Date());
-                currentHour = cal.get(Calendar.HOUR_OF_DAY);
+                calendarObject = Calendar.getInstance();//Create Calendar-Object
+                calendarObject.setTime(new Date());
+                currentHour = calendarObject.get(Calendar.HOUR_OF_DAY);
                 isTodaySpinnerShown = true;
                 isOtherDaySpinnerShown = false;
                 isTomorrowSpinnerShown = false;
-
-                LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME,"");
-                LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME,"");
-                LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME,"");
-
-                if (currentHour >= 18 && currentHour <= 24) {           // Check if currentHour is between{6 pm to 12 pm}
-                    // do whatever you want
+                if (currentHour >= 18 && currentHour <= 24) {// Check if currentHour is between{6 pm to 12 pm}
                     isTimeBetween8to6 = false;
                     pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     pickUpTodayRelativeLayout.setClickable(false);
-
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOptionsToday = new String[1];
                     spinnerToday.setVisibility(View.INVISIBLE);
                     spinnerTodayImageView.setVisibility(View.INVISIBLE);
-                }else{
+                } else {
                     pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.send_btn);
                     pickUpTomorrowRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     openCalendarRelativeLayout.setBackgroundResource(R.drawable.login_bg);
@@ -591,88 +479,66 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                     tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     tomorrowDeliveryRelativeLayout.setClickable(true);
                     openCalendarTextView.setText(R.string.openCalendar);
-//                isTodaySpinnerShown=true;
-//                isOtherDaySpinnerShown = false;
-//                spinnerToday.setSelection(0);
-                    pickUpDate = "";
-                    dropOffDate = "";
                     pickup_time = "";
                     pickUpDate = pickUpTodayTextView.getText().toString();
                     LWLog.info(TAG + "pickUpDate :" + pickUpDate);
                     LWUtil.isNextDayShown = false;
-                    cal = Calendar.getInstance(); //Create Calendar-Object
-                    cal.setTime(new Date());               //Set the Calendar to now
-                    currentHour = cal.get(Calendar.HOUR_OF_DAY);
+                    calendarObject = Calendar.getInstance();//Create Calendar-Object
+                    calendarObject.setTime(new Date());//Set the Calendar to now
+                    currentHour = calendarObject.get(Calendar.HOUR_OF_DAY);
                 }
-                if(packageSelection.equalsIgnoreCase("EXPRESS")){
+                if(packageSelection.equalsIgnoreCase("EXPRESS")) {
                     tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                     tomorrowDeliveryRelativeLayout.setClickable(false);
-
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
-
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + "1:00 PM");
                     pickup_time = "1:00 PM";
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, pickUpDate + " " + "9:00 PM");
-
                 }
                 isTodaySpinnerShown=true;
                 isOtherDaySpinnerShown = false;
                 isTomorrowSpinnerShown=false;
                 break;
             case R.id.pickUpTomorrowRelativeLayout:
-
                 spinnerTomorrow.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptions));
                 spinnerTomorrow.post(new Runnable() {
                     @Override
                     public void run() {
-
                         ((ShareSpinnerAdapter) spinnerTomorrow.getAdapter()).notifyDataSetChanged();
                         spinnerTomorrow.setSelection(0,true);
                     }
                 });
-
                 pickUpTomorrowRelativeLayout.setBackgroundResource(R.drawable.send_btn);
                 pickUpTodayRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                 openCalendarRelativeLayout.setBackgroundResource(R.drawable.login_bg);
-
                 spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                 spinnerTomorrowRelativeLayout.setVisibility(View.VISIBLE);
                 spinnerTomorrow.setVisibility(View.VISIBLE);
                 spinnerOptions = getResources().getStringArray(R.array.time_array);
                 spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
-
                 tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                 tomorrowDeliveryRelativeLayout.setClickable(false);
                 openCalendarTextView.setText(R.string.openCalendar);
-
                 isTodaySpinnerShown=false;
                 isTomorrowSpinnerShown = true;
                 isOtherDaySpinnerShown = false;
-
                 pickUpDate = pickUpTomorrowTextView.getText().toString();
-                LWLog.info(TAG + "pickUpDate :" + pickUpDate);
-
                 LWUtil.isNextDayShown = false;
-                dropOffDate = "";
                 pickup_time = "";
-                if(packageSelection.equalsIgnoreCase("EXPRESS")){
-
+                if (packageSelection.equalsIgnoreCase("EXPRESS")) {
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
-
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + "1:00 PM");
                     pickup_time = "1:00 PM";
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
-
                     LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, pickUpDate + " " + "9:00 PM");
                 }
                 break;
             case R.id.openCalendarRelativeLayout:
-
                 spinnerOtherDay.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptions));
                 spinnerOtherDay.post(new Runnable(){
                     @Override
@@ -697,9 +563,7 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 showDatePickerDialog(datePickerListener);
                 isOtherDaySpinnerShown = true;
                 LWUtil.isNextDayShown = true;
-//                pickUpDate = "";
-//                pickup_time = "";
-//                spinnerOtherDay.setSelection(0);
+                pickup_time = "";
                 if (packageSelection.equalsIgnoreCase("EXPRESS")) {
                     spinnerTodayRelativeLayout.setVisibility(View.INVISIBLE);
                     spinnerTomorrowRelativeLayout.setVisibility(View.INVISIBLE);
@@ -714,13 +578,11 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.login_bg);
                 break;
             case R.id.tomorrowDeliveryRelativeLayout:
-//                deliveryPickerDialog.updateDate(datePickerYear,datePickerMonth,datePickerDay);
                 tomorrowDeliveryRelativeLayout.setBackgroundResource(R.drawable.send_btn);
                 openCalendarTextView.setText(R.string.openCalendar);
                 dropOffDate = tomorrowDeliveryDateTextView.getText().toString();
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
                 deliveryOpenCalenderRelativeLayout.setBackgroundResource(R.drawable.login_bg);
-                LWLog.info(TAG + "dropOffDate :" + dropOffDate);
                 break;
         }
     }
@@ -728,23 +590,19 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
-
             datePickerYear = selectedYear;
             datePickerMonth = selectedMonth;
             datePickerDay = selectedDay;
-
             NumberFormat numberFormat = new DecimalFormat("00");
 
             StringBuilder ss = new StringBuilder().append(datePickerYear)
                     .append("-").append(numberFormat.format(datePickerMonth + 1)).
                             append("-").append(numberFormat.format(datePickerDay));
-
             openCalendarTextView.setText(getFormattedDate(ss.toString()));
             pickup_time = "11:00 AM";
 
             pickUpDate = openCalendarTextView.getText().toString();
             pickUpDateEqualsToDropOffDate();
-//            LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + pickup_time);
             if(packageSelection.equalsIgnoreCase("EXPRESS")){
                 spinnerOtherDayRelativeLayout.setVisibility(View.INVISIBLE);
@@ -753,7 +611,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
                 LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, pickUpDate + " " + "9:00 PM");
             }
-            LWLog.info(TAG + "pickUpDate :" + pickUpDate);
         }
 
     };
@@ -761,7 +618,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
     private DatePickerDialog.OnDateSetListener deliveryDatePickerListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int selectedYear,
                               int selectedMonth, int selectedDay) {
-
             deliveryDatePickerYear = selectedYear;
             deliveryDatePickerMonth = selectedMonth;
             deliveryDatePickerDay = selectedDay;
@@ -773,21 +629,7 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
             otherDayDateDeliveryTextView.setText(getFormattedDate(s.toString()));
             dropOffDate = otherDayDateDeliveryTextView.getText().toString();
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
-            LWLog.info(TAG + "dropOffDate :" + dropOffDate);
             LWUtil.isNextDayShown = false;
-
-//            try {
-//                Date date1 = sdf.parse(pickUpDate);
-//                Date date2 = sdf.parse(dropOffDate);
-//                if(date2.before(date1)){
-//                    System.out.println("Date1 is before Date2");
-//                    cal.setTime(sdf.parse(pickUpDate));
-//                    cal.add(Calendar.DATE, 1);  // number of days to add
-//                    dropOffDate = sdf.format(cal.getTime());
-//                    otherDayDateDeliveryTextView.setText(dropOffDate);}
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
             if(dropOffDate.equalsIgnoreCase(pickUpDate)){
                 dropOffEqualsToPickUpDate();
             }
@@ -797,28 +639,27 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
     public void dropOffEqualsToPickUpDate(){
         if (dropOffDate.trim().equals(pickUpDate)&&(pickUpDate.equals(dropOffDate.trim()))) {
             try {
-                cal.setTime(sdf.parse(dropOffDate));
+                calendarObject.setTime(sdf.parse(dropOffDate));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            cal.add(Calendar.DATE, 1);  // number of days to add
-            dropOffDate = sdf.format(cal.getTime());
+            calendarObject.add(Calendar.DATE, 1); // number of days to add
+            dropOffDate = sdf.format(calendarObject.getTime());
             otherDayDateDeliveryTextView.setText(dropOffDate);
             dropOffDate = otherDayDateDeliveryTextView.getText().toString();
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
         }
     }
 
-
     public void pickUpDateEqualsToDropOffDate(){
         if (pickUpDate.trim().equals(dropOffDate)&&(dropOffDate.equals(pickUpDate.trim()))) {
             try {
-                cal.setTime(sdf.parse(dropOffDate));
+                calendarObject.setTime(sdf.parse(dropOffDate));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            cal.add(Calendar.DATE, 1);  // number of days to add
-            dropOffDate = sdf.format(cal.getTime());
+            calendarObject.add(Calendar.DATE, 1);// number of days to add
+            dropOffDate = sdf.format(calendarObject.getTime());
             otherDayDateDeliveryTextView.setText(dropOffDate);
             dropOffDate = otherDayDateDeliveryTextView.getText().toString();
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME, dropOffDate + " " + "9:00 PM");
@@ -845,18 +686,16 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME,"");
         LWPrefs.saveString(getActivity(),LWPrefs.KEY_DROP_OFF_TIME,"");
         LWUtil.isUserLogin=false;
-        Calendar cal = Calendar.getInstance(); //Create Calendar-Object
-        cal.setTime(new Date());               //Set the Calendar to now
-        currentHour = cal.get(Calendar.HOUR_OF_DAY);
+        calendarObject = Calendar.getInstance();//Create Calendar-Object
+        calendarObject.setTime(new Date());//Set the Calendar to now
+        currentHour = calendarObject.get(Calendar.HOUR_OF_DAY);
         pickUpDate = "";
         dropOffDate = "";
         pickup_time = "";
-
         spinnerTomorrow.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerOptions));
         spinnerTomorrow.post(new Runnable() {
             @Override
             public void run() {
-
                 ((ShareSpinnerAdapter) spinnerTomorrow.getAdapter()).notifyDataSetChanged();
                 spinnerTomorrow.setSelection(0,true);
             }
@@ -865,7 +704,6 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         spinnerToday.post(new Runnable() {
             @Override
             public void run() {
-
                 ((ShareSpinnerAdapter) spinnerToday.getAdapter()).notifyDataSetChanged();
                 spinnerToday.setSelection(0,true);
             }
@@ -874,77 +712,55 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         spinnerOtherDay.post(new Runnable() {
             @Override
             public void run() {
-
                 ((ShareSpinnerAdapter) spinnerOtherDay.getAdapter()).notifyDataSetChanged();
                 spinnerOtherDay.setSelection(0,true);
             }
         });
-
     }
 
     public class ShareSpinnerAdapter extends ArrayAdapter<String> {
         AbsListView.LayoutParams params;
         public ShareSpinnerAdapter(Context context, int textViewResourceId, String[] options) {
             super(context, textViewResourceId, options);
-//            params = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,(int) (WhenFragment.getWindowHeight(getActivity()) * 0.026));
         }
 
         @Override public View getDropDownView(final int position, View convertView, final ViewGroup parent) {
-//            cal = Calendar.getInstance(); //Create Calendar-Object
-//            cal.setTime(new Date());               //Set the Calendar to now
-//            currentHour = cal.get(Calendar.HOUR_OF_DAY);
-
             if (isTodaySpinnerShown == true) {
                 if (position == spinnerOptionsToday.length) {
                     return new View(parent.getContext());
                 }
-            }
-            else if (isOtherDaySpinnerShown == true) {
+            } else if (isOtherDaySpinnerShown == true) {
 
                 if(position == spinnerOptions.length) {
                     return new View(parent.getContext());
                 }
-            }
-            else if( isTomorrowSpinnerShown == true) {
+            } else if( isTomorrowSpinnerShown == true) {
                 if(position == spinnerOptions.length) {
                     return new View(parent.getContext());
                 }
             }
-
             LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View mySpinner = layoutInflater.inflate(R.layout.spinner_when_layout, parent, false);
             TextView selectedOptionTodayTextView ,selectedOptionTomorrowTextView ,selectedOtherDayOptionTextView;
             selectedOptionTodayTextView = (TextView) mySpinner .findViewById(R.id.selectedOptionTodayTextView);
             selectedOptionTomorrowTextView = (TextView) mySpinner .findViewById(R.id.selectedOptionTomorrowTextView);
             selectedOtherDayOptionTextView = (TextView) mySpinner .findViewById(R.id.selectedOtherDayOptionTextView);
-
-
-//            mySpinner.setLayoutParams(params);
-//            selectedOptionTextView.setText("");
             if (isTodaySpinnerShown == true) {
                 selectedOptionTodayTextView.setText(spinnerOptionsToday[position]);
                 selectedOptionTodayTextView.setVisibility(View.VISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.INVISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.INVISIBLE);
-            }
-            else if (isOtherDaySpinnerShown == true) {
+            } else if (isOtherDaySpinnerShown == true) {
                 selectedOptionTomorrowTextView.setText(spinnerOptions[position]);
                 selectedOptionTodayTextView.setVisibility(View.INVISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.VISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.INVISIBLE);
-            }
-
-            else if (isTomorrowSpinnerShown == true) {
+            } else if (isTomorrowSpinnerShown == true) {
                 selectedOtherDayOptionTextView.setText(spinnerOptions[position]);
                 selectedOptionTodayTextView.setVisibility(View.INVISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.INVISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.VISIBLE);
             }
-
-//            else {
-//                selectedOptionTextView.setText(spinnerOptions[position]);
-//            }
-
             mySpinner.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -953,21 +769,17 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
                         View root = parent.getRootView();
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
-                    }
-                    else if (isOtherDaySpinnerShown == true) {
+                    } else if (isOtherDaySpinnerShown == true) {
                         spinnerOtherDay.setSelection(position);
                         View root = parent.getRootView();
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
-                    }
-
-                    else if (isTomorrowSpinnerShown == true) {
+                    } else if (isTomorrowSpinnerShown == true) {
                         spinnerTomorrow.setSelection(position);
                         View root = parent.getRootView();
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK));
                         root.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK));
                     }
-
                 }
             });
             return mySpinner;
@@ -976,42 +788,29 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         @Override public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View mySpinner = layoutInflater.inflate(R.layout.spinner_when_layout, parent, false);
-
             TextView selectedOptionTodayTextView ,selectedOptionTomorrowTextView ,selectedOtherDayOptionTextView;
             selectedOptionTodayTextView = (TextView) mySpinner .findViewById(R.id.selectedOptionTodayTextView);
             selectedOptionTomorrowTextView = (TextView) mySpinner .findViewById(R.id.selectedOptionTomorrowTextView);
             selectedOtherDayOptionTextView = (TextView) mySpinner .findViewById(R.id.selectedOtherDayOptionTextView);
-
-//            pickup_time="00:00";
-
             if (isTodaySpinnerShown == true) {
                 selectedOptionTodayTextView.setText(spinnerOptionsToday[position]);
                 selectedOptionTodayTextView.setVisibility(View.VISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.INVISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.INVISIBLE);
                 pickup_time = selectedOptionTodayTextView.getText().toString();
-                LWLog.info(pickup_time);
-            }
-
-            else if (isOtherDaySpinnerShown == true) {
+            } else if (isOtherDaySpinnerShown == true) {
                 selectedOtherDayOptionTextView.setText(spinnerOptions[position]);
                 selectedOptionTodayTextView.setVisibility(View.INVISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.INVISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.VISIBLE);
                 pickup_time = selectedOtherDayOptionTextView.getText().toString();
-                LWLog.info(pickup_time);
-            }
-
-            else if (isTomorrowSpinnerShown == true) {
+            } else if (isTomorrowSpinnerShown == true) {
                 selectedOptionTomorrowTextView.setText(spinnerOptions[position]);
                 selectedOptionTodayTextView.setVisibility(View.INVISIBLE);
                 selectedOptionTomorrowTextView.setVisibility(View.VISIBLE);
                 selectedOtherDayOptionTextView.setVisibility(View.INVISIBLE);
-
                 pickup_time = selectedOptionTomorrowTextView.getText().toString();
-                LWLog.info(pickup_time);
             }
-
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICKUP_TIME, pickup_time);
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_PICK_UP_TIME, pickUpDate + " " + pickup_time);
             return mySpinner;
@@ -1029,48 +828,3 @@ public class WhenFragment extends BaseFragment implements View.OnClickListener {
         return formattedDate;
     }
 }
-
-
-//        SimpleDateFormat curFormater = new SimpleDateFormat("KK:mm a");
-//        gregorianCalendar = new GregorianCalendar();
-//        int s = gregorianCalendar.get(Calendar.HOUR_OF_DAY);
-//        date1 = new GregorianCalendar();
-////        gregorianCalendar now = Calendar.getInstance();
-//        gregorianCalendar.add(Calendar.HOUR,2);
-//
-//
-//        date1.add(Calendar.HOUR,2);
-//        System.out.println(gregorianCalendar.getTime());
-//        String s1 = curFormater.format(gregorianCalendar.getTime());
-////        Toast.makeText(getActivity(),"now " + gregorianCalendar,Toast.LENGTH_LONG).show();
-//
-//
-//
-////        today.add(curFormater.format(gregorianCalendar.getTime()));
-//
-//        for (int time = 0; time < 6; time++) {
-//
-//
-////            today.add(curFormater.format(gregorianCalendar.getTime()));
-//            spinnerOptionsToday[time] = curFormater.format(gregorianCalendar.getTime());
-//            gregorianCalendar.roll(Calendar.HOUR, true);
-//            if(spinnerOptionsToday[time].matches("07:00")){
-//                spinnerOptionsToday[time]="08:00 pm";
-//            }
-////            spinnerOptionsToday[5]="08:00 pm";
-//
-//
-//
-//
-//        }
-
-
-
-//        Log.i(TAG,"dateStringArray" + "" + Arrays.toString(spinnerOptionsToday));
-
-//        if(today!=null){
-//
-//            today.set(1,"08:00 pm");
-//        }
-
-//        Log.i(TAG,"dateStringArray" + "today" + spinnerOptionsToday);

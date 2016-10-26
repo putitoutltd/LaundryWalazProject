@@ -30,18 +30,14 @@ import putitout.laundrywalaz.widgets.TypefaceEditText;
 public class RegisterActivity extends BaseActivity implements View.OnClickListener,OnWebServiceResponse {
 
     private static final int REGISTER_A_USER = 4;
-
     private ImageView backImageView;
-
     private Button registerButton;
-
     private TypefaceEditText firstNameEditText;
     private TypefaceEditText lastNameEditText;
     private TypefaceEditText phoneEditText;
     private TypefaceEditText emailAddressEditText;
     private TypefaceEditText passwordEditText;
-
-    ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -56,17 +52,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void initWidget() {
         backImageView = (ImageView) findViewById(R.id.backImageView);
         backImageView.setOnClickListener(this);
-
         firstNameEditText = (TypefaceEditText) findViewById(R.id.firstNameEditText);
         lastNameEditText = (TypefaceEditText) findViewById(R.id.lastNameEditText);
         phoneEditText = (TypefaceEditText) findViewById(R.id.phoneEditText);
         emailAddressEditText = (TypefaceEditText) findViewById(R.id.emailAddressEditText);
         passwordEditText = (TypefaceEditText) findViewById(R.id.passwordEditText);
-
         registerButton = (Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -143,14 +136,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-
     @Override
     public void onStartWebService(int requestCode) {
         progressDialog = getProgressDialog();
         if(!progressDialog.isShowing()) {
             progressDialog.show();
         }
-
     }
 
     @Override
@@ -161,7 +152,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 progressDialog.dismiss();
             }
         }
-
         if (isValidResponse) {
             Parser parser = new Parser(response);
             switch (requestCode) {
@@ -201,10 +191,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             LWPrefs.saveString(this, LWPrefs.KEY_PHONE, phoneEditText.getText().toString());
             LWPrefs.saveString(this, LWPrefs.KEY_USER_STATUS, "1");
             LWPrefs.saveString(this, LWPrefs.KEY_EMAIL, emailAddressEditText.getText().toString());
-
-            finish();
             Toast.makeText(this,R.string.registrationAlert,Toast.LENGTH_LONG).show();
-
+            finish();
         }
     }
 }

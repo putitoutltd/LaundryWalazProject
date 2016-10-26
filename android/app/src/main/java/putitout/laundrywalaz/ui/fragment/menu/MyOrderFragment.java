@@ -32,15 +32,10 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
     public static final String TAG = MyOrderFragment.class.getSimpleName();
     private static final int ORDER_STATUS = 1;
     public static final SimpleDateFormat PARSE_SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd KK:mm");
-
-
     private ImageView orderStatusImageView;
-
     private TypefaceTextView orderTimeTextView,orderDateTextView,orderStatusTextView,cancelOrderStatusTextView;
-
-    ProgressDialog progressDialog;
+    private ProgressDialog progressDialog;
     private SimpleDateFormat formatSimpleDateFormat,formatSimpleDateDropOffFormat;
-    String accessToken;
     private HomeActivity homeActivity;
 
     @Override
@@ -52,7 +47,6 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
         return view;
     }
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -61,31 +55,19 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
 
 
     public void initWidget(View view){
-
-
-
         homeActivity = (HomeActivity) getActivity();
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.orderStatus));
-
         LWUtil.access_Token = LWPrefs.getString(getActivity(),LWPrefs.KEY_TOKEN,"");
-
         orderStatusImageView = (ImageView) view.findViewById(R.id.orderStatusImageView);
-
         orderTimeTextView = (TypefaceTextView) view.findViewById(R.id.orderTimeTextView);
-
         orderDateTextView = (TypefaceTextView) view.findViewById(R.id.orderDateTextView);
-
         orderStatusTextView = (TypefaceTextView) view.findViewById(R.id.orderStatusTextView);
-
         cancelOrderStatusTextView = (TypefaceTextView) view.findViewById(R.id.cancelOrderStatusTextView);
-
         formatSimpleDateFormat = new SimpleDateFormat("hh:mm aa");
-
         formatSimpleDateDropOffFormat = new SimpleDateFormat("EEEE MMMM, dd");
         orderStatus();
     }
-
 
     private void orderStatus() {
         if (NetworkUtil.checkIfNetworkAvailable(getActivity())) {
@@ -124,39 +106,17 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
             if (parser.getMessage().equals(getString(R.string.invalidAccessToken))) {
                 LWUtil.showInvalidAccessTokenAlert(getActivity());
             } else {
-
                 LWUtil.showAlert(getActivity(), parser.getMessage());
                 orderDateTextView.setVisibility(View.INVISIBLE);
             }
-
-
-//            LWUtil.showAlert(getActivity(), "There is no Order in the Record.");
-
         } else if (parser.getStatus().equals(LWUtil.KEY_SERVER_RESPONSE_SUCCESS)) {
 
             String orderStatus =  parser.getOrderStatus();
-
             String pickUpTime = parser.getPickup_time();
-
             String dropOffTime = parser.getDropoff_time();
-
-            LWLog.info(TAG + orderStatus);
-
-            LWLog.info(TAG + "pickUpTime"+ pickUpTime);
-
-            LWLog.info(TAG + getFormattedDate(pickUpTime));
-
-            LWLog.info(TAG +"dropOffTime"+" "+ dropOffTime);
 
             orderTimeTextView.setText(getFormattedDropOffDate(dropOffTime)+" "+"09:00 pm");
             orderTimeTextView.setLineSpacing(0,1.5f);
-//            orderTimeTextView.setText("Lines:\n", TextView.BufferType.EDITABLE);
-//            appendLine(orderTimeTextView.getEditableText(), "Line 1 = 40\n", 40);
-
-//            String q = orderTimeTextView.getText().toString();
-//
-//            LWLog.info(TAG +"dropOffTime"+" "+ q);
-
             if(orderStatus.equalsIgnoreCase("0")){
                 orderStatusImageView.setImageResource(R.drawable.status_01);
                 orderStatusTextView.setText("Pick-Up at");
@@ -181,16 +141,13 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
                 orderTimeTextView.setText("09:00 PM");
                 orderDateTextView.setText(getFormattedDropOffDate(dropOffTime));
                 cancelOrderStatusTextView.setVisibility(View.GONE);
-            }
-            else if (orderStatus.equalsIgnoreCase("4")){
+            } else if (orderStatus.equalsIgnoreCase("4")){
                 orderStatusImageView.setImageResource(R.drawable.delivered_status);
                 orderStatusTextView.setText("Delivery at");
                 orderTimeTextView.setText("09:00 PM");
                 orderDateTextView.setText(getFormattedDropOffDate(dropOffTime));
                 cancelOrderStatusTextView.setVisibility(View.GONE);
-            }
-            else if(orderStatus.equalsIgnoreCase("5")){
-//                LWUtil.showAlert(getActivity(), parser.getMessage());
+            } else if(orderStatus.equalsIgnoreCase("5")){
                 orderDateTextView.setVisibility(View.GONE);
                 orderTimeTextView.setVisibility(View.GONE);
                 orderStatusTextView.setVisibility(View.GONE);
@@ -198,36 +155,24 @@ public class MyOrderFragment extends BaseFragment implements OnWebServiceRespons
                 cancelOrderStatusTextView.setText(R.string.cancelOrderStatus);
                 Toast.makeText(getActivity(),"Your order has been cancelled.", Toast.LENGTH_SHORT).show();
             }
-
-//            orderTimeTextView.setText(getFormattedDate(pickUpTime));
-//            else if (orderStatus.equalsIgnoreCase("4")){
-//                orderStatusImageView.setImageResource(R.drawable.order_status_01);
-//            }
-
             LWPrefs.saveString(getActivity(), LWPrefs.KEY_ORDER_STATUS, orderStatus);
-
-//            Toast.makeText(this, getString(R.string.passwordSent), Toast.LENGTH_SHORT).show();
-
         }
     }
 
-
-    private String getFormattedDate(String birthday) {
+    private String getFormattedDate(String time) {
         String formattedDate = "";
         try {
-            Date date = PARSE_SIMPLE_DATE_FORMAT.parse(birthday);
+            Date date = PARSE_SIMPLE_DATE_FORMAT.parse(time);
             formattedDate = formatSimpleDateFormat.format(date);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return formattedDate;
     }
-
-
-    private String getFormattedDropOffDate(String birthday) {
+    private String getFormattedDropOffDate(String time) {
         String formattedDate = "";
         try {
-            Date date = PARSE_SIMPLE_DATE_FORMAT.parse(birthday);
+            Date date = PARSE_SIMPLE_DATE_FORMAT.parse(time);
             formattedDate = formatSimpleDateDropOffFormat.format(date);
         } catch (Exception e) {
             e.printStackTrace();

@@ -15,6 +15,7 @@ import putitout.laundrywalaz.R;
  * Created by Ehsan Aslam on 7/21/2016.
  */
 public class ImagePagerAdapter extends PagerAdapter {
+
     private LayoutInflater inflater;
     private Context context;
     private int[] sliderImages;
@@ -41,7 +42,7 @@ public class ImagePagerAdapter extends PagerAdapter {
 
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View itemView = inflater.inflate(R.layout.image_pager, container, false);
+        View itemView = inflater.inflate(R.layout.image_pager_layout, container, false);
         // Locate the ImageView in viewpager_item.xml
         sliderImageView = (ImageView) itemView.findViewById(R.id.sliderImageView);
         // Capture position and set to the ImageView
