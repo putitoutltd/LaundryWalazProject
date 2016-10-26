@@ -43,20 +43,13 @@ import putitout.laundrywalaz.widgets.TypefaceTextView;
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
-
-
     private ImageView menuImageView;
     private ImageView crossImageView;
-    private ImageView backImageView;
+    public ImageView backImageView;
     private ImageView menuCallImageView;
     private ImageView menuFaceBookImageView;
     private ImageView menuInstagramImageView;
-
-    private AlertDialog logoutDialog;
-    private View myOrderView;
-
     private TypefaceTextView headerTextView;
-
     private TypefaceTextView menuPickupTextView;
     public  TypefaceTextView menuMyOrderTextView;
     private TypefaceTextView menuPriceTextView;
@@ -70,12 +63,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private LinearLayout drawerMenuLinearLayout;
     private FrameLayout fragmentContainerLayout;
     private String fragmentName;
+
+    private AlertDialog logoutDialog;
+    private View myOrderView;
     private boolean isBackArrowOnWhereFragment = false;
-
-    private String access_Token;
-
-    public static String FACEBOOK_URL = "https://www.facebook.com/laundrywalaz";
-    public static String FACEBOOK_PAGE_ID = "Laundry Walaz";
 
     boolean isFromOtherMenu = false;
 
@@ -102,8 +93,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
         backImageView = (ImageView) findViewById(R.id.backImageView);
         backImageView.setOnClickListener(this);
-
-
 
         headerTextView = (TypefaceTextView) findViewById(R.id.headerTextView);
         headerTextView.setText(R.string.whereText);
@@ -146,70 +135,44 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             myOrderView.setVisibility(View.VISIBLE);
         }
 
-        if (  LWUtil.isFromPickUp == true){
-            getSupportFragmentManager().beginTransaction().
-                    replace(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG).
-                    commit();
-//            sendBroadcast(new Intent(LWUtil.BROADCAST_ACTION_COMING_FROM_HOME_ACTIVITY));
+        if (LWUtil.isFromPickUp == true){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG).commit();
             headerTextView.setText(R.string.whereText);
             clearPreviousBackStackTillHomeActivity();
             registerBackStackListener();
             LWUtil.isFromPickUp =false;
-        }
-
-        else if(LWUtil.isFromPriceMenu == true) {
-
-            getSupportFragmentManager().beginTransaction().
-                    replace(R.id.fragmentContainerLayout, new PriceListFragment(), PriceListFragment.TAG).
-                    commit();
+        } else if(LWUtil.isFromPriceMenu == true) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerLayout, new PriceListFragment(), PriceListFragment.TAG).commit();
             headerTextView.setText(R.string.menuPricing);
             clearPreviousBackStackTillHomeActivity();
             LWUtil.isFromPriceMenu =false;
             fragmentName=PriceListFragment.TAG;
             isFromOtherMenu = true;
-        }
-        else if (LWUtil.isFromOrderMenu==true){
+        } else if (LWUtil.isFromOrderMenu == true){
             if(headerTextView.getText()=="Order Status"){
                 toggleMenu();
             } else {
-//                toggleMenu();
-
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragmentContainerLayout, new MyOrderFragment(), MyOrderFragment.TAG).
-                        commit();
+                        replace(R.id.fragmentContainerLayout, new MyOrderFragment(), MyOrderFragment.TAG).commit();
                 headerTextView.setText(R.string.orderStatus);
                 clearPreviousBackStackTillHomeActivity();
                 LWUtil.isFromOrderMenu =false;
                 fragmentName=MyOrderFragment.TAG;
                 isFromOtherMenu = true;
             }
-        }
-
-
-        else if (LWUtil.isFromFeedbackMenu==true){
+        } else if (LWUtil.isFromFeedbackMenu == true){
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.fragmentContainerLayout, new FeedBackFragment(), FeedBackFragment.TAG).
                     commit();
             headerTextView.setText(R.string.menuFeedBack);
-//            clearPreviousBackStackTillHomeActivity();
             LWUtil.isFromFeedbackMenu =false;
             fragmentName=FeedBackFragment.TAG;
             isFromOtherMenu = true;
-        }
-
-//        else if (LWUtil.isFromLogoutMenu==true){
-//            showLogoutAlert();
-//            LWUtil.isFromLogoutMenu =false;
-//        }
-
-        else if (LWUtil.isFromFAQMenu==true){
+        } else if (LWUtil.isFromFAQMenu==true){
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.fragmentContainerLayout, new FAQFragment(), FAQFragment.TAG).
                     commit();
             headerTextView.setText(R.string.menuFAQ);
-//            registerBackStackListener();
-//            clearPreviousBackStackTillHomeActivity();
-
             LWUtil.isFromFAQMenu =false;
             fragmentName=FAQFragment.TAG;
             isFromOtherMenu = true;
@@ -219,9 +182,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                     replace(R.id.fragmentContainerLayout, new TermsAndPoliciesFragment(), TermsAndPoliciesFragment.TAG).
                     commit();
             headerTextView.setText(R.string.menuTermsAndPolicies);
-//            registerBackStackListener();
-//            clearPreviousBackStackTillHomeActivity();
-
             LWUtil.isFromTermsMenu =false;
             fragmentName=TermsAndPoliciesFragment.TAG;
             isFromOtherMenu = true;
@@ -230,9 +190,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             dialNumber();
             LWUtil.isFromCallMenu =false;
             finish();
-        }
-
-        else if (LWUtil.isFromFBMenu==true){
+        } else if (LWUtil.isFromFBMenu==true){
             fbPageLink();
             LWUtil.isFromFBMenu =false;
             finish();
@@ -241,14 +199,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             instagramPageLink();
             LWUtil.isFromINSTAMenu =false;
             finish();
-        }
-        else if(LWUtil.isUserLogin==true){
+        } else if(LWUtil.isUserLogin==true){
             getSupportFragmentManager().beginTransaction().
                     replace(R.id.fragmentContainerLayout, new AddContactInfoFragment(), AddContactInfoFragment.TAG).
                     commit();
             headerTextView.setText(R.string.addInfoText);
-            LWUtil.isUserLogin=false;
+            LWUtil.isUserLogin = false;
             backImageView.setVisibility(View.VISIBLE);
+            backImageView.setOnClickListener(this);
             backImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -266,7 +224,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             showTitle();
             registerBackStackListener();
         }
-
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(LWUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVIES);
@@ -294,7 +251,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             menuMyOrderTextView.setVisibility(View.VISIBLE);
             myOrderView.setVisibility(View.VISIBLE);
         }
-
         showTitle();
     }
 
@@ -303,8 +259,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_KILL_PREVIOUS_ACTIVIES)) {
                 HomeActivity.this.finish();
-            }
-            else if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_KILL_HOME_ACTIVITY)) {
+            } else if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_KILL_HOME_ACTIVITY)) {
                 HomeActivity.this.finish();
             }
         }
@@ -315,6 +270,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -326,48 +282,27 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                     finish();
                 } else {
                     isBackArrowOnWhereFragment = false;
-                    getSupportFragmentManager().popBackStack();
+                    getActivity().getSupportFragmentManager().popBackStack();
                 }
                 break;
             case R.id.menuPickupTextView:
-//                if(headerTextView.getText().equals("Where?")){
-//                    if(fragmentName==PriceListFragment.TAG){
-//
-//                        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//                    }
-//                    toggleMenu();
-//                    clearPreviousBackStackTillHomeActivity();
-//                    replaceFragment(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG, true);
-//                } else {
-
-
                 if(headerTextView.getText().equals(SummaryFragment.TAG)){
                     clearPreviousBackStackTillHomeActivity();
-                }
-                else if (headerTextView.getText().equals(AddContactInfoFragment.TAG)){
+                } else if (headerTextView.getText().equals(AddContactInfoFragment.TAG)){
                     clearPreviousBackStackTillHomeActivity();
                 }
-
                 if (LWUtil.access_Token.isEmpty()){
                     headerTextView.setText(R.string.whereText);
-//                    clearPreviousBackStackTillHomeActivity();
-                        replaceFragment(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG, true);
-
-
+                    replaceFragment(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG, true);
                     toggleMenu();
                     LWUtil.isFromMenu = false;
-//                    getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
                 } else {
                     if (fragmentName == null) {
                         clearPreviousBackStackTillHomeActivity();
-//                        replaceFragment(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG, true);
                         headerTextView.setText(R.string.whereText);
-
                         toggleMenu();
                         LWUtil.isFromMenu = false;
                         isFromOtherMenu = false;
-
                     }
                     if (isFromOtherMenu == true) {
                         if (fragmentName.equals(PriceListFragment.TAG) || fragmentName.equals(MyOrderFragment.TAG)
@@ -377,70 +312,46 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                                 || fragmentName.equals(AddContactInfoFragment.TAG)) {
                             toggleMenu();
                             clearPreviousBackStackTillHomeActivity();
-//                            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                             isFromOtherMenu = false;
                             finish();
                             headerTextView.setText(R.string.whereText);
                         }
                     } else {
-
                         clearPreviousBackStackTillHomeActivity();
-//                        replaceFragment(R.id.fragmentContainerLayout, new WhereFragment(), WhereFragment.TAG, true);
                         headerTextView.setText(R.string.whereText);
-
                         toggleMenu();
                         LWUtil.isFromMenu = false;
                         isFromOtherMenu = false;
                     }
-
                 }
                 break;
             case R.id.menuMyOrderTextView:
-//                clearPreviousBackStackTillHomeActivity();
-//                if(headerTextView.getText()=="Order Status"){
-//                    toggleMenu();
-//                } else {
-//                    toggleMenu();
                 clearPreviousBackStackTillHomeActivity();
-                    replaceFragment(R.id.fragmentContainerLayout, new MyOrderFragment(), MyOrderFragment.TAG, true);
+                replaceFragment(R.id.fragmentContainerLayout, new MyOrderFragment(), MyOrderFragment.TAG, true);
                 toggleMenu();
                 break;
             case R.id.menuPriceTextView:
-//                if(headerTextView.getText().equals("Price List")){
-//                    toggleMenu();
-//                } else {
                 clearPreviousBackStackTillHomeActivity();
-
-                    replaceFragment(R.id.fragmentContainerLayout, new PriceListFragment(), PriceListFragment.TAG, true);
-
+                replaceFragment(R.id.fragmentContainerLayout, new PriceListFragment(), PriceListFragment.TAG, true);
                 toggleMenu();
-
                 break;
             case R.id.menuHowItWorksTextView:
                 clearPreviousBackStackTillHomeActivity();
-//                toggleMenu();
-//                startActivity(new Intent(this,HowItWorksActivity.class));
-//                Toast.makeText(this,"How it works",Toast.LENGTH_LONG).show();
-//                HomeActivity.this.finish();
-
-                if(LWUtil.access_Token.isEmpty()){
+                if(LWUtil.access_Token.isEmpty()) {
                     LWUtil.isFromMenu = false;
                     startActivity(new Intent(this, DemoActivity.class));
                     toggleMenu();
-                }else {
+                } else {
                     LWUtil.isFromMenu = true;
                     startActivity(new Intent(this, DemoActivity.class));
                     toggleMenu();
                 }
                 break;
             case R.id.menuFeedbackTextView:
-
                 clearPreviousBackStackTillHomeActivity();
-
                 replaceFragment(R.id.fragmentContainerLayout, new FeedBackFragment(), FeedBackFragment.TAG, true);
                 toggleMenu();
                 fragmentContainerLayout.requestDisallowInterceptTouchEvent(true);
-//                clearPreviousBackStackTillHomeActivity();
                 break;
             case R.id.menuLogoutTextView:
                 showLogoutAlert();
@@ -449,24 +360,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 toggleMenu();
                 break;
             case R.id.menuFAQTextView:
-//                if(headerTextView.getText().equals("FAQ.")){
-//                    toggleMenu();
-//                } else {
                 clearPreviousBackStackTillHomeActivity();
-                    replaceFragment(R.id.fragmentContainerLayout, new FAQFragment(), FAQFragment.TAG, true);
-//                    clearPreviousBackStackTillHomeActivity();
-                    toggleMenu();
-//                }
+                replaceFragment(R.id.fragmentContainerLayout, new FAQFragment(), FAQFragment.TAG, true);
+                toggleMenu();
                 break;
             case R.id.menuTermsAndPoliciesTextView:
-//                if(headerTextView.getText().equals("Terms and Policies")){
-//                    toggleMenu();
-//                } else {
                 clearPreviousBackStackTillHomeActivity();
-                    replaceFragment(R.id.fragmentContainerLayout, new TermsAndPoliciesFragment(), TermsAndPoliciesFragment.TAG, true);
-//                    clearPreviousBackStackTillHomeActivity();
-                    toggleMenu();
-
+                replaceFragment(R.id.fragmentContainerLayout, new TermsAndPoliciesFragment(), TermsAndPoliciesFragment.TAG, true);
+                toggleMenu();
                 break;
             case R.id.menuCallImageView:
                 dialNumber();
@@ -492,6 +393,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     public void hideTitle() {
         headerTextView.setVisibility(View.INVISIBLE);
     }
+
     public void instagramPageLink(){
         Uri uri = Uri.parse("http://instagram.com//laundrywalaz");
         Intent insta = new Intent(Intent.ACTION_VIEW, uri);
@@ -508,46 +410,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         return list.size() > 0;
     }
-    //    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        unregisterReceiver(broadcastReceiver);
-//    }
-//
-//    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            if (intent.getAction().equals(LWUtil.BROADCAST_ACTION_LOGOUT)) {
-//                logOut();
-//            }
-//
-//
-//        }
-//    };
-
 
     public void fbPageLink(){
-
         Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
         String facebookUrl = getFacebookPageURL(this);
         facebookIntent.setData(Uri.parse(facebookUrl));
         startActivity(facebookIntent);
     }
+
     //method to get the right URL to use in the intent
     public String getFacebookPageURL(Context context) {
         PackageManager packageManager = context.getPackageManager();
         try {
             int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
             if (versionCode >= 3002850) { //newer versions of fb app
-                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+                return "fb://facewebmodal/f?href=" + LWUtil.FACEBOOK_URL;
             } else { //older versions of fb app
-                return "fb://page/" + FACEBOOK_PAGE_ID;
+                return "fb://page/" + LWUtil.FACEBOOK_PAGE_ID;
             }
         } catch (PackageManager.NameNotFoundException e) {
-            return FACEBOOK_URL; //normal web url
+            return LWUtil.FACEBOOK_URL; //normal web url
         }
     }
-
 
     private void toggleMenu() {
         if (drawerLayout.isDrawerOpen(drawerMenuLinearLayout)) {
@@ -559,8 +443,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
     public void logOut() {
         try {
-
-//            AlbumListingFragment.clearCache();
 
         } catch (Exception e) {}
         clearPreviousBackStackTillHomeActivity();
@@ -590,14 +472,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         logoutDialog.show();
     }
 
-    private void clearPreviousBackStackTillHomeActivity() {
-        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        LWUtil.doSoftInputHide(this);
-    }
-
-
     public void dialNumber(){
-
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:042 36688830-31"));
 //                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -620,17 +495,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 int count = getSupportFragmentManager().getBackStackEntryCount();
                 if (count > 0) {
                     FragmentManager.BackStackEntry backStackEntry = getSupportFragmentManager().getBackStackEntryAt(count - 1);
-
                     //Pop previous fragment if needed
                     if (fragmentName != null && (fragmentName == WhereFragment.TAG ||
                             fragmentName == WhenFragment.TAG || fragmentName == PriceListFragment.TAG ||
                             fragmentName == FeedBackFragment.TAG || fragmentName == MyOrderFragment.TAG
-                    || fragmentName == FAQFragment.TAG || fragmentName == TermsAndPoliciesFragment.TAG)) {
+                            || fragmentName == FAQFragment.TAG || fragmentName == TermsAndPoliciesFragment.TAG)) {
                     }
                     fragmentName = backStackEntry.getName();
                     BaseFragment baseFragment = (BaseFragment) getSupportFragmentManager().findFragmentByTag(fragmentName);
                     if(baseFragment != null) {
-//                        baseFragment.onVisible();
                     }
 
                     Log.i("Top Fragment: " , fragmentName);
@@ -666,35 +539,29 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                         backImageView.setVisibility(View.INVISIBLE);
                         menuImageView.setVisibility(View.VISIBLE);
                     }
-
-//                    if (fragmentName.equals(HelpFragment.TAG) ||
-//                            fragmentName.equals(PricingFragment.TAG) ||
-//                            fragmentName.equals(PrivacyFragment.TAG) ||
-//                            fragmentName.equals(TCFragment.TAG) ||
-//                            fragmentName.equals(AddContactInfoFragment.TAG)||
-//                            fragmentName.equals(ConfirmationFragment.TAG)) {
-//                        pricingImageView.setVisibility(View.INVISIBLE);
-//                    } else {
-//                        pricingImageView.setVisibility(View.VISIBLE);
-//                        menuImageView.setVisibility(View.VISIBLE);
-//                        backImageView.setVisibility(View.INVISIBLE);
-//                        headerTextView.setText(R.string.newOrder);
-//                    }
                 } else {
-
+                    if(fragmentName.equals(R.string.addInfoText)) {
+                        menuImageView.setVisibility(View.VISIBLE);
+                        backImageView.setVisibility(View.INVISIBLE);
+                        headerTextView.setText(R.string.addInfoText);
+                        headerTextView.setVisibility(View.VISIBLE);
+                    }
                     menuImageView.setVisibility(View.VISIBLE);
                     backImageView.setVisibility(View.INVISIBLE);
                     headerTextView.setText(R.string.whereText);
                     headerTextView.setVisibility(View.VISIBLE);
                 }
-//                headerTextView.setText(R.string.whereText);
-//                headerTextView.setVisibility(View.VISIBLE);
             }
         });
     }
 
+    public void hideBackArrowButton() {
+        backImageView.setVisibility(View.INVISIBLE);
+    }
 
-    public void clearPreviousBackStackTillTimeLine() {
+    public ImageView getBackArrowImageView() {return backImageView;}
+
+    private void clearPreviousBackStackTillHomeActivity() {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         LWUtil.doSoftInputHide(this);
     }

@@ -19,9 +19,7 @@ public class TermsAndPoliciesFragment extends BaseFragment implements View.OnCli
 
     public static final String TAG = TermsAndPoliciesFragment.class.getSimpleName();
     private WebView termsAndPoliciesWebView;
-
     private HomeActivity homeActivity;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,33 +30,24 @@ public class TermsAndPoliciesFragment extends BaseFragment implements View.OnCli
         return view;
     }
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         homeActivity.hideTitle();
     }
 
 
     public void initWidget(View view){
-
         homeActivity = (HomeActivity) getActivity();
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.menuTermsAndPolicies));
-
-
         termsAndPoliciesWebView = (WebView) view.findViewById(R.id.termsAndPoliciesWebView);
         WebSettings webSettings = termsAndPoliciesWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         termsAndPoliciesWebView.loadUrl("file:///android_asset/terms.html");
-
-
     }
-
 
     @Override
     public void onClick(View v) {
-
     }
 }

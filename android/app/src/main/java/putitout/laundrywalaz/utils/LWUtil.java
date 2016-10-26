@@ -4,14 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.text.Html;
 import android.text.Spanned;
-import android.util.Base64;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -19,8 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 import putitout.laundrywalaz.R;
@@ -36,7 +31,10 @@ public class LWUtil {
      */
     public static final String AUTH_TOKEN_KEY = "{sPjadfadf@4hyBASYdfsLdWJFz2juAdAOI(MkjAnRhsTVC>Wih))J9WT(kr";
 
-    public static final SimpleDateFormat PARSE_SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd MMMM yyyy h:mm a");
+    public static final SimpleDateFormat PARSE_SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd MMMM yyyy h:mm a", Locale.US);
+
+    public static String FACEBOOK_URL = "https://www.facebook.com/laundrywalaz";
+    public static String FACEBOOK_PAGE_ID = "Laundry Walaz";
 
     /**
      * BroadCast
@@ -52,7 +50,6 @@ public class LWUtil {
     public static final String KEY_TAG = "LaundaryWalaz";
     public static final String KEY_APPLICATION_PACKAGE_NAME = "putitout.LaundaryWalaz";
     public static final String KEY_SERVER_NO_RESPONSE = "null";
-
 
     // Keys for User Model
     public static final String KEY_FIRST_NAME = "first_name";
@@ -182,23 +179,6 @@ public class LWUtil {
         DisplayMetrics display = ((Activity) context).getResources()
                 .getDisplayMetrics();
         return display.heightPixels;
-    }
-
-    public static void generateHashKey(Context context, String encodingType) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    KEY_APPLICATION_PACKAGE_NAME, PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance(encodingType);
-                md.update(signature.toByteArray());
-                Log.d(LWUtil.KEY_TAG,
-                        Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
     }
 
     public static Spanned getErrorHtmlFromString(String message) {

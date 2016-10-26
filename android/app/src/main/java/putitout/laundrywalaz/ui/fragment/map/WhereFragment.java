@@ -63,7 +63,7 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
         ResultCallback, View.OnClickListener {
 
     public static final String TAG = WhereFragment.class.getSimpleName();
-
+    GoogleMap.OnMyLocationChangeListener myLocationChangeListener;
     static final LatLng LAHORE = new LatLng(31.5546,74.3572);
     static final LatLng LAHORE_CANTT_LAT = new LatLng (31.478726,74.416029);
     static final LatLng CAVALRY_GROUND_LAT = new LatLng(31.500772,74.369010);
@@ -77,26 +77,16 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
 
     private int REQUEST_CHECK_SETTINGS = 100;
     private int RESULT_OK = 1;
-
-
     protected GoogleApiClient mGoogleApiClient;
     protected LocationRequest locationRequest;
-
     private GoogleMap googleMap;
-
-//    private boolean isLocationSelected = false;
-
     private Button confirmAddressButton;
-
     private TypefaceEditText getLocationEditText;
-
     private Spinner shareWithSpinner;
     private String[] spinnerLocationOptions;
-
-    GoogleMap.OnMyLocationChangeListener myLocationChangeListener;
-    String address = "";
     private static View rootView;
 
+    String address = "";
     String locationArea = "";
     String city  = "";
     String state = "";
@@ -104,7 +94,6 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.fragment_where, container, false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         if (rootView != null) {
@@ -126,49 +115,20 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
         MapsInitializer.initialize(getActivity());
     }
 
-    //    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        Fragment fragment = (getFragmentManager().findFragmentById(R.id.googleMap));
-//        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//        ft.remove(fragment);
-//        ft.commit();
-//    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-//        Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));
-//        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-//        ft.remove(fragment);
-//        ft.commit();
-    }
-
     public void initWidget(View view) {
-//        LWUtil.generateHashKey(getActivity(), LWUtil.KEY_ENCODING_TYPE);
-//        LWLog.info(LWUtil.generateHashKey(getActivity(),LWUtil.KEY_ENCODING_TYPE)));
-        googleMap = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-        System.gc();
-
+        googleMap = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.map)).getMap();
         confirmAddressButton = (Button) view.findViewById(R.id.confirmAddressButton);
         confirmAddressButton.setOnClickListener(this);
-
         getLocationEditText = (TypefaceEditText) view.findViewById(R.id.getLocationEditText);
-
         shareWithSpinner = (Spinner) view.findViewById(R.id.spinnerShare);
-//        shareWithSpinner.setPopupBackgroundResource(R.drawable.spinner_border);
         spinnerLocationOptions = getResources().getStringArray(R.array.areas_array);
-
         shareWithSpinner.setAdapter(new ShareSpinnerAdapter(getActivity(), R.layout.spinner_share_layout, spinnerLocationOptions));
         shareWithSpinner.post(new Runnable() {
             @Override
             public void run() {
-
                 ((ShareSpinnerAdapter) shareWithSpinner.getAdapter()).notifyDataSetChanged();
             }
         });
-
 
         if (googleMap !=null){
 
@@ -229,88 +189,31 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
                     ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                             PackageManager.PERMISSION_GRANTED) {
                 googleMap.setMyLocationEnabled(true);
-//                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-            } else {
-//                Toast.makeText(getActivity(),"Secutity Error", Toast.LENGTH_LONG).show();
-            }
-//            googleMap.setMyLocationEnabled(true);
+            } else {}
+
             System.gc();
         }
-
         try {
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LAHORE, 15));
-
-// Zoom in, animating the camera.
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(12), 3000, null);
         }catch (Exception e){
             e.printStackTrace();
         }
 
-
         if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
                         PackageManager.PERMISSION_GRANTED) {
-            //        googleMap.getUiSettings().setMyLocationButtonEnabled(true);
             googleMap.getUiSettings().setRotateGesturesEnabled(true);
-//        googleMap.getUiSettings().setMyLocationButtonEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.getUiSettings().setMapToolbarEnabled(true);
-//                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
         } else {
-//            Toast.makeText(getActivity(),"Secutity Error", Toast.LENGTH_LONG).show();
         }
-
-
-
-
-//        currentLocation();
-
-
-
-
-//        googleMap.setOnMyLocationChangeListener(myLocationChangeListener);
-
-//        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-//            @Override
-//            public void onMapClick(LatLng latLng) {
-//
-//
-//                MarkerOptions markerOptions = new MarkerOptions();
-//
-//                // Setting the position for the marker
-//                markerOptions.position(latLng);
-//                // Setting the title for the marker.
-//                // This will be displayed on taping the marker
-//                markerOptions.title(latLng.latitude + " : " + latLng.longitude);
-//                markerOptions.title(address);
-//
-//                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.order_location));
-//
-//                // Clears the previously touched position
-//                googleMap.clear();
-//
-//                // Animating to the touched position
-
-//
-//                // Placing a marker on the touched position
-//                googleMap.addMarker(markerOptions);
-//
-////                MarkerOptions options = new MarkerOptions().position( latLng );
-////                options.title( getAddressFromLatLng( latLng ) );
-////
-////                options.icon( BitmapDescriptorFactory.defaultMarker() );
-////                googleMap.addMarker( options );
-//
-//            }
-//        });
-
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).build();
         mGoogleApiClient.connect();
-
         locationRequest = LocationRequest.create();
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setInterval(30 * 1000);
@@ -323,19 +226,13 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
             @Override
             public void onMyLocationChange(final Location location) {
                 LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-//                googleMap.clear();
-//                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
                 MarkerOptions markerOptions = new MarkerOptions();
-
                 Geocoder geocoder;
                 List<Address> addresses = null;
                 geocoder = new Geocoder(getActivity(), Locale.getDefault());
-
                 try {
                     addresses = geocoder.getFromLocation(loc.latitude, loc.longitude, 2);
-
                     if (addresses != null && addresses.size() > 0) {
-//                        isLocationSelected=false;
                         address = addresses.get(0).getAddressLine(0);
                         // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
                         city = addresses.get(0).getLocality();
@@ -344,7 +241,6 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
                         String postalCode = addresses.get(0).getPostalCode();
                         String knownName = addresses.get(0).getFeatureName();
                         markerOptions.title(address + " " + knownName + " " + city + " " + state + " " + country);
-
                         getLocationEditText.setText(address + " " + " " + city + " " + state + " " + country);
                         LWPrefs.saveString(getActivity(),LWPrefs.KEY_ADDRESS , getLocationEditText.getText().toString());
 
@@ -483,13 +379,8 @@ public class WhereFragment extends BaseFragment implements GoogleApiClient.Conne
                 locationArea = "4";
                 LWLog.info(locationArea);
             }
-
             LWPrefs.saveString(getActivity(),LWPrefs.KEY_LOCATION_AREA,locationArea);
-
             return mySpinner;
         }
     }
-
-
-
 }

@@ -19,7 +19,6 @@ public class FAQFragment extends BaseFragment implements View.OnClickListener {
 
     public static final String TAG = FAQFragment.class.getSimpleName();
     private WebView faqsWebView;
-
     private HomeActivity homeActivity;
 
 
@@ -35,24 +34,18 @@ public class FAQFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         homeActivity.hideTitle();
     }
 
-
     public void initWidget(View view){
-
         homeActivity = (HomeActivity) getActivity();
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.menuFAQ));
-
         faqsWebView = (WebView) view.findViewById(R.id.faqsWebView);
         WebSettings webSettings = faqsWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         faqsWebView.loadUrl("file:///android_asset/faqs.html");
-
     }
-
 
     @Override
     public void onClick(View v) {

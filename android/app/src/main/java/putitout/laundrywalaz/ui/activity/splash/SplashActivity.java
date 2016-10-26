@@ -30,7 +30,6 @@ public class SplashActivity  extends Activity {
     }
 
     public void initWidget() {
-
         checkFlowAndProceed();
     }
 

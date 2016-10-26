@@ -13,7 +13,6 @@ public class PriceModel {
     String service_categories_id;
 
 
-
     public PriceModel(String id, String category, String name, String price_dryclean, String price_laundry, String service_categories_id) {
         this.id = id;
         this.category = category;
@@ -23,7 +22,6 @@ public class PriceModel {
         this.service_categories_id = service_categories_id;
 
     }
-
 
     public String getCategory() {
         return category;

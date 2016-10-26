@@ -16,7 +16,6 @@ import putitout.laundrywalaz.model.Parser;
 import putitout.laundrywalaz.network.NetworkMananger;
 import putitout.laundrywalaz.network.NetworkUtil;
 import putitout.laundrywalaz.ui.activity.base.BaseActivity;
-import putitout.laundrywalaz.ui.activity.demo.DemoActivity;
 import putitout.laundrywalaz.ui.activity.home.HomeActivity;
 import putitout.laundrywalaz.utils.LWLog;
 import putitout.laundrywalaz.utils.LWPrefs;
@@ -29,35 +28,26 @@ import putitout.laundrywalaz.widgets.TypefaceTextView;
  */
 public class LoginActivity extends BaseActivity implements View.OnClickListener,OnWebServiceResponse {
 
+    private static final int LOGIN_USER = 3;
 
     private ImageView backImageView;
     private ImageView checkImageView;
-
     private TypefaceTextView registerTextView;
     private TypefaceTextView forgotPasswordTextView;
-
-    private static final int LOGIN_USER = 3;
-
     private TypefaceEditText emailEditText;
     private TypefaceEditText passwordEditText;
     private Button loginButton;
-
-    private DemoActivity demoActivity;
-
+    private ProgressDialog progressDialog;
 
     private boolean isClick = true;
-
-    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
         initWidget();
     }
-
 
     @Override
     public void initWidget() {
@@ -69,10 +59,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         registerTextView.setOnClickListener(this);
         forgotPasswordTextView = (TypefaceTextView) findViewById(R.id.forgotPasswordTextView);
         forgotPasswordTextView.setOnClickListener(this);
-
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this);
-
         emailEditText = (TypefaceEditText) findViewById(R.id.emailEditText);
         passwordEditText = (TypefaceEditText) findViewById(R.id.passwordEditText);
     }
@@ -165,7 +153,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private void parseUserData(Parser parser) {
         if (parser.getStatus().equals(LWUtil.KEY_SERVER_RESPONSE_FAILURE)) {
             LWUtil.showAlert(getActivity(),parser.getMessage());
-//            LWUtil.showAlert(this,(getString(R.string.registrationAlert)));
         } else if (parser.getStatus().equals(LWUtil.KEY_SERVER_RESPONSE_SUCCESS)) {
             saveUserData(this, parser);
             if(LWUtil.isUserLogin == true) {
@@ -189,25 +176,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         String firstName = parseData.getFirstName();
         String lastName = parseData.getLastName();
         String phone = parseData.getPhone();
-//        String getMiddleName = parseData.getMiddleName();
-
-        String gender = parseData.getGender();
-        String type = parseData.getType();
-        String dateModified = parseData.getDateModified();
         String userStatus = parseData.getOrderStatus();
         String email = parseData.getEmail();
-        String image = parseData.getOrder();
-
 
         LWPrefs.saveString(context, LWPrefs.KEY_TOKEN, token);
         LWPrefs.saveString(context, LWPrefs.KEY_USER_ID, id);
         LWPrefs.saveString(context, LWPrefs.KEY_FIRST_NAME, firstName);
         LWPrefs.saveString(context, LWPrefs.KEY_LAST_NAME, lastName);
         LWPrefs.saveString(context, LWPrefs.KEY_PHONE, phone);
-//        LWPrefs.saveString(context, LWPrefs.KEY_GENDER, gender);
-//        LWPrefs.saveString(context, LWPrefs.KEY_TYPE, type);
         LWPrefs.saveString(context, LWPrefs.KEY_USER_STATUS, userStatus);
-//        LWPrefs.saveString(context, LWPrefs.KEY_IMAGE, image);
         LWPrefs.saveString(context, LWPrefs.KEY_EMAIL, email);
     }
 }

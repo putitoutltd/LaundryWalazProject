@@ -2,7 +2,6 @@ package putitout.laundrywalaz.ui.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -100,7 +99,6 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
         }
         if (isValidResponse) {
             Parser parser = new Parser(response);
-            Log.e("response: ", response);
             switch (requestCode) {
                 case FORGET_USER:
                     parseForgetPasswordData(parser);

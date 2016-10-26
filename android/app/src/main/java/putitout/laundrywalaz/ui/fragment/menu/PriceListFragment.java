@@ -29,25 +29,18 @@ import putitout.laundrywalaz.widgets.TypefaceTextView;
 public class PriceListFragment extends BaseFragment implements OnWebServiceResponse {
 
     public static final String TAG = PriceListFragment.class.getSimpleName();
-
     private static final int SERVICE_LIST = 1;
-
     private ListView menListView;
     private ListView womenListView;
     private ListView bedListView;
     private ListView otherItemListView;
-
     private TypefaceTextView priceStaticTextView;
-
     private ArrayList<PriceModel> menList = new ArrayList<PriceModel>();
     private ArrayList<PriceModel> womenList = new ArrayList<PriceModel>();
     private ArrayList<PriceModel> bedList = new ArrayList<PriceModel>();
     private ArrayList<PriceModel> otherItemsList = new ArrayList<PriceModel>();
-
     private PriceListAdapter priceListAdapter;
-
-    ProgressDialog progressDialog;
-
+    private ProgressDialog progressDialog;
     private HomeActivity homeActivity;
 
     @Override
@@ -62,19 +55,14 @@ public class PriceListFragment extends BaseFragment implements OnWebServiceRespo
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         homeActivity.hideTitle();
     }
 
     public void initWidget(View view){
-
         homeActivity = (HomeActivity) getActivity();
         homeActivity.showTitle();
         homeActivity.setTitle(getString(R.string.menuPricing));
-
         priceStaticTextView = (TypefaceTextView) view.findViewById(R.id.priceStaticTextView);
-
-
         menListView = (ListView) view.findViewById(R.id.menListView);
         menListView.setScrollContainer(false);
         menListView.setClickable(false);
@@ -87,14 +75,11 @@ public class PriceListFragment extends BaseFragment implements OnWebServiceRespo
                         // Disallow ScrollView to intercept touch events.
                         menListView.requestDisallowInterceptTouchEvent(false);
                         break;
-
                     case MotionEvent.ACTION_UP:
                         // Allow ScrollView to intercept touch events.
                         v.getParent().requestDisallowInterceptTouchEvent(false);
                         break;
                 }
-
-                // Handle ListView touch events.
                 v.onTouchEvent(event);
                 return true;
             }
@@ -103,7 +88,6 @@ public class PriceListFragment extends BaseFragment implements OnWebServiceRespo
         womenListView = (ListView) view.findViewById(R.id.womenListView);
         womenListView.setScrollContainer(false);
         womenListView.setClickable(false);
-
         womenListView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -119,7 +103,6 @@ public class PriceListFragment extends BaseFragment implements OnWebServiceRespo
                         v.getParent().requestDisallowInterceptTouchEvent(false);
                         break;
                 }
-                // Handle ListView touch events.
                 v.onTouchEvent(event);
                 return true;
             }
@@ -170,32 +153,24 @@ public class PriceListFragment extends BaseFragment implements OnWebServiceRespo
             bedListView.setVisibility(View.VISIBLE);
             otherItemListView.setVisibility(View.VISIBLE);
             priceStaticTextView.setVisibility(View.VISIBLE);
-
             menList = new ArrayList<PriceModel>();
             menList = parser.getMenPricingList();
-
             priceListAdapter = new PriceListAdapter(getActivity(), menList);
             menListView.setAdapter(priceListAdapter);
-
             womenList = new ArrayList<PriceModel>();
             womenList = parser.getWomenPricingList();
-
             if (womenList != null) {
                 priceListAdapter = new PriceListAdapter(getActivity(),womenList);
                 womenListView.setAdapter(priceListAdapter);
             }
-
             bedList = new ArrayList<PriceModel>();
             bedList = parser.getBedPricingList();
-
             if (bedList != null) {
                 priceListAdapter = new PriceListAdapter(getActivity(), bedList);
                 bedListView.setAdapter(priceListAdapter);
             }
-
             otherItemsList = new ArrayList<PriceModel>();
             otherItemsList = parser.getOtherItemsPricingList();
-
             if (otherItemListView != null) {
                 priceListAdapter = new PriceListAdapter(getActivity(),otherItemsList);
                 otherItemListView.setAdapter(priceListAdapter);

@@ -28,17 +28,13 @@ public class Parser {
     private String pickup_time;
     private String dropoff_time;
     private String orderStatus = "";
-    private JSONObject jsonObjectData;
-
-    int responseType;
-
     private String category;
     private String id;
     private String name;
     private String price_dryclean;
     private String price_laundry;
     private String service_categories_id;
-
+    int responseType;
 
     private ArrayList<PriceModel> menList = new ArrayList<PriceModel>();
 
@@ -234,7 +230,6 @@ public class Parser {
                 bedList.add(priceModel);
             }
 
-
             JSONArray itemsJsonObject = priceList.getJSONArray("Other Items");
             for(int i = 0; i < itemsJsonObject.length(); i++) {
                 JSONObject bad_Linen = itemsJsonObject.getJSONObject(i);
@@ -248,8 +243,6 @@ public class Parser {
                 PriceModel priceModel = new PriceModel(category,id,name,price_dryclean,price_laundry,service_categories_id);
                 otherItemList.add(priceModel);
             }
-
-
 
         } catch (JSONException je) {
             je.printStackTrace();
